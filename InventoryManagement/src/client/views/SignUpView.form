@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.views.SignUpView">
-  <grid id="27dc6" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="SUpanel" layout-manager="GridBagLayout">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -23,7 +23,7 @@
           <text value="Phone Number"/>
         </properties>
       </component>
-      <component id="f1a2a" class="javax.swing.JTextField" binding="SU_usernameField">
+      <component id="f1a2a" class="javax.swing.JTextField" binding="SUusernameField">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -37,7 +37,7 @@
           <text value="Username"/>
         </properties>
       </component>
-      <component id="a5235" class="javax.swing.JPasswordField" binding="SU_passwordField">
+      <component id="a5235" class="javax.swing.JPasswordField" binding="SUpasswordField">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -51,7 +51,7 @@
           <text value="Password"/>
         </properties>
       </component>
-      <component id="417ce" class="javax.swing.JButton" binding="SU_signupbtn">
+      <component id="417ce" class="javax.swing.JButton" binding="SUsignUpBtn">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="35" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
