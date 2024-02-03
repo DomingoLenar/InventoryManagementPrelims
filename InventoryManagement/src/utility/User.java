@@ -2,8 +2,8 @@ package utility;
 
 
 public class User {
-    private final String username;
-    private final String password;
+    private String username;
+    private String password;
 
     /**
      * Default constructor initializes the user with empty username and password.
@@ -43,6 +43,14 @@ public class User {
         return password;
     }
 
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * Calculates the hash code of the user's password.

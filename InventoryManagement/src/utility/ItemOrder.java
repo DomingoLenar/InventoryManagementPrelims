@@ -4,6 +4,7 @@ public class ItemOrder {
     private Item item;
     private String date;
     private float purPrice;
+    private String status;
 
     /**
      * Default constructor for ItemOrder.
@@ -13,6 +14,7 @@ public class ItemOrder {
         item = null;
         date = "";
         purPrice = 0;
+        status = "";
     }
 
     /**
@@ -22,10 +24,11 @@ public class ItemOrder {
      * @param date The date when the order was made.
      * @param purPrice The purchase price of the item in the order.
      */
-    public ItemOrder(Item item, String date, float purPrice){
+    public ItemOrder(Item item, String date, float purPrice, String status){
         this.item = item;
         this.date = date;
         this.purPrice = purPrice;
+        this.status = status;
     }
 
     /**
@@ -80,5 +83,13 @@ public class ItemOrder {
      */
     public void setPurPrice(float purPrice) {
         this.purPrice = purPrice;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status){
+        this.status = status;
     }
 }
