@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.views.IndexView">
-  <grid id="27dc6" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="IVpanel" layout-manager="GridBagLayout">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -9,7 +9,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="3d3fa" class="javax.swing.JButton" binding="IV_loginbtn">
+      <component id="3d3fa" class="javax.swing.JButton" binding="IVloginBtn">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
@@ -24,7 +24,7 @@
           <text value="Log In"/>
         </properties>
       </component>
-      <component id="2cf71" class="javax.swing.JButton" binding="SU_signupbtn">
+      <component id="2cf71" class="javax.swing.JButton" binding="SUsignUpBtn">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="20" bottom="0" right="0" weightx="0.0" weighty="0.0"/>
