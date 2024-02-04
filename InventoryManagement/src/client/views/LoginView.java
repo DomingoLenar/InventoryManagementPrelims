@@ -23,4 +23,9 @@ public class LoginView {
     public JPanel getLVpanel() {
         return LVpanel;
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        LVpanel = new GradientPanel();
+    }
 }
