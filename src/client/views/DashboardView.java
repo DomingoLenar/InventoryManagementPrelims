@@ -1,7 +1,10 @@
 package client.views;
 
 import javax.swing.*;
+import javax.swing.border.AbstractBorder; // For Controller
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D; // For Controller
 
 public class DashboardView {
     private JPanel mainPanel;
@@ -13,7 +16,6 @@ public class DashboardView {
     private JList<String> activityList2;
 
     public DashboardView() {
-
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         listModel1.addElement("Null");
         listModel1.addElement("Null");
@@ -26,9 +28,11 @@ public class DashboardView {
         listModel2.addElement("Null");
         activityList2.setModel(listModel2);
 
-        //searchField.setBorder(null);
-        //profileButton.setBorder(null);
-
+        // Call for Controller
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedCornerBorder(20),
+                new EmptyBorder(5, 5, 5, 5)
+        ));
     }
 
     public static void main(String[] args) {
@@ -39,11 +43,35 @@ public class DashboardView {
         frame.setContentPane(dashboardView.mainPanel);
 
         frame.setResizable(true);
-
         frame.setMinimumSize(new Dimension(700, 500));
 
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    // Should be added in controller, used only for testing
+    private static class RoundedCornerBorder extends AbstractBorder {
+        private final int arc;
+
+        public RoundedCornerBorder(int arc) {
+            this.arc = arc;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            Stroke originalStroke = g2d.getStroke();
+            g2d.setStroke(new BasicStroke(3.0f));
+
+            g2d.setColor(Color.WHITE);
+            g2d.draw(new RoundRectangle2D.Double(x, y, width - 1, height - 1, arc, arc));
+
+            g2d.setStroke(originalStroke);
+
+            g2d.dispose();
+        }
     }
 }

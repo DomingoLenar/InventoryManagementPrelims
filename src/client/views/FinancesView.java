@@ -10,6 +10,10 @@ public class FinancesView {
     private JPanel mainPanel;
     private JPanel bottomPanel;
 
+    public FinancesView() {
+        
+        searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+    }
     public static void main(String[] args) {
         FinancesView financesView = new FinancesView();
 
