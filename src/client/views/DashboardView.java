@@ -8,9 +8,7 @@ public class DashboardView {
     private JPanel topPanel;
     private JPanel bottomPanel;
     private JPanel searchPanel;
-    private JPanel profilePanel;
     private JTextField searchField;
-    private JButton profileButton;
     private JList<String> activityList1;
     private JList<String> activityList2;
 
