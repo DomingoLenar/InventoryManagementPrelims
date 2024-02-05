@@ -23,4 +23,9 @@ public class SignUpView {
     public JPasswordField getSUpasswordField() {
         return SUpasswordField;
     }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        SUpanel = new GradientPanel();
+    }
 }
