@@ -55,8 +55,7 @@ public class ClientHandler implements Runnable{
 
     public void userVerification(User userObject, OutputStream outputStream) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        //use xml processing methods to retrieve user from xml
-        boolean auth = false; // result of comparing the password submitted and stored password
+        boolean auth = XMLProcessing.authenticate(userObject);
         objectOutputStream.writeBoolean(auth);
     }
 
@@ -64,7 +63,7 @@ public class ClientHandler implements Runnable{
         try{
            ObjectOutputStream oOS = new ObjectOutputStream(outputStream);
            //call XMLProcessing method to update the xml file
-            boolean succeed = false;
+            boolean succeed = XMLProcessing.createUser(userObject);
             oOS.writeBoolean(succeed);
         }catch(IOException ioException){
             throw new RuntimeException(ioException);
