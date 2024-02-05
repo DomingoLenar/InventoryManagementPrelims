@@ -17,6 +17,7 @@
         </constraints>
         <properties>
           <background color="-3360070"/>
+          <font name="Fira Code"/>
           <foreground color="-3360070"/>
           <horizontalAlignment value="2"/>
           <text value="Dashboard"/>
@@ -30,6 +31,7 @@
         </constraints>
         <properties>
           <background color="-3360070"/>
+          <font name="Fira Code"/>
           <horizontalAlignment value="2"/>
           <text value="Profile"/>
           <verticalAlignment value="3"/>
@@ -42,6 +44,7 @@
         </constraints>
         <properties>
           <background color="-3360070"/>
+          <font name="Fira Code"/>
           <foreground color="-3360070"/>
           <horizontalAlignment value="2"/>
           <text value="Finances"/>
@@ -55,6 +58,7 @@
         </constraints>
         <properties>
           <background color="-3360070"/>
+          <font name="Fira Code"/>
           <horizontalAlignment value="2"/>
           <text value="Stock Control"/>
           <verticalAlignment value="3"/>
