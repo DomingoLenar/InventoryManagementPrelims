@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class User implements Serializable, Comparable<User> {
     private String username;
     private String password;
+    private String role;
 
     /**
      * Default constructor initializes the user with empty username and password.
@@ -13,6 +14,7 @@ public class User implements Serializable, Comparable<User> {
     public User() {
         username = "";
         password = "";
+        role = "";
     }
 
     /**
@@ -20,10 +22,12 @@ public class User implements Serializable, Comparable<User> {
      *
      * @param username The username of the user.
      * @param password The password of the user.
+     * @param role the role of the user (admin, sales, purchase)
      */
-    public User(String username, String password) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     /**
@@ -52,6 +56,14 @@ public class User implements Serializable, Comparable<User> {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRole(String role){
+        this.role = role;
+    }
+
+    public String getRole(){
+        return role;
     }
 
     /**
