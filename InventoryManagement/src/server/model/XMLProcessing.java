@@ -18,13 +18,14 @@ import org.w3c.dom.NodeList;
 import utility.User;
 
 public class XMLProcessing {
-
-
-
     public synchronized static boolean authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
         assert localUser != null;
-        return localUser.equals(userToAuth);
+        if(userToAuth.compareTo(localUser) == 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public synchronized static User findUser(String userName) {

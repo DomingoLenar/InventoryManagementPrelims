@@ -1,7 +1,9 @@
 package utility;
 
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable, Comparable<User> {
     private String username;
     private String password;
 
@@ -59,5 +61,13 @@ public class User {
      */
     public int hashPassword() {
         return password != null ? password.hashCode() : 0;
+    }
+
+    @Override
+    public int compareTo(User other) {
+        if(this.username.equals(other.getUsername()) && this.password.equals(other.getPassword())){
+            return 0;
+        }
+        return 1;
     }
 }

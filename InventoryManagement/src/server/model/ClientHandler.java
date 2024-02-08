@@ -19,17 +19,16 @@ public class ClientHandler implements Runnable{
     public void run() {
         try{
             //To be replaced by proper logic for the application this will just act as a temporary test
-            InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             OutputStream outputStream = socket.getOutputStream();
-            PrintWriter pWriter = new PrintWriter(outputStream);
+            PrintWriter pWriter = new PrintWriter(outputStream, true);
 
             pWriter.println("You are connected to the server");
+//            System.out.println(bufferedReader..());
             while(true) {
                 pWriter.print("Operation:");
-                pWriter.flush();
-                switch (bufferedReader.readLine().toLowerCase()) {
+                switch (bufferedReader.readLine()) {
                     //To be populated with actual logic
                     case "userVerification":
                         //Invoke method for user verification
@@ -43,6 +42,9 @@ public class ClientHandler implements Runnable{
                         break;
                     case "Exit":
                         socket.close();
+                        break;
+                    default:
+                        System.out.println("Invalid request");
                 }
 
 
@@ -56,7 +58,8 @@ public class ClientHandler implements Runnable{
     public void userVerification(User userObject, OutputStream outputStream) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         boolean auth = XMLProcessing.authenticate(userObject);
-        objectOutputStream.writeBoolean(auth);
+//        objectOutputStream.writeBoolean(auth);
+        objectOutputStream.writeObject(auth);
     }
 
     public void createUser(User userObject, OutputStream outputStream){
