@@ -18,6 +18,12 @@ import org.w3c.dom.NodeList;
 import utility.User;
 
 public class XMLProcessing {
+
+    /**
+     *
+     * @param userToAuth
+     * @return
+     */
     public synchronized static boolean authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
         assert localUser != null;
@@ -28,6 +34,11 @@ public class XMLProcessing {
         }
     }
 
+    /**
+     *
+     * @param userName
+     * @return
+     */
     public synchronized static User findUser(String userName) {
         try{
            File xmlFile = new File("InventoryManagement/src/server/res/users.xml");
@@ -47,8 +58,9 @@ public class XMLProcessing {
                     // Get username and password from user element
                     String username = userElement.getElementsByTagName("username").item(0).getTextContent();
                     if(username.equals(userName)){
+                        String role = userElement.getAttribute("permission");
                         String password = userElement.getElementsByTagName("password").item(0).getTextContent();
-                        return new User(username, password);
+                        return new User(username, password, role);
                     }
 
                 }
@@ -59,36 +71,52 @@ public class XMLProcessing {
         return null;
     }
 
-    public static boolean createUser(User userToCreate){
-        try{
-            File userXML = new File("InventoryManagement/src/server/res/users.xml");
-            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
-            Document document = documentBuilder.parse(userXML);
+    /**
+     *
+     * @param userToCreate
+     * @param createdBy
+     * @return
+     */
+    public synchronized static boolean createUser(User userToCreate, User createdBy){
+        User requestByUser = findUser(createdBy.getUsername());
+        if(requestByUser.getRole().equals("admin")) {
+            try {
+                File userXML = new File("InventoryManagement/src/server/res/users.xml");
+                DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
+                DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
+                Document document = documentBuilder.parse(userXML);
 
-            Element root = document.getDocumentElement();
+                Element root = document.getDocumentElement();
 
-            Element newUser = document.createElement("user");
+                Element newUser = document.createElement("user");
 
-            Element username = document.createElement("username");
-            username.setTextContent(userToCreate.getUsername());
+                Element username = document.createElement("username");
+                username.setTextContent(userToCreate.getUsername());
 
-            Element password = document.createElement("password");
-            password.setTextContent(userToCreate.getPassword());
+                Element password = document.createElement("password");
+                password.setTextContent(userToCreate.getPassword());
 
-            newUser.appendChild(username);
-            newUser.appendChild(password);
+                newUser.appendChild(username);
+                newUser.appendChild(password);
 
-            root.appendChild(newUser);
+                root.appendChild(newUser);
 
-            writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
+                writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml");
 
-        }catch(Exception e){
-            throw new RuntimeException(e);
+            } catch (Exception e) {
+                return false;
+            }
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 
+    /**
+     *
+     * @param node
+     * @param fileName
+     */
     private static void writeDOMToFile(Node node, String fileName) {
         try {
             TransformerFactory transformerFactory =
@@ -106,4 +134,12 @@ public class XMLProcessing {
             e.printStackTrace();
         }
     }
+
+    // #TODO: Method for reading item orders
+
+    // #TODO: Method for updating item orders
+
+    // #TODO: Method for calculating items files
+
+    // #TODO: Method for retrieving items
 }
