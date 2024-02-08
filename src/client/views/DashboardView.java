@@ -2,6 +2,7 @@ package client.views;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder; // For Controller
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D; // For Controller
@@ -14,18 +15,23 @@ public class DashboardView {
     private JTextField searchField;
     private JList<String> activityList1;
     private JList<String> activityList2;
+    private JButton addUserButton;
 
     public DashboardView() {
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
-        listModel1.addElement("Null");
-        listModel1.addElement("Null");
-        listModel1.addElement("Null");
+        listModel1.addElement("User 1");
+        listModel1.addElement("User 2");
+        listModel1.addElement("User 3");
+        listModel1.addElement("User 4");
+        listModel1.addElement("User 5");
         activityList1.setModel(listModel1);
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
-        listModel2.addElement("Null");
-        listModel2.addElement("Null");
-        listModel2.addElement("Null");
+        listModel2.addElement("Sales Person");
+        listModel2.addElement("Purchaser");
+        listModel2.addElement("Sales Person");
+        listModel2.addElement("Sales Person");
+        listModel2.addElement("Purchaser");
         activityList2.setModel(listModel2);
 
         // Call for Controller
