@@ -1,0 +1,7 @@
+<itemorders>
+    <itemorder date="" type="purchase">
+        <item>itemname</item>
+        <amount>5</amount>
+        <user>username</user>
+    </itemorder>
+</itemorders>
