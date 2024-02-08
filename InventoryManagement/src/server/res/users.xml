@@ -1,6 +1,14 @@
 <users>
-    <user>
-        <username>testuser</username>
-        <password>usertest</password>
+    <user permission="sales">
+        <username>salesuser</username>
+        <password>usersales</password>
+    </user>
+    <user permission="admin">
+        <username>adminuser</username>
+        <password>useradmin</password>
+    </user>
+    <user permission="purchase">
+        <username>purchaseuser</username>
+        <password>userpurchase</password>
     </user>
 </users>
