@@ -78,7 +78,7 @@ public class LoginSignupModel {
         try {
             // Create a new User object with provided credentials
             User newUser = new User(username, password);
-
+            sendAction("createUser");
             // Send the User object to the server for sign-up
             outputStream.writeObject(newUser);
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");

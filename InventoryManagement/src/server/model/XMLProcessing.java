@@ -15,6 +15,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import utility.Item;
 import utility.User;
 
 public class XMLProcessing {
@@ -103,6 +104,88 @@ public class XMLProcessing {
             transformer.transform(source, result);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Adds an item to the XML file.
+     *
+     * @param itemToAdd The item to add.
+     * @return True if the item is successfully added; false otherwise.
+     */
+    public static synchronized boolean addItem(Item itemToAdd) {
+        try {
+            File itemXML = new File("InventoryManagement/src/server/res/items.xml");
+            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
+            Document document = documentBuilder.parse(itemXML);
+
+            Element root = document.getDocumentElement();
+
+            Element newItem = document.createElement("item");
+
+            Element name = document.createElement("name");
+            name.setTextContent(itemToAdd.getName());
+
+            Element quantity = document.createElement("quantity");
+            quantity.setTextContent(String.valueOf(itemToAdd.getQty()));
+
+            Element type = document.createElement("type");
+            type.setTextContent(itemToAdd.getType());
+
+            Element id = document.createElement("id");
+            id.setTextContent(String.valueOf(itemToAdd.getId()));
+
+            Element price = document.createElement("price");
+            price.setTextContent(String.valueOf(itemToAdd.getPrice()));
+
+            newItem.appendChild(name);
+            newItem.appendChild(quantity);
+            newItem.appendChild(type);
+            newItem.appendChild(id);
+            newItem.appendChild(price);
+
+            root.appendChild(newItem);
+
+            writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * Removes an item from the XML file based on its ID.
+     *
+     * @param itemId The ID of the item to remove.
+     * @return True if the item is successfully removed; false otherwise.
+     */
+    public static synchronized boolean removeItem(int itemId) {
+        try {
+            File itemXML = new File("InventoryManagement/src/server/res/items.xml");
+            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
+            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
+            Document document = documentBuilder.parse(itemXML);
+
+            Element root = document.getDocumentElement();
+            NodeList itemList = root.getElementsByTagName("item");
+
+            for (int i = 0; i < itemList.getLength(); i++) {
+                Element itemElement = (Element) itemList.item(i);
+                Element idElement = (Element) itemElement.getElementsByTagName("id").item(0);
+                int id = Integer.parseInt(idElement.getTextContent());
+                if (id == itemId) {
+                    root.removeChild(itemElement);
+                    writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
+                    return true;
+                }
+            }
+            return false; // Item not found
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }
