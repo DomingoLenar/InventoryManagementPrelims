@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
 public class IndexController {
 
     InventoryManagementInterface inventoryManagementInterface;
+    InventoryManagementController inventoryManagementController;
     IndexView indexView;
 
-    public IndexController(InventoryManagementInterface inventoryManagementInterface) {
+    public IndexController(InventoryManagementInterface inventoryManagementInterface, InventoryManagementController inventoryManagementController) {
         this.inventoryManagementInterface = inventoryManagementInterface;
+        this.inventoryManagementController = inventoryManagementController;
         indexView = new IndexView();
 
         initComponents();
@@ -33,7 +35,7 @@ public class IndexController {
                     @Override
                     public void run() {
                         inventoryManagementInterface.getContentPane().removeAll();
-                        inventoryManagementInterface.displayLoginView();
+                        inventoryManagementInterface.changePanel(inventoryManagementController.getLoginController().getLoginView().getLVpanel());
                         inventoryManagementInterface.revalidate();
                         inventoryManagementInterface.repaint();
                     }
@@ -49,7 +51,7 @@ public class IndexController {
                     @Override
                     public void run() {
                         inventoryManagementInterface.getContentPane().removeAll();
-                        inventoryManagementInterface.displaySignUpView();
+                        inventoryManagementInterface.changePanel(inventoryManagementController.getSignUpController().getSignUpView().getSUpanel());
                         inventoryManagementInterface.revalidate();
                         inventoryManagementInterface.repaint();
                     }
