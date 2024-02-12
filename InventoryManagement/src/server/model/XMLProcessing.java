@@ -47,7 +47,8 @@ public class XMLProcessing {
                     String username = userElement.getElementsByTagName("username").item(0).getTextContent();
                     if(username.equals(userName)){
                         String password = userElement.getElementsByTagName("password").item(0).getTextContent();
-                        return new User(username, password);
+                        String role = userElement.getAttribute("role");
+                        return new User(username, password, role);
                     }
 
                 }
@@ -68,6 +69,7 @@ public class XMLProcessing {
             Element root = document.getDocumentElement();
 
             Element newUser = document.createElement("user");
+            newUser.setAttribute("role",userToCreate.getRole());
 
             Element username = document.createElement("username");
             username.setTextContent(userToCreate.getUsername());

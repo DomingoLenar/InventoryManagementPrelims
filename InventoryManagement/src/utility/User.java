@@ -4,6 +4,7 @@ package utility;
 public class User {
     private String username;
     private String password;
+    private String role;
 
     /**
      * Default constructor initializes the user with empty username and password.
@@ -11,6 +12,7 @@ public class User {
     public User() {
         username = "";
         password = "";
+        role = "";
     }
 
     /**
@@ -19,9 +21,10 @@ public class User {
      * @param username The username of the user.
      * @param password The password of the user.
      */
-    public User(String username, String password) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     /**
@@ -43,6 +46,10 @@ public class User {
         return password;
     }
 
+    public String getRole(){
+        return this.role;
+    }
+
 
     public void setUsername(String username) {
         this.username = username;
@@ -50,6 +57,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setRole(String role){
+
+        this.role = role;
+
     }
 
     /**
