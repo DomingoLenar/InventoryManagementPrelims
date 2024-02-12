@@ -1,6 +1,7 @@
 package server.model;
 
 import server.views.TerminalView;
+import utility.Item;
 import utility.User;
 
 import java.io.*;
@@ -41,6 +42,18 @@ public class ClientHandler implements Runnable{
                         User userToCreate = (User) oIS.readObject();
                         createUser(userToCreate, outputStream);
                         break;
+                    case "additem":
+                        //Invoke method for item addition
+                        Item submittedItem = (Item) oIS.readObject();
+                        itemAddition(submittedItem, outputStream);
+                        break;
+
+                    case "removeitem":
+                        //Invoke method for item removal
+                        int submittedID = (int) oIS.readInt();
+                        itemRemoval(submittedID, outputStream);
+                        break;
+
                     case "Exit":
                         socket.close();
                 }
@@ -67,6 +80,46 @@ public class ClientHandler implements Runnable{
             oOS.writeBoolean(succeed);
         }catch(IOException ioException){
             throw new RuntimeException(ioException);
+        }
+    }
+
+    /**
+     * Handles the addition of an item to the server.
+     *
+     * @param itemObject    The item object to be added.
+     * @param outputStream  The output stream for sending responses.
+     * @throws IOException  If an I/O error occurs.
+     */
+    private void itemAddition(Item itemObject, OutputStream outputStream) throws IOException {
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+            boolean success = XMLProcessing.addItem(itemObject);
+
+            objectOutputStream.writeBoolean(success);
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Handles the removal of an item from the server.
+     *
+     * @param id            The ID of the item to be removed.
+     * @param outputStream  The output stream for sending responses.
+     * @throws IOException  If an I/O error occurs.
+     */
+    private void itemRemoval(int id, OutputStream outputStream) throws IOException {
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+            boolean success = XMLProcessing.removeItem(id);
+
+            objectOutputStream.writeBoolean(success);
+            objectOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

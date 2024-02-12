@@ -1,7 +1,7 @@
 package utility;
 
 public class ItemOrder {
-    private Item item;
+    private int id;
     private String date;
     private float purPrice;
     private String status;
@@ -11,7 +11,7 @@ public class ItemOrder {
      * Initializes item to null, date to an empty string, and purPrice to 0.
      */
     public ItemOrder(){
-        item = null;
+        id = 0;
         date = "";
         purPrice = 0;
         status = "";
@@ -20,24 +20,24 @@ public class ItemOrder {
     /**
      * Constructor for ItemOrder with specified parameters.
      *
-     * @param item The item associated with the order.
+     * @param id The item associated with the order.
      * @param date The date when the order was made.
      * @param purPrice The purchase price of the item in the order.
      */
-    public ItemOrder(Item item, String date, float purPrice, String status){
-        this.item = item;
+    public ItemOrder(int id, String date, float purPrice, String status){
+        this.id = id;
         this.date = date;
         this.purPrice = purPrice;
         this.status = status;
     }
 
     /**
-     * Gets the item associated with the order.
+     * Gets the id associated with the order.
      *
-     * @return The item associated with the order.
+     * @return The id associated with the order.
      */
-    public Item getItem() {
-        return item;
+    public int getItem() {
+        return id;
     }
 
     /**
@@ -59,12 +59,12 @@ public class ItemOrder {
     }
 
     /**
-     * Sets the item associated with the order.
+     * Sets the id associated with the order.
      *
-     * @param item The item to be set.
+     * @param id The item to be set.
      */
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItem(int id) {
+        this.id = id;
     }
 
     /**
