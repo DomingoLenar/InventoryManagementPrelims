@@ -43,6 +43,7 @@ public class DashboardView {
         activityList2.setModel(listModel2);
         activityList2.setEnabled(false);
 
+        addUserButton.setBorderPainted(false);
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
