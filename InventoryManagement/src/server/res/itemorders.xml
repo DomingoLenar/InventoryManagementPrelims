@@ -1,0 +1,7 @@
+<itemorders>
+    <itemorder date="12/02/24" orderType="purchase" byUser="testpurchase">
+        <item id=""></item>
+        <amount></amount>
+        <price></price>
+    </itemorder>
+</itemorders>

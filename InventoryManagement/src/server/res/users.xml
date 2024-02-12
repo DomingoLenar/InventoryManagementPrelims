@@ -1,6 +1,14 @@
 <users>
-    <user>
+    <user role="admin">
         <username>testuser</username>
         <password>usertest</password>
+    </user>
+    <user role="purchase">
+        <username>testpurchase</username>
+        <password>purchasetest</password>
+    </user>
+    <user role="sales">
+        <username>testsales</username>
+        <password>salestest</password>
     </user>
 </users>
