@@ -1,8 +1,7 @@
-package client.views;
+package client.views.admin;
 
 import javax.swing.*;
 import javax.swing.border.AbstractBorder; // For Controller
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D; // For Controller
@@ -16,6 +15,10 @@ public class DashboardView {
     private JList<String> activityList1;
     private JList<String> activityList2;
     private JButton addUserButton;
+    private JPanel addUserPanel;
+    private JPanel stockControlPanel;
+    private JPanel revenueVsCausePanel;
+    private JPanel usersActivePanel;
 
     public DashboardView() {
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
@@ -80,4 +83,6 @@ public class DashboardView {
             g2d.dispose();
         }
     }
+
+
 }

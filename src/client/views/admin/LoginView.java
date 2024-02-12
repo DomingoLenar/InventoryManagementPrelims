@@ -1,4 +1,4 @@
-package client.views;
+package client.views.admin;
 
 import javax.swing.*;
 
