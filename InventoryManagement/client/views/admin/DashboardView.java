@@ -1,10 +1,14 @@
+
 package client.views.admin;
 
+import org.knowm.xchart.*;
+
 import javax.swing.*;
-import javax.swing.border.AbstractBorder; // For Controller
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.geom.RoundRectangle2D; // For Controller
+import java.awt.geom.RoundRectangle2D;
+import java.util.Arrays;
 
 public class DashboardView {
     private JPanel mainPanel;
@@ -17,7 +21,7 @@ public class DashboardView {
     private JButton addUserButton;
     private JPanel addUserPanel;
     private JPanel stockControlPanel;
-    private JPanel revenueVsCausePanel;
+    private JPanel revenueVsCostPanel;
     private JPanel usersActivePanel;
 
     public DashboardView() {
@@ -28,6 +32,7 @@ public class DashboardView {
         listModel1.addElement("User 4");
         listModel1.addElement("User 5");
         activityList1.setModel(listModel1);
+        activityList1.setEnabled(false);
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
         listModel2.addElement("Sales Person");
@@ -36,31 +41,52 @@ public class DashboardView {
         listModel2.addElement("Sales Person");
         listModel2.addElement("Purchaser");
         activityList2.setModel(listModel2);
+        activityList2.setEnabled(false);
+
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
                 new RoundedCornerBorder(20),
                 new EmptyBorder(5, 5, 5, 5)
         ));
+
+        CategoryChart chart = new CategoryChartBuilder().width(400).height(300).build();
+
+        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+        chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
+        chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
+
+        chart.getStyler().setStacked(true);
+        chart.getStyler().setOverlapped(true);
+        chart.getStyler().setSeriesColors(new Color[]{new Color(130, 0, 255), new Color(100, 180, 180)});
+        chart.getStyler().setChartBackgroundColor(Color.WHITE);
+
+        JPanel chartPanel = new XChartPanel<>(chart);
+
+        revenueVsCostPanel.setLayout(new BorderLayout());
+        revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
     }
 
     public static void main(String[] args) {
-        DashboardView dashboardView = new DashboardView();
+        SwingUtilities.invokeLater(() -> {
+            DashboardView dashboardView = new DashboardView();
 
-        JFrame frame = new JFrame("Dashboard");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(dashboardView.mainPanel);
+            JFrame frame = new JFrame("Dashboard");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setContentPane(dashboardView.mainPanel);
 
-        frame.setResizable(true);
-        frame.setMinimumSize(new Dimension(700, 500));
+            frame.setResizable(true);
+            frame.setMinimumSize(new Dimension(700, 500));
 
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 
     // Should be added in controller, used only for testing
-    private static class RoundedCornerBorder extends AbstractBorder {
+    private static class RoundedCornerBorder implements Border {
         private final int arc;
 
         public RoundedCornerBorder(int arc) {
@@ -82,7 +108,15 @@ public class DashboardView {
 
             g2d.dispose();
         }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(5, 5, 5, 5);
+        }
+
+        @Override
+        public boolean isBorderOpaque() {
+            return false;
+        }
     }
-
-
 }
