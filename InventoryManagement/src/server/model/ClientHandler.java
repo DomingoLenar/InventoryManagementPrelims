@@ -81,7 +81,7 @@ public class ClientHandler implements Runnable{
         try{
            ObjectOutputStream oOS = new ObjectOutputStream(outputStream);
            //call XMLProcessing method to update the xml file
-            boolean succeed = XMLProcessing.createUser(userObject, requestBy);
+            boolean succeed = XMLProcessing.createUser(userObject);
             oOS.writeBoolean(succeed);
         }catch(IOException ioException){
             throw new RuntimeException(ioException);
