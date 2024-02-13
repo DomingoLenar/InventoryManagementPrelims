@@ -42,13 +42,12 @@ public class LoginSignupModel {
      *
      * @param username The user's username.
      * @param password The user's password.
-     * @param role = The user's role
      * @return True if login is successful, false otherwise.
      */
-    public boolean handleLogin(String username, String password, String role) {
+    public boolean handleLogin(String username, String password) {
         try {
             // Create a new User object with provided credentials
-            User currentUser = new User(username, password, role);
+            User currentUser = new User(username, password);
 
             // Send the action for user authentication
             sendAction("userAuthentication");
@@ -79,8 +78,8 @@ public class LoginSignupModel {
     public boolean handleSignup(String username, String password, String role) {
         try {
             // Create a new User object with provided credentials
-            User newUser = new User(username, password, role);
-
+            User newUser = new User(username, password,role);
+            sendAction("createUser");
             // Send the User object to the server for sign-up
             outputStream.writeObject(newUser);
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
