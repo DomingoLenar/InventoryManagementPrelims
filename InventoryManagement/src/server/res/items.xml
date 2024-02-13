@@ -4,5 +4,6 @@
         <amount></amount>
         <id></id>
         <type></type>
+        <price></price>
     </item>
 </items>
