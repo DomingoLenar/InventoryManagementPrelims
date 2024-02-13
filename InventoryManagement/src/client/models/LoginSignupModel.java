@@ -44,10 +44,11 @@ public class LoginSignupModel {
      * @param password The user's password.
      * @return True if login is successful, false otherwise.
      */
+    // TODO: method should return object of user instead of boolean to be used at runtime and must handle role response from server
     public boolean handleLogin(String username, String password) {
         try {
             // Create a new User object with provided credentials
-            User currentUser = new User(username, password);
+            User currentUser = new User(username, password, null);
 
             // Send the action for user authentication
             sendAction("userAuthentication");
