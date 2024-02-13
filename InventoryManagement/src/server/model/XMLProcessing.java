@@ -2,6 +2,7 @@ package server.model;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,10 +31,7 @@ public class XMLProcessing {
 
     public synchronized static User findUser(String userName) {
         try{
-           File xmlFile = new File("InventoryManagement/src/server/res/users.xml");
-           DocumentBuilderFactory dbF = DocumentBuilderFactory.newInstance();
-           DocumentBuilder dB = dbF.newDocumentBuilder();
-           Document doc = dB.parse(xmlFile);
+           Document doc = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
            Element rootElement = doc.getDocumentElement();
            NodeList userList = rootElement.getElementsByTagName("user");
@@ -62,10 +60,7 @@ public class XMLProcessing {
 
     public static boolean createUser(User userToCreate){
         try{
-            File userXML = new File("InventoryManagement/src/server/res/users.xml");
-            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
-            Document document = documentBuilder.parse(userXML);
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
             Element root = document.getDocumentElement();
 
@@ -117,10 +112,7 @@ public class XMLProcessing {
      */
     public static synchronized boolean addItem(Item itemToAdd) {
         try {
-            File itemXML = new File("InventoryManagement/src/server/res/items.xml");
-            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
-            Document document = documentBuilder.parse(itemXML);
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
             Element root = document.getDocumentElement();
 
@@ -166,10 +158,7 @@ public class XMLProcessing {
      */
     public static synchronized boolean removeItem(int itemId) {
         try {
-            File itemXML = new File("InventoryManagement/src/server/res/items.xml");
-            DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
-            DocumentBuilder documentBuilder = dBF.newDocumentBuilder();
-            Document document = documentBuilder.parse(itemXML);
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
             Element root = document.getDocumentElement();
             NodeList itemList = root.getElementsByTagName("item");
@@ -189,5 +178,13 @@ public class XMLProcessing {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    private static synchronized Document getXMLDocument(String path) throws Exception{
+       File xmlFile = new File(path);
+       DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
+       DocumentBuilder dB = dBF.newDocumentBuilder();
+        return dB.parse(xmlFile);
     }
 }
