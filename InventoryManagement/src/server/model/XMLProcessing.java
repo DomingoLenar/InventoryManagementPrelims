@@ -17,6 +17,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import utility.Item;
+import utility.ItemOrder;
 import utility.User;
 
 public class XMLProcessing {
@@ -180,7 +181,36 @@ public class XMLProcessing {
         }
     }
 
+    public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
+        ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
 
+            Element rootElement = document.getDocumentElement();
+            NodeList itemOrders = rootElement.getElementsByTagName("itemorder");
+            for(int x = 0; x < itemOrders.getLength(); x++){
+                Element currentElement = (Element) itemOrders.item(x);
+
+                int id = Integer.parseInt(currentElement.getAttribute("id"));
+                String date = currentElement.getAttribute("date");
+                float price = Float.parseFloat(currentElement.getElementsByTagName("price").item(0).getTextContent());
+                String orderType = currentElement.getAttribute("orderType");
+                int itemId = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
+                if(dateFilter.equals(null)){
+                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                }else{
+                    if(date.equals(dateFilter)){
+                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                    }
+                }
+
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return itemOrderList;
+    }
 
     public static synchronized ArrayList<Item> fetchItems(){
         ArrayList<Item> itemList = new ArrayList<>();
