@@ -2,10 +2,12 @@ package server.model;
 
 import server.views.TerminalView;
 import utility.Item;
+import utility.ItemOrder;
 import utility.User;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class ClientHandler implements Runnable{
@@ -26,6 +28,7 @@ public class ClientHandler implements Runnable{
             ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
             OutputStream outputStream = socket.getOutputStream();
             PrintWriter pWriter = new PrintWriter(outputStream, true);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
 
             pWriter.println("You are connected to the server");
             while(true) {
@@ -50,10 +53,20 @@ public class ClientHandler implements Runnable{
 
                     case "removeitem":
                         //Invoke method for item removal
-                        int submittedID = (int) oIS.readInt();
+                        int submittedID =  oIS.readInt();
                         itemRemoval(submittedID, outputStream);
                         break;
-
+                    case "fetchItems":
+                        ArrayList<Item> items = XMLProcessing.fetchItems();
+                        objectOutputStream.writeObject(items);
+                        objectOutputStream.flush();
+                        break;
+                    case "fetchItemOrders":
+                        String date = bufferedReader.readLine();
+                        ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders(date);
+                        objectOutputStream.writeObject(itemOrderList);
+                        objectOutputStream.flush();
+                        break;
                     case "Exit":
                         socket.close();
                         break;

@@ -196,7 +196,7 @@ public class XMLProcessing {
                 float price = Float.parseFloat(currentElement.getElementsByTagName("price").item(0).getTextContent());
                 String orderType = currentElement.getAttribute("orderType");
                 int itemId = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
-                if(dateFilter.equals(null)){
+                if(dateFilter.equals("none")){
                     itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
                 }else{
                     if(date.equals(dateFilter)){
