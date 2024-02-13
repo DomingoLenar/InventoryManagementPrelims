@@ -181,6 +181,30 @@ public class XMLProcessing {
     }
 
 
+
+    public static synchronized ArrayList<Item> fetchItems(){
+        ArrayList<Item> itemList = new ArrayList<>();
+        try{
+            Document document = getXMLDocument("server/res/items.xml");
+            Element element = document.getDocumentElement();
+
+            NodeList items = element.getElementsByTagName("item");
+            for(int x = 0; x < items.getLength(); x++){
+                Element currentItem = (Element) items.item(x);
+
+                String name = currentItem.getElementsByTagName("name").item(0).getTextContent();
+                int amount = Integer.parseInt(currentItem.getElementsByTagName("amount").item(0).getTextContent());
+                int id = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
+                int price = Integer.parseInt(currentItem.getElementsByTagName("price").item(0).getTextContent());
+                String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
+                itemList.add(new Item(name, amount, type,id,price));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return itemList;
+    }
+
     private static synchronized Document getXMLDocument(String path) throws Exception{
        File xmlFile = new File(path);
        DocumentBuilderFactory dBF = DocumentBuilderFactory.newInstance();
