@@ -67,6 +67,11 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(itemOrderList);
                         objectOutputStream.flush();
                         break;
+                    case "addItemOrder":
+                        ItemOrder newItemOrder = (ItemOrder) oIS.readObject();
+                        boolean success = XMLProcessing.addItemOrder(newItemOrder);
+                        objectOutputStream.writeObject(success);
+                        break;
                     case "Exit":
                         socket.close();
                         break;
