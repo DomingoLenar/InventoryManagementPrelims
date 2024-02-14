@@ -42,10 +42,10 @@ public class LoginSignupModel {
      *
      * @param username The user's username.
      * @param password The user's password.
-     * @return True if login is successful, false otherwise.
+     * @return User object
      */
-    // TODO: method should return object of user instead of boolean to be used at runtime and must handle role response from server
-    public boolean handleLogin(String username, String password) {
+
+    public User handleLogin(String username, String password) {
         try {
             // Create a new User object with provided credentials
             User currentUser = new User(username, password, null);
@@ -61,7 +61,10 @@ public class LoginSignupModel {
             try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
                 boolean loginSuccess = (boolean) ios.readObject();
                 System.out.println("Authentication response: " + loginSuccess);
-                return loginSuccess;
+                String userRole = (String) ios.readObject();
+                System.out.println("User role: " + userRole);
+                currentUser.setRole(userRole);
+                return currentUser;
             }
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException("Error handling login", e);
