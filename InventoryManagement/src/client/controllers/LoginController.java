@@ -5,7 +5,7 @@ import client.views.LoginView;
 
 public class LoginController {
     LoginView loginView;
-    public LoginController(InventoryManagementInterface inventoryManagementInterface, InventoryManagementController inventoryManagementController){
+    public LoginController(InventoryManagementController inventoryManagementController){
         loginView = new LoginView();
     }
 

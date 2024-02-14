@@ -33,13 +33,5 @@ public class InventoryManagementInterface extends JFrame {
 //        add(loginController.getLoginView().getLVpanel());
     }
 
-    public void changePanel(JPanel newPanel){
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        });
-
-    }
 }

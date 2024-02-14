@@ -8,13 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IndexController {
-
-    InventoryManagementInterface inventoryManagementInterface;
+//    InventoryManagementInterface inventoryManagementInterface;
     InventoryManagementController inventoryManagementController;
     IndexView indexView;
 
-    public IndexController(InventoryManagementInterface inventoryManagementInterface, InventoryManagementController inventoryManagementController) {
-        this.inventoryManagementInterface = inventoryManagementInterface;
+    public IndexController(InventoryManagementController inventoryManagementController) {
+//        this.inventoryManagementInterface = inventoryManagementInterface;
         this.inventoryManagementController = inventoryManagementController;
         indexView = new IndexView();
 
@@ -30,32 +29,15 @@ public class IndexController {
         indexView.getIVloginBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // EDT - background thread to process abstract window toolkit (AWT) events or GUI
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        inventoryManagementInterface.getContentPane().removeAll();
-                        inventoryManagementInterface.changePanel(inventoryManagementController.getLoginController().getLoginView().getLVpanel());
-                        inventoryManagementInterface.revalidate();
-                        inventoryManagementInterface.repaint();
-                    }
-                });
-
+//                inventoryManagementController.changeScreen(inventoryManagementController.loginController.loginView.getLVpanel());
+                inventoryManagementController.displayLoginView();
             }
         });
 
         indexView.getSUsignUpBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        inventoryManagementInterface.getContentPane().removeAll();
-                        inventoryManagementInterface.changePanel(inventoryManagementController.getSignUpController().getSignUpView().getSUpanel());
-                        inventoryManagementInterface.revalidate();
-                        inventoryManagementInterface.repaint();
-                    }
-                });
+                inventoryManagementController.displaySignUpView();
             }
         });
     }
