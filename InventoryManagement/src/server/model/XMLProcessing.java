@@ -181,6 +181,47 @@ public class XMLProcessing {
         }
     }
 
+    public static synchronized boolean addItemOrder(ItemOrder itemOrder){
+        boolean status = false;
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
+
+            Element rootElement = document.getDocumentElement();
+
+            Element newItemOrder = document.createElement("itemorder");
+            newItemOrder.setAttribute("date", itemOrder.getDate());
+            newItemOrder.setAttribute("orderType",itemOrder.getStatus());
+            newItemOrder.setAttribute("byUser",itemOrder.getUsername());
+            newItemOrder.setAttribute("id", String.valueOf(itemOrder.getId()));
+
+            Element item = document.createElement("item");
+            item.setTextContent(String.valueOf(itemOrder.getItemId()));
+
+            Element amount = document.createElement("amount");
+            amount.setTextContent(String.valueOf(""));  //Refactor ItemOrder first to take into account amount
+
+            Element price = document.createElement("price");
+            price.setTextContent(String.valueOf(itemOrder.getPurPrice()));
+
+            Element id = document.createElement("id");
+            id.setTextContent(String.valueOf(itemOrder.getId()));
+
+            newItemOrder.appendChild(item);
+            newItemOrder.appendChild(amount);
+            newItemOrder.appendChild(price);
+            newItemOrder.appendChild(id);
+
+            rootElement.appendChild(newItemOrder);
+
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
+
+
+        }catch(Exception e){
+
+        }
+        return status;
+    }
+
     public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
         ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
         try{
@@ -191,16 +232,17 @@ public class XMLProcessing {
             for(int x = 0; x < itemOrders.getLength(); x++){
                 Element currentElement = (Element) itemOrders.item(x);
 
-                int id = Integer.parseInt(currentElement.getAttribute("id"));
+                int id = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
                 String date = currentElement.getAttribute("date");
                 float price = Float.parseFloat(currentElement.getElementsByTagName("price").item(0).getTextContent());
                 String orderType = currentElement.getAttribute("orderType");
-                int itemId = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
+                int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
+                String byUser = currentElement.getAttribute("byUser");
                 if(dateFilter.equals("none")){
-                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                 }else{
                     if(date.equals(dateFilter)){
-                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                     }
                 }
 
