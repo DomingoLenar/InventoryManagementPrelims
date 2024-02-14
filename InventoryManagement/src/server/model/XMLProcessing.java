@@ -59,6 +59,11 @@ public class XMLProcessing {
         return null;
     }
 
+    /**
+     * Method for creating a new user inside the xml file of the server
+     * @param userToCreate     Object of user to create
+     * @return                 Returns a boolean value if success or not
+     */
     public static boolean createUser(User userToCreate){
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
@@ -86,6 +91,12 @@ public class XMLProcessing {
         }
         return true;
     }
+
+    /**
+     * Method to write new changes into the xml file
+     * @param node      Root node to add
+     * @param fileName
+     */
 
     private static void writeDOMToFile(Node node, String fileName) {
         try {
