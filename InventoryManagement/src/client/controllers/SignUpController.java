@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class SignUpController {
     SignUpView signUpView;
 
-    public SignUpController(InventoryManagementInterface inventoryManagementInterface) {
+    public SignUpController(InventoryManagementController inventoryManagementController) {
         signUpView = new SignUpView();
 
         signUpView.getSUsignUpBtn().addActionListener(new ActionListener() {
