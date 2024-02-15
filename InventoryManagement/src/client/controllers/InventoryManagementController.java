@@ -3,30 +3,64 @@ package client.controllers;
 import client.InventoryManagementInterface;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Notes: big controller <-> panel controllers
- *
  * Helper function:
  * - changeScreen() method: a shortcut for display[...] () methods
  */
 
 public class InventoryManagementController { // big controller
+    JPanel mainContainer;
     InventoryManagementInterface inventoryManagementInterface;
     IndexController indexController;
     SignUpController signUpController;
     LoginController loginController;
+    NavigationBarController navigationBarController;
+    DashboardController dashboardController;
+    FinancesController financesController;
     public InventoryManagementController() {
         inventoryManagementInterface = new InventoryManagementInterface();
+
         initControllers();
 
         displayIndexPanel(); // main panel of the application
+        
+        initComponents();
+
 
     }
+
+    private void initComponents() {
+        mainContainer = new JPanel();
+        mainContainer.setLayout(new BorderLayout());
+
+    }
+
     private void initControllers() {
         indexController = new IndexController(this);
         signUpController = new SignUpController(this);
         loginController = new LoginController(this);
+        navigationBarController = new NavigationBarController(this);
+        dashboardController = new DashboardController(this);
+        financesController = new FinancesController(this);
+    }
+
+    /**
+     * Note: This method functionality is switching of panels which is an abstraction of display[...] () method.
+     * @param currentPanel
+     */
+    public void changeScreen(JPanel currentPanel) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                mainContainer.remove(1);
+                mainContainer.add(currentPanel);
+                mainContainer.revalidate();
+                mainContainer.repaint();
+            }
+        });
     }
 
     /** EDT - background thread to process abstract window toolkit (AWT) events or GUI
@@ -80,11 +114,29 @@ public class InventoryManagementController { // big controller
         return signUpController;
     }
 
+    public NavigationBarController getNavigationBarController() {
+        return navigationBarController;
+    }
+
+    public DashboardController getDashboardController() {
+        return dashboardController;
+    }
+
     /**
-     * Note: This method functionality is switching of panels which is an abstraction of display[...] () method.
-     * @param currentPanel
+     * Main menu consist two panels; the dashboard and navigation
      */
-    public void changeScreen(JPanel currentPanel) {
+    public void displayMainMenu() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                inventoryManagementInterface.getContentPane().removeAll();
+                inventoryManagementInterface.add(mainContainer);
+                mainContainer.add(getNavigationBarController().navigationBarView.getLeftPanel(), BorderLayout.WEST);
+                mainContainer.add(getDashboardController().dashboardView.getMainPanel(), BorderLayout.CENTER);
+                inventoryManagementInterface.revalidate();
+                inventoryManagementInterface.repaint();
+            }
+        });
 
     }
 }
