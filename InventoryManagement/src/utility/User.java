@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private boolean active;
 
     /**
      * Default constructor initializes the user with empty username and password.
@@ -13,6 +14,7 @@ public class User {
         username = "";
         password = "";
         role = "";
+        active = false;
     }
 
     /**
@@ -21,10 +23,11 @@ public class User {
      * @param username The username of the user.
      * @param password The password of the user.
      */
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, boolean active) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.active = active;
     }
 
     /**
@@ -63,6 +66,14 @@ public class User {
 
         this.role = role;
 
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     /**
