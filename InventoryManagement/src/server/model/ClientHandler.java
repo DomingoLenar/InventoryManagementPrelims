@@ -32,7 +32,6 @@ public class ClientHandler implements Runnable{
 
             pWriter.println("You are connected to the server");
             while(true) {
-                pWriter.print("Operation:");
                 switch (bufferedReader.readLine()) {
                     case "userVerification":
                         //Invoke method for user verification
