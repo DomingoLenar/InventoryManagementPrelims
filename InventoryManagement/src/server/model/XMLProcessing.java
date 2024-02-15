@@ -86,6 +86,8 @@ public class XMLProcessing {
         return null;
     }
 
+    // TODO: Method for fetching list of active users
+
     /**
      * Method for creating a new user inside the xml file of the server
      * @param userToCreate     Object of user to create
