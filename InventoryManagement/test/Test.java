@@ -1,4 +1,4 @@
-import client.models.LoginSignupModel;
+import client.models.ProfileManagementModel;
 import org.junit.jupiter.api.Assertions;
 import server.model.XMLProcessing;
 import utility.User;
@@ -10,7 +10,7 @@ import java.net.Socket;
 public class Test {
     @org.junit.jupiter.api.Test
     public void testCreateUser(){
-        User user = new User("testname", "testpass", "janitor");
+        User user = new User("lou", "lou", "purchase", true);
         boolean valid = XMLProcessing.createUser(user);
         Assertions.assertEquals(true, valid);
     }
@@ -25,9 +25,9 @@ public class Test {
 
     @org.junit.jupiter.api.Test
     public void testAuthenticate(){ // TODO: returns null value
-        User user = new User("testname", "testpass", "janitor");
+        User user = new User("testname", "testpass", "purchase", false);
         boolean valid = XMLProcessing.authenticate(user);
-        Assertions.assertEquals(false, valid);
+        Assertions.assertEquals(true, valid);
 //        Assertions.assertEquals(true, valid);
     }
 
@@ -37,8 +37,8 @@ public class Test {
             Socket sSocket = new Socket("localhost", 2018);
             ObjectOutputStream oOs = new ObjectOutputStream(sSocket.getOutputStream());
 //            BufferedReader bReader = new BufferedReader(new InputStreamReader(sSocket.getInputStream()));
-            LoginSignupModel loginSignupModel = new LoginSignupModel(sSocket, oOs);
-            boolean valid = loginSignupModel.handleLogin("testuser", "usertest", "admin");
+            ProfileManagementModel profileManagementModel = new ProfileManagementModel(sSocket, oOs);
+            boolean valid = profileManagementModel.handleLogin("testuser", "usertest");
 
             if (valid) {
                 System.out.println("login success");
