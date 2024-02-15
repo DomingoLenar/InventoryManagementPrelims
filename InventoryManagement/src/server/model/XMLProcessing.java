@@ -23,8 +23,10 @@ public class XMLProcessing {
 
     public synchronized static boolean authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
-        assert localUser != null;
-        return localUser.equals(userToAuth);
+        if(localUser.equals(null)){
+            return false;
+        }
+        return localUser.getPassword().equals(userToAuth.getPassword());
     }
 
     public synchronized static User findUser(String userName) {
@@ -82,7 +84,7 @@ public class XMLProcessing {
 
             root.appendChild(newUser);
 
-            writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
+            writeDOMToFile(root, "src/server/res/users.xml" );
 
         }catch(Exception e){
             throw new RuntimeException(e);
