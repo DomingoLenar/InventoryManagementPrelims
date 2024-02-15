@@ -24,11 +24,8 @@ public class ClientHandler implements Runnable{
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
             OutputStream outputStream = socket.getOutputStream();
-            PrintWriter pWriter = new PrintWriter(outputStream, true);
-
-            pWriter.println("You are connected to the server");
+//            PrintWriter pWriter = new PrintWriter(outputStream, true);
             while(true) {
-                pWriter.print("Operation:");
                 switch (bufferedReader.readLine()) {
                     case "userVerification":
                         //Invoke method for user verification
@@ -66,8 +63,8 @@ public class ClientHandler implements Runnable{
     public void userVerification(User userObject, OutputStream outputStream) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
         boolean auth = XMLProcessing.authenticate(userObject);
-        objectOutputStream.writeBoolean(auth);
-        //objectOutputStream.writeObject(auth);
+        //objectOutputStream.writeBoolean(auth);
+        objectOutputStream.writeObject(auth);
     }
 
     /**
@@ -81,8 +78,8 @@ public class ClientHandler implements Runnable{
         try{
            ObjectOutputStream oOS = new ObjectOutputStream(outputStream);
            //call XMLProcessing method to update the xml file
-            boolean succeed = XMLProcessing.createUser(userObject, requestBy);
-            oOS.writeBoolean(succeed);
+//            boolean succeed = XMLProcessing.createUser(userObject, requestBy);
+//            oOS.writeBoolean(succeed);
         }catch(IOException ioException){
             throw new RuntimeException(ioException);
         }

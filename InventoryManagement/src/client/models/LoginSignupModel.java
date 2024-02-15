@@ -1,26 +1,31 @@
 package client.models;
 import utility.User;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.net.Socket;
 
 /**
  * Represents the model for handling user login and signup operations on the client side.
  */
 public class LoginSignupModel {
-    private final Socket socket;
-    private final ObjectOutputStream outputStream;
+    private final Socket sSocket;
+    private final ObjectOutputStream oos;
+    private final PrintWriter pWriter;
 
     /**
-     * Constructs a new LoginModel with the specified socket and output stream.
+     * Constructs a new LoginModel with the specified sSocket and output stream.
      *
-     * @param socket        The socket connected to the server.
-     * @param outputStream  The output stream used for communication with the server.
+     * @param sSocket        The sSocket connected to the server.
+     * @param oos  The output stream used for communication with the server.
      */
-    public LoginSignupModel(Socket socket, ObjectOutputStream outputStream) {
-        this.socket = socket;
-        this.outputStream = outputStream;
+    public LoginSignupModel(Socket sSocket, ObjectOutputStream oos) {
+        this.sSocket = sSocket;
+        this.oos = oos;
+        try {
+            this.pWriter = new PrintWriter(sSocket.getOutputStream(), true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -29,12 +34,8 @@ public class LoginSignupModel {
      * @param action The action to be sent.
      */
     public void sendAction(String action) {
-        try {
-            outputStream.writeObject(action);
-            System.out.println(action + " sent to server");
-        } catch (IOException e) {
-            throw new RuntimeException("Error sending action to server", e);
-        }
+        pWriter.println(action);
+        System.out.println(action + " sent to server");
     }
 
     /**
@@ -51,14 +52,14 @@ public class LoginSignupModel {
             User currentUser = new User(username, password, role);
 
             // Send the action for user authentication
-            sendAction("userAuthentication");
+            sendAction("userVerification");
 
             // Send the User object to the server for login
-            outputStream.writeObject(currentUser);
+            oos.writeObject(currentUser);
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             // Receive authentication response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ios = new ObjectInputStream(sSocket.getInputStream())) {
                 boolean loginSuccess = (boolean) ios.readObject();
                 System.out.println("Authentication response: " + loginSuccess);
                 return loginSuccess;
@@ -82,11 +83,11 @@ public class LoginSignupModel {
             User newUser = new User(username, password, role);
 
             // Send the User object to the server for sign-up
-            outputStream.writeObject(newUser);
+            oos.writeObject(newUser);
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
 
             // Receive account creation response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ios = new ObjectInputStream(sSocket.getInputStream())) {
                 boolean createAccountSuccess = (boolean) ios.readObject();
                 System.out.println("Account Creation Response: " + createAccountSuccess);
                 return createAccountSuccess;
