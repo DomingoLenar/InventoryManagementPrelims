@@ -26,8 +26,34 @@ public class XMLProcessing {
 
     public synchronized static boolean authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
-        assert localUser != null;
-        return localUser.equals(userToAuth);
+        if(localUser != null){
+            if(localUser.getPassword().equals(userToAuth.getPassword())){
+                setActiveStatus(localUser, true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public synchronized static void setActiveStatus(User user,boolean activeStatus){
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+
+            Element rootElement = document.getDocumentElement();
+
+            NodeList nodeList = rootElement.getElementsByTagName("user");
+            for(int x = 0; x<nodeList.getLength(); x++){
+                Element curUser = (Element) nodeList.item(0);
+                if(curUser.getElementsByTagName("username").item(0).getTextContent().equals(user.getUsername())){
+                    curUser.removeAttribute("active");
+                    curUser.setAttribute("active",String.valueOf(activeStatus));
+                    break;
+                }
+            }
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/users.xml");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public synchronized static User findUser(String userName) {
@@ -48,7 +74,8 @@ public class XMLProcessing {
                     if(username.equals(userName)){
                         String password = userElement.getElementsByTagName("password").item(0).getTextContent();
                         String role = userElement.getAttribute("role");
-                        return new User(username, password, role);
+                        boolean active = userElement.getAttribute("active").equals("true");
+                        return new User(username, password, role, active);
                     }
 
                 }
