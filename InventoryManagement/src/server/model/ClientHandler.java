@@ -25,9 +25,9 @@ public class ClientHandler implements Runnable{
     public void run() {
         try{
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
             OutputStream outputStream = socket.getOutputStream();
-//            PrintWriter pWriter = new PrintWriter(outputStream, true);
             while(true) {
                 switch (bufferedReader.readLine()) {
                     case "userVerification":
@@ -46,7 +46,6 @@ public class ClientHandler implements Runnable{
                         Item submittedItem = (Item) oIS.readObject();
                         itemAddition(submittedItem, outputStream);
                         break;
-
                     case "removeitem":
                         //Invoke method for item removal
                         int submittedID =  oIS.readInt();
@@ -80,7 +79,6 @@ public class ClientHandler implements Runnable{
                     default:
                         System.out.println("Invalid request");
                 }
-
 
             }
 

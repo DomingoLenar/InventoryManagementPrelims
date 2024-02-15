@@ -109,14 +109,13 @@ public class ProfileManagementModel {
     public boolean changePassword(String userName, String newPassword) {
         try {
             sendAction("changePassword");
-            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
             oos.writeUTF(userName); // Send the user's name
             oos.writeUTF(newPassword);
-            outputStream.flush();
+            oos.flush();
 
             System.out.println("Password change request has been sent to the server...");
 
-            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ois = new ObjectInputStream(sSocket.getInputStream())) {
                 boolean changeSuccess = ois.readBoolean();
                 System.out.println("Server response: " + changeSuccess);
                 return changeSuccess;
