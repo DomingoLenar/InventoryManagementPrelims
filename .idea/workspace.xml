@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ .idea (project configuration)">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/ui_georcelle" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop-branch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://gitlab.com/2233915/2024-2_9329-preteam1.git&quot;,
+    &quot;second&quot;: &quot;7849aa5d-2612-41c4-a26c-f971be18d9f0&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2bYo2jmLwR2vu5TgQSCBRjXKPlc" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path": "C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature__lou",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "last_directory_selection": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client",
+    "last_opened_file_path": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\lib" />
+      <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\src\client" />
+      <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\src\client\admin" />
+      <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement" />
+      <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.client.sales.FinancesView">
+    <configuration name="FinancesView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.admin.FinancesView" />
+      <module name="2024-2_9329-preteam1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client.admin.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.admin.DashboardView" />
+      <module name="2024-2_9329-preteam1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client.purchaser.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.purchaser.DashboardView" />
+      <module name="2024-2_9329-preteam1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.purchaser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client.sales.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.sales.DashboardView" />
+      <module name="2024-2_9329-preteam1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.sales.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client.sales.FinancesView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.sales.FinancesView" />
+      <module name="2024-2_9329-preteam1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.sales.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.client.sales.DashboardView" />
+      <item itemvalue="Application.client.sales.FinancesView" />
+      <item itemvalue="Application.FinancesView" />
+      <item itemvalue="Application.client.admin.DashboardView" />
+      <item itemvalue="Application.client.purchaser.DashboardView" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.client.sales.FinancesView" />
+        <item itemvalue="Application.client.purchaser.DashboardView" />
+        <item itemvalue="Application.FinancesView" />
+        <item itemvalue="Application.client.admin.DashboardView" />
+        <item itemvalue="Application.client.sales.DashboardView" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="" />
+      <created>1706401168272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706401168272</updated>
+      <workItem from="1706401169898" duration="4841000" />
+      <workItem from="1706507712051" duration="6153000" />
+      <workItem from="1706582288533" duration="1718000" />
+      <workItem from="1706744496260" duration="5795000" />
+      <workItem from="1706950448773" duration="29414000" />
+      <workItem from="1707532442693" duration="23673000" />
+      <workItem from="1707914309950" duration="12547000" />
+      <workItem from="1707955759563" duration="4930000" />
+      <workItem from="1707999008090" duration="1656000" />
+      <workItem from="1708000694143" duration="365000" />
+      <workItem from="1708001073629" duration="3116000" />
+      <workItem from="1708004249243" duration="52000" />
+      <workItem from="1708004314850" duration="1956000" />
+      <workItem from="1708008496857" duration="2629000" />
+      <workItem from="1708012898032" duration="152000" />
+      <workItem from="1708013063659" duration="137000" />
+      <workItem from="1708013213881" duration="185000" />
+      <workItem from="1708013404498" duration="13000" />
+      <workItem from="1708013420445" duration="208000" />
+      <workItem from="1708013633183" duration="64000" />
+      <workItem from="1708013700463" duration="75000" />
+      <workItem from="1708013787186" duration="36000" />
+      <workItem from="1708013825392" duration="44000" />
+      <workItem from="1708013879630" duration="884000" />
+      <workItem from="1708014776410" duration="87000" />
+      <workItem from="1708014865646" duration="844000" />
+      <workItem from="1708015721363" duration="550000" />
+      <workItem from="1708016290440" duration="178000" />
+      <workItem from="1708016482346" duration="17000" />
+      <workItem from="1708016502159" duration="1153000" />
+    </task>
+    <task id="LOCAL-00001" summary="+ added: IndexView.java">
+      <option name="closed" value="true" />
+      <created>1706445930977</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1706445930977</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+ added: LoginView.java">
+      <option name="closed" value="true" />
+      <created>1706445940549</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706445940549</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+ added: SignUpView.java">
+      <option name="closed" value="true" />
+      <created>1706445948157</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706445948157</updated>
+    </task>
+    <task id="LOCAL-00004" summary="+ added: Main.java">
+      <option name="closed" value="true" />
+      <created>1706445963499</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706445963499</updated>
+    </task>
+    <task id="LOCAL-00005" summary="+ added: InventoryManagementInterface.java">
+      <option name="closed" value="true" />
+      <created>1706445974049</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706445974049</updated>
+    </task>
+    <task id="LOCAL-00006" summary="+ updated: IndexView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1706951464698</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951464698</updated>
+    </task>
+    <task id="LOCAL-00007" summary="+ updated: LoginView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1706951482537</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951482537</updated>
+    </task>
+    <task id="LOCAL-00008" summary="+ updated: SignUpView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1706951496117</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951496117</updated>
+    </task>
+    <task id="LOCAL-00009" summary="+ updated: IndexController.java">
+      <option name="closed" value="true" />
+      <created>1706951534270</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951534270</updated>
+    </task>
+    <task id="LOCAL-00010" summary="+ updated: LoginController.java">
+      <option name="closed" value="true" />
+      <created>1706951541525</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951541525</updated>
+    </task>
+    <task id="LOCAL-00011" summary="+ updated: SignUpController.java">
+      <option name="closed" value="true" />
+      <created>1706951547303</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951547303</updated>
+    </task>
+    <task id="LOCAL-00012" summary="+ updated: established mvc design pattern &amp; composition design technique in client side">
+      <option name="closed" value="true" />
+      <created>1706951945654</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1706951945654</updated>
+    </task>
+    <task id="LOCAL-00013" summary="+ added: GradientPanel.java">
+      <option name="closed" value="true" />
+      <created>1707053826144</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1707053826144</updated>
+    </task>
+    <task id="LOCAL-00014" summary="+ latest: IndexView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707054429080</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1707054429080</updated>
+    </task>
+    <task id="LOCAL-00015" summary="+ latest: LoginView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707054436239</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707054436239</updated>
+    </task>
+    <task id="LOCAL-00016" summary="+ latest: SignUpView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707054443190</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1707054443190</updated>
+    </task>
+    <task id="LOCAL-00017" summary="+ added: InventoryManagementController.java">
+      <option name="closed" value="true" />
+      <created>1707054582812</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1707054582812</updated>
+    </task>
+    <task id="LOCAL-00018" summary="+ logical fix for some errors with server client communication">
+      <option name="closed" value="true" />
+      <created>1707350569540</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1707350569540</updated>
+    </task>
+    <task id="LOCAL-00019" summary="+ completed: client side mvc architecture">
+      <option name="closed" value="true" />
+      <created>1707873202184</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1707873202184</updated>
+    </task>
+    <task id="LOCAL-00020" summary="+ client-server testing case on Main.java">
+      <option name="closed" value="true" />
+      <created>1707873581556</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1707873581556</updated>
+    </task>
+    <task id="LOCAL-00021" summary="+ added: junit-jupiter library">
+      <option name="closed" value="true" />
+      <created>1707960018624</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960018624</updated>
+    </task>
+    <task id="LOCAL-00022" summary="+ added: Test.java in test folder">
+      <option name="closed" value="true" />
+      <created>1707960093152</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960093152</updated>
+    </task>
+    <task id="LOCAL-00023" summary="+ added: DashboardView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707960314139</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960314139</updated>
+    </task>
+    <task id="LOCAL-00024" summary="+ added: FinancesView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707960333124</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960333124</updated>
+    </task>
+    <task id="LOCAL-00025" summary="+ added: NavigationBarView.java(&amp;.form)">
+      <option name="closed" value="true" />
+      <created>1707960353186</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960353186</updated>
+    </task>
+    <task id="LOCAL-00026" summary="+ added: DashboardController.java">
+      <option name="closed" value="true" />
+      <created>1707960369356</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960369356</updated>
+    </task>
+    <task id="LOCAL-00027" summary="+ added: FinancesController.java">
+      <option name="closed" value="true" />
+      <created>1707960379844</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960379844</updated>
+    </task>
+    <task id="LOCAL-00028" summary="+ added: LoginController.java">
+      <option name="closed" value="true" />
+      <created>1707960403229</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960403229</updated>
+    </task>
+    <task id="LOCAL-00029" summary="+ added: SignUpController.java">
+      <option name="closed" value="true" />
+      <created>1707960420429</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960420429</updated>
+    </task>
+    <task id="LOCAL-00030" summary="+ updated: InventoryManagementController.java">
+      <option name="closed" value="true" />
+      <created>1707960846565</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960846565</updated>
+    </task>
+    <task id="LOCAL-00031" summary="+ updated: NavigationBarController.java">
+      <option name="closed" value="true" />
+      <created>1707960866491</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707960866491</updated>
+    </task>
+    <task id="LOCAL-00032" summary="+ views/panels organization">
+      <option name="closed" value="true" />
+      <created>1707999478405</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1707999478405</updated>
+    </task>
+    <task id="LOCAL-00033" summary="+ views/panels organization">
+      <option name="closed" value="true" />
+      <created>1707999576540</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1707999576540</updated>
+    </task>
+    <task id="LOCAL-00034" summary="+ utilized text-output and object-output streams by the client and server">
+      <option name="closed" value="true" />
+      <created>1707999947745</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707999947745</updated>
+    </task>
+    <task id="LOCAL-00035" summary="+ fix: authenticate() method returning null">
+      <option name="closed" value="true" />
+      <created>1708000204537</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1708000204537</updated>
+    </task>
+    <task id="LOCAL-00036" summary="+ implements serializable of User model">
+      <option name="closed" value="true" />
+      <created>1708004588014</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1708004588014</updated>
+    </task>
+    <task id="LOCAL-00037" summary="cleanup code">
+      <option name="closed" value="true" />
+      <created>1708004608219</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1708004608219</updated>
+    </task>
+    <task id="LOCAL-00038" summary="+ test cases reformat">
+      <option name="closed" value="true" />
+      <created>1708004647781</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1708004647781</updated>
+    </task>
+    <task id="LOCAL-00039" summary="+ jar files for graphical representation">
+      <option name="closed" value="true" />
+      <created>1708015201621</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1708015201621</updated>
+    </task>
+    <task id="LOCAL-00040" summary="+ moved unit tester class (i.e., Test.java) in root/Test">
+      <option name="closed" value="true" />
+      <created>1708015302550</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1708015302550</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="develop-branch" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/develop-branch" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="views_lenar" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/views_lenar" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/server-lestat" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/ui_georcelle" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/utilities_marven" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="develop-branch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="+ latest: SignUpView.java(&amp;.form)" />
+    <MESSAGE value="+ added: InventoryManagementController.java" />
+    <MESSAGE value="+ logical fix for some errors with server client communication" />
+    <MESSAGE value="+ completed: client side mvc architecture" />
+    <MESSAGE value="+ client-server testing case on Main.java" />
+    <MESSAGE value="+ added: junit-jupiter library" />
+    <MESSAGE value="+ added: Test.java in test folder" />
+    <MESSAGE value="+ added: DashboardView.java(&amp;.form)" />
+    <MESSAGE value="+ added: FinancesView.java(&amp;.form)" />
+    <MESSAGE value="+ added: NavigationBarView.java(&amp;.form)" />
+    <MESSAGE value="+ added: DashboardController.java" />
+    <MESSAGE value="+ added: FinancesController.java" />
+    <MESSAGE value="+ added: LoginController.java" />
+    <MESSAGE value="+ updated: SignUpController.java" />
+    <MESSAGE value="+ updated: InventoryManagementController.java" />
+    <MESSAGE value="+ updated: NavigationBarController.java" />
+    <MESSAGE value="+ views/panels organization" />
+    <MESSAGE value="+ utilized text-output and object-output streams by the client and server" />
+    <MESSAGE value="+ fix: authenticate() method returning null" />
+    <MESSAGE value="+ implements serializable of User model" />
+    <MESSAGE value="cleanup code" />
+    <MESSAGE value="+ test cases reformat" />
+    <MESSAGE value="+ jar files for graphical representation" />
+    <MESSAGE value="+ moved unit tester class (i.e., Test.java) in root/Test" />
+    <MESSAGE value="+ .idea (project configuration)" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ .idea (project configuration)" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
