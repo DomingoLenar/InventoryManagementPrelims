@@ -1,23 +1,26 @@
 package client.views.salesperson;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class StockControlView extends JFrame{
-    private JPanel mainPanel;
-    private JTextField searchField;
     private JPanel topPanel;
-    private JTable salesTable;
-    private JPanel centerPanel;
-    private JButton addItemButton;
-    private JButton salesInvoiceButton;
-    private JPanel bottomPanel;
-    private JScrollPane salesScrollPane;
     private JPanel searchPanel;
-    private SalesInvoiceListener salesInvoiceListener;
-    private AddItemListener addItemListener;
+    private JTextField searchField;
+    private JPanel centerPanel;
+    private JScrollPane salesScrollPane;
+    private JTable salesTable;
+    private JPanel bottomPanel;
+    private JButton salesInvoiceButton;
+    private JPanel mainPanel;
+
+    private client.views.salesperson.StockControlView.SalesInvoiceListener salesInvoiceListener;
 
     public interface SalesInvoiceListener {
         void onSalesInvoiceRequested();
@@ -41,19 +44,58 @@ public class StockControlView extends JFrame{
 //        salesTable.setModel(tableModel);
 
 
+        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
+                new client.views.salesperson.StockControlView.RoundedCornerBorder(30),
+                new LineBorder(Color.lightGray, 2)
+
+        ));
+
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+                new client.views.salesperson.StockControlView.RoundedCornerBorder(20),
+                new EmptyBorder(5, 5, 5, 5)
+        ));
         salesInvoiceButton.addActionListener(e -> {
             if (salesInvoiceListener != null) {
                 salesInvoiceListener.onSalesInvoiceRequested();
             }
         });
-        addItemButton.addActionListener(e -> {
-            if (addItemListener != null) {
-                addItemListener.onAddItemRequested();
-            }
-        });
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(StockControlView::new);
+        SwingUtilities.invokeLater(client.views.admin.StockControlView::new);
+    }
+
+    private static class RoundedCornerBorder implements Border {
+        private final int arc;
+
+        public RoundedCornerBorder(int arc) {
+            this.arc = arc;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+            Stroke originalStroke = g2d.getStroke();
+            g2d.setStroke(new BasicStroke(3.0f));
+
+            g2d.setColor(Color.WHITE);
+            g2d.draw(new RoundRectangle2D.Double(x, y, width - 1, height - 1, arc, arc));
+
+            g2d.setStroke(originalStroke);
+
+            g2d.dispose();
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(5, 5, 5, 5);
+        }
+
+        @Override
+        public boolean isBorderOpaque() {
+            return false;
+        }
     }
 }
