@@ -18,9 +18,28 @@ public class FinancesView {
     private JPanel averageSalesPanel;
     private JPanel newSalesPanel;
     private JPanel grossProfitsPanel;
+    private JLabel grossSalesLabel;
+    private JLabel averageSalesLabel;
+    private JLabel newSalesLabel;
+    private JLabel grossProfitsLabel;
+    private JLabel gPAmount;
+    private JLabel nSAmount;
+    private JLabel aSAmount;
+    private JLabel gSAmount;
 
     public FinancesView() {
 
+        // Labels
+        grossProfitsLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        newSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        averageSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        grossSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        gPAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        nSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        aSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        gSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+
+        // Search Area
         searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
         // Revenue Vs Costs
@@ -28,6 +47,7 @@ public class FinancesView {
 
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
+        // Change to Raw Data
         chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
         chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
 
@@ -52,6 +72,7 @@ public class FinancesView {
         Color maxColor = new Color(100, 180, 180);
         pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
 
+        // Change to Raw Data
         int todayValue = 274;
         int maxValue = 2300;
         int totalValue = todayValue + maxValue;
@@ -71,14 +92,15 @@ public class FinancesView {
         JLabel todayColorLabel = new JLabel("    ");
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
+        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel maxColorLabel = new JLabel("    ");
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
+        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel totalLabelComponent = new JLabel(totalLabel);
         totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
-        totalLabelComponent.setFont(new Font("Arial", Font.BOLD, 14));
 
         JPanel labelPanel = new JPanel(new GridLayout(1, 3));
         labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));

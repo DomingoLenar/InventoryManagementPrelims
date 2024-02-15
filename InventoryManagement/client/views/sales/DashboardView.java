@@ -23,11 +23,14 @@ public class DashboardView {
     private JPanel stockControlPanel;
     private JPanel revenueVsCostPanel;
     private JPanel recentlyAddedItemsPanel;
+    private JLabel recentlyAddedItemsLabel;
 
     public DashboardView() {
 
         // Recently Added Items
+        recentlyAddedItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+        // Change to Raw Data
         listModel1.addElement("ID No.");
         listModel1.addElement("ID No.");
         listModel1.addElement("ID No.");
@@ -35,8 +38,10 @@ public class DashboardView {
         listModel1.addElement("ID No.");
         activityList1.setModel(listModel1);
         activityList1.setEnabled(false);
+        activityList1.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
+        // Change to Raw Data
         listModel2.addElement("Product 1");
         listModel2.addElement("Product 1");
         listModel2.addElement("Product 1");
@@ -44,6 +49,7 @@ public class DashboardView {
         listModel2.addElement("Product 1");
         activityList2.setModel(listModel2);
         activityList2.setEnabled(false);
+        activityList2.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
@@ -56,6 +62,7 @@ public class DashboardView {
 
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
+        // Change to Raw Data
         chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
         chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
 
@@ -80,6 +87,7 @@ public class DashboardView {
         Color maxColor = new Color(100, 180, 180);
         pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
 
+        // Change to Raw Data
         int todayValue = 274;
         int maxValue = 2300;
         int totalValue = todayValue + maxValue;
@@ -99,14 +107,15 @@ public class DashboardView {
         JLabel todayColorLabel = new JLabel("    ");
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
+        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel maxColorLabel = new JLabel("    ");
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
+        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel totalLabelComponent = new JLabel(totalLabel);
         totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
-        totalLabelComponent.setFont(new Font("Arial", Font.BOLD, 14));
 
         JPanel labelPanel = new JPanel(new GridLayout(1, 3));
         labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));

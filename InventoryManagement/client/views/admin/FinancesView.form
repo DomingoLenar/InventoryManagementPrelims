@@ -61,7 +61,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="d2997" class="javax.swing.JLabel">
+              <component id="d2997" class="javax.swing.JLabel" binding="grossSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -73,7 +73,7 @@
                   <verticalAlignment value="0"/>
                 </properties>
               </component>
-              <component id="883dd" class="javax.swing.JLabel">
+              <component id="883dd" class="javax.swing.JLabel" binding="gSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -97,7 +97,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="71da1" class="javax.swing.JLabel">
+              <component id="71da1" class="javax.swing.JLabel" binding="averageSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -107,7 +107,7 @@
                   <text value="Average Sales"/>
                 </properties>
               </component>
-              <component id="f2398" class="javax.swing.JLabel">
+              <component id="f2398" class="javax.swing.JLabel" binding="aSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -153,7 +153,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="4873f" class="javax.swing.JLabel">
+              <component id="4873f" class="javax.swing.JLabel" binding="newSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -163,7 +163,7 @@
                   <text value="New Sales"/>
                 </properties>
               </component>
-              <component id="467dc" class="javax.swing.JLabel">
+              <component id="467dc" class="javax.swing.JLabel" binding="nSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -209,7 +209,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="fd077" class="javax.swing.JLabel">
+              <component id="fd077" class="javax.swing.JLabel" binding="grossProfitsLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -219,7 +219,7 @@
                   <text value="Gross Profits"/>
                 </properties>
               </component>
-              <component id="c0e0b" class="javax.swing.JLabel">
+              <component id="c0e0b" class="javax.swing.JLabel" binding="gPAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
