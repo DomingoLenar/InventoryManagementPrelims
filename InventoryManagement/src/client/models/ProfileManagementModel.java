@@ -8,7 +8,7 @@ import java.net.Socket;
 /**
  * Represents the model for handling user login and signup operations on the client side.
  */
-public class LoginSignupModel {
+public class ProfileManagementModel {
     private final Socket socket;
     private final ObjectOutputStream outputStream;
 
@@ -18,7 +18,7 @@ public class LoginSignupModel {
      * @param socket        The socket connected to the server.
      * @param outputStream  The output stream used for communication with the server.
      */
-    public LoginSignupModel(Socket socket, ObjectOutputStream outputStream) {
+    public ProfileManagementModel(Socket socket, ObjectOutputStream outputStream) {
         this.socket = socket;
         this.outputStream = outputStream;
     }
@@ -44,11 +44,11 @@ public class LoginSignupModel {
      * @param password The user's password.
      * @return True if login is successful, false otherwise.
      */
-    // TODO: method should return object of user instead of boolean to be used at runtime and must handle role response from server
+   
     public boolean handleLogin(String username, String password) {
         try {
             // Create a new User object with provided credentials
-            User currentUser = new User(username, password, null);
+            User currentUser = new User(username, password, null, false);
 
             // Send the action for user authentication
             sendAction("userAuthentication");
@@ -79,7 +79,8 @@ public class LoginSignupModel {
     public boolean handleSignup(String username, String password, String role) {
         try {
             // Create a new User object with provided credentials
-            User newUser = new User(username, password,role);
+            User newUser = new User(username, password,role,false);
+
             sendAction("createUser");
             // Send the User object to the server for sign-up
             outputStream.writeObject(newUser);
@@ -95,4 +96,33 @@ public class LoginSignupModel {
             throw new RuntimeException("Error handling signup", e);
         }
     }
+
+    /**
+     * Method for changing a password of a user
+     *
+     * @param userName    The username of the user whose password is to be changed.
+     * @param newPassword The new password to set for the user.
+     * @return True if the password change was successful, false otherwise.
+     * @throws RuntimeException If an error occurs while changing the password.
+     */
+    public boolean changePassword(String userName, String newPassword) {
+        try {
+            sendAction("changePassword");
+            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+            oos.writeUTF(userName); // Send the user's name
+            oos.writeUTF(newPassword);
+            outputStream.flush();
+
+            System.out.println("Password change request has been sent to the server...");
+
+            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+                boolean changeSuccess = ois.readBoolean();
+                System.out.println("Server response: " + changeSuccess);
+                return changeSuccess;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error changing password", e);
+        }
+    }
+
 }

@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -169,7 +168,7 @@ public class XMLProcessing {
             type.setTextContent(itemToAdd.getType());
 
             Element id = document.createElement("id");
-            id.setTextContent(String.valueOf(itemToAdd.getId()));
+            id.setTextContent(String.valueOf(itemToAdd.getItemId()));
 
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemToAdd.getPrice()));
@@ -323,4 +322,46 @@ public class XMLProcessing {
        DocumentBuilder dB = dBF.newDocumentBuilder();
         return dB.parse(xmlFile);
     }
+
+
+    /**
+     * Method for changing a user's password
+     *
+     * @param userName The username of the user whose password is to be changed.
+     * @param newPassword The new password to set for the user.
+     * @return True if the password change was successful, false otherwise.
+     */
+    public static boolean changePassword(String userName, String newPassword) {
+        try {
+            // Load XML document
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+            Element root = document.getDocumentElement();
+            NodeList userList = root.getElementsByTagName("user");
+
+            // Iterate through user list
+            for (int i = 0; i < userList.getLength(); i++) {
+                Element userElement = (Element) userList.item(i);
+                String name = userElement.getElementsByTagName("name").item(0).getTextContent();
+                if (name.equals(userName)) {
+                    // Found the user, update password if old password matches
+                    Element passwordElement = (Element) userElement.getElementsByTagName("password").item(0);
+                    String password = passwordElement.getTextContent();
+                    if (password.equals(newPassword)) {
+                        passwordElement.setTextContent(newPassword);
+                        // Write changes to XML file
+                        writeDOMToFile(document, "InventoryManagement/src/server/res/users.xml");
+                        return true;
+                    }
+                }
+            }
+            // User not found or old password didn't match
+            return false;
+        } catch (Exception e) {
+            // Handle any exceptions
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 }

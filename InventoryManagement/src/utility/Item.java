@@ -5,7 +5,7 @@ public class Item {
     private String name;
     private int qty;
     private String type;
-    private int id;
+    private int itemId;
     private int price;
 
     /**
@@ -16,7 +16,7 @@ public class Item {
         name = "";
         qty = 0;
         type = "";
-        id = 0;
+        itemId = 0;
         price = 0;
     }
 
@@ -26,14 +26,14 @@ public class Item {
      * @param name The name of the item.
      * @param qty The quantity of the item.
      * @param type The type of the item.
-     * @param id The ID of the item.
+     * @param itemId The ID of the item.
      * @param price The price of the item.
      */
-    public Item(String name, int qty, String type, int id, int price ){
+    public Item(String name, int qty, String type, int itemId, int price ){
         this.name = name;
         this.qty = qty;
         this.type = type;
-        this.id = id;
+        this.itemId = itemId;
         this.price = price;
     }
 
@@ -69,8 +69,8 @@ public class Item {
      *
      * @return The ID of the item.
      */
-    public int getId() {
-        return id;
+    public int getItemId() {
+        return itemId;
     }
 
     /**
@@ -112,10 +112,10 @@ public class Item {
     /**
      * Sets the ID of the item.
      *
-     * @param id The ID to be set.
+     * @param itemId The ID to be set.
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     /**

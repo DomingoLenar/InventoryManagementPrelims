@@ -71,6 +71,12 @@ public class ClientHandler implements Runnable{
                         boolean success = XMLProcessing.addItemOrder(newItemOrder);
                         objectOutputStream.writeObject(success);
                         break;
+                    case "changePassword":
+                        String currentUsername = oIS.readUTF();
+                        String newPassword = oIS.readUTF();
+                        boolean sucess = XMLProcessing.changePassword(currentUsername,newPassword);
+                        objectOutputStream.writeObject(sucess);
+                        break;
                     case "Exit":
                         socket.close();
                         break;
