@@ -1,13 +1,9 @@
 package client.views;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
-import java.awt.*;
-import java.util.Locale;
 
 public class LoginView {
-    private JPasswordField LVpasswordField;
+    private JTextField LVpasswordField;
     private JTextField LVusernameField;
     private JButton LVloginBtn;
     private JPanel LVpanel;
@@ -16,7 +12,7 @@ public class LoginView {
         return LVusernameField;
     }
 
-    public JPasswordField getLVpasswordField() {
+    public JTextField getLVpasswordField() {
         return LVpasswordField;
     }
 
