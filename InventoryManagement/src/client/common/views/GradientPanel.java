@@ -1,10 +1,10 @@
-package client.views;
+package client.common.views;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-class GradientPanel extends JPanel {
+public class GradientPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

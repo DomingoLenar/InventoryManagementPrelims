@@ -1,14 +1,10 @@
-package client.views;
+package client.common.views;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
-import java.awt.*;
-import java.util.Locale;
 
 public class SignUpView {
     private JTextField SUusernameField;
-    private JPasswordField SUpasswordField;
+    private JTextField SUpasswordField;
     private JButton SUsignUpBtn;
     private JPanel SUpanel;
 
@@ -24,7 +20,7 @@ public class SignUpView {
         return SUusernameField;
     }
 
-    public JPasswordField getSUpasswordField() {
+    public JTextField getSUpasswordField() {
         return SUpasswordField;
     }
 

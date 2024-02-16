@@ -1,11 +1,6 @@
-package client.views;
+package client.common.views;
 
 import javax.swing.*;
-import javax.swing.plaf.FontUIResource;
-import javax.swing.text.StyleContext;
-import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.Locale;
 
 public class IndexView {
     private JButton IVloginBtn;

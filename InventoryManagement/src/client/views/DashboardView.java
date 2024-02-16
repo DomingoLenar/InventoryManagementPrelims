@@ -1,8 +1,9 @@
 package client.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 import javax.swing.border.AbstractBorder; // For Controller
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D; // For Controller
 

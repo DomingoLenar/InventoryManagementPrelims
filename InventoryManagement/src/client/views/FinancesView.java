@@ -1,7 +1,8 @@
 package client.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
-import java.awt.*;
 
 public class FinancesView {
     private JPanel topPanel;

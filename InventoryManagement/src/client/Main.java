@@ -1,6 +1,6 @@
 package client;
 
-import client.controllers.InventoryManagementController;
+import client.common.controllers.InventoryManagementController;
 
 import java.io.IOException;
 

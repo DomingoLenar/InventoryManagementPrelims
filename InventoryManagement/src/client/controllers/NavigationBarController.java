@@ -1,17 +1,18 @@
 package client.controllers;
 
-import client.views.NavigationBarView;
+import client.common.controllers.InventoryManagementController;
+import client.sales.views.SalesNavigationBarView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NavigationBarController {
     InventoryManagementController inventoryManagementController;
-    NavigationBarView navigationBarView;
+    SalesNavigationBarView navigationBarView;
 
     public NavigationBarController(InventoryManagementController inventoryManagementController) {
         this.inventoryManagementController = inventoryManagementController;
-        navigationBarView = new NavigationBarView();
+        navigationBarView = new SalesNavigationBarView();
 
         initComponents();
     }
@@ -31,7 +32,7 @@ public class NavigationBarController {
         navigationBarView.getDashboardButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.dashboardController.dashboardView.getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getDashboardController().dashboardView.getMainPanel());
             }
         });
 
@@ -45,7 +46,7 @@ public class NavigationBarController {
         navigationBarView.getFinancesButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.financesController.financesView.getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getFinancesController().financesView.getMainPanel());
             }
         });
 
@@ -57,4 +58,7 @@ public class NavigationBarController {
         });
     }
 
+    public SalesNavigationBarView getNavigationBarView() {
+        return navigationBarView;
+    }
 }

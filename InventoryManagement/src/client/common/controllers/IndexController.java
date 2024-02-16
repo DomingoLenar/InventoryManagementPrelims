@@ -1,9 +1,7 @@
-package client.controllers;
+package client.common.controllers;
 
-import client.InventoryManagementInterface;
-import client.views.IndexView;
+import client.common.views.IndexView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

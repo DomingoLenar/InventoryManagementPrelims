@@ -1,5 +1,6 @@
 package client.controllers;
 
+import client.common.controllers.InventoryManagementController;
 import client.views.DashboardView;
 
 public class DashboardController {
