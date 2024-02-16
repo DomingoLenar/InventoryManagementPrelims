@@ -1,16 +1,5 @@
 package server.model;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -19,19 +8,27 @@ import utility.Item;
 import utility.ItemOrder;
 import utility.User;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 public class XMLProcessing {
-
-
-
-    public synchronized static boolean authenticate(User userToAuth){
+    public synchronized static User authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
         if(localUser != null){
             if(localUser.getPassword().equals(userToAuth.getPassword())){
                 setActiveStatus(localUser, true);
-                return true;
+                return localUser;
             }
         }
-        return false;
+        return null;
     }
 
     public synchronized static void setActiveStatus(User user,boolean activeStatus){
