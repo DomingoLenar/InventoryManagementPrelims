@@ -12,11 +12,13 @@ public class LoginController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
     LoginView loginView;
+    Socket socket;
     public LoginController(InventoryManagementController inventoryManagementController, Socket clientSocket) throws IOException {
         this.inventoryManagementController = inventoryManagementController;
         this.profileManagementModel = new ProfileManagementModel();
 
         loginView = new LoginView();
+        socket = clientSocket;
 
         initComponents();
     }
@@ -49,7 +51,7 @@ public class LoginController {
                 if (username.isEmpty() || password.isEmpty()) {
                     // do smth
                 } else {
-                    boolean valid = profileManagementModel.handleLogin(username, password);
+                    boolean valid = profileManagementModel.handleLogin(username, password, socket);
                     if (valid) {
                         inventoryManagementController.displayMainMenu();
                     } else {
