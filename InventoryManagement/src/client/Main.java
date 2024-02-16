@@ -1,7 +1,8 @@
 package client;
 
 import client.controllers.InventoryManagementController;
-import java.net.Socket;
+
+import java.io.IOException;
 
 public class Main implements Runnable{
     public static void main(String[] args) {
@@ -15,6 +16,10 @@ public class Main implements Runnable{
 
     @Override
     public void run() {
-        new InventoryManagementController();
+        try {
+            new InventoryManagementController();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

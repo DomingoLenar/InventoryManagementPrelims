@@ -8,24 +8,18 @@ import java.net.Socket;
  * Represents the model for handling user login and signup operations on the client side.
  */
 public class ProfileManagementModel {
-    private final Socket sSocket;
-    private final ObjectOutputStream oos;
-    private final PrintWriter pWriter;
-
+    private final Socket socket;
+    private final OutputStream outputStream;
+    private final InputStream inputStream;
     /**
      * Constructs a new LoginModel with the specified sSocket and output stream.
      *
-     * @param sSocket        The sSocket connected to the server.
-     * @param oos  The output stream used for communication with the server.
+     * @param socket        The sSocket connected to the server.
      */
-    public ProfileManagementModel(Socket sSocket, ObjectOutputStream oos) {
-        this.sSocket = sSocket;
-        this.oos = oos;
-        try {
-            this.pWriter = new PrintWriter(sSocket.getOutputStream(), true);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public ProfileManagementModel(Socket socket) throws IOException {
+        this.socket = socket;
+        this.outputStream = socket.getOutputStream();
+        this.inputStream = socket.getInputStream();
     }
 
     /**
@@ -33,7 +27,8 @@ public class ProfileManagementModel {
      *
      * @param action The action to be sent.
      */
-    public void sendAction(String action) {
+    public void sendAction(String action) throws IOException {
+        PrintWriter pWriter = new PrintWriter(outputStream, true);
         pWriter.println(action);
         System.out.println(action + " sent to server");
     }
@@ -51,19 +46,35 @@ public class ProfileManagementModel {
             // Create a new User object with provided credentials
             User currentUser = new User(username, password, null, false);
 
-            // Send the action for user authentication
-            sendAction("userVerification");
+            // Check if the socket is open and connected
+            if (socket == null || socket.isClosed() || !socket.isConnected()) {
+                throw new IOException("Socket is not open or connected");
+            }
 
+            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+            ObjectInputStream ois = new ObjectInputStream(inputStream);
+
+            sendAction("userVerification");
             // Send the User object to the server for login
             oos.writeObject(currentUser);
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
-            // Receive authentication response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(sSocket.getInputStream())) {
-                boolean loginSuccess = (boolean) ios.readObject();
-                System.out.println("Authentication response: " + loginSuccess);
-                return loginSuccess;
-            }
+//            try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
+//                // Send the action for user authentication
+//
+//                oos.writeObject(currentUser);
+//                System.out.println(currentUser.getUsername() + " sent to the server for login");
+//
+//                // Receive authentication response from the server
+                try (ObjectInputStream ios = new ObjectInputStream(inputStream)) {
+                    boolean loginSuccess = (boolean) ios.readObject();
+                    System.out.println("Authentication response: " + loginSuccess);
+                    return loginSuccess;
+                }
+//            }
+//            boolean loginSuccess = (boolean) ois.readObject();
+//            System.out.println("Authentication response: " + loginSuccess);
+//            return loginSuccess;
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException("Error handling login", e);
         }
@@ -84,11 +95,11 @@ public class ProfileManagementModel {
 
             sendAction("createUser");
             // Send the User object to the server for sign-up
-            oos.writeObject(newUser);
+//            oos.writeObject(newUser);
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
 
             // Receive account creation response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(sSocket.getInputStream())) {
+            try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
                 boolean createAccountSuccess = (boolean) ios.readObject();
                 System.out.println("Account Creation Response: " + createAccountSuccess);
                 return createAccountSuccess;
@@ -109,13 +120,13 @@ public class ProfileManagementModel {
     public boolean changePassword(String userName, String newPassword) {
         try {
             sendAction("changePassword");
-            oos.writeUTF(userName); // Send the user's name
-            oos.writeUTF(newPassword);
-            oos.flush();
+//            oos.writeUTF(userName); // Send the user's name
+//            oos.writeUTF(newPassword);
+//            oos.flush();
 
             System.out.println("Password change request has been sent to the server...");
 
-            try (ObjectInputStream ois = new ObjectInputStream(sSocket.getInputStream())) {
+            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
                 boolean changeSuccess = ois.readBoolean();
                 System.out.println("Server response: " + changeSuccess);
                 return changeSuccess;

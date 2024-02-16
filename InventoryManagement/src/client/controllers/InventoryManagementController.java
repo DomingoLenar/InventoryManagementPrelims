@@ -4,6 +4,8 @@ import client.InventoryManagementInterface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.Socket;
 
 /**
  * Notes: big controller <-> panel controllers
@@ -20,8 +22,16 @@ public class InventoryManagementController { // big controller
     NavigationBarController navigationBarController;
     DashboardController dashboardController;
     FinancesController financesController;
-    public InventoryManagementController() {
+    private Socket clientSocket;
+    public InventoryManagementController() throws IOException {
         inventoryManagementInterface = new InventoryManagementInterface();
+
+        try {
+            clientSocket = new Socket("localhost", 2018);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        InventoryManagementController.startClient();
 
         initControllers();
 
@@ -29,8 +39,17 @@ public class InventoryManagementController { // big controller
         
         initComponents();
 
-
     }
+
+//    public static void startClient(){
+//        try {
+//            Socket sSocket = new Socket("localhost", 2018);
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(sSocket.getOutputStream());
+//            ObjectInputStream objectInputStream = new ObjectInputStream(sSocket.getInputStream());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     private void initComponents() {
         mainContainer = new JPanel();
@@ -38,10 +57,11 @@ public class InventoryManagementController { // big controller
 
     }
 
-    private void initControllers() {
+    private void initControllers() throws IOException {
         indexController = new IndexController(this);
         signUpController = new SignUpController(this);
-        loginController = new LoginController(this);
+        loginController = new LoginController(this, clientSocket);
+//        loginController = new LoginController(this);
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
         financesController = new FinancesController(this);
