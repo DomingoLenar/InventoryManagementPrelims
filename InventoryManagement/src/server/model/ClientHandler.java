@@ -1,6 +1,5 @@
 package server.model;
 
-import server.views.TerminalView;
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
@@ -8,7 +7,6 @@ import utility.User;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 public class ClientHandler implements Runnable{
     Socket socket;
@@ -96,9 +94,8 @@ public class ClientHandler implements Runnable{
      */
     public void userVerification(User userObject, OutputStream outputStream) throws IOException {
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        boolean auth = XMLProcessing.authenticate(userObject);
-        //objectOutputStream.writeBoolean(auth);
-        objectOutputStream.writeObject(auth);
+        User user = XMLProcessing.authenticate(userObject);
+        objectOutputStream.writeObject(user);
     }
 
     /**
