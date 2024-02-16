@@ -1,6 +1,10 @@
 package client.views;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
+import java.awt.*;
+import java.util.Locale;
 
 public class SignUpView {
     private JTextField SUusernameField;
@@ -28,4 +32,5 @@ public class SignUpView {
         // TODO: place custom component creation code here
         SUpanel = new GradientPanel();
     }
+
 }

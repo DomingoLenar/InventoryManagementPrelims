@@ -1,26 +1,30 @@
 package client.models;
 import utility.User;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import java.io.*;
 import java.net.Socket;
 
 /**
  * Represents the model for handling user login and signup operations on the client side.
  */
+// TODO: Refactor the whole class and its method so that it is accessed statically
 public class ProfileManagementModel {
-    private final Socket socket;
-    private final ObjectOutputStream outputStream;
-
+    private  Socket socket;
+    private  OutputStream outputStream;
+    private  InputStream inputStream;
     /**
-     * Constructs a new LoginModel with the specified socket and output stream.
+     * Constructs a new LoginModel with the specified sSocket and output stream.
      *
-     * @param socket        The socket connected to the server.
-     * @param outputStream  The output stream used for communication with the server.
+     * @param socket        The sSocket connected to the server.
      */
-    public ProfileManagementModel(Socket socket, ObjectOutputStream outputStream) {
+    public ProfileManagementModel(Socket socket) throws IOException {
         this.socket = socket;
-        this.outputStream = outputStream;
+        this.outputStream = socket.getOutputStream();
+        this.inputStream = socket.getInputStream();
+    }
+
+    public ProfileManagementModel() {
+
     }
 
     /**
@@ -28,13 +32,10 @@ public class ProfileManagementModel {
      *
      * @param action The action to be sent.
      */
-    public void sendAction(String action) {
-        try {
-            outputStream.writeObject(action);
-            System.out.println(action + " sent to server");
-        } catch (IOException e) {
-            throw new RuntimeException("Error sending action to server", e);
-        }
+    public void sendAction(String action) throws IOException {
+        PrintWriter pWriter = new PrintWriter(outputStream, true);
+        pWriter.println(action);
+        System.out.println(action + " sent to server");
     }
 
     /**
@@ -44,28 +45,57 @@ public class ProfileManagementModel {
      * @param password The user's password.
      * @return True if login is successful, false otherwise.
      */
-   
-    public boolean handleLogin(String username, String password) {
-        try {
-            // Create a new User object with provided credentials
-            User currentUser = new User(username, password, null, false);
 
-            // Send the action for user authentication
-            sendAction("userAuthentication");
+    public static boolean handleLogin(String username, String password, Socket clientSocket) {
+        // Create a new User object with provided credentials
+        User currentUser = new User(username, password, null, false);
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+            InputStream iS = clientSocket.getInputStream();
+            ObjectInputStream ios = new ObjectInputStream(iS);
+
+            pWriter.println("userVerification");
+//                sendAction("userVerification");
 
             // Send the User object to the server for login
-            outputStream.writeObject(currentUser);
+            oos.writeObject(currentUser);
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
-            // Receive authentication response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
-                boolean loginSuccess = (boolean) ios.readObject();
+            try {
+                boolean loginSuccess = ios.readBoolean();
                 System.out.println("Authentication response: " + loginSuccess);
                 return loginSuccess;
+            } finally {
+
             }
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Error handling login", e);
+
+        } catch (IOException e){
+            e.printStackTrace();
         }
+        // Check if the socket is open and connected
+//            if (socket == null || socket.isClosed() || !socket.isConnected()) {
+//                throw new IOException("Socket is not open or connected");
+//            }
+
+//            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+//            ObjectInputStream ois = new ObjectInputStream(inputStream);
+
+
+//            try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
+//                // Send the action for user authentication
+//
+//                oos.writeObject(currentUser);
+//                System.out.println(currentUser.getUsername() + " sent to the server for login");
+//
+//                // Receive authentication response from the server
+
+//            }
+//            boolean loginSuccess = (boolean) ois.readObject();
+//            System.out.println("Authentication response: " + loginSuccess);
+//            return loginSuccess;
+        return false;
     }
 
     /**
@@ -83,7 +113,7 @@ public class ProfileManagementModel {
 
             sendAction("createUser");
             // Send the User object to the server for sign-up
-            outputStream.writeObject(newUser);
+//            oos.writeObject(newUser);
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
 
             // Receive account creation response from the server
@@ -108,10 +138,9 @@ public class ProfileManagementModel {
     public boolean changePassword(String userName, String newPassword) {
         try {
             sendAction("changePassword");
-            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
-            oos.writeUTF(userName); // Send the user's name
-            oos.writeUTF(newPassword);
-            outputStream.flush();
+//            oos.writeUTF(userName); // Send the user's name
+//            oos.writeUTF(newPassword);
+//            oos.flush();
 
             System.out.println("Password change request has been sent to the server...");
 

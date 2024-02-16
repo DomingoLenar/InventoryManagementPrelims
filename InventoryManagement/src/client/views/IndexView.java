@@ -1,10 +1,13 @@
 package client.views;
 
 import javax.swing.*;
+import javax.swing.plaf.FontUIResource;
+import javax.swing.text.StyleContext;
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.util.Locale;
 
-public class IndexView{
+public class IndexView {
     private JButton IVloginBtn;
     private JButton SUsignUpBtn;
     private JPanel IVpanel;
@@ -25,4 +28,5 @@ public class IndexView{
         // TODO: place custom component creation code here
         IVpanel = new GradientPanel();
     }
+
 }

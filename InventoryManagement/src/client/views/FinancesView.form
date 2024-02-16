@@ -43,7 +43,7 @@
           </grid>
         </children>
       </grid>
-      <grid id="cf89a" binding="bottomPanel" layout-manager="GridBagLayout">
+      <grid id="cf89a" binding="bottomPanel" custom-create="true" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-481883"/>
