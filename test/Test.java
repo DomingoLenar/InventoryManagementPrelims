@@ -4,7 +4,6 @@ import server.model.XMLProcessing;
 import utility.User;
 
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class Test {
@@ -35,12 +34,9 @@ public class Test {
     public void testClientServerConnection() {
         try {
             Socket sSocket = new Socket("localhost", 2018);
-            ObjectOutputStream oOs = new ObjectOutputStream(sSocket.getOutputStream());
-//            BufferedReader bReader = new BufferedReader(new InputStreamReader(sSocket.getInputStream()));
-            ProfileManagementModel profileManagementModel = new ProfileManagementModel();
-            String userType = profileManagementModel.handleLogin("testuser", "usertest");
+            boolean valid = ProfileManagementModel.handleLogin("testuser", "usertest", sSocket);
 
-            if (userType != null) {
+            if (valid) {
                 System.out.println("login success");
             } else {
                 System.out.println("failed");

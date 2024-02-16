@@ -1,7 +1,7 @@
-package client.common.controllers;
+package client.controllers;
 
-import client.common.views.LoginView;
 import client.models.ProfileManagementModel;
+import client.views.LoginView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,14 +12,25 @@ public class LoginController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
     LoginView loginView;
+    Socket socket;
     public LoginController(InventoryManagementController inventoryManagementController, Socket clientSocket) throws IOException {
         this.inventoryManagementController = inventoryManagementController;
         this.profileManagementModel = new ProfileManagementModel();
 
         loginView = new LoginView();
+        socket = clientSocket;
 
         initComponents();
     }
+
+//    public LoginController(InventoryManagementController inventoryManagementController) throws IOException {
+//        this.inventoryManagementController = inventoryManagementController;
+//        this.profileManagementModel = new ProfileManagementModel();
+//
+//        loginView = new LoginView();
+//
+//        initComponents();
+//    }
 
     private void initComponents() {
         initButtons();
@@ -40,17 +51,11 @@ public class LoginController {
                 if (username.isEmpty() || password.isEmpty()) {
                     // do smth
                 } else {
-                    String userType = profileManagementModel.handleLogin(username, password);
-                    switch (userType) {
-                        case "admin":
-                            inventoryManagementController.displayAdminMainMenu();
-                            break;
-                        case "sales":
-                            inventoryManagementController.displaySalesMainMenu();
-                            break;
-                        case "purchase":
-                            inventoryManagementController.displayPurchaserMainMenu();
-                            break;
+                    boolean valid = profileManagementModel.handleLogin(username, password, socket);
+                    if (valid) {
+                        inventoryManagementController.displayMainMenu();
+                    } else {
+                        // do smth
                     }
                 }
             }

@@ -7,9 +7,9 @@ import java.net.Socket;
 /**
  * Represents the model for handling user login and signup operations on the client side.
  */
+// TODO: Refactor the whole class and its method so that it is accessed statically
 public class ProfileManagementModel {
     private  Socket socket;
-    private  Socket clientSocket;
     private  OutputStream outputStream;
     private  InputStream inputStream;
     /**
@@ -46,46 +46,41 @@ public class ProfileManagementModel {
      * @return True if login is successful, false otherwise.
      */
 
-    public String handleLogin(String username, String password) {
+    public static boolean handleLogin(String username, String password, Socket clientSocket) {
+        // Create a new User object with provided credentials
+        User currentUser = new User(username, password, null, false);
+
         try {
-            // Create a new User object with provided credentials
-            User currentUser = new User(username, password, null, false);
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+            InputStream iS = clientSocket.getInputStream();
+            ObjectInputStream ios = new ObjectInputStream(iS);
 
-            try {
-                clientSocket = new Socket("localhost", 2018);
-                ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-                ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
-                PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-
-                pWriter.println("userVerification");
+            pWriter.println("userVerification");
 //                sendAction("userVerification");
 
-                // Send the User object to the server for login
-                oos.writeObject(currentUser);
-                System.out.println(currentUser.getUsername() + " sent to the server for login");
+            // Send the User object to the server for login
+            oos.writeObject(currentUser);
+            System.out.println(currentUser.getUsername() + " sent to the server for login");
 
-                try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
-                    User user = (User) ios.readObject();
-                    if (user != null) {
-                        System.out.println("Authentication response: success");
-                        return user.getRole();
-                    } else if (user == null){
-                        System.out.println("Authentication response: failed");
-                        return null;
-                    }
-                }
+            try {
+                boolean loginSuccess = ios.readBoolean();
+                System.out.println("Authentication response: " + loginSuccess);
+                return loginSuccess;
+            } finally {
 
-            } catch (IOException e){
-                e.printStackTrace();
             }
-            // Check if the socket is open and connected
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        // Check if the socket is open and connected
 //            if (socket == null || socket.isClosed() || !socket.isConnected()) {
 //                throw new IOException("Socket is not open or connected");
 //            }
 
 //            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
 //            ObjectInputStream ois = new ObjectInputStream(inputStream);
-
 
 
 //            try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
@@ -100,10 +95,7 @@ public class ProfileManagementModel {
 //            boolean loginSuccess = (boolean) ois.readObject();
 //            System.out.println("Authentication response: " + loginSuccess);
 //            return loginSuccess;
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Error handling login", e);
-        }
-        return null;
+        return false;
     }
 
     /**
