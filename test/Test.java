@@ -37,10 +37,10 @@ public class Test {
             Socket sSocket = new Socket("localhost", 2018);
             ObjectOutputStream oOs = new ObjectOutputStream(sSocket.getOutputStream());
 //            BufferedReader bReader = new BufferedReader(new InputStreamReader(sSocket.getInputStream()));
-            ProfileManagementModel profileManagementModel = new ProfileManagementModel(sSocket, oOs);
-            boolean valid = profileManagementModel.handleLogin("testuser", "usertest");
+            ProfileManagementModel profileManagementModel = new ProfileManagementModel();
+            String userType = profileManagementModel.handleLogin("testuser", "usertest");
 
-            if (valid) {
+            if (userType != null) {
                 System.out.println("login success");
             } else {
                 System.out.println("failed");
