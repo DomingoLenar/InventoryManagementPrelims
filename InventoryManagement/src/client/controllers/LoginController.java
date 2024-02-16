@@ -14,7 +14,7 @@ public class LoginController {
     LoginView loginView;
     public LoginController(InventoryManagementController inventoryManagementController, Socket clientSocket) throws IOException {
         this.inventoryManagementController = inventoryManagementController;
-        this.profileManagementModel = new ProfileManagementModel(clientSocket);
+        this.profileManagementModel = new ProfileManagementModel();
 
         loginView = new LoginView();
 

@@ -8,9 +8,9 @@ import java.net.Socket;
  * Represents the model for handling user login and signup operations on the client side.
  */
 public class ProfileManagementModel {
-    private final Socket socket;
-    private final OutputStream outputStream;
-    private final InputStream inputStream;
+    private  Socket socket;
+    private  OutputStream outputStream;
+    private  InputStream inputStream;
     /**
      * Constructs a new LoginModel with the specified sSocket and output stream.
      *
@@ -20,6 +20,10 @@ public class ProfileManagementModel {
         this.socket = socket;
         this.outputStream = socket.getOutputStream();
         this.inputStream = socket.getInputStream();
+    }
+
+    public ProfileManagementModel() {
+
     }
 
     /**
@@ -46,18 +50,37 @@ public class ProfileManagementModel {
             // Create a new User object with provided credentials
             User currentUser = new User(username, password, null, false);
 
-            // Check if the socket is open and connected
-            if (socket == null || socket.isClosed() || !socket.isConnected()) {
-                throw new IOException("Socket is not open or connected");
+            try {
+                Socket clientSocket = new Socket("localhost", 2018);
+                ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+                ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
+                PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+
+                pWriter.println("userVerification");
+//                sendAction("userVerification");
+
+                // Send the User object to the server for login
+                oos.writeObject(currentUser);
+                System.out.println(currentUser.getUsername() + " sent to the server for login");
+
+                try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
+                    boolean loginSuccess = (boolean) ios.readObject();
+                    System.out.println("Authentication response: " + loginSuccess);
+                    return loginSuccess;
+                }
+
+            } catch (IOException e){
+                e.printStackTrace();
             }
+            // Check if the socket is open and connected
+//            if (socket == null || socket.isClosed() || !socket.isConnected()) {
+//                throw new IOException("Socket is not open or connected");
+//            }
 
-            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
-            ObjectInputStream ois = new ObjectInputStream(inputStream);
+//            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
+//            ObjectInputStream ois = new ObjectInputStream(inputStream);
 
-            sendAction("userVerification");
-            // Send the User object to the server for login
-            oos.writeObject(currentUser);
-            System.out.println(currentUser.getUsername() + " sent to the server for login");
+
 
 //            try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
 //                // Send the action for user authentication
@@ -66,18 +89,15 @@ public class ProfileManagementModel {
 //                System.out.println(currentUser.getUsername() + " sent to the server for login");
 //
 //                // Receive authentication response from the server
-                try (ObjectInputStream ios = new ObjectInputStream(inputStream)) {
-                    boolean loginSuccess = (boolean) ios.readObject();
-                    System.out.println("Authentication response: " + loginSuccess);
-                    return loginSuccess;
-                }
+
 //            }
 //            boolean loginSuccess = (boolean) ois.readObject();
 //            System.out.println("Authentication response: " + loginSuccess);
 //            return loginSuccess;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException("Error handling login", e);
         }
+        return false;
     }
 
     /**
