@@ -1,9 +1,8 @@
-package client.views;
+package client.sales.views;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class NavigationBarView {
+public class SalesNavigationBarView {
     private JButton financesButton;
     private JButton profileButton;
     private JButton stockControlButton;
