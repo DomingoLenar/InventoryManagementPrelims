@@ -9,6 +9,7 @@ import java.net.Socket;
  */
 public class ProfileManagementModel {
     private  Socket socket;
+    private  Socket clientSocket;
     private  OutputStream outputStream;
     private  InputStream inputStream;
     /**
@@ -45,13 +46,13 @@ public class ProfileManagementModel {
      * @return True if login is successful, false otherwise.
      */
 
-    public boolean handleLogin(String username, String password) {
+    public String handleLogin(String username, String password) {
         try {
             // Create a new User object with provided credentials
             User currentUser = new User(username, password, null, false);
 
             try {
-                Socket clientSocket = new Socket("localhost", 2018);
+                clientSocket = new Socket("localhost", 2018);
                 ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
                 ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
                 PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -64,9 +65,14 @@ public class ProfileManagementModel {
                 System.out.println(currentUser.getUsername() + " sent to the server for login");
 
                 try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
-                    boolean loginSuccess = (boolean) ios.readObject();
-                    System.out.println("Authentication response: " + loginSuccess);
-                    return loginSuccess;
+                    User user = (User) ios.readObject();
+                    if (user != null) {
+                        System.out.println("Authentication response: success");
+                        return user.getRole();
+                    } else if (user == null){
+                        System.out.println("Authentication response: failed");
+                        return null;
+                    }
                 }
 
             } catch (IOException e){
@@ -97,7 +103,7 @@ public class ProfileManagementModel {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Error handling login", e);
         }
-        return false;
+        return null;
     }
 
     /**
