@@ -1,21 +1,24 @@
 package client.common.controllers;
 
 import client.common.views.SignUpView;
-import client.models.ProfileManagementModel;
+import client.common.models.ProfileManagementModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 
 public class SignUpController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
     SignUpView signUpView;
+    Socket socket;
 
-    public SignUpController(InventoryManagementController inventoryManagementController) {
+    public SignUpController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
         this.inventoryManagementController = inventoryManagementController;
         this.profileManagementModel = new ProfileManagementModel();
 
         signUpView = new SignUpView();
+        socket = clientSocket;
 
         initComponents();
     }
@@ -43,14 +46,16 @@ public class SignUpController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-                    String userType = profileManagementModel.handleLogin(username, password);
-                    switch (userType){
-                        case "sales":
-                            inventoryManagementController.displaySalesMainMenu();
-                            break;
-                        case "purchase":
-                            inventoryManagementController.displayPurchaserMainMenu();
-                            break;
+                    String userType = ProfileManagementModel.handleLogin(username, password, socket);
+                    if (userType != null) {
+                        switch (userType) {
+                            case "sales":
+                                inventoryManagementController.displaySalesMainMenu();
+                                break;
+                            case "purchase":
+                                inventoryManagementController.displayPurchaserMainMenu();
+                                break;
+                        }
                     }
                 }
             }

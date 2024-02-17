@@ -72,7 +72,7 @@ public class InventoryManagementController { // big controller
 
     private void commonControllers() throws IOException {
         indexController = new IndexController(this);
-        signUpController = new SignUpController(this);
+        signUpController = new SignUpController(this, clientSocket);
         loginController = new LoginController(this, clientSocket);
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
