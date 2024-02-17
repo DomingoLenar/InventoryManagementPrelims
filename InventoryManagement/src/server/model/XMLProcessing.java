@@ -87,7 +87,30 @@ public class XMLProcessing {
         return null;
     }
 
-    // TODO: Method for fetching list of active users
+    public  static  synchronized  ArrayList<User> fetchListOfUsers ( ){
+        ArrayList<User> listOfUsers = new ArrayList<>();
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+
+            Element rootElement = document.getDocumentElement();
+            NodeList users = rootElement.getElementsByTagName("users");
+            for (int i = 0; i < users.getLength(); i++){
+                Element currentElement = (Element) users.item(i);
+
+                String username = currentElement.getAttribute("username");
+                String password = currentElement.getAttribute("password");
+                String role = currentElement.getAttribute("role");
+                boolean status = Boolean.parseBoolean(currentElement.getAttribute("status"));
+
+                listOfUsers.add(new User(username, password, role, status));
+
+
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return listOfUsers;
+    }
 
     /**
      * Method for creating a new user inside the xml file of the server

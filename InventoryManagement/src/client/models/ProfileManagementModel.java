@@ -22,9 +22,13 @@ public class ProfileManagementModel {
      */
 
     public static void sendAction(String action, ObjectOutputStream oos) throws IOException {
-       oos.writeUTF(action);
-       oos.flush();
-        System.out.println(action + " sent to server...");
+        try {
+            oos.writeUTF(action);
+            oos.flush();
+            System.out.println(action + " sent to server");
+        } catch (IOException e) {
+            throw new RuntimeException("Error sending action to server", e);
+        }
     }
 
     /**
