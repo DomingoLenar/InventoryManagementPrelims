@@ -1,4 +1,4 @@
-package client.models;
+package client.common.models;
 import utility.User;
 
 import java.io.*;
@@ -46,7 +46,7 @@ public class ProfileManagementModel {
      * @return True if login is successful, false otherwise.
      */
 
-    public static boolean handleLogin(String username, String password, Socket clientSocket) {
+    public static String handleLogin(String username, String password, Socket clientSocket) {
         // Create a new User object with provided credentials
         User currentUser = new User(username, password, null, false);
 
@@ -64,9 +64,16 @@ public class ProfileManagementModel {
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             try {
-                boolean loginSuccess = ios.readBoolean();
-                System.out.println("Authentication response: " + loginSuccess);
-                return loginSuccess;
+                User user = (User) ios.readObject();
+                if (user != null) {
+                    System.out.println("Authentication response: success");
+                    return user.getRole();
+                } else {
+                    System.out.println("Authentication response: failed");
+                    return null;
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             } finally {
 
             }
@@ -95,7 +102,7 @@ public class ProfileManagementModel {
 //            boolean loginSuccess = (boolean) ois.readObject();
 //            System.out.println("Authentication response: " + loginSuccess);
 //            return loginSuccess;
-        return false;
+        return null;
     }
 
     /**

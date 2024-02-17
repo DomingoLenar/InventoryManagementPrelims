@@ -95,9 +95,8 @@ public class ClientHandler implements Runnable{
      * @throws IOException
      */
     public void userVerification(User userObject, ObjectOutputStream objectOutputStream) throws IOException {
-        boolean auth = XMLProcessing.authenticate(userObject);
-        objectOutputStream.writeBoolean(auth);
-        //objectOutputStream.writeObject(auth);
+        User user = XMLProcessing.authenticate(userObject);
+        objectOutputStream.writeObject(user);
         objectOutputStream.flush();
     }
 

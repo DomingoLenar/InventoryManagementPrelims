@@ -1,4 +1,4 @@
-package client.models;
+package client.common.models;
 
 import utility.Item;
 
