@@ -1,7 +1,7 @@
-package client.controllers;
+package client.common.controllers;
 
-import client.models.ProfileManagementModel;
-import client.views.LoginView;
+import client.common.models.ProfileManagementModel;
+import client.common.views.LoginView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,15 +23,6 @@ public class LoginController {
         initComponents();
     }
 
-//    public LoginController(InventoryManagementController inventoryManagementController) throws IOException {
-//        this.inventoryManagementController = inventoryManagementController;
-//        this.profileManagementModel = new ProfileManagementModel();
-//
-//        loginView = new LoginView();
-//
-//        initComponents();
-//    }
-
     private void initComponents() {
         initButtons();
         initTextFields();
@@ -51,11 +42,19 @@ public class LoginController {
                 if (username.isEmpty() || password.isEmpty()) {
                     // do smth
                 } else {
-                    boolean valid = profileManagementModel.handleLogin(username, password, socket);
-                    if (valid) {
-                        inventoryManagementController.displayMainMenu();
-                    } else {
-                        // do smth
+                    String userType = ProfileManagementModel.handleLogin(username, password, socket);
+                    if (userType != null) {
+                        switch (userType) {
+                            case "admin":
+                                inventoryManagementController.displayAdminMainMenu();
+                                break;
+                            case "sales":
+                                inventoryManagementController.displaySalesMainMenu();
+                                break;
+                            case "purchase":
+                                inventoryManagementController.displayPurchaserMainMenu();
+                                break;
+                        }
                     }
                 }
             }
