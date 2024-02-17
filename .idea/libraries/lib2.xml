@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="lib2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/pdfbox-2.0.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/apiguardian-api-1.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/junit-platform-commons-1.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/animated-gif-lib-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/junit-jupiter-api-5.10.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/fontbox-2.0.26.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/graphics2d-0.41.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/xchart-3.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/opentest4j-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/InventoryManagement/lib/VectorGraphics2D-0.13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -10,24 +10,33 @@ public class FinancesView {
     private JPanel mainPanel;
     private JPanel bottomPanel;
 
-    public FinancesView() {
-        
-        searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
-    public static void main(String[] args) {
-        FinancesView financesView = new FinancesView();
 
-        JFrame frame = new JFrame("Finances");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(financesView.mainPanel);
-
-        frame.setResizable(true);
-
-        frame.setMinimumSize(new Dimension(700, 500));
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+        bottomPanel = new GradientPanel();
     }
+    //    public FinancesView() {
+//        searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+//    }
+
+//    public static void main(String[] args) {
+//        FinancesView financesView = new FinancesView();
+//
+//        JFrame frame = new JFrame("Finances");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setContentPane(financesView.mainPanel);
+//
+//        frame.setResizable(true);
+//
+//        frame.setMinimumSize(new Dimension(700, 500));
+//
+//        frame.pack();
+//        frame.setLocationRelativeTo(null);
+//        frame.setVisible(true);
+//    }
+
 }
 

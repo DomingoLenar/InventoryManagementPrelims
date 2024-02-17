@@ -42,13 +42,13 @@ public class ItemManagementModel {
      * @param name  The name of the item.
      * @param qty   The quantity of the item.
      * @param type  The type of the item.
-     * @param id    The ID of the item.
+     * @param itemId    The ID of the item.
      * @param price The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public boolean addItems(String name, int qty, String type, int id, int price) {
+    public boolean addItems(String name, int qty, String type, int itemId, int price) {
         try {
-            Item newItem = new Item(name, qty, type, id, price);
+            Item newItem = new Item(name, qty, type, itemId, price);
 
             sendAction("addItem");
 
@@ -68,13 +68,13 @@ public class ItemManagementModel {
     /**
      * Removes an item from the inventory based on its ID.
      *
-     * @param id The ID of the item to be removed.
+     * @param itemId The ID of the item to be removed.
      * @return True if the item is successfully removed; false otherwise.
      */
-    public boolean removeItem(int id) {
+    public boolean removeItem(int itemId) {
         try {
             sendAction("removeItem");
-            outputStream.writeInt(id);
+            outputStream.writeInt(itemId);
             outputStream.flush();
 
             System.out.println("Item removal request has been sent to the server.");

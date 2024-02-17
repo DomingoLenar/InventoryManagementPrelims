@@ -1,17 +1,5 @@
 package server.model;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,14 +8,53 @@ import utility.Item;
 import utility.ItemOrder;
 import utility.User;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.*;
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 public class XMLProcessing {
 
 
 
     public synchronized static boolean authenticate(User userToAuth){
         User localUser = findUser(userToAuth.getUsername());
-        assert localUser != null;
-        return localUser.equals(userToAuth);
+        if(localUser != null){
+            if(localUser.getPassword().equals(userToAuth.getPassword())){
+                setActiveStatus(localUser, true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public synchronized static void setActiveStatus(User user,boolean activeStatus){
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+
+            Element rootElement = document.getDocumentElement();
+
+            NodeList nodeList = rootElement.getElementsByTagName("user");
+            for(int x = 0; x<nodeList.getLength(); x++){
+                Element curUser = (Element) nodeList.item(0);
+                if(curUser.getElementsByTagName("username").item(0).getTextContent().equals(user.getUsername())){
+                    curUser.removeAttribute("active");
+                    curUser.setAttribute("active",String.valueOf(activeStatus));
+                    break;
+                }
+            }
+            cleanXMLElement(rootElement);
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/users.xml");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public synchronized static User findUser(String userName) {
@@ -48,7 +75,8 @@ public class XMLProcessing {
                     if(username.equals(userName)){
                         String password = userElement.getElementsByTagName("password").item(0).getTextContent();
                         String role = userElement.getAttribute("role");
-                        return new User(username, password, role);
+                        boolean active = userElement.getAttribute("active").equals("true");
+                        return new User(username, password, role, active);
                     }
 
                 }
@@ -59,6 +87,13 @@ public class XMLProcessing {
         return null;
     }
 
+    // TODO: Method for fetching list of active users
+
+    /**
+     * Method for creating a new user inside the xml file of the server
+     * @param userToCreate     Object of user to create
+     * @return                 Returns a boolean value if success or not
+     */
     public static boolean createUser(User userToCreate){
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
@@ -79,6 +114,7 @@ public class XMLProcessing {
 
             root.appendChild(newUser);
 
+            cleanXMLElement(root);
             writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
 
         }catch(Exception e){
@@ -86,6 +122,12 @@ public class XMLProcessing {
         }
         return true;
     }
+
+    /**
+     * Method to write new changes into the xml file
+     * @param node      Root node to add
+     * @param fileName
+     */
 
     private static void writeDOMToFile(Node node, String fileName) {
         try {
@@ -129,7 +171,7 @@ public class XMLProcessing {
             type.setTextContent(itemToAdd.getType());
 
             Element id = document.createElement("id");
-            id.setTextContent(String.valueOf(itemToAdd.getId()));
+            id.setTextContent(String.valueOf(itemToAdd.getItemId()));
 
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemToAdd.getPrice()));
@@ -142,6 +184,7 @@ public class XMLProcessing {
 
             root.appendChild(newItem);
 
+            cleanXMLElement(root);
             writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
 
             return true;
@@ -181,6 +224,50 @@ public class XMLProcessing {
         }
     }
 
+    public static synchronized boolean addItemOrder(ItemOrder itemOrder){
+        boolean status = false;
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
+
+            Element rootElement = document.getDocumentElement();
+
+            Element newItemOrder = document.createElement("itemorder");
+            newItemOrder.setAttribute("date", itemOrder.getDate());
+            newItemOrder.setAttribute("orderType",itemOrder.getStatus());
+            newItemOrder.setAttribute("byUser",itemOrder.getUsername());
+            newItemOrder.setAttribute("id", String.valueOf(itemOrder.getId()));
+
+            Element item = document.createElement("item");
+            item.setTextContent(String.valueOf(itemOrder.getItemId()));
+
+            Element amount = document.createElement("amount");
+            amount.setTextContent(String.valueOf(""));  //Refactor ItemOrder first to take into account amount
+
+            Element price = document.createElement("price");
+            price.setTextContent(String.valueOf(itemOrder.getPurPrice()));
+
+            Element id = document.createElement("id");
+            id.setTextContent(String.valueOf(itemOrder.getId()));
+
+            newItemOrder.appendChild(item);
+            newItemOrder.appendChild(amount);
+            newItemOrder.appendChild(price);
+            newItemOrder.appendChild(id);
+
+            rootElement.appendChild(newItemOrder);
+
+
+
+            cleanXMLElement(rootElement);
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
+
+
+        }catch(Exception e){
+
+        }
+        return status;
+    }
+
     public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
         ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
         try{
@@ -191,16 +278,17 @@ public class XMLProcessing {
             for(int x = 0; x < itemOrders.getLength(); x++){
                 Element currentElement = (Element) itemOrders.item(x);
 
-                int id = Integer.parseInt(currentElement.getAttribute("id"));
+                int id = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
                 String date = currentElement.getAttribute("date");
                 float price = Float.parseFloat(currentElement.getElementsByTagName("price").item(0).getTextContent());
                 String orderType = currentElement.getAttribute("orderType");
-                int itemId = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
+                int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
+                String byUser = currentElement.getAttribute("byUser");
                 if(dateFilter.equals("none")){
-                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                 }else{
                     if(date.equals(dateFilter)){
-                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId));
+                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                     }
                 }
 
@@ -241,4 +329,85 @@ public class XMLProcessing {
        DocumentBuilder dB = dBF.newDocumentBuilder();
         return dB.parse(xmlFile);
     }
+
+
+    /**
+     * Method for changing a user's password
+     *
+     * @param userName The username of the user whose password is to be changed.
+     * @param newPassword The new password to set for the user.
+     * @return True if the password change was successful, false otherwise.
+     */
+    public static boolean changePassword(String userName, String newPassword) {
+        try {
+            // Load XML document
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+            Element root = document.getDocumentElement();
+            NodeList userList = root.getElementsByTagName("user");
+
+            // Iterate through user list
+            for (int i = 0; i < userList.getLength(); i++) {
+                Element userElement = (Element) userList.item(i);
+                String name = userElement.getElementsByTagName("name").item(0).getTextContent();
+                if (name.equals(userName)) {
+                    // Found the user, update password if old password matches
+                    Element passwordElement = (Element) userElement.getElementsByTagName("password").item(0);
+                    String password = passwordElement.getTextContent();
+                    if (password.equals(newPassword)) {
+                        passwordElement.setTextContent(newPassword);
+                        // Write changes to XML file
+                        cleanXMLDocument(document);
+                        writeDOMToFile(document, "InventoryManagement/src/server/res/users.xml");
+                        return true;
+                    }
+                }
+            }
+            // User not found or old password didn't match
+            return false;
+        } catch (Exception e) {
+            // Handle any exceptions
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private static void cleanXMLDocument(Document doc)
+            throws XPathExpressionException {
+    /* SOURCE on the code to clean the xml document:
+        https://stackoverflow.com/questions/978810/how-to-strip-whitespace-only-text-nodes-from-a-dom-before-serialization
+    */
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        // XPath to find empty text nodes
+        XPathExpression xpathExp = xpathFactory
+                .newXPath()
+                .compile("//text()[normalize-space(.) = '']");
+        NodeList emptyTextNodes = (NodeList) xpathExp
+                .evaluate(doc, XPathConstants.NODESET);
+
+        // Remove each empty text node from document.
+        for (int i = 0; i < emptyTextNodes.getLength(); i++) {
+            Node emptyTextNode = emptyTextNodes.item(i);
+            emptyTextNode.getParentNode().removeChild(emptyTextNode);
+        }
+    }
+
+    private static void cleanXMLElement(Element element) throws XPathExpressionException {
+        // Initialize XPath
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        XPath xpath = xpathFactory.newXPath();
+
+        // XPath expression to find empty text nodes within the subtree of the given element
+        XPathExpression xpathExp = xpath.compile(".//text()[normalize-space(.) = '']");
+
+        // Evaluate the expression on the given element
+        NodeList emptyTextNodes = (NodeList) xpathExp.evaluate(element, XPathConstants.NODESET);
+
+        // Remove each empty text node found
+        for (int i = 0; i < emptyTextNodes.getLength(); i++) {
+            Node emptyTextNode = emptyTextNodes.item(i);
+            emptyTextNode.getParentNode().removeChild(emptyTextNode);
+        }
+    }
+
+
 }
