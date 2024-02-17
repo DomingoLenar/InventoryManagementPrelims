@@ -1,16 +1,5 @@
 package server.model;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -18,6 +7,18 @@ import org.w3c.dom.NodeList;
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.*;
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 public class XMLProcessing {
 
@@ -49,6 +50,7 @@ public class XMLProcessing {
                     break;
                 }
             }
+            cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/users.xml");
         }catch(Exception e){
             e.printStackTrace();
@@ -112,6 +114,7 @@ public class XMLProcessing {
 
             root.appendChild(newUser);
 
+            cleanXMLElement(root);
             writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
 
         }catch(Exception e){
@@ -181,6 +184,7 @@ public class XMLProcessing {
 
             root.appendChild(newItem);
 
+            cleanXMLElement(root);
             writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
 
             return true;
@@ -252,6 +256,9 @@ public class XMLProcessing {
 
             rootElement.appendChild(newItemOrder);
 
+
+
+            cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
 
 
@@ -349,6 +356,7 @@ public class XMLProcessing {
                     if (password.equals(newPassword)) {
                         passwordElement.setTextContent(newPassword);
                         // Write changes to XML file
+                        cleanXMLDocument(document);
                         writeDOMToFile(document, "InventoryManagement/src/server/res/users.xml");
                         return true;
                     }
@@ -360,6 +368,44 @@ public class XMLProcessing {
             // Handle any exceptions
             e.printStackTrace();
             return false;
+        }
+    }
+
+    private static void cleanXMLDocument(Document doc)
+            throws XPathExpressionException {
+    /* SOURCE on the code to clean the xml document:
+        https://stackoverflow.com/questions/978810/how-to-strip-whitespace-only-text-nodes-from-a-dom-before-serialization
+    */
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        // XPath to find empty text nodes
+        XPathExpression xpathExp = xpathFactory
+                .newXPath()
+                .compile("//text()[normalize-space(.) = '']");
+        NodeList emptyTextNodes = (NodeList) xpathExp
+                .evaluate(doc, XPathConstants.NODESET);
+
+        // Remove each empty text node from document.
+        for (int i = 0; i < emptyTextNodes.getLength(); i++) {
+            Node emptyTextNode = emptyTextNodes.item(i);
+            emptyTextNode.getParentNode().removeChild(emptyTextNode);
+        }
+    }
+
+    private static void cleanXMLElement(Element element) throws XPathExpressionException {
+        // Initialize XPath
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        XPath xpath = xpathFactory.newXPath();
+
+        // XPath expression to find empty text nodes within the subtree of the given element
+        XPathExpression xpathExp = xpath.compile(".//text()[normalize-space(.) = '']");
+
+        // Evaluate the expression on the given element
+        NodeList emptyTextNodes = (NodeList) xpathExp.evaluate(element, XPathConstants.NODESET);
+
+        // Remove each empty text node found
+        for (int i = 0; i < emptyTextNodes.getLength(); i++) {
+            Node emptyTextNode = emptyTextNodes.item(i);
+            emptyTextNode.getParentNode().removeChild(emptyTextNode);
         }
     }
 
