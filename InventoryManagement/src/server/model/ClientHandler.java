@@ -4,10 +4,7 @@ import utility.Item;
 import utility.ItemOrder;
 import utility.User;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StreamCorruptedException;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
@@ -27,8 +24,8 @@ public class ClientHandler implements Runnable{
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
                 ){
-            String request;
-            while((request = oIS.readUTF())!=null) {
+            while(true) {
+                String request = oIS.readUTF();
                 switch (request) {
                     case "userVerification":
                         //Invoke method for user verification
@@ -75,11 +72,11 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cPSuccess);
                         objectOutputStream.flush();
                         break;
-
                     case "fetchListOfUsers":
                         ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
                         objectOutputStream.flush();
+                        break;
 
                     case "Exit":
                         System.out.println("Exit");
@@ -98,6 +95,8 @@ public class ClientHandler implements Runnable{
                     throw new RuntimeException(e);
                 }
             }
+        }catch(EOFException endFile){
+            System.out.println(endFile.getMessage());
         }
         catch(Exception e){
             e.printStackTrace();
