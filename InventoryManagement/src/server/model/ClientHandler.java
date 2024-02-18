@@ -72,6 +72,14 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cPSuccess);
                         objectOutputStream.flush();
                         break;
+                    case "changeRole":
+                        String currentUsernameCR = oIS.readUTF();
+                        String newRole = oIS.readUTF();
+                        boolean cRSuccess = XMLProcessing.changeUserRole(currentUsernameCR,newRole);
+                        objectOutputStream.writeObject(cRSuccess);
+                        objectOutputStream.flush();
+                        break;
+
                     case "fetchListOfUsers":
                         ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);

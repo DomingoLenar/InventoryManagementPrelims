@@ -417,6 +417,42 @@ public class XMLProcessing {
         }
     }
 
+    public static  boolean changeUserRole (String userName, String newRole) {
+        try {
+
+            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
+            Element root = document.getDocumentElement();
+            NodeList userList = root.getElementsByTagName("user");
+
+            for (int i = 0; i < userList.getLength(); i++) {
+
+                Element userElement = (Element) userList.item(i);
+                String name = userElement.getElementsByTagName("username").item(0).getTextContent();
+
+                if (name.equals(userName)) {
+
+                    Element roleElement = (Element) userElement.getElementsByTagName("role").item(0);
+                    String role = roleElement.getAttribute("role");
+
+                    if (!role.equals(newRole)) {
+                        roleElement.setAttribute("role", newRole);
+                        cleanXMLDocument(document);
+                        writeDOMToFile(document, "InventoryManagement/src/server/res/users.xml");
+                        return true;
+                    }
+
+                }
+            }
+
+            return false;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
     private static void cleanXMLDocument(Document doc)
             throws XPathExpressionException {
     /* SOURCE on the code to clean the xml document:
