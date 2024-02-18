@@ -3,6 +3,9 @@ package client.purchaser.controllers;
 import client.common.controllers.InventoryManagementController;
 import client.purchaser.views.PurchaserNavigationBarView;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class PurchaserNavigationBarController {
     InventoryManagementController inventoryManagementController;
     PurchaserNavigationBarView purchaserNavigationBarView;
@@ -15,6 +18,19 @@ public class PurchaserNavigationBarController {
     }
 
     private void initButtons() {
+        purchaserNavigationBarView.getDashboardButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.changeScreen(inventoryManagementController.getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel());
+            }
+        });
+
+        purchaserNavigationBarView.getProfileButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.changeScreen(inventoryManagementController.getUserSettingsController().getUserSettingsView().getMainPanel());
+            }
+        });
     }
 
     public PurchaserNavigationBarView getPurchaserNavigationBarView() {
