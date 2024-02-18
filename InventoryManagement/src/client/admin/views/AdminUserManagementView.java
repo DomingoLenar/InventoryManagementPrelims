@@ -1,12 +1,14 @@
 package client.admin.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 
 public class AdminUserManagementView {
 
     private JTextField usernameTextField;
     private JTextField passwordTextField;
-    private JComboBox comboBox1;
+    private JComboBox roleComboBox;
     private JLabel userManagement;
     private JPanel mainPanel;
     private JButton createUserButton;
@@ -21,9 +23,11 @@ public class AdminUserManagementView {
     public JTextField getPasswordTextField(){
         return passwordTextField;
     }
-    public JComboBox getComboBox1(){
-        return comboBox1;
+
+    public JComboBox getRoleComboBox() {
+        return roleComboBox;
     }
+
     public JLabel getUserManagement(){
         return userManagement;
     }
@@ -34,5 +38,8 @@ public class AdminUserManagementView {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        mainPanel = new GradientPanel();
+        String[] role = {"Purchase", "Sales"};
+        roleComboBox = new JComboBox(role);
     }
 }
