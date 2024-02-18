@@ -1,0 +1,79 @@
+<users>
+                        
+    
+    
+    
+    
+    <user active="true" role="admin">
+                                                
+        
+        
+        
+        
+        <username>testuser</username>
+                                                
+        
+        
+        
+        
+        <password>usertest</password>
+                                            
+    
+    
+    
+    
+    </user>
+                        
+    
+    
+    
+    
+    <user active="false" role="purchase">
+                                                
+        
+        
+        
+        
+        <username>testpurchase</username>
+                                                
+        
+        
+        
+        
+        <password>purchasetest</password>
+                                            
+    
+    
+    
+    
+    </user>
+                        
+    
+    
+    
+    
+    <user active="false" role="sales">
+                                                
+        
+        
+        
+        
+        <username>testsales</username>
+                                                
+        
+        
+        
+        
+        <password>salestest</password>
+                                            
+    
+    
+    
+    
+    </user>
+                    
+
+
+
+
+</users>
