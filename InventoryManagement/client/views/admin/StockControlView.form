@@ -59,7 +59,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="9b27d" binding="salesScrollPane">
+          <scrollpane id="9b27d" binding="stocksScrollPane">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -72,7 +72,7 @@
               <title-color color="-2104859"/>
             </border>
             <children>
-              <component id="fb748" class="javax.swing.JTable" binding="salesTable">
+              <component id="fb748" class="javax.swing.JTable" binding="stocksTable">
                 <constraints/>
                 <properties>
                   <autoCreateRowSorter value="false"/>

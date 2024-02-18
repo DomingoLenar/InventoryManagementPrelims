@@ -1,25 +1,29 @@
 package client.views.admin;
 
-import javax.sound.sampled.Line;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.awt.geom.RoundRectangle2D;
 
 public class StockControlView extends JFrame{
     private JPanel mainPanel;
     private JTextField searchField;
     private JPanel topPanel;
-    private JTable salesTable;
+    private JTable stocksTable;
     private JPanel centerPanel;
     private JButton addItemButton;
     private JButton salesInvoiceButton;
     private JPanel bottomPanel;
-    private JScrollPane salesScrollPane;
+    private JScrollPane stocksScrollPane;
     private JPanel searchPanel;
     private SalesInvoiceListener salesInvoiceListener;
     private AddItemListener addItemListener;
@@ -39,14 +43,16 @@ public class StockControlView extends JFrame{
         setSize(700, 500);
         setLocationRelativeTo(null);
         setVisible(true);
+
 //For testing
-//        Object rowData [][] = {{"Row1-Column1", "Row1-Column2", "Row1-Column3"}};
-//        Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+//        Object rowData [][] = {{"00", "Macbook Pro", "Laptop", "120"}
+//                ,{"01", "Mechanical Keyboard", "Accessories", "250"}};
+//        Object columnNames[] = {"Product ID", "Product Name", "Category", "Available"};
 //        DefaultTableModel tableModel = new DefaultTableModel(rowData, columnNames);
-//        salesTable.setModel(tableModel);
+//        stocksTable.setModel(tableModel);
 
 
-        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
+        stocksScrollPane.setBorder(BorderFactory.createCompoundBorder(
                 new StockControlView.RoundedCornerBorder(30),
                 new LineBorder(Color.lightGray, 2)
 
@@ -67,10 +73,6 @@ public class StockControlView extends JFrame{
                 addItemListener.onAddItemRequested();
             }
         });
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(StockControlView::new);
     }
 
     private static class RoundedCornerBorder implements Border {
@@ -106,4 +108,9 @@ public class StockControlView extends JFrame{
             return false;
         }
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(client.views.admin.StockControlView::new);
+    }
+
 }
