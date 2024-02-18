@@ -1,4 +1,4 @@
-package SalesInvoice;
+package client.views_geo_rabang.sales.SalesInvoice;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -1,8 +1,8 @@
-package client.views_geo_rabang.SalesInvoice;
+package client.admin.views;
 
 import javax.swing.*;
 
-public class CreateSalesInvoice {
+public class AdminCreateSalesInvoiceView {
     private JLabel salesInvoice;
     private JTextField prdct;
     private JTextField qty;
@@ -13,15 +13,21 @@ public class CreateSalesInvoice {
     private JLabel price;
     private JLabel estimatedTotal;
     private JButton cancelButton;
-    private JButton createButton;
+    private JButton createSalesInvoiceButton;
+    private JPanel mainPanel;
+
+    public JButton getCreateSalesInvoiceButton() {
+        return createSalesInvoiceButton;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 
     public JButton getCancelButton() {
         return cancelButton;
     }
 
-    public JButton getCreateButton() {
-        return createButton;
-    }
 
     public JLabel getEstimatedTotal() {
         return estimatedTotal;

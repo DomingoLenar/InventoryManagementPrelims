@@ -1,4 +1,4 @@
-package client.views_geo_rabang.salesperson;
+package client.sales.views;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -18,7 +18,11 @@ public class SalesStockControlView extends JFrame{
     private JButton salesInvoiceButton;
     private JPanel mainPanel;
 
-    private client.views_geo_rabang.salesperson.SalesStockControlView.SalesInvoiceListener salesInvoiceListener;
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    private SalesStockControlView.SalesInvoiceListener salesInvoiceListener;
 
     public interface SalesInvoiceListener {
         void onSalesInvoiceRequested();
@@ -28,36 +32,44 @@ public class SalesStockControlView extends JFrame{
         void onAddItemRequested();
     }
 
-    public SalesStockControlView() {
-        setContentPane(mainPanel);
-        setTitle("Stock Control");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(700, 500);
-        setLocationRelativeTo(null);
-        setVisible(true);
-//For testing
-//        Object rowData [][] = {{"Row1-Column1", "Row1-Column2", "Row1-Column3"}};
-//        Object columnNames[] = { "Column One", "Column Two", "Column Three" };
-//        DefaultTableModel tableModel = new DefaultTableModel(rowData, columnNames);
-//        salesTable.setModel(tableModel);
-
-
-        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
-                new client.views_geo_rabang.salesperson.SalesStockControlView.RoundedCornerBorder(30),
-                new LineBorder(Color.lightGray, 2)
-
-        ));
-
-        searchField.setBorder(BorderFactory.createCompoundBorder(
-                new client.views_geo_rabang.salesperson.SalesStockControlView.RoundedCornerBorder(20),
-                new EmptyBorder(5, 5, 5, 5)
-        ));
-        salesInvoiceButton.addActionListener(e -> {
-            if (salesInvoiceListener != null) {
-                salesInvoiceListener.onSalesInvoiceRequested();
-            }
-        });
+    public JTable getSalesTable() {
+        return salesTable;
     }
+
+    public JButton getSalesInvoiceButton() {
+        return salesInvoiceButton;
+    }
+
+//    public SalesStockControlView() {
+//        setContentPane(mainPanel);
+//        setTitle("Stock Control");
+//        setDefaultCloseOperation(EXIT_ON_CLOSE);
+//        setSize(700, 500);
+//        setLocationRelativeTo(null);
+//        setVisible(true);
+////For testing
+////        Object rowData [][] = {{"Row1-Column1", "Row1-Column2", "Row1-Column3"}};
+////        Object columnNames[] = { "Column One", "Column Two", "Column Three" };
+////        DefaultTableModel tableModel = new DefaultTableModel(rowData, columnNames);
+////        salesTable.setModel(tableModel);
+//
+//
+//        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
+//                new SalesStockControlView.RoundedCornerBorder(30),
+//                new LineBorder(Color.lightGray, 2)
+//
+//        ));
+//
+//        searchField.setBorder(BorderFactory.createCompoundBorder(
+//                new SalesStockControlView.RoundedCornerBorder(20),
+//                new EmptyBorder(5, 5, 5, 5)
+//        ));
+//        salesInvoiceButton.addActionListener(e -> {
+//            if (salesInvoiceListener != null) {
+//                salesInvoiceListener.onSalesInvoiceRequested();
+//            }
+//        });
+//    }
 
     public static void main(String[] args) {
 //        SwingUtilities.invokeLater(client.deprecated.views.admin.StockControlView::new);
