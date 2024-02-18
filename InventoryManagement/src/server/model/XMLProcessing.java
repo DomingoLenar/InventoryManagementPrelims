@@ -265,7 +265,7 @@ public class XMLProcessing {
             item.setTextContent(String.valueOf(itemOrder.getItemId()));
 
             Element amount = document.createElement("amount");
-            amount.setTextContent(String.valueOf(""));  //Refactor ItemOrder first to take into account amount
+            amount.setTextContent(String.valueOf(itemOrder.getAmount()));  //Refactor ItemOrder first to take into account amount
 
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemOrder.getPurPrice()));
@@ -285,11 +285,32 @@ public class XMLProcessing {
             cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
 
-
+            updateItemStock(String.valueOf(itemOrder.getId()),itemOrder.getAmount());
         }catch(Exception e){
 
         }
         return status;
+    }
+
+    private static synchronized void updateItemStock(String id, int amount){
+        try{
+            Document document = getXMLDocument("InventoryManagement/src/utility/Item.java");
+
+            Element rootElement = document.getDocumentElement();
+            NodeList itemList = rootElement.getElementsByTagName("item");
+            for(int x = 0; x < itemList.getLength(); x++){
+                Element currElement = (Element) itemList.item(x);
+                if(currElement.getElementsByTagName("id").item(0).getTextContent().equals(id)){
+                    int currAmount = Integer.parseInt(currElement.getElementsByTagName("amount").item(0).getTextContent());
+                    currElement.getElementsByTagName("amount").item(0).setTextContent(String.valueOf(currAmount+amount));
+                    break;
+                }
+            }
+            cleanXMLElement(rootElement);
+            writeDOMToFile(rootElement,"InventoryManagement/src/utility/Item.java");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
@@ -308,11 +329,12 @@ public class XMLProcessing {
                 String orderType = currentElement.getAttribute("orderType");
                 int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
                 String byUser = currentElement.getAttribute("byUser");
+                int amount = Integer.parseInt(currentElement.getElementsByTagName("amount").item(0).getTextContent());
                 if(dateFilter.equals("none")){
-                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
+                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,amount,byUser));
                 }else{
                     if(date.equals(dateFilter)){
-                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
+                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,amount,byUser));
                     }
                 }
 
