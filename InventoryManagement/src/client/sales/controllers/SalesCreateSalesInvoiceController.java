@@ -5,12 +5,13 @@ import client.sales.views.SalesCreateSalesInvoiceView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 
 public class SalesCreateSalesInvoiceController {
     SalesCreateSalesInvoiceView salesCreateSalesInvoiceView;
     InventoryManagementController inventoryManagementController;
 
-    public SalesCreateSalesInvoiceController(InventoryManagementController inventoryManagementController) {
+    public SalesCreateSalesInvoiceController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
         this.inventoryManagementController = inventoryManagementController;
         salesCreateSalesInvoiceView = new SalesCreateSalesInvoiceView();
         initButtons();

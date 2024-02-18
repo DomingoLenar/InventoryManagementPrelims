@@ -77,33 +77,33 @@ public class InventoryManagementController { // big controller
         indexController = new IndexController(this);
         signUpController = new SignUpController(this, clientSocket);
         loginController = new LoginController(this, clientSocket);
-        userSettingsController = new UserSettingsController(this);
+        userSettingsController = new UserSettingsController(this, clientSocket);
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
         financesController = new FinancesController(this);
     }
 
     private void purchaserControllers() {
-        purchaserDashboardController = new PurchaserDashboardController(this);
+        purchaserDashboardController = new PurchaserDashboardController(this, clientSocket);
         purchaserNavigationBarController = new PurchaserNavigationBarController(this);
     }
 
     private void salesControllers() {
-        salesDashboardController = new SalesDashboardController(this);
+        salesDashboardController = new SalesDashboardController(this, clientSocket);
         salesNavigationBarController = new SalesNavigationBarController(this);
-        salesFinancesController = new SalesFinancesController(this);
-        salesStockControlController = new SalesStockControlController(this);
-        salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this);
+        salesFinancesController = new SalesFinancesController(this, clientSocket);
+        salesStockControlController = new SalesStockControlController(this, clientSocket);
+        salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this, clientSocket);
     }
 
     private void adminControllers() {
-        adminDashboardController = new AdminDashboardController(this);
+        adminDashboardController = new AdminDashboardController(this, clientSocket);
         adminNavigationBarController = new AdminNavigationBarController(this);
-        adminFinancesController = new AdminFinancesController(this);
-        adminStockControlController = new AdminStockControlController(this);
-        adminAddItemController = new AdminAddItemController(this);
-        adminCreateSalesInvoiceController = new AdminCreateSalesInvoiceController(this);
-        adminUserManagementController = new AdminUserManagementController(this);
+        adminFinancesController = new AdminFinancesController(this, clientSocket);
+        adminStockControlController = new AdminStockControlController(this, clientSocket);
+        adminAddItemController = new AdminAddItemController(this, clientSocket);
+        adminCreateSalesInvoiceController = new AdminCreateSalesInvoiceController(this, clientSocket);
+        adminUserManagementController = new AdminUserManagementController(this, clientSocket);
     }
 
     /**

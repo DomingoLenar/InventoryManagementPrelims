@@ -5,12 +5,13 @@ import client.common.controllers.InventoryManagementController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 
 public class AdminAddItemController {
     AdminAddItemView adminAddItemView;
 
     InventoryManagementController inventoryManagementController;
-    public AdminAddItemController(InventoryManagementController inventoryManagementController) {
+    public AdminAddItemController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
         this.inventoryManagementController = inventoryManagementController;
         adminAddItemView = new AdminAddItemView();
         initButtons();

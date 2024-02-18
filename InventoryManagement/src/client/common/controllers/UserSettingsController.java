@@ -4,12 +4,13 @@ import client.common.views.UserSettingsView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Socket;
 
 public class UserSettingsController {
     UserSettingsView userSettingsView;
     InventoryManagementController inventoryManagementController;
 
-    public UserSettingsController(InventoryManagementController inventoryManagementController) {
+    public UserSettingsController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
         this.inventoryManagementController = inventoryManagementController;
         userSettingsView = new UserSettingsView();
 
