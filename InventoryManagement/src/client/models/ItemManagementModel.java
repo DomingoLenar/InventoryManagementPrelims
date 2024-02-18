@@ -5,6 +5,7 @@ import utility.Item;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class ItemManagementModel {
 
@@ -85,5 +86,22 @@ public class ItemManagementModel {
         }
     }
 
+    public static ArrayList<Item> fetchListOfItems (ObjectOutputStream oOs, ObjectInputStream oIs){
+
+        try {
+
+            sendAction("fetchItems", oOs);
+
+            try  {
+                ArrayList<Item> listOfItems = (ArrayList<Item>) oIs.readObject();
+                System.out.println("List of items have been fetched.");
+                return listOfItems;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
