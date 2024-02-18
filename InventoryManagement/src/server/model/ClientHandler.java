@@ -38,8 +38,8 @@ public class ClientHandler implements Runnable{
                     case "createUser":
                         //Invoke method for user creation
                         User userToCreate = (User) oIS.readObject();
-                        User requestBy = (User) oIS.readObject();
-                        createUser(userToCreate, requestBy, objectOutputStream);
+//                        User requestBy = (User) oIS.readObject();
+                        createUser(userToCreate, objectOutputStream);
                         break;
                     case "additem":
                         //Invoke method for item addition
@@ -127,14 +127,13 @@ public class ClientHandler implements Runnable{
      * Method that handles the creation of user
      *
      * @param userObject        User object to be created in the server
-     * @param requestBy         User that performed the query
      * @param objectOutputStream               Object of ObjectOutputStream
      */
-    public synchronized void createUser(User userObject, User requestBy, ObjectOutputStream objectOutputStream){
+    public synchronized void createUser(User userObject, ObjectOutputStream objectOutputStream){
         try{
            //call XMLProcessing method to update the xml file
-            boolean succeed = XMLProcessing.createUser(userObject);
-            objectOutputStream.writeBoolean(succeed);
+            User user = XMLProcessing.createUser(userObject);
+            objectOutputStream.writeObject(user);
             objectOutputStream.flush();
         }catch(IOException ioException){
             throw new RuntimeException(ioException);
