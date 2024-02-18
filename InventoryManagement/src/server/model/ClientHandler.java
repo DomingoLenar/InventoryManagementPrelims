@@ -75,6 +75,12 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cPSuccess);
                         objectOutputStream.flush();
                         break;
+
+                    case "fetchListOfUsers":
+                        ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
+                        objectOutputStream.writeObject(listOfUsers);
+                        objectOutputStream.flush();
+
                     case "Exit":
                         System.out.println("Exit");
                         socket.close();
