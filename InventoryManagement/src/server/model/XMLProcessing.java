@@ -114,7 +114,7 @@ public class XMLProcessing {
      * @param userToCreate     Object of user to create
      * @return                 Returns a boolean value if success or not
      */
-    public static boolean createUser(User userToCreate){
+    public static User createUser(User userToCreate){
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
@@ -122,6 +122,7 @@ public class XMLProcessing {
 
             Element newUser = document.createElement("user");
             newUser.setAttribute("role",userToCreate.getRole());
+            newUser.setAttribute("active", "false");
 
             Element username = document.createElement("username");
             username.setTextContent(userToCreate.getUsername());
@@ -140,7 +141,10 @@ public class XMLProcessing {
         }catch(Exception e){
             throw new RuntimeException(e);
         }
-        return true;
+
+        User newUser = findUser(userToCreate.getUsername());
+        setActiveStatus(newUser, true);
+        return newUser;
     }
 
     /**
