@@ -33,25 +33,25 @@ public class AdminNavigationBarController {
         adminNavigationBarView.getStockControlButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                inventoryManagementController.changeScreen(inventoryManagementController.getAdminStockControlController().getAdminStockControlView().getMainPanel());
             }
         });
         adminNavigationBarView.getProfileButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                inventoryManagementController.changeScreen(inventoryManagementController.getUserSettingsController().getUserSettingsView().getMainPanel());
             }
         });
         adminNavigationBarView.getSalesInvoicesButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // TODO: create an appropriate panel
             }
         });
         adminNavigationBarView.getUserManagementButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                inventoryManagementController.changeScreen(inventoryManagementController.getAdminUserManagementController().getAdminUserManagementView().getMainPanel());
             }
         });
     }
