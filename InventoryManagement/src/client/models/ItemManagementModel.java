@@ -5,7 +5,6 @@ import utility.Item;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.Socket;
 
 public class ItemManagementModel {
 
@@ -15,7 +14,7 @@ public class ItemManagementModel {
      *
      * @param action The action to be sent.
      */
-    public void sendAction(String action, ObjectOutputStream oos) {
+    public static void sendAction(String action, ObjectOutputStream oos) {
         try {
             oos.writeUTF(action);
             oos.flush();
@@ -35,23 +34,26 @@ public class ItemManagementModel {
      * @param price The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public boolean addItems(String name, int qty, String type, int itemId, int price, Socket clientSocket) {
+    public static boolean addItems(String name, int qty, String type, int itemId, int price, ObjectOutputStream oOs, ObjectInputStream oIs) {
 
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+
             Item newItem = new Item(name, qty, type, itemId, price);
 
-            sendAction("addItem", oos);
+            sendAction("addItem", oOs);
 
-            oos.writeObject(newItem);
+            oOs.writeObject(newItem);
+            oOs.flush();
             System.out.println("Item: " + newItem.getName() + " addition has been sent to the server");
 
-            try (ObjectInputStream oIs = new ObjectInputStream(clientSocket.getInputStream())) {
+            try  {
                 boolean addItemSuccess = (boolean) oIs.readObject();
                 System.out.println("Server Response: " + addItemSuccess);
                 return addItemSuccess;
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Error adding item", e);
         }
     }
@@ -62,24 +64,26 @@ public class ItemManagementModel {
      * @param itemId The ID of the item to be removed.
      * @return True if the item is successfully removed; false otherwise.
      */
-    public boolean removeItem(int itemId, Socket clientSocket) {
+    public static boolean removeItem(int itemId, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            sendAction("removeItem", oos);
-            oos.writeInt(itemId);
-            oos.flush();
+            sendAction("removeItem", oOs);
+            oOs.writeInt(itemId);
+            oOs.flush();
 
             System.out.println("Item removal request has been sent to the server.");
 
-            try (ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream())) {
-                boolean removalSuccess = ois.readBoolean();
+            try  {
+                boolean removalSuccess = oIs.readBoolean();
                 System.out.println("Server response: " + removalSuccess);
                 return removalSuccess;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
         } catch (IOException e) {
             throw new RuntimeException("Error removing item", e);
         }
     }
+
 
 }

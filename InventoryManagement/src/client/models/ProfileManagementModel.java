@@ -1,8 +1,11 @@
 package client.models;
+
 import utility.User;
 
-import java.io.*;
-import java.net.Socket;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * Represents the model for handling user login and signup operations on the client side.
@@ -39,23 +42,21 @@ public class ProfileManagementModel {
      * @return True if login is successful, false otherwise.
      */
 
-    public static boolean handleLogin(String username, String password, Socket clientSocket) {
+    public static boolean handleLogin(String username, String password, ObjectOutputStream oOs, ObjectInputStream oIs) {
         // Create a new User object with provided credentials
         User currentUser = new User(username, password, null, false);
 
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            InputStream iS = clientSocket.getInputStream();
-            ObjectInputStream ios = new ObjectInputStream(iS);
 
-            sendAction("userVerification", oos);
+
+            sendAction("userVerification", oOs);
 
             // Send the User object to the server for login
-            oos.writeObject(currentUser);
+            oOs.writeObject(currentUser);
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             try {
-                boolean loginSuccess = ios.readBoolean();
+                boolean loginSuccess = oIs.readBoolean();
                 System.out.println("Authentication response: " + loginSuccess);
                 return loginSuccess;
             } finally {
@@ -79,26 +80,27 @@ public class ProfileManagementModel {
      */
 
     @Deprecated
-    public static boolean handleSignup(String username, String password, String role, Socket clientSocket) {
+    public static boolean handleSignup(String username, String password, String role,ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
             // Create a new User object with provided credentials
             User newUser = new User(username, password,role,false);
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            sendAction("createUser", oos);
+            sendAction("createUser", oOs);
 
             // Send the User object to the server for sign-up
-            oos.writeObject(newUser);
-            oos.flush();
+            oOs.writeObject(newUser);
+            oOs.flush();
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
 
             // Receive account creation response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
-                boolean createAccountSuccess = (boolean) ios.readObject();
+            try {
+                boolean createAccountSuccess = (boolean) oIs.readObject();
                 System.out.println("Account Creation Response: " + createAccountSuccess);
                 return createAccountSuccess;
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Error handling signup", e);
         }
     }
@@ -111,26 +113,45 @@ public class ProfileManagementModel {
      * @return True if the password change was successful, false otherwise.
      * @throws RuntimeException If an error occurs while changing the password.
      */
-    public boolean changePassword(String userName, String newPassword, Socket clientSocket) {
+    public static boolean changePassword(String userName, String newPassword, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            sendAction("changePassword", oos);
 
-            oos.writeUTF(userName);
-            oos.writeUTF(newPassword);
-            oos.flush();
+            sendAction("changePassword", oOs);
+
+            oOs.writeUTF(userName);
+            oOs.writeUTF(newPassword);
+            oOs.flush();
 
             System.out.println("Password change request has been sent to the server...");
 
-            try (ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream())) {
-                boolean changeSuccess = ois.readBoolean();
+            try {
+                boolean changeSuccess = oIs.readBoolean();
                 System.out.println("Server response: " + changeSuccess);
                 return changeSuccess;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         } catch (IOException e) {
             throw new RuntimeException("Error changing password", e);
         }
     }
 
+    public static ArrayList<User> fetchListOfUsers (ObjectOutputStream oOs, ObjectInputStream oIs){
+
+        try {
+
+            sendAction("fetchListOfUsers", oOs);
+
+            try  {
+                ArrayList<User> listOfUsers = (ArrayList<User>) oIs.readObject();
+                System.out.println("List of users have been fetched.");
+                return listOfUsers;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

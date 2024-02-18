@@ -80,7 +80,7 @@ public class ClientHandler implements Runnable{
                         ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
                         objectOutputStream.flush();
-
+                        break;
                     case "Exit":
                         System.out.println("Exit");
                         socket.close();
