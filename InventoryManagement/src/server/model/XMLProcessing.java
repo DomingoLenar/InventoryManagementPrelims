@@ -40,7 +40,7 @@ public class XMLProcessing {
 
             NodeList nodeList = rootElement.getElementsByTagName("user");
             for(int x = 0; x<nodeList.getLength(); x++){
-                Element curUser = (Element) nodeList.item(0);
+                Element curUser = (Element) nodeList.item(x);
                 if(curUser.getElementsByTagName("username").item(0).getTextContent().equals(user.getUsername())){
                     curUser.removeAttribute("active");
                     curUser.setAttribute("active",String.valueOf(activeStatus));
@@ -90,7 +90,7 @@ public class XMLProcessing {
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
             Element rootElement = document.getDocumentElement();
-            NodeList users = rootElement.getElementsByTagName("users");
+            NodeList users = rootElement.getElementsByTagName("user");
             for (int i = 0; i < users.getLength(); i++){
                 Element currentElement = (Element) users.item(i);
 
