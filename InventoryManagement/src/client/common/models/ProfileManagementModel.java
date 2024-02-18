@@ -58,41 +58,17 @@ public class ProfileManagementModel {
                 User user = (User) ios.readObject();
                 if (user != null) {
                     System.out.println("Authentication response: success");
-                    return user.getRole();
+                    return user.getRole().toLowerCase();
                 } else {
                     System.out.println("Authentication response: failed");
                     return null;
                 }
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
-            } finally {
-
             }
-
         } catch (IOException e){
             e.printStackTrace();
         }
-        // Check if the socket is open and connected
-//            if (socket == null || socket.isClosed() || !socket.isConnected()) {
-//                throw new IOException("Socket is not open or connected");
-//            }
-
-//            ObjectOutputStream oos = new ObjectOutputStream(outputStream);
-//            ObjectInputStream ois = new ObjectInputStream(inputStream);
-
-
-//            try (ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
-//                // Send the action for user authentication
-//
-//                oos.writeObject(currentUser);
-//                System.out.println(currentUser.getUsername() + " sent to the server for login");
-//
-//                // Receive authentication response from the server
-
-//            }
-//            boolean loginSuccess = (boolean) ois.readObject();
-//            System.out.println("Authentication response: " + loginSuccess);
-//            return loginSuccess;
         return null;
     }
 
@@ -104,30 +80,36 @@ public class ProfileManagementModel {
      * @param role The user's role
      * @return True if account creation is successful, false otherwise.
      */
-
-    @Deprecated
-    public static boolean handleSignup(String username, String password, String role, Socket clientSocket) {
-        try {
-            // Create a new User object with provided credentials
-            User newUser = new User(username, password,role,false);
+    public static String handleSignup(String username, String password, String role, Socket clientSocket) {
+        // Create a new User object with provided credentials
+        User newUser = new User(username, password,role,false);
+        try{
             ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            InputStream iS = clientSocket.getInputStream();
+            ObjectInputStream ios = new ObjectInputStream(iS);
 
             sendAction("createUser", oos);
 
-            // Send the User object to the server for sign-up
+            // Send the User object to the server for login
             oos.writeObject(newUser);
-            oos.flush();
-            System.out.println(newUser.getUsername() + " sent to the server for sign-up");
+            System.out.println(newUser.getUsername() + " sent to the server for login");
 
-            // Receive account creation response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
-                boolean createAccountSuccess = (boolean) ios.readObject();
-                System.out.println("Account Creation Response: " + createAccountSuccess);
-                return createAccountSuccess;
+            try {
+                User user = (User) ios.readObject();
+                if (user != null) {
+                    System.out.println("Authentication response: success");
+                    return user.getRole().toLowerCase();
+                } else {
+                    System.out.println("Authentication response: failed");
+                    return null;
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Error handling signup", e);
+        } catch (IOException e){
+            e.printStackTrace();
         }
+        return null;
     }
 
     /**
