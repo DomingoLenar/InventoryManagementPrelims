@@ -1,4 +1,4 @@
-package client.views.sales;
+package client.admin.views;
 
 import org.knowm.xchart.*;
 
@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
-public class FinancesView {
+public class AdminFinancesView {
     private JPanel topPanel;
     private JPanel searchPanel;
     private JTextField searchField;
@@ -27,7 +27,11 @@ public class FinancesView {
     private JLabel aSAmount;
     private JLabel gSAmount;
 
-    public FinancesView() {
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public AdminFinancesView() {
 
         // Labels
         grossProfitsLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
@@ -115,7 +119,7 @@ public class FinancesView {
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
     }
     public static void main(String[] args) {
-        FinancesView financesView = new FinancesView();
+        AdminFinancesView financesView = new AdminFinancesView();
 
         JFrame frame = new JFrame("Finances");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

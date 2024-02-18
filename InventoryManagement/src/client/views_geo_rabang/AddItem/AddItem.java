@@ -1,4 +1,4 @@
-package AddItem;
+package client.views_geo_rabang.AddItem;
 
 import javax.swing.*;
 

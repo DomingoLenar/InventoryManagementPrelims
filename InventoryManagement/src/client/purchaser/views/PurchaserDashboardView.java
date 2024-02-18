@@ -1,4 +1,4 @@
-package client.views.purchaser;
+package client.purchaser.views;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.PieChart;
@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 
-public class DashboardView {
+public class PurchaserDashboardView {
     private JPanel mainPanel;
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -24,7 +24,11 @@ public class DashboardView {
     private JPanel lowStockItemsPanel;
     private JLabel lowStockItemsLabel;
 
-    public DashboardView() {
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public PurchaserDashboardView() {
 
         // Low Stock Items
         lowStockItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
@@ -128,7 +132,7 @@ public class DashboardView {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            DashboardView dashboardView = new DashboardView();
+            PurchaserDashboardView dashboardView = new PurchaserDashboardView();
 
             JFrame frame = new JFrame("Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

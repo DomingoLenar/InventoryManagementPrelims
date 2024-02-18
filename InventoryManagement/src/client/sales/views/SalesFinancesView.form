@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.views.admin.FinancesView">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.sales.views.SalesFinancesView">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="798" height="400"/>
+      <xy x="20" y="20" width="776" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="740c7" binding="topPanel" layout-manager="GridBagLayout">
+      <grid id="db94a" binding="topPanel" layout-manager="GridBagLayout">
         <constraints border-constraint="North"/>
         <properties>
           <background color="-1060399"/>
@@ -15,7 +15,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="97584" binding="searchPanel" layout-manager="GridBagLayout">
+          <grid id="a04ff" binding="searchPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="1.0" weighty="1.0"/>
@@ -26,7 +26,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="c0380" class="javax.swing.JTextField" binding="searchField">
+              <component id="c6d7f" class="javax.swing.JTextField" binding="searchField">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -43,7 +43,7 @@
           </grid>
         </children>
       </grid>
-      <grid id="cf89a" binding="bottomPanel" layout-manager="GridBagLayout">
+      <grid id="6f861" binding="bottomPanel" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-481883"/>
@@ -51,7 +51,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="8003" binding="grossSalesPanel" layout-manager="GridBagLayout">
+          <grid id="2062d" binding="grossSalesPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -61,7 +61,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="d2997" class="javax.swing.JLabel" binding="grossSalesLabel">
+              <component id="7cf3a" class="javax.swing.JLabel" binding="grossSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -73,7 +73,7 @@
                   <verticalAlignment value="0"/>
                 </properties>
               </component>
-              <component id="883dd" class="javax.swing.JLabel" binding="gSAmount">
+              <component id="63d17" class="javax.swing.JLabel" binding="gSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -87,7 +87,7 @@
               </component>
             </children>
           </grid>
-          <grid id="a5297" binding="averageSalesPanel" layout-manager="GridBagLayout">
+          <grid id="157a1" binding="averageSalesPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -97,7 +97,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="71da1" class="javax.swing.JLabel" binding="averageSalesLabel">
+              <component id="afc83" class="javax.swing.JLabel" binding="averageSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -107,7 +107,7 @@
                   <text value="Average Sales"/>
                 </properties>
               </component>
-              <component id="f2398" class="javax.swing.JLabel" binding="aSAmount">
+              <component id="d51e" class="javax.swing.JLabel" binding="aSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -121,7 +121,7 @@
               </component>
             </children>
           </grid>
-          <grid id="ef961" binding="revenueVsCostPanel" layout-manager="GridBagLayout">
+          <grid id="856b1" binding="revenueVsCostPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -131,7 +131,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="e7d73" class="javax.swing.JLabel">
+              <component id="70dad" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -143,7 +143,7 @@
               </component>
             </children>
           </grid>
-          <grid id="194d3" binding="newSalesPanel" layout-manager="GridBagLayout">
+          <grid id="48c49" binding="newSalesPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -153,7 +153,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="4873f" class="javax.swing.JLabel" binding="newSalesLabel">
+              <component id="bea17" class="javax.swing.JLabel" binding="newSalesLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -163,7 +163,7 @@
                   <text value="New Sales"/>
                 </properties>
               </component>
-              <component id="467dc" class="javax.swing.JLabel" binding="nSAmount">
+              <component id="eebef" class="javax.swing.JLabel" binding="nSAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -177,7 +177,7 @@
               </component>
             </children>
           </grid>
-          <grid id="5817" binding="stockControlPanel" layout-manager="GridBagLayout">
+          <grid id="2f09d" binding="stockControlPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -187,7 +187,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="ebae0" class="javax.swing.JLabel">
+              <component id="13e7a" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -199,7 +199,7 @@
               </component>
             </children>
           </grid>
-          <grid id="31e7e" binding="grossProfitsPanel" layout-manager="GridBagLayout">
+          <grid id="e9baf" binding="grossProfitsPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -209,7 +209,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="fd077" class="javax.swing.JLabel" binding="grossProfitsLabel">
+              <component id="f6850" class="javax.swing.JLabel" binding="grossProfitsLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -219,7 +219,7 @@
                   <text value="Gross Profits"/>
                 </properties>
               </component>
-              <component id="c0e0b" class="javax.swing.JLabel" binding="gPAmount">
+              <component id="4cf49" class="javax.swing.JLabel" binding="gPAmount">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>

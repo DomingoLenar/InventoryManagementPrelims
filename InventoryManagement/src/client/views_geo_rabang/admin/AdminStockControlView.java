@@ -1,16 +1,13 @@
-package client.views.admin;
+package client.views_geo_rabang.admin;
 
-import javax.sound.sampled.Line;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class StockControlView extends JFrame{
+public class AdminStockControlView extends JFrame{
     private JPanel mainPanel;
     private JTextField searchField;
     private JPanel topPanel;
@@ -32,7 +29,7 @@ public class StockControlView extends JFrame{
         void onAddItemRequested();
     }
 
-    public StockControlView() {
+    public AdminStockControlView() {
         setContentPane(mainPanel);
         setTitle("Stock Control");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -46,16 +43,16 @@ public class StockControlView extends JFrame{
 //        salesTable.setModel(tableModel);
 
 
-        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
-                new StockControlView.RoundedCornerBorder(30),
-                new LineBorder(Color.lightGray, 2)
-
-        ));
-
-        searchField.setBorder(BorderFactory.createCompoundBorder(
-                new StockControlView.RoundedCornerBorder(20),
-                new EmptyBorder(5, 5, 5, 5)
-        ));
+//        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
+//                new StockControlView.RoundedCornerBorder(30),
+//                new LineBorder(Color.lightGray, 2)
+//
+//        ));
+//
+//        searchField.setBorder(BorderFactory.createCompoundBorder(
+//                new StockControlView.RoundedCornerBorder(20),
+//                new EmptyBorder(5, 5, 5, 5)
+//        ));
 
         salesInvoiceButton.addActionListener(e -> {
             if (salesInvoiceListener != null) {
@@ -69,9 +66,9 @@ public class StockControlView extends JFrame{
         });
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(StockControlView::new);
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(StockControlView::new);
+//    }
 
     private static class RoundedCornerBorder implements Border {
         private final int arc;

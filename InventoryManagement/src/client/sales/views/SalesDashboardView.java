@@ -1,4 +1,4 @@
-package client.views.admin;
+package client.sales.views;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.PieChart;
@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.util.Arrays;
 
-public class DashboardView {
+public class SalesDashboardView {
     private JPanel mainPanel;
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -20,40 +20,40 @@ public class DashboardView {
     private JTextField searchField;
     private JList<String> activityList1;
     private JList<String> activityList2;
-    private JButton addUserButton;
-    private JPanel addUserPanel;
     private JPanel stockControlPanel;
     private JPanel revenueVsCostPanel;
-    private JPanel usersActivePanel;
-    private JLabel usersActiveLabel;
+    private JPanel recentlyAddedItemsPanel;
+    private JLabel recentlyAddedItemsLabel;
 
-    public DashboardView() {
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
 
-        // Users Active
-        usersActiveLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+    public SalesDashboardView() {
+
+        // Recently Added Items
+        recentlyAddedItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         // Change to Raw Data
-        listModel1.addElement("User 1");
-        listModel1.addElement("User 2");
-        listModel1.addElement("User 3");
-        listModel1.addElement("User 4");
-        listModel1.addElement("User 5");
+        listModel1.addElement("ID No.");
+        listModel1.addElement("ID No.");
+        listModel1.addElement("ID No.");
+        listModel1.addElement("ID No.");
+        listModel1.addElement("ID No.");
         activityList1.setModel(listModel1);
         activityList1.setEnabled(false);
         activityList1.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
         // Change to Raw Data
-        listModel2.addElement("Sales Person");
-        listModel2.addElement("Purchaser");
-        listModel2.addElement("Sales Person");
-        listModel2.addElement("Sales Person");
-        listModel2.addElement("Purchaser");
+        listModel2.addElement("Product 1");
+        listModel2.addElement("Product 1");
+        listModel2.addElement("Product 1");
+        listModel2.addElement("Product 1");
+        listModel2.addElement("Product 1");
         activityList2.setModel(listModel2);
         activityList2.setEnabled(false);
         activityList2.setFont(new Font("Fira Code", Font.PLAIN, 14));
-
-        addUserButton.setBorderPainted(false);
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
@@ -109,14 +109,14 @@ public class DashboardView {
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
         JLabel todayColorLabel = new JLabel("    ");
-        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
+        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel maxColorLabel = new JLabel("    ");
-        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
+        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel totalLabelComponent = new JLabel(totalLabel);
         totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
@@ -136,7 +136,7 @@ public class DashboardView {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            DashboardView dashboardView = new DashboardView();
+            SalesDashboardView dashboardView = new SalesDashboardView();
 
             JFrame frame = new JFrame("Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

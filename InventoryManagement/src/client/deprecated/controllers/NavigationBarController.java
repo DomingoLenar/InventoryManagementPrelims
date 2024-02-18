@@ -1,4 +1,4 @@
-package client.controllers;
+package client.deprecated.controllers;
 
 import client.common.controllers.InventoryManagementController;
 import client.sales.views.SalesNavigationBarView;

@@ -1,8 +1,8 @@
-package UserManagement;
+package client.views_geo_rabang.admin;
 
 import javax.swing.*;
 
-public class UserManagement {
+public class AdminUserManagement {
 
     private JTextField usernameTextField;
     private JTextField passwordTextField;

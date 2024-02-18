@@ -1,15 +1,13 @@
-package client.views.salesperson;
+package client.views_geo_rabang.salesperson;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 
-public class StockControlView extends JFrame{
+public class SalesStockControlView extends JFrame{
     private JPanel topPanel;
     private JPanel searchPanel;
     private JTextField searchField;
@@ -20,7 +18,7 @@ public class StockControlView extends JFrame{
     private JButton salesInvoiceButton;
     private JPanel mainPanel;
 
-    private client.views.salesperson.StockControlView.SalesInvoiceListener salesInvoiceListener;
+    private client.views_geo_rabang.salesperson.SalesStockControlView.SalesInvoiceListener salesInvoiceListener;
 
     public interface SalesInvoiceListener {
         void onSalesInvoiceRequested();
@@ -30,7 +28,7 @@ public class StockControlView extends JFrame{
         void onAddItemRequested();
     }
 
-    public StockControlView() {
+    public SalesStockControlView() {
         setContentPane(mainPanel);
         setTitle("Stock Control");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -45,13 +43,13 @@ public class StockControlView extends JFrame{
 
 
         salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
-                new client.views.salesperson.StockControlView.RoundedCornerBorder(30),
+                new client.views_geo_rabang.salesperson.SalesStockControlView.RoundedCornerBorder(30),
                 new LineBorder(Color.lightGray, 2)
 
         ));
 
         searchField.setBorder(BorderFactory.createCompoundBorder(
-                new client.views.salesperson.StockControlView.RoundedCornerBorder(20),
+                new client.views_geo_rabang.salesperson.SalesStockControlView.RoundedCornerBorder(20),
                 new EmptyBorder(5, 5, 5, 5)
         ));
         salesInvoiceButton.addActionListener(e -> {
@@ -62,7 +60,7 @@ public class StockControlView extends JFrame{
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(client.views.admin.StockControlView::new);
+//        SwingUtilities.invokeLater(client.deprecated.views.admin.StockControlView::new);
     }
 
     private static class RoundedCornerBorder implements Border {
