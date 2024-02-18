@@ -34,6 +34,7 @@
         <properties>
           <background color="-2500135"/>
           <borderPainted value="false"/>
+          <enabled value="false"/>
           <focusPainted value="false"/>
           <font name="JetBrains Mono Medium" size="16" style="0"/>
           <foreground color="-34953"/>
