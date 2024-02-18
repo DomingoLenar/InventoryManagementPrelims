@@ -285,7 +285,9 @@ public class XMLProcessing {
             cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
 
-            updateItemStock(String.valueOf(itemOrder.getId()),itemOrder.getAmount());
+            if(itemOrder.getStatus().equals("purchase")) {
+                updateItemStock(String.valueOf(itemOrder.getId()), itemOrder.getAmount());
+            }
         }catch(Exception e){
 
         }
