@@ -4,13 +4,15 @@ import utility.Item;
 import utility.ItemOrder;
 import utility.User;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class ClientHandler implements Runnable{
     Socket socket;
-    String operation;
 
     public ClientHandler(Socket clientSocket){
         socket = clientSocket;
@@ -21,13 +23,13 @@ public class ClientHandler implements Runnable{
      */
     @Override
     public void run() {
-        try{
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
-            OutputStream outputStream = socket.getOutputStream();
-            while(true) {
-                switch (bufferedReader.readLine()) {
+        try(
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
+                ){
+            String request;
+            while((request = oIS.readUTF())!=null) {
+                switch (request) {
                     case "userVerification":
                         //Invoke method for user verification
                         User submittedUser = (User) oIS.readObject();
@@ -55,7 +57,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "fetchItemOrders":
-                        String date = bufferedReader.readLine();
+                        String date = oIS.readUTF();
                         ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders(date);
                         objectOutputStream.writeObject(itemOrderList);
                         objectOutputStream.flush();
@@ -73,7 +75,14 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cPSuccess);
                         objectOutputStream.flush();
                         break;
+
+                    case "fetchListOfUsers":
+                        ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
+                        objectOutputStream.writeObject(listOfUsers);
+                        objectOutputStream.flush();
+
                     case "Exit":
+                        System.out.println("Exit");
                         socket.close();
                         break;
                     default:
@@ -81,9 +90,23 @@ public class ClientHandler implements Runnable{
                 }
 
             }
-
-        }catch(Exception e){
+        }catch(StreamCorruptedException sCE){
+            if(sCE.getMessage().equals("invalid type code: 45")){
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        catch(Exception e){
             e.printStackTrace();
+        }finally{
+            try{
+                socket.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -107,7 +130,7 @@ public class ClientHandler implements Runnable{
      * @param requestBy         User that performed the query
      * @param objectOutputStream               Object of ObjectOutputStream
      */
-    public void createUser(User userObject, User requestBy, ObjectOutputStream objectOutputStream){
+    public synchronized void createUser(User userObject, User requestBy, ObjectOutputStream objectOutputStream){
         try{
            //call XMLProcessing method to update the xml file
             boolean succeed = XMLProcessing.createUser(userObject);
@@ -125,7 +148,7 @@ public class ClientHandler implements Runnable{
      * @param objectOutputStream  The output stream for sending responses.
      * @throws IOException  If an I/O error occurs.
      */
-    private void itemAddition(Item itemObject, ObjectOutputStream objectOutputStream) throws IOException {
+    private synchronized void itemAddition(Item itemObject, ObjectOutputStream objectOutputStream) throws IOException {
         try {
 
             boolean success = XMLProcessing.addItem(itemObject);
@@ -144,7 +167,7 @@ public class ClientHandler implements Runnable{
      * @param objectOutputStream  The output stream for sending responses.
      * @throws IOException  If an I/O error occurs.
      */
-    private void itemRemoval(int id, ObjectOutputStream objectOutputStream) throws IOException {
+    private synchronized void itemRemoval(int id, ObjectOutputStream objectOutputStream) throws IOException {
         try {
 
             boolean success = XMLProcessing.removeItem(id);

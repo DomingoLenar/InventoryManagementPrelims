@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ .idea (project configuration)">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Fixed bug caused by two objects that is created using one input stream">
+      <change beforePath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +42,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop-branch" />
+        <entry key="$PROJECT_DIR$" value="server-lestat" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,7 +65,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2bYo2jmLwR2vu5TgQSCBRjXKPlc" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -73,25 +77,33 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main (1).executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.TerminalController (1).executor": "Run",
+    "Application.TerminalController.executor": "Run",
+    "Attach to process.pid 16460.executor": "ProcessAttachDebug",
     "Downloaded.Files.Path": "C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib",
     "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.Test.executor": "Run",
+    "JUnit.Test.testClientServerConnection.executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature__lou",
+    "git-widget-placeholder": "utilities__marven",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "kotlin-language-version-configured": "true",
     "last_directory_selection": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client",
-    "last_opened_file_path": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement",
+    "last_opened_file_path": "C:/Users/mlest/IdeaProjects/2024-2_9329-preteam1/InventoryManagement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "settings.sync",
@@ -110,13 +122,13 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.client.sales.FinancesView">
-    <configuration name="FinancesView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.admin.FinancesView" />
-      <module name="2024-2_9329-preteam1" />
+  <component name="RunManager" selected="Application.XMLProcessing">
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.Server" />
+      <module name="Server" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.admin.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -124,12 +136,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client.admin.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.admin.DashboardView" />
-      <module name="2024-2_9329-preteam1" />
+    <configuration name="TerminalController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="server.controller.TerminalController" />
+      <module name="InventoryManagement1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.admin.*" />
+          <option name="PATTERN" value="server.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -137,12 +151,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client.purchaser.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.purchaser.DashboardView" />
-      <module name="2024-2_9329-preteam1" />
+    <configuration name="XMLProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.model.XMLProcessing" />
+      <module name="InventoryManagement" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.purchaser.*" />
+          <option name="PATTERN" value="server.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,48 +164,48 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client.sales.DashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.sales.DashboardView" />
+    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2024-2_9329-preteam1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.sales.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="client.sales.FinancesView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.sales.FinancesView" />
+    <configuration name="Test.testClientServerConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2024-2_9329-preteam1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.sales.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <option name="METHOD_NAME" value="testClientServerConnection" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.client.sales.DashboardView" />
-      <item itemvalue="Application.client.sales.FinancesView" />
-      <item itemvalue="Application.FinancesView" />
-      <item itemvalue="Application.client.admin.DashboardView" />
-      <item itemvalue="Application.client.purchaser.DashboardView" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.XMLProcessing" />
+      <item itemvalue="Application.TerminalController" />
+      <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.Test.testClientServerConnection" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.client.sales.FinancesView" />
-        <item itemvalue="Application.client.purchaser.DashboardView" />
-        <item itemvalue="Application.FinancesView" />
-        <item itemvalue="Application.client.admin.DashboardView" />
-        <item itemvalue="Application.client.sales.DashboardView" />
+        <item itemvalue="Application.XMLProcessing" />
+        <item itemvalue="Application.TerminalController" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="JUnit.Test.testClientServerConnection" />
+        <item itemvalue="JUnit.Test" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-19.0.2-corretto-19.0.2-4caba194b151-48ba4555" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -552,7 +566,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708015302550</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="+ XMLDocument and Element cleaner, with implementation">
+      <option name="closed" value="true" />
+      <created>1708185242061</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1708185242061</updated>
+    </task>
+    <task id="LOCAL-00042" summary="+ Fixed bug caused by two objects that is created using one input stream">
+      <option name="closed" value="true" />
+      <created>1708185328708</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1708185328708</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,19 +643,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="develop-branch" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -633,9 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ latest: SignUpView.java(&amp;.form)" />
-    <MESSAGE value="+ added: InventoryManagementController.java" />
-    <MESSAGE value="+ logical fix for some errors with server client communication" />
     <MESSAGE value="+ completed: client side mvc architecture" />
     <MESSAGE value="+ client-server testing case on Main.java" />
     <MESSAGE value="+ added: junit-jupiter library" />
@@ -658,10 +673,18 @@
     <MESSAGE value="+ jar files for graphical representation" />
     <MESSAGE value="+ moved unit tester class (i.e., Test.java) in root/Test" />
     <MESSAGE value="+ .idea (project configuration)" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ .idea (project configuration)" />
+    <MESSAGE value="+ dependencies" />
+    <MESSAGE value="+ XMLDocument and Element cleaner, with implementation" />
+    <MESSAGE value="+ Fixed bug caused by two objects that is created using one input stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Fixed bug caused by two objects that is created using one input stream" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/2024_2_9329_preteam1$TerminalController__1_.ic" NAME="TerminalController (1) Coverage Results" MODIFIED="1708182936621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

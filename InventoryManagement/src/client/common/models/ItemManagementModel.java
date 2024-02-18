@@ -8,28 +8,17 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class ItemManagementModel {
-    private final Socket socket;
-    private final ObjectOutputStream outputStream;
 
-    /**
-     * Constructs a new ItemManagementModel with the specified socket and output stream.
-     *
-     * @param socket        The socket connected to the server.
-     * @param outputStream  The output stream used for communication with the server.
-     */
-    public ItemManagementModel(Socket socket, ObjectOutputStream outputStream) {
-        this.socket = socket;
-        this.outputStream = outputStream;
-    }
 
     /**
      * Sends an action to the server.
      *
      * @param action The action to be sent.
      */
-    public void sendAction(String action) {
+    public void sendAction(String action, ObjectOutputStream oos) {
         try {
-            outputStream.writeObject(action);
+            oos.writeUTF(action);
+            oos.flush();
             System.out.println(action + " sent to server");
         } catch (IOException e) {
             throw new RuntimeException("Error sending action to server", e);
@@ -46,17 +35,19 @@ public class ItemManagementModel {
      * @param price The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public boolean addItems(String name, int qty, String type, int itemId, int price) {
+    public boolean addItems(String name, int qty, String type, int itemId, int price, Socket clientSocket) {
+
         try {
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
             Item newItem = new Item(name, qty, type, itemId, price);
 
-            sendAction("addItem");
+            sendAction("addItem", oos);
 
-            outputStream.writeObject(newItem);
+            oos.writeObject(newItem);
             System.out.println("Item: " + newItem.getName() + " addition has been sent to the server");
 
-            try (ObjectInputStream oos = new ObjectInputStream(socket.getInputStream())) {
-                boolean addItemSuccess = (boolean) oos.readObject();
+            try (ObjectInputStream oIs = new ObjectInputStream(clientSocket.getInputStream())) {
+                boolean addItemSuccess = (boolean) oIs.readObject();
                 System.out.println("Server Response: " + addItemSuccess);
                 return addItemSuccess;
             }
@@ -71,15 +62,16 @@ public class ItemManagementModel {
      * @param itemId The ID of the item to be removed.
      * @return True if the item is successfully removed; false otherwise.
      */
-    public boolean removeItem(int itemId) {
+    public boolean removeItem(int itemId, Socket clientSocket) {
         try {
-            sendAction("removeItem");
-            outputStream.writeInt(itemId);
-            outputStream.flush();
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            sendAction("removeItem", oos);
+            oos.writeInt(itemId);
+            oos.flush();
 
             System.out.println("Item removal request has been sent to the server.");
 
-            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream())) {
                 boolean removalSuccess = ois.readBoolean();
                 System.out.println("Server response: " + removalSuccess);
                 return removalSuccess;

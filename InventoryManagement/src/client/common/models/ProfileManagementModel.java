@@ -9,19 +9,7 @@ import java.net.Socket;
  */
 // TODO: Refactor the whole class and its method so that it is accessed statically
 public class ProfileManagementModel {
-    private  Socket socket;
-    private  OutputStream outputStream;
-    private  InputStream inputStream;
-    /**
-     * Constructs a new LoginModel with the specified sSocket and output stream.
-     *
-     * @param socket        The sSocket connected to the server.
-     */
-    public ProfileManagementModel(Socket socket) throws IOException {
-        this.socket = socket;
-        this.outputStream = socket.getOutputStream();
-        this.inputStream = socket.getInputStream();
-    }
+
 
     public ProfileManagementModel() {
 
@@ -32,10 +20,15 @@ public class ProfileManagementModel {
      *
      * @param action The action to be sent.
      */
-    public void sendAction(String action) throws IOException {
-        PrintWriter pWriter = new PrintWriter(outputStream, true);
-        pWriter.println(action);
-        System.out.println(action + " sent to server");
+
+    public static void sendAction(String action, ObjectOutputStream oos) throws IOException {
+        try {
+            oos.writeUTF(action);
+            oos.flush();
+            System.out.println(action + " sent to server");
+        } catch (IOException e) {
+            throw new RuntimeException("Error sending action to server", e);
+        }
     }
 
     /**
@@ -52,12 +45,10 @@ public class ProfileManagementModel {
 
         try {
             ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            PrintWriter pWriter = new PrintWriter(clientSocket.getOutputStream(), true);
             InputStream iS = clientSocket.getInputStream();
             ObjectInputStream ios = new ObjectInputStream(iS);
 
-            pWriter.println("userVerification");
-//                sendAction("userVerification");
+            sendAction("userVerification", oos);
 
             // Send the User object to the server for login
             oos.writeObject(currentUser);
@@ -113,18 +104,23 @@ public class ProfileManagementModel {
      * @param role The user's role
      * @return True if account creation is successful, false otherwise.
      */
-    public boolean handleSignup(String username, String password, String role) {
+
+    @Deprecated
+    public static boolean handleSignup(String username, String password, String role, Socket clientSocket) {
         try {
             // Create a new User object with provided credentials
             User newUser = new User(username, password,role,false);
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
 
-            sendAction("createUser");
+            sendAction("createUser", oos);
+
             // Send the User object to the server for sign-up
-//            oos.writeObject(newUser);
+            oos.writeObject(newUser);
+            oos.flush();
             System.out.println(newUser.getUsername() + " sent to the server for sign-up");
 
             // Receive account creation response from the server
-            try (ObjectInputStream ios = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ios = new ObjectInputStream(clientSocket.getInputStream())) {
                 boolean createAccountSuccess = (boolean) ios.readObject();
                 System.out.println("Account Creation Response: " + createAccountSuccess);
                 return createAccountSuccess;
@@ -142,16 +138,19 @@ public class ProfileManagementModel {
      * @return True if the password change was successful, false otherwise.
      * @throws RuntimeException If an error occurs while changing the password.
      */
-    public boolean changePassword(String userName, String newPassword) {
+    public boolean changePassword(String userName, String newPassword, Socket clientSocket) {
         try {
-            sendAction("changePassword");
-//            oos.writeUTF(userName); // Send the user's name
-//            oos.writeUTF(newPassword);
-//            oos.flush();
+            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
+
+            sendAction("changePassword", oos);
+
+            oos.writeUTF(userName);
+            oos.writeUTF(newPassword);
+            oos.flush();
 
             System.out.println("Password change request has been sent to the server...");
 
-            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream())) {
+            try (ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream())) {
                 boolean changeSuccess = ois.readBoolean();
                 System.out.println("Server response: " + changeSuccess);
                 return changeSuccess;
