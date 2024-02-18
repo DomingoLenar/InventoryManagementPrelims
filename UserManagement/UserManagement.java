@@ -8,6 +8,7 @@ public class UserManagement {
     private JTextField passwordTextField;
     private JComboBox comboBox1;
     private JLabel userManagement;
+    private JButton createButton;
 
     public JTextField getUsernameTextField(){
         return usernameTextField;
