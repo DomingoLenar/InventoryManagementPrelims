@@ -1,17 +1,13 @@
 package client.common.controllers;
 
-import client.admin.controllers.AdminDashboardController;
-import client.admin.controllers.AdminFinancesController;
-import client.admin.controllers.AdminNavigationBarController;
+import client.admin.controllers.*;
 import client.common.views.InventoryManagementInterface;
 import client.deprecated.controllers.DashboardController;
 import client.deprecated.controllers.FinancesController;
 import client.deprecated.controllers.NavigationBarController;
 import client.purchaser.controllers.PurchaserDashboardController;
 import client.purchaser.controllers.PurchaserNavigationBarController;
-import client.sales.controllers.SalesDashboardController;
-import client.sales.controllers.SalesFinancesController;
-import client.sales.controllers.SalesNavigationBarController;
+import client.sales.controllers.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,11 +32,18 @@ public class InventoryManagementController { // big controller
     AdminDashboardController adminDashboardController;
     AdminNavigationBarController adminNavigationBarController;
     AdminFinancesController adminFinancesController;
+    AdminStockControlController adminStockControlController;
+    AdminUserManagementController adminUserManagementController;
+    AdminAddItemController adminAddItemController;
+    AdminCreateSalesInvoiceController adminCreateSalesInvoiceController;
     SalesDashboardController salesDashboardController;
     SalesNavigationBarController salesNavigationBarController;
     SalesFinancesController salesFinancesController;
+    SalesStockControlController salesStockControlController;
+    SalesCreateSalesInvoiceController salesCreateSalesInvoiceController;
     PurchaserDashboardController purchaserDashboardController;
     PurchaserNavigationBarController purchaserNavigationBarController;
+    UserSettingsController userSettingsController;
     private Socket clientSocket;
     public InventoryManagementController() throws IOException {
         inventoryManagementInterface = new InventoryManagementInterface();
@@ -74,6 +77,7 @@ public class InventoryManagementController { // big controller
         indexController = new IndexController(this);
         signUpController = new SignUpController(this, clientSocket);
         loginController = new LoginController(this, clientSocket);
+        userSettingsController = new UserSettingsController(this);
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
         financesController = new FinancesController(this);
@@ -88,12 +92,18 @@ public class InventoryManagementController { // big controller
         salesDashboardController = new SalesDashboardController(this);
         salesNavigationBarController = new SalesNavigationBarController(this);
         salesFinancesController = new SalesFinancesController(this);
+        salesStockControlController = new SalesStockControlController(this);
+        salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this);
     }
 
     private void adminControllers() {
         adminDashboardController = new AdminDashboardController(this);
         adminNavigationBarController = new AdminNavigationBarController(this);
         adminFinancesController = new AdminFinancesController(this);
+        adminStockControlController = new AdminStockControlController(this);
+        adminAddItemController = new AdminAddItemController(this);
+        adminCreateSalesInvoiceController = new AdminCreateSalesInvoiceController(this);
+        adminUserManagementController = new AdminUserManagementController(this);
     }
 
     /**
@@ -187,6 +197,26 @@ public class InventoryManagementController { // big controller
         return purchaserDashboardController;
     }
 
+    public AdminStockControlController getAdminStockControlController() {
+        return adminStockControlController;
+    }
+
+    public AdminUserManagementController getAdminUserManagementController() {
+        return adminUserManagementController;
+    }
+
+    public AdminAddItemController getAdminAddItemController() {
+        return adminAddItemController;
+    }
+
+    public AdminCreateSalesInvoiceController getAdminCreateSalesInvoiceController() {
+        return adminCreateSalesInvoiceController;
+    }
+
+    public SalesStockControlController getSalesStockControlController() {
+        return salesStockControlController;
+    }
+
     public AdminNavigationBarController getAdminNavigationBarController() {
         return adminNavigationBarController;
     }
@@ -205,6 +235,14 @@ public class InventoryManagementController { // big controller
 
     public SalesFinancesController getSalesFinancesController() {
         return salesFinancesController;
+    }
+
+    public SalesCreateSalesInvoiceController getSalesCreateSalesInvoiceController() {
+        return salesCreateSalesInvoiceController;
+    }
+
+    public UserSettingsController getUserSettingsController() {
+        return userSettingsController;
     }
 
     public void displayAdminMainMenu() {
