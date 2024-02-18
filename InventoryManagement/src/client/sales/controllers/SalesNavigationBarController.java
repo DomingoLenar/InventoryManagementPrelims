@@ -33,13 +33,13 @@ public class SalesNavigationBarController {
         salesNavigationBarView.getStockControlButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: implement code
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockControlView().getMainPanel());
             }
         });
         salesNavigationBarView.getProfileButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                inventoryManagementController.changeScreen(inventoryManagementController.get);
+                inventoryManagementController.changeScreen(inventoryManagementController.getUserSettingsController().getUserSettingsView().getMainPanel());
             }
         });
     }
