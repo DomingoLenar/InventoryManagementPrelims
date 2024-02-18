@@ -77,7 +77,6 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(listOfUsers);
                         objectOutputStream.flush();
                         break;
-
                     case "Exit":
                         System.out.println("Exit");
                         socket.close();
