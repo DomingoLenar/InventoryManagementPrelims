@@ -107,10 +107,8 @@ public class ItemManagementModel {
         }
     }
 
-    public static ArrayList<Item> fetchListOfItems (ObjectOutputStream oOs, ObjectInputStream oIs){
-
+    public static ArrayList<Item> fetchItemsByUserType(String userType,ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
-
             sendAction("fetchItems", oOs);
 
             try  {
@@ -125,12 +123,10 @@ public class ItemManagementModel {
         }
     }
 
-    public static ArrayList<ItemOrder> fetchItemOrders (ObjectOutputStream oOs, ObjectInputStream oIs){
-
+    public static ArrayList<ItemOrder> fetchItemOrdersByUserType (String userType , ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
-
             sendAction("fetchItemOrders", oOs);
-            sendAction("none", oOs);
+            sendAction(userType, oOs);
             try  {
                 ArrayList<ItemOrder> listOfItems = (ArrayList<ItemOrder>) oIs.readObject();
                 System.out.println("List of items have been fetched.");

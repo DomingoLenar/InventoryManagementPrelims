@@ -294,7 +294,7 @@ public class XMLProcessing {
         return false;
     }
 
-    public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
+    public static synchronized ArrayList<ItemOrder> fetchItemOrders(String filterKey){
         ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
@@ -310,10 +310,10 @@ public class XMLProcessing {
                 String orderType = currentElement.getAttribute("orderType");
                 int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
                 String byUser = currentElement.getAttribute("byUser");
-                if(dateFilter.equals("none")){
+                if(filterKey.equals("none")){
                     itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                 }else{
-                    if(date.equals(dateFilter)){
+                    if(orderType.equalsIgnoreCase(filterKey)){
                         itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
                     }
                 }
@@ -326,7 +326,7 @@ public class XMLProcessing {
         return itemOrderList;
     }
 
-    public static synchronized ArrayList<Item> fetchItems(){
+    public static synchronized ArrayList<Item> fetchItems(){ // TODO: better approach is to have filterKey
         ArrayList<Item> itemList = new ArrayList<>();
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
@@ -341,6 +341,7 @@ public class XMLProcessing {
                 int id = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
                 int price = Integer.parseInt(currentItem.getElementsByTagName("price").item(0).getTextContent());
                 String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
+
                 itemList.add(new Item(name, amount, type,id,price));
             }
         }catch(Exception e){
@@ -364,7 +365,7 @@ public class XMLProcessing {
      * @param newPassword The new password to set for the user.
      * @return True if the password change was successful, false otherwise.
      */
-    public static boolean changePassword(String userName, String newPassword) {
+    public static boolean changePassword(String userName, String newPassword, String oldPassword) {
         try {
             // Load XML document
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
@@ -374,12 +375,12 @@ public class XMLProcessing {
             // Iterate through user list
             for (int i = 0; i < userList.getLength(); i++) {
                 Element userElement = (Element) userList.item(i);
-                String name = userElement.getElementsByTagName("name").item(0).getTextContent();
+                String name = userElement.getElementsByTagName("username").item(0).getTextContent();
                 if (name.equals(userName)) {
                     // Found the user, update password if old password matches
                     Element passwordElement = (Element) userElement.getElementsByTagName("password").item(0);
                     String password = passwordElement.getTextContent();
-                    if (password.equals(newPassword)) {
+                    if (password.equals(oldPassword)) {
                         passwordElement.setTextContent(newPassword);
                         // Write changes to XML file
                         cleanXMLDocument(document);

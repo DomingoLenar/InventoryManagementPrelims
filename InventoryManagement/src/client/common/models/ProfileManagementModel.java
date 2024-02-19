@@ -117,12 +117,13 @@ public class ProfileManagementModel {
      * @return True if the password change was successful, false otherwise.
      * @throws RuntimeException If an error occurs while changing the password.
      */
-    public static boolean changePassword(String userName, String newPassword, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static boolean changePassword(String userName, String newPassword, String oldPassword, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
             sendAction("changePassword", oOs);
 
             oOs.writeUTF(userName);
             oOs.writeUTF(newPassword);
+            oOs.writeUTF(oldPassword);
             oOs.flush();
 
             System.out.println("Password change request has been sent to the server...");

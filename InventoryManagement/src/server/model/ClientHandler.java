@@ -54,8 +54,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "fetchItemOrders":
-                        String date = oIS.readUTF();
-                        ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders(date);
+                        ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders(oIS.readUTF());
                         objectOutputStream.writeObject(itemOrderList);
                         objectOutputStream.flush();
                         break;
@@ -68,8 +67,9 @@ public class ClientHandler implements Runnable{
                     case "changePassword":
                         String currentUsername = oIS.readUTF();
                         String newPassword = oIS.readUTF();
-                        boolean cPSuccess = XMLProcessing.changePassword(currentUsername,newPassword);
-                        objectOutputStream.writeObject(cPSuccess);
+                        String oldPassword = oIS.readUTF();
+                        boolean cPSuccess = XMLProcessing.changePassword(currentUsername,newPassword, oldPassword);
+                        objectOutputStream.writeBoolean(cPSuccess);
                         objectOutputStream.flush();
                         break;
                     case "fetchListOfUsers":
