@@ -33,7 +33,7 @@ public class UserSettingsController {
         userSettingsView.getChangePasswordButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: userchangepasswordview
+                inventoryManagementController.changeScreen(inventoryManagementController.getChangePasswordController().getChangePasswordView().getMainPanel());
             }
         });
 

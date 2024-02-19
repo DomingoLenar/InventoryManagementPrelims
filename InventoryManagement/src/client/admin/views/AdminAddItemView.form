@@ -104,8 +104,9 @@
         </constraints>
         <properties>
           <background color="-1"/>
-          <borderPainted value="false"/>
+          <borderPainted value="true"/>
           <contentAreaFilled value="true"/>
+          <focusPainted value="false"/>
           <focusable value="false"/>
           <foreground color="-16777216"/>
           <text value="Add Item"/>
@@ -130,8 +131,9 @@
         </constraints>
         <properties>
           <background color="-1380097"/>
-          <borderPainted value="false"/>
+          <borderPainted value="true"/>
           <contentAreaFilled value="true"/>
+          <focusPainted value="false"/>
           <focusable value="false"/>
           <foreground color="-16777216"/>
           <text value="Cancel"/>

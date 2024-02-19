@@ -10,7 +10,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
+@Deprecated
 public class SignUpController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
@@ -18,6 +18,7 @@ public class SignUpController {
     String userRole = "purchase";
     ObjectInputStream objectInputStream;
     ObjectOutputStream objectOutputStream;
+
 
     public SignUpController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;

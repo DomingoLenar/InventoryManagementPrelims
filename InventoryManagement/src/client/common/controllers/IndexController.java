@@ -25,7 +25,6 @@ public class IndexController {
         indexView.getIVloginBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                inventoryManagementController.changeScreen(inventoryManagementController.loginController.loginView.getLVpanel());
                 inventoryManagementController.displayLoginView();
             }
         });

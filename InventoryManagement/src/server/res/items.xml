@@ -1,30 +1,93 @@
 <items>
     <item>
         <name>Hotdog</name>
-        <quantity>3</quantity>
+        <quantity>23</quantity>
         <id>1</id>
-        <type/>
+        <type>null</type>
         <price>180</price>
     </item>
     <item>
         <name>Bread</name>
-        <quantity>3</quantity>
+        <quantity>37</quantity>
         <id>2</id>
-        <type/>
+        <type>null</type>
         <price>180</price>
     </item>
     <item>
         <name>Cucumber</name>
-        <quantity>50</quantity>
+        <quantity>420</quantity>
         <id>3</id>
-        <type/>
+        <type>null</type>
         <price>180</price>
     </item>
     <item>
         <name>banana</name>
-        <quantity>50</quantity>
+        <quantity>351</quantity>
+        <type>null</type>
+        <id>4</id>
+        <price>20</price>
+    </item>
+    <item>
+        <name>banana</name>
+        <quantity>72</quantity>
         <type>null</type>
         <id>5</id>
         <price>20</price>
+    </item>
+    <item>
+        <name>cheese</name>
+        <quantity>66</quantity>
+        <type>null</type>
+        <id>6</id>
+        <price>20</price>
+    </item>
+    <item>
+        <name>Hotdog</name>
+        <quantity>59</quantity>
+        <id>7</id>
+        <type>null</type>
+        <price>180</price>
+    </item>
+    <item>
+        <name>Bread</name>
+        <quantity>55</quantity>
+        <id>8</id>
+        <type>null</type>
+        <price>180</price>
+    </item>
+    <item>
+        <name>Cucumber</name>
+        <quantity>42</quantity>
+        <id>9</id>
+        <type>null</type>
+        <price>180</price>
+    </item>
+    <item>
+        <name>banana</name>
+        <quantity>69</quantity>
+        <type>null</type>
+        <id>10</id>
+        <price>20</price>
+    </item>
+    <item>
+        <name>banana</name>
+        <quantity>60</quantity>
+        <type>null</type>
+        <id>11</id>
+        <price>20</price>
+    </item>
+    <item>
+        <name>cheese</name>
+        <quantity>35</quantity>
+        <type>null</type>
+        <id>12</id>
+        <price>20</price>
+    </item>
+    <item>
+        <name>tea</name>
+        <quantity>2</quantity>
+        <type>null</type>
+        <id>6</id>
+        <price>180</price>
     </item>
 </items>
