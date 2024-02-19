@@ -52,6 +52,9 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <borderPainted value="false"/>
+          <contentAreaFilled value="false"/>
+          <foreground color="-16777216"/>
           <text value="Stock Control"/>
         </properties>
       </component>
