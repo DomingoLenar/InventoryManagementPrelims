@@ -5,12 +5,13 @@ import client.sales.views.SalesStockControlView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class SalesStockControlController {
     SalesStockControlView salesStockControlView;
     InventoryManagementController inventoryManagementController;
-    public SalesStockControlController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
+    public SalesStockControlController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
         salesStockControlView = new SalesStockControlView();
         initButtons();

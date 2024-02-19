@@ -3,12 +3,13 @@ package client.sales.controllers;
 import client.common.controllers.InventoryManagementController;
 import client.sales.views.SalesDashboardView;
 
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class SalesDashboardController {
     SalesDashboardView salesDashboardView;
 
-    public SalesDashboardController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
+    public SalesDashboardController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         salesDashboardView = new SalesDashboardView();
     }
 

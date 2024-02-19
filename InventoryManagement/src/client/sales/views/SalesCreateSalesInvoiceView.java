@@ -3,13 +3,29 @@ package client.sales.views;
 import javax.swing.*;
 
 public class SalesCreateSalesInvoiceView {
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField productField;
+    private JTextField priceField;
+    private JTextField quantityField;
+    private JTextField estimatedTotalField;
     private JButton cancelButton;
     private JButton createInvoiceButton;
     private JPanel mainPanel;
+
+    public JTextField getEstimatedTotalField() {
+        return estimatedTotalField;
+    }
+
+    public JTextField getPriceField() {
+        return priceField;
+    }
+
+    public JTextField getProductField() {
+        return productField;
+    }
+
+    public JTextField getQuantityField() {
+        return quantityField;
+    }
 
     public JPanel getMainPanel() {
         return mainPanel;

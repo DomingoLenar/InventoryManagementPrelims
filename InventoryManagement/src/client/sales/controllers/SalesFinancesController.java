@@ -3,13 +3,14 @@ package client.sales.controllers;
 import client.common.controllers.InventoryManagementController;
 import client.sales.views.SalesFinancesView;
 
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class SalesFinancesController {
     InventoryManagementController inventoryManagementController;
     SalesFinancesView salesFinancesView;
 
-    public SalesFinancesController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
+    public SalesFinancesController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
 
         salesFinancesView = new SalesFinancesView();

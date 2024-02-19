@@ -9,6 +9,11 @@ public class SalesNavigationBarView {
     private JButton dashboardButton;
     private JPanel leftPanel;
     private JButton logobtn;
+    private JButton salesInvoicesButton;
+
+    public JButton getSalesInvoicesButton() {
+        return salesInvoicesButton;
+    }
 
     public JButton getDashboardButton() {
         return dashboardButton;

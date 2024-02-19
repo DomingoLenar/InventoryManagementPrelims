@@ -42,6 +42,13 @@ public class SalesNavigationBarController {
                 inventoryManagementController.changeScreen(inventoryManagementController.getUserSettingsController().getUserSettingsView().getMainPanel());
             }
         });
+        salesNavigationBarView.getSalesInvoicesButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.getSalesSalesInvoicesController().initComponents();
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesSalesInvoicesController().getSalesInvoiceHardCoded().getMainPanel());
+            }
+        });
     }
 
     public SalesNavigationBarView getSalesNavigationBarView() {
