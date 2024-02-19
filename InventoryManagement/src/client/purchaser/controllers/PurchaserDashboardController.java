@@ -3,13 +3,14 @@ package client.purchaser.controllers;
 import client.common.controllers.InventoryManagementController;
 import client.purchaser.views.PurchaserDashboardView;
 
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class PurchaserDashboardController {
     InventoryManagementController inventoryManagementController;
     PurchaserDashboardView purchaserDashboardView;
 
-    public PurchaserDashboardController(InventoryManagementController inventoryManagementController, Socket clientSocket){
+    public PurchaserDashboardController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs){
         purchaserDashboardView = new PurchaserDashboardView();
     }
 

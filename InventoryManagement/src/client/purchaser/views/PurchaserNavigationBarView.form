@@ -25,7 +25,7 @@
       </component>
       <component id="3b05c" class="javax.swing.JButton" binding="profileButton" default-binding="true">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="50" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -44,6 +44,15 @@
         </constraints>
         <properties>
           <text value="Button"/>
+        </properties>
+      </component>
+      <component id="b4b8f" class="javax.swing.JButton" binding="stockControlButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Stock Control"/>
         </properties>
       </component>
     </children>
