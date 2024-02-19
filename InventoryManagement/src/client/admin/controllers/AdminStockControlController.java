@@ -5,13 +5,14 @@ import client.common.controllers.InventoryManagementController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class AdminStockControlController {
     AdminStockControlView adminStockControlView;
     InventoryManagementController inventoryManagementController;
 
-    public AdminStockControlController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
+    public AdminStockControlController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
         adminStockControlView = new AdminStockControlView();
 

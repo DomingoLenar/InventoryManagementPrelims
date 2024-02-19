@@ -3,22 +3,27 @@ package client.admin.controllers;
 import client.admin.views.AdminUserManagementView;
 import client.common.controllers.InventoryManagementController;
 import client.common.models.ProfileManagementModel;
+import utility.User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class AdminUserManagementController {
     AdminUserManagementView adminUserManagementView;
     InventoryManagementController inventoryManagementController;
-    Socket socket;
     String userRole = "purchase";
-    public AdminUserManagementController(InventoryManagementController inventoryManagementController, Socket clientSocket){
+    ObjectOutputStream objectOutputStream;
+    ObjectInputStream objectInputStream;
+    public AdminUserManagementController(InventoryManagementController inventoryManagementController,ObjectInputStream oIs,ObjectOutputStream oOs){
         this.inventoryManagementController = inventoryManagementController;
         adminUserManagementView = new AdminUserManagementView();
-        socket = clientSocket;
+        objectOutputStream = oOs;
+        objectInputStream = oIs;
+
         initButtons();
     }
 
@@ -41,7 +46,8 @@ public class AdminUserManagementController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-                    String userType = ProfileManagementModel.handleSignup(username, password, userRole, socket);
+                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
+                    String userType = user.getRole();
                     if (userType != null) {
                         switch (userType) {
                             case "sales":
