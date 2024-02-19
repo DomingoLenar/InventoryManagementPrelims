@@ -5,8 +5,10 @@ import client.common.views.InventoryManagementInterface;
 import client.deprecated.controllers.DashboardController;
 import client.deprecated.controllers.FinancesController;
 import client.deprecated.controllers.NavigationBarController;
+import client.purchaser.controllers.PurchaserAddItemController;
 import client.purchaser.controllers.PurchaserDashboardController;
 import client.purchaser.controllers.PurchaserNavigationBarController;
+import client.purchaser.controllers.PurchaserStockControlController;
 import client.sales.controllers.*;
 
 import javax.swing.*;
@@ -48,7 +50,10 @@ public class InventoryManagementController { // big controller
     SalesSalesInvoicesController salesSalesInvoicesController;
     PurchaserDashboardController purchaserDashboardController;
     PurchaserNavigationBarController purchaserNavigationBarController;
+    PurchaserStockControlController purchaserStockControlController;
+    PurchaserAddItemController purchaserAddItemController;
     UserSettingsController userSettingsController;
+    ChangePasswordController changePasswordController;
     private Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
@@ -124,11 +129,14 @@ public class InventoryManagementController { // big controller
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
         financesController = new FinancesController(this);
+        changePasswordController = new ChangePasswordController(this, objectInputStream, objectOutputStream);
     }
 
     private void purchaserControllers() {
         purchaserDashboardController = new PurchaserDashboardController(this, objectInputStream, objectOutputStream);
         purchaserNavigationBarController = new PurchaserNavigationBarController(this);
+        purchaserStockControlController = new PurchaserStockControlController(this, objectInputStream, objectOutputStream);
+        purchaserAddItemController = new PurchaserAddItemController(this, objectInputStream, objectOutputStream);
     }
 
     private void salesControllers() {
@@ -294,6 +302,18 @@ public class InventoryManagementController { // big controller
         return salesSalesInvoicesController;
     }
 
+    public ChangePasswordController getChangePasswordController() {
+        return changePasswordController;
+    }
+
+    public PurchaserStockControlController getPurchaserStockControlController() {
+        return purchaserStockControlController;
+    }
+
+    public PurchaserAddItemController getPurchaserAddItemController() {
+        return purchaserAddItemController;
+    }
+
     public void displayAdminMainMenu() {
         SwingUtilities.invokeLater(() -> {
             inventoryManagementInterface.getContentPane().removeAll();
@@ -311,6 +331,7 @@ public class InventoryManagementController { // big controller
             inventoryManagementInterface.add(mainContainer);
             mainContainer.add(getSalesNavigationBarController().getSalesNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             mainContainer.add(getSalesDashboardController().getSalesDashboardView().getMainPanel(), BorderLayout.CENTER);
+            getSalesDashboardController().initComponents();
             inventoryManagementInterface.revalidate();
             inventoryManagementInterface.repaint();
         });
