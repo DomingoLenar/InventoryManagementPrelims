@@ -1,27 +1,31 @@
 package client.common.controllers;
 
-import client.common.views.SignUpView;
 import client.common.models.ProfileManagementModel;
+import client.common.views.SignUpView;
+import utility.User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class SignUpController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
     SignUpView signUpView;
-    Socket socket;
     String userRole = "purchase";
+    ObjectInputStream objectInputStream;
+    ObjectOutputStream objectOutputStream;
 
-    public SignUpController(InventoryManagementController inventoryManagementController, Socket clientSocket) {
+    public SignUpController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
         this.profileManagementModel = new ProfileManagementModel();
+        objectInputStream = oIs;
+        objectOutputStream = oOs;
 
         signUpView = new SignUpView();
-        socket = clientSocket;
 
         initComponents();
     }
@@ -49,7 +53,8 @@ public class SignUpController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-                    String userType = ProfileManagementModel.handleSignup(username, password, userRole, socket);
+                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
+                    String userType = user.getRole();
                     if (userType != null) {
                         switch (userType) {
                             case "sales":

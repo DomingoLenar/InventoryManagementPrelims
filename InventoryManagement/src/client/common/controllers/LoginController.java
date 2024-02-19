@@ -6,19 +6,22 @@ import client.common.views.LoginView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.Socket;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class LoginController {
     InventoryManagementController inventoryManagementController;
     ProfileManagementModel profileManagementModel;
     LoginView loginView;
-    Socket socket;
-    public LoginController(InventoryManagementController inventoryManagementController, Socket clientSocket) throws IOException {
+    ObjectInputStream objectInputStream;
+    ObjectOutputStream objectOutputStream;
+    public LoginController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) throws IOException {
         this.inventoryManagementController = inventoryManagementController;
         this.profileManagementModel = new ProfileManagementModel();
+        objectInputStream = oIs;
+        objectOutputStream = oOs;
 
         loginView = new LoginView();
-        socket = clientSocket;
 
         initComponents();
     }
@@ -42,8 +45,10 @@ public class LoginController {
                 if (username.isEmpty() || password.isEmpty()) {
                     // do smth
                 } else {
-                    String userType = ProfileManagementModel.handleLogin(username, password, socket);
+                    String userType = ProfileManagementModel.handleLogin(username, password, objectOutputStream, objectInputStream);
                     if (userType != null) {
+                        inventoryManagementController.setUserType(userType);
+                        inventoryManagementController.setUsername(username);
                         switch (userType) {
                             case "admin":
                                 inventoryManagementController.displayAdminMainMenu();

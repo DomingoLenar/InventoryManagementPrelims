@@ -12,7 +12,11 @@ import client.sales.controllers.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Notes: big controller <-> panel controllers
@@ -41,15 +45,24 @@ public class InventoryManagementController { // big controller
     SalesFinancesController salesFinancesController;
     SalesStockControlController salesStockControlController;
     SalesCreateSalesInvoiceController salesCreateSalesInvoiceController;
+    SalesSalesInvoicesController salesSalesInvoicesController;
     PurchaserDashboardController purchaserDashboardController;
     PurchaserNavigationBarController purchaserNavigationBarController;
     UserSettingsController userSettingsController;
     private Socket clientSocket;
+    private ObjectOutputStream objectOutputStream;
+    private ObjectInputStream objectInputStream;
+    String formattedDate;
+    String userType;
+    String username;
     public InventoryManagementController() throws IOException {
         inventoryManagementInterface = new InventoryManagementInterface();
 
+
         try {
             clientSocket = new Socket("localhost", 2018);
+            objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+            objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,13 +70,43 @@ public class InventoryManagementController { // big controller
         initControllers();
 
         displayIndexPanel(); // main panel of the application
-        
+
         initComponents();
     }
 
     private void initComponents() {
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+
+        // Format the date using a specific pattern (optional)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        formattedDate = currentDate.format(formatter);
+
+        // Display the current date
+        System.out.println("Current Date: " + formattedDate);
+
         mainContainer = new JPanel();
         mainContainer.setLayout(new BorderLayout());
+    }
+
+    public String getFormattedDate() {
+        return formattedDate;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     private void initControllers() throws IOException {
@@ -75,35 +118,36 @@ public class InventoryManagementController { // big controller
 
     private void commonControllers() throws IOException {
         indexController = new IndexController(this);
-        signUpController = new SignUpController(this, clientSocket);
-        loginController = new LoginController(this, clientSocket);
-        userSettingsController = new UserSettingsController(this, clientSocket);
+        signUpController = new SignUpController(this, objectInputStream, objectOutputStream);
+        loginController = new LoginController(this, objectInputStream, objectOutputStream);
+        userSettingsController = new UserSettingsController(this, objectInputStream, objectOutputStream);
         navigationBarController = new NavigationBarController(this);
         dashboardController = new DashboardController(this);
         financesController = new FinancesController(this);
     }
 
     private void purchaserControllers() {
-        purchaserDashboardController = new PurchaserDashboardController(this, clientSocket);
+        purchaserDashboardController = new PurchaserDashboardController(this, objectInputStream, objectOutputStream);
         purchaserNavigationBarController = new PurchaserNavigationBarController(this);
     }
 
     private void salesControllers() {
-        salesDashboardController = new SalesDashboardController(this, clientSocket);
+        salesDashboardController = new SalesDashboardController(this, objectInputStream, objectOutputStream);
         salesNavigationBarController = new SalesNavigationBarController(this);
-        salesFinancesController = new SalesFinancesController(this, clientSocket);
-        salesStockControlController = new SalesStockControlController(this, clientSocket);
-        salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this, clientSocket);
+        salesFinancesController = new SalesFinancesController(this, objectInputStream, objectOutputStream);
+        salesStockControlController = new SalesStockControlController(this, objectInputStream, objectOutputStream);
+        salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this, objectInputStream, objectOutputStream);
+        salesSalesInvoicesController = new SalesSalesInvoicesController(this, objectInputStream, objectOutputStream);
     }
 
     private void adminControllers() {
-        adminDashboardController = new AdminDashboardController(this, clientSocket);
+        adminDashboardController = new AdminDashboardController(this, objectInputStream, objectOutputStream);
         adminNavigationBarController = new AdminNavigationBarController(this);
-        adminFinancesController = new AdminFinancesController(this, clientSocket);
-        adminStockControlController = new AdminStockControlController(this, clientSocket);
-        adminAddItemController = new AdminAddItemController(this, clientSocket);
-        adminCreateSalesInvoiceController = new AdminCreateSalesInvoiceController(this, clientSocket);
-        adminUserManagementController = new AdminUserManagementController(this, clientSocket);
+        adminFinancesController = new AdminFinancesController(this, objectInputStream, objectOutputStream);
+        adminStockControlController = new AdminStockControlController(this, objectInputStream, objectOutputStream);
+        adminAddItemController = new AdminAddItemController(this, objectInputStream, objectOutputStream);
+        adminCreateSalesInvoiceController = new AdminCreateSalesInvoiceController(this, objectInputStream, objectOutputStream);
+        adminUserManagementController = new AdminUserManagementController(this, objectInputStream, objectOutputStream);
     }
 
     /**
@@ -125,10 +169,11 @@ public class InventoryManagementController { // big controller
     /** EDT - background thread to process abstract window toolkit (AWT) events or GUI
      * - Each AWT events/functions should be process by one EDT background thread
      */
-    private void displayIndexPanel() {
+    public void displayIndexPanel() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                inventoryManagementInterface.getContentPane().removeAll();
                 inventoryManagementInterface.add(indexController.getIndexView().getIVpanel());
                 inventoryManagementInterface.revalidate();
                 inventoryManagementInterface.repaint();
@@ -243,6 +288,10 @@ public class InventoryManagementController { // big controller
 
     public UserSettingsController getUserSettingsController() {
         return userSettingsController;
+    }
+
+    public SalesSalesInvoicesController getSalesSalesInvoicesController() {
+        return salesSalesInvoicesController;
     }
 
     public void displayAdminMainMenu() {

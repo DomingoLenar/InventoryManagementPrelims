@@ -6,12 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IndexController {
-//    InventoryManagementInterface inventoryManagementInterface;
     InventoryManagementController inventoryManagementController;
     IndexView indexView;
 
     public IndexController(InventoryManagementController inventoryManagementController) {
-//        this.inventoryManagementInterface = inventoryManagementInterface;
         this.inventoryManagementController = inventoryManagementController;
         indexView = new IndexView();
 
