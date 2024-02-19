@@ -58,7 +58,8 @@ public class ItemOrderManagementModel {
             ItemManagementModel.sendAction("fetchItemOrders",oOs );
 
             try {
-                ArrayList<ItemOrder> listOfItemOrders = (ArrayList<ItemOrder>) oIs.readObject();
+                ArrayList<ItemOrder> listOfItemOrders;
+                listOfItemOrders = (ArrayList<ItemOrder>) oIs.readObject();
                 System.out.println(" List of item orders have been fetched.");
                 return listOfItemOrders;
             } catch (ClassNotFoundException e) {
