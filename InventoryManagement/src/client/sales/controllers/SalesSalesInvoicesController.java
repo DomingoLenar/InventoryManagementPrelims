@@ -27,12 +27,26 @@ public class SalesSalesInvoicesController {
     }
 
     public void initComponents() {
-        ArrayList<ItemOrder> listOfItemOrders = ItemManagementModel.fetchItemOrders(objectOutputStream, objectInputStream);
-        ArrayList<Item> listOfItems = ItemManagementModel.fetchListOfItems(objectOutputStream, objectInputStream);
+
+        // populate the table
+        ArrayList<ItemOrder> listOfItemOrders = ItemManagementModel.fetchItemOrdersByUserType(inventoryManagementController.getUserType(), objectOutputStream, objectInputStream);
+        ArrayList<Item> listOfAllItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getUserType(),objectOutputStream, objectInputStream);
+        ArrayList<Item> filteredListOfItems = new ArrayList<>();
+        for (int i=0; i< listOfItemOrders.size(); i++) { // t(n) bad but it works.
+            ItemOrder itemOrder = listOfItemOrders.get(i);
+            for (int j=0; j<listOfAllItems.size(); j++){
+                Item item = listOfAllItems.get(j);
+
+                if (itemOrder.getItemId() == item.getItemId()) {
+                    filteredListOfItems.add(item);
+                }
+            }
+        }
+
         String[][] strings_array = new String[listOfItemOrders.size()][5];
         for (int i=0; i < listOfItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfItemOrders.get(i);
-            Item item = listOfItems.get(i);
+            Item item = filteredListOfItems.get(i);
             strings_array[i][0] = String.valueOf(itemOrder.getItemId());
             strings_array[i][1] = itemOrder.getDate();
             strings_array[i][2] = item.getName();
@@ -63,6 +77,7 @@ public class SalesSalesInvoicesController {
                 }
             }
         });
+
     }
 
     public SalesInvoiceViewHardCoded getSalesInvoiceHardCoded() {

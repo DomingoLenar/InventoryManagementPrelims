@@ -1,16 +1,12 @@
 package client.sales.views;
 
 import org.knowm.xchart.*;
-import org.knowm.xchart.PieChart;
-import org.knowm.xchart.SwingWrapper;
-import org.knowm.xchart.style.Styler;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Arrays;
 
 public class SalesDashboardView {
     private JPanel mainPanel;
@@ -24,9 +20,14 @@ public class SalesDashboardView {
     private JPanel revenueVsCostPanel;
     private JPanel recentlyAddedItemsPanel;
     private JLabel recentlyAddedItemsLabel;
+    CategoryChart chart;
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public CategoryChart getChart() {
+        return chart;
     }
 
     public SalesDashboardView() {
@@ -34,6 +35,7 @@ public class SalesDashboardView {
         // Recently Added Items
         recentlyAddedItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
+
         // Change to Raw Data
         listModel1.addElement("ID No.");
         listModel1.addElement("ID No.");
@@ -62,13 +64,13 @@ public class SalesDashboardView {
         ));
 
         // Revenue Vs Costs
-        CategoryChart chart = new CategoryChartBuilder().width(400).height(300).build();
+        chart = new CategoryChartBuilder().width(400).height(300).build();
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+//        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
         // Change to Raw Data
-        chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
-        chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
+//        chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
+//        chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
 
         chart.getStyler().setStacked(true);
         chart.getStyler().setOverlapped(true);
@@ -134,22 +136,22 @@ public class SalesDashboardView {
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            SalesDashboardView dashboardView = new SalesDashboardView();
-
-            JFrame frame = new JFrame("Dashboard");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setContentPane(dashboardView.mainPanel);
-
-            frame.setResizable(true);
-            frame.setMinimumSize(new Dimension(700, 500));
-
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> {
+//            SalesDashboardView dashboardView = new SalesDashboardView();
+//
+//            JFrame frame = new JFrame("Dashboard");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.setContentPane(dashboardView.mainPanel);
+//
+//            frame.setResizable(true);
+//            frame.setMinimumSize(new Dimension(700, 500));
+//
+//            frame.pack();
+//            frame.setLocationRelativeTo(null);
+//            frame.setVisible(true);
+//        });
+//    }
 
     // Should be added in controller, used only for testing
     private static class RoundedCornerBorder implements Border {
