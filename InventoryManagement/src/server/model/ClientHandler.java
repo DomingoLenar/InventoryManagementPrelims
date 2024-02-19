@@ -38,12 +38,12 @@ public class ClientHandler implements Runnable{
 //                        User requestBy = (User) oIS.readObject();
                         createUser(userToCreate, objectOutputStream);
                         break;
-                    case "additem":
+                    case "addItem":
                         //Invoke method for item addition
                         Item submittedItem = (Item) oIS.readObject();
                         itemAddition(submittedItem, objectOutputStream);
                         break;
-                    case "removeitem":
+                    case "removeItem":
                         //Invoke method for item removal
                         int submittedID =  oIS.readInt();
                         itemRemoval(submittedID, objectOutputStream);
@@ -62,7 +62,7 @@ public class ClientHandler implements Runnable{
                     case "addItemOrder":
                         ItemOrder newItemOrder = (ItemOrder) oIS.readObject();
                         boolean success = XMLProcessing.addItemOrder(newItemOrder);
-                        objectOutputStream.writeObject(success);
+                        objectOutputStream.writeBoolean(success);
                         objectOutputStream.flush();
                         break;
                     case "changePassword":
@@ -75,6 +75,13 @@ public class ClientHandler implements Runnable{
                     case "fetchListOfUsers":
                         ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
+                        objectOutputStream.flush();
+                        break;
+                    case "sessionTimeout":
+                        String username = oIS.readUTF();
+                        User currentUser = XMLProcessing.findUser(username);
+                        XMLProcessing.setActiveStatus(currentUser, false);
+                        objectOutputStream.writeBoolean(currentUser != null);
                         objectOutputStream.flush();
                         break;
                     case "Exit":
@@ -147,9 +154,7 @@ public class ClientHandler implements Runnable{
      */
     private synchronized void itemAddition(Item itemObject, ObjectOutputStream objectOutputStream) throws IOException {
         try {
-
             boolean success = XMLProcessing.addItem(itemObject);
-
             objectOutputStream.writeBoolean(success);
             objectOutputStream.flush();
         } catch (IOException e) {
@@ -166,9 +171,7 @@ public class ClientHandler implements Runnable{
      */
     private synchronized void itemRemoval(int id, ObjectOutputStream objectOutputStream) throws IOException {
         try {
-
             boolean success = XMLProcessing.removeItem(id);
-
             objectOutputStream.writeBoolean(success);
             objectOutputStream.flush();
         } catch (IOException e) {

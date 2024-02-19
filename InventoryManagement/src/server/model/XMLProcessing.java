@@ -32,7 +32,7 @@ public class XMLProcessing {
         return null;
     }
 
-    public synchronized static void setActiveStatus(User user,boolean activeStatus){
+    public synchronized static void setActiveStatus(User user,boolean status){
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
@@ -43,7 +43,7 @@ public class XMLProcessing {
                 Element curUser = (Element) nodeList.item(x);
                 if(curUser.getElementsByTagName("username").item(0).getTextContent().equals(user.getUsername())){
                     curUser.removeAttribute("active");
-                    curUser.setAttribute("active",String.valueOf(activeStatus));
+                    curUser.setAttribute("active",String.valueOf(status));
                     break;
                 }
             }
@@ -51,6 +51,11 @@ public class XMLProcessing {
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/users.xml");
         }catch(Exception e){
             e.printStackTrace();
+        }
+        if (status) {
+            System.out.println(user.getUsername() + "is now active");
+        } else {
+            System.out.println(user.getUsername() + "is inactive");
         }
     }
 
@@ -143,7 +148,7 @@ public class XMLProcessing {
         }
 
         User newUser = findUser(userToCreate.getUsername());
-        setActiveStatus(newUser, true);
+        setActiveStatus(newUser, false);
         return newUser;
     }
 
@@ -249,7 +254,6 @@ public class XMLProcessing {
     }
 
     public static synchronized boolean addItemOrder(ItemOrder itemOrder){
-        boolean status = false;
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
 
@@ -265,7 +269,7 @@ public class XMLProcessing {
             item.setTextContent(String.valueOf(itemOrder.getItemId()));
 
             Element amount = document.createElement("amount");
-            amount.setTextContent(String.valueOf(""));  //Refactor ItemOrder first to take into account amount
+            amount.setTextContent("amount");  //Refactor ItemOrder first to take into account amount
 
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemOrder.getPurPrice()));
@@ -280,16 +284,14 @@ public class XMLProcessing {
 
             rootElement.appendChild(newItemOrder);
 
-
-
             cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
-
+            return true;
 
         }catch(Exception e){
-
+            e.printStackTrace();
         }
-        return status;
+        return false;
     }
 
     public static synchronized ArrayList<ItemOrder> fetchItemOrders(String dateFilter){
@@ -327,7 +329,7 @@ public class XMLProcessing {
     public static synchronized ArrayList<Item> fetchItems(){
         ArrayList<Item> itemList = new ArrayList<>();
         try{
-            Document document = getXMLDocument("server/res/items.xml");
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
             Element element = document.getDocumentElement();
 
             NodeList items = element.getElementsByTagName("item");
@@ -335,7 +337,7 @@ public class XMLProcessing {
                 Element currentItem = (Element) items.item(x);
 
                 String name = currentItem.getElementsByTagName("name").item(0).getTextContent();
-                int amount = Integer.parseInt(currentItem.getElementsByTagName("amount").item(0).getTextContent());
+                int amount = Integer.parseInt(currentItem.getElementsByTagName("quantity").item(0).getTextContent());
                 int id = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
                 int price = Integer.parseInt(currentItem.getElementsByTagName("price").item(0).getTextContent());
                 String type = currentItem.getElementsByTagName("type").item(0).getTextContent();

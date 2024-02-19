@@ -1,6 +1,8 @@
 package utility;
 
-public class ItemOrder {
+import java.io.Serializable;
+
+public class ItemOrder implements Serializable {
     private int id;
     private String date;
     private float purPrice;
@@ -33,6 +35,7 @@ public class ItemOrder {
         this.purPrice = purPrice;
         this.status = status;
         this.itemId = itemId;
+        this.username = username;
     }
 
     /**

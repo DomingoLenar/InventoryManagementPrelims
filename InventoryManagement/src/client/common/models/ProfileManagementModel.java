@@ -46,8 +46,6 @@ public class ProfileManagementModel {
         User currentUser = new User(username, password, null, false);
 
         try {
-
-
             sendAction("userVerification", oOs);
 
             // Send the User object to the server for login
@@ -55,7 +53,7 @@ public class ProfileManagementModel {
             System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             try {
-                User user = (User) ios.readObject();
+                User user = (User) oIs.readObject();
                 if (user != null) {
                     System.out.println("Authentication response: success");
                     return user.getRole().toLowerCase();
@@ -81,7 +79,7 @@ public class ProfileManagementModel {
      * @return True if account creation is successful, false otherwise.
      */
 
-    public static String handleSignup(String username, String password, String role,ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static User handleSignup(String username, String password, String role,ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
             // Create a new User object with provided credentials
             User newUser = new User(username, password,role,false);
@@ -97,7 +95,7 @@ public class ProfileManagementModel {
                 User user = (User) oIs.readObject();
                 if (user != null) {
                     System.out.println("Authentication response: success");
-                    return user.getRole().toLowerCase();
+                    return user;
                 } else {
                     System.out.println("Authentication response: failed");
                     return null;
@@ -121,8 +119,6 @@ public class ProfileManagementModel {
      */
     public static boolean changePassword(String userName, String newPassword, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
-
-
             sendAction("changePassword", oOs);
 
             oOs.writeUTF(userName);
@@ -140,6 +136,24 @@ public class ProfileManagementModel {
             }
         } catch (IOException e) {
             throw new RuntimeException("Error changing password", e);
+        }
+    }
+
+    public static void sessionTimeout(String username, ObjectOutputStream oOs, ObjectInputStream oIs) {
+        try {
+            sendAction("sessionTimeout", oOs);
+
+            oOs.writeUTF(username);
+            oOs.flush();
+
+            System.out.println(username + "session timeout request has been sent to the server...");
+
+            // TODO: not needed to notify the user
+            boolean logout = oIs.readBoolean();
+            System.out.println("Server response: " + logout);
+
+        } catch (IOException e) {
+            throw new RuntimeException("Error logging out ", e);
         }
     }
 

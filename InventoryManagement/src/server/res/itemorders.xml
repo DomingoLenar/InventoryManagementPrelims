@@ -1,8 +1,26 @@
 <itemorders>
-    <itemorder date="12/02/24" orderType="purchase" byUser="testpurchase">
-        <item></item>
-        <amount></amount>
-        <price></price>
-        <id></id>
+    <itemorder byUser="testpurchase" date="12/02/24" orderType="purchase">
+        <item>1</item>
+        <amount>3</amount>
+        <price>180</price>
+        <id>1</id>
+    </itemorder>
+    <itemorder byUser="testsales" date="12/02/24" orderType="sales">
+        <item>2</item>
+        <amount>3</amount>
+        <price>180</price>
+        <id>2</id>
+    </itemorder>
+    <itemorder byUser="testsales" date="12/02/24" orderType="sales">
+        <item>3</item>
+        <amount>5</amount>
+        <price>50</price>
+        <id>3</id>
+    </itemorder>
+    <itemorder byUser="testsales" date="2024-02-19" id="5" orderType="sales">
+        <item>5</item>
+        <amount>amount</amount>
+        <price>20.0</price>
+        <id>5</id>
     </itemorder>
 </itemorders>

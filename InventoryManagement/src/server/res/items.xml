@@ -1,9 +1,30 @@
 <items>
     <item>
-        <name></name>
-        <amount></amount>
-        <id></id>
-        <type></type>
-        <price></price>
+        <name>Hotdog</name>
+        <quantity>3</quantity>
+        <id>1</id>
+        <type/>
+        <price>180</price>
+    </item>
+    <item>
+        <name>Bread</name>
+        <quantity>3</quantity>
+        <id>2</id>
+        <type/>
+        <price>180</price>
+    </item>
+    <item>
+        <name>Cucumber</name>
+        <quantity>50</quantity>
+        <id>3</id>
+        <type/>
+        <price>180</price>
+    </item>
+    <item>
+        <name>banana</name>
+        <quantity>50</quantity>
+        <type>null</type>
+        <id>5</id>
+        <price>20</price>
     </item>
 </items>

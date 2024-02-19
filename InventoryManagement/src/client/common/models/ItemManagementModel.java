@@ -1,6 +1,7 @@
 package client.common.models;
 
 import utility.Item;
+import utility.ItemOrder;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -8,11 +9,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class ItemManagementModel {
-
-
     /**
      * Sends an action to the server.
-     *
      * @param action The action to be sent.
      */
     public static void sendAction(String action, ObjectOutputStream oos) {
@@ -35,7 +33,7 @@ public class ItemManagementModel {
      * @param price The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public static boolean addItems(String name, int qty, String type, int itemId, int price, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static void addItems(String name, int qty, String type, int itemId, int price, ObjectOutputStream oOs, ObjectInputStream oIs) {
 
         try {
 
@@ -48,10 +46,33 @@ public class ItemManagementModel {
             System.out.println("Item: " + newItem.getName() + " addition has been sent to the server");
 
             try  {
-                boolean addItemSuccess = (boolean) oIs.readObject();
+                boolean addItemSuccess = oIs.readBoolean();
                 System.out.println("Server Response: " + addItemSuccess);
-                return addItemSuccess;
-            } catch (IOException | ClassNotFoundException e) {
+//                return addItemSuccess;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error adding item", e);
+        }
+    }
+
+    public static void addItemOrders(int id, String date, int price, String userType, int itemID, String byUser,  ObjectOutputStream oOs, ObjectInputStream oIs) {
+        try {
+
+            ItemOrder itemOrder = new ItemOrder(id, date, price, userType, itemID, byUser);
+
+            sendAction("addItemOrder", oOs);
+
+            oOs.writeObject(itemOrder);
+            oOs.flush();
+            System.out.println("Item addition has been sent to the server by: " + byUser);
+
+            try  {
+                boolean addItemSuccess = oIs.readBoolean();
+                System.out.println("Server Response: " + addItemSuccess);
+//                return addItemSuccess;
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } catch (IOException e) {
@@ -94,6 +115,24 @@ public class ItemManagementModel {
 
             try  {
                 ArrayList<Item> listOfItems = (ArrayList<Item>) oIs.readObject();
+                System.out.println("List of items have been fetched.");
+                return listOfItems;
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static ArrayList<ItemOrder> fetchItemOrders (ObjectOutputStream oOs, ObjectInputStream oIs){
+
+        try {
+
+            sendAction("fetchItemOrders", oOs);
+            sendAction("none", oOs);
+            try  {
+                ArrayList<ItemOrder> listOfItems = (ArrayList<ItemOrder>) oIs.readObject();
                 System.out.println("List of items have been fetched.");
                 return listOfItems;
             } catch (ClassNotFoundException e) {
