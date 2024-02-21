@@ -1,7 +1,6 @@
 package client.sales.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
 import client.sales.views.SalesCreateSalesInvoiceView;
 
 import java.awt.event.ActionEvent;
@@ -29,15 +28,15 @@ public class SalesCreateSalesInvoiceController {
         salesCreateSalesInvoiceView.getCreateInvoiceButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: send to the server
                 String productName=salesCreateSalesInvoiceView.getProductField().getText();
                 int price= Integer.parseInt(salesCreateSalesInvoiceView.getPriceField().getText());
                 int qty = Integer.parseInt(salesCreateSalesInvoiceView.getQuantityField().getText());
 
-                salesCreateSalesInvoiceView.getEstimatedTotalField().getText();
-                ItemManagementModel.addItems(productName, qty, "null", 5, price, objectOutputStream, objectInputStream);
-                ItemManagementModel.addItemOrders(5, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), 5,
-                        inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
+                // TODO: fix the process of newly added product
+//                salesCreateSalesInvoiceView.getEstimatedTotalField().getText();
+//                ItemManagementModel.addItems(productName, qty, "null", 5, price, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItemOrders(5, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), 5,
+//                        inventoryManagementController.getUsername(), 69, objectOutputStream, objectInputStream);
             }
         });
 

@@ -3,12 +3,14 @@ package client.sales.controllers;
 import client.common.controllers.InventoryManagementController;
 import client.common.models.ItemManagementModel;
 import client.sales.views.SalesDashboardView;
+import utility.Item;
 import utility.ItemOrder;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class SalesDashboardController {
     InventoryManagementController inventoryManagementController;
@@ -46,18 +48,43 @@ public class SalesDashboardController {
         for (int i=0; i< listOfSalesItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfSalesItemOrders.get(i);
             String date = itemOrder.getDate();
-            if (date.contains("2024-01"))revenueForJan.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-02"))revenueForFeb.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-03"))revenueForMar.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-04"))revenueForApr.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-05"))revenueForMay.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-06"))revenueForJun.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-07"))revenueForJuly.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-08"))revenueForAug.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-09"))revenueForSept.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-10"))revenueForOct.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-11"))revenueForNov.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-12"))revenueForDec.add(itemOrder.getPurPrice());
+            if (date.contains("2024-01")){
+                revenueForJan.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-02")){
+                revenueForFeb.add(itemOrder.getPurchasePrice());
+
+            }
+            else if (date.contains("2024-03")){
+                revenueForMar.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-04")){
+                revenueForApr.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-05")){
+                revenueForMay.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-06")){
+                revenueForJun.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-07")){
+                revenueForJuly.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-08")){
+                revenueForAug.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-09")){
+                revenueForSept.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-10")){
+                revenueForOct.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-11")){
+                revenueForNov.add(itemOrder.getPurchasePrice());
+            }
+            else if (date.contains("2024-12")){
+                revenueForDec.add(itemOrder.getPurchasePrice());
+            }
         }
 
         ArrayList<ArrayList<Float>> revenuePerMonth = new ArrayList<>();
@@ -81,7 +108,7 @@ public class SalesDashboardController {
             float totalRevenue = 0;
 
             for (int j=0; j< month.size(); j++) {
-                totalRevenue = month.get(j);
+                totalRevenue += month.get(j);
             }
 
             totalRevenuePerMonth.add(totalRevenue);
@@ -105,18 +132,18 @@ public class SalesDashboardController {
         for (int i=0; i< listOfPurchaseItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfPurchaseItemOrders.get(i);
             String date = itemOrder.getDate();
-            if (date.contains("2024-01"))costForJan.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-02"))costForFeb.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-03"))costForMar.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-04"))costForApr.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-05"))costForMay.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-06"))costForJun.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-07"))costForJuly.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-08"))costForAug.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-09"))costForSept.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-10"))costForOct.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-11"))costForNov.add(itemOrder.getPurPrice());
-            else if (date.contains("2024-12"))costForDec.add(itemOrder.getPurPrice());
+            if (date.contains("2024-01"))costForJan.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-02"))costForFeb.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-03"))costForMar.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-04"))costForApr.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-05"))costForMay.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-06"))costForJun.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-07"))costForJuly.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-08"))costForAug.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-09"))costForSept.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-10"))costForOct.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-11"))costForNov.add(itemOrder.getPurchasePrice());
+            else if (date.contains("2024-12"))costForDec.add(itemOrder.getPurchasePrice());
         }
 
         ArrayList<ArrayList<Float>> costPerMonth = new ArrayList<>();
@@ -140,7 +167,7 @@ public class SalesDashboardController {
             float totalCost = 0;
 
             for (int j=0; j< month.size(); j++) {
-                totalCost = month.get(j);
+                totalCost += month.get(j);
             }
 
             totalCostPerMonth.add(totalCost);
@@ -150,6 +177,68 @@ public class SalesDashboardController {
 
        salesDashboardView.getChart().addSeries("Revenue", Arrays.asList(months), totalRevenuePerMonth);
        salesDashboardView.getChart().addSeries("Cost", Arrays.asList(months), totalCostPerMonth);
+
+       Stack<Item> recentAddedItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getUserType(), objectOutputStream, objectInputStream);
+
+       // extract the product name
+
+       String product1 = recentAddedItems.pop().getName();
+       String product2 = recentAddedItems.pop().getName();
+       String product3 = recentAddedItems.pop().getName();
+       String product4 = recentAddedItems.pop().getName();
+       String product5 = recentAddedItems.pop().getName();
+
+       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product1);
+       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product2);
+       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product3);
+       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product4);
+       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product5);
+
+       // extract the product id
+
+       int productID1 = recentAddedItems.pop().getItemId();
+       int productID2 = recentAddedItems.pop().getItemId();
+       int productID3 = recentAddedItems.pop().getItemId();
+       int productID4 = recentAddedItems.pop().getItemId();
+       int productID5 = recentAddedItems.pop().getItemId();
+
+       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID1));
+       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID2));
+       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID3));
+       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID4));
+       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID5));
+
+       // TODO: dynamic pie chart | computations: unit sold -> total quantity sold + total quantity sold today
+
+        int soldQtyToday = 0;
+        int soldQtyAnnual = 0; // TODO: this could be improve depending on the company requirement
+        int  totalQtySold = 0;
+
+        for (int i=0; i<listOfSalesItemOrders.size(); i++) {
+            ItemOrder itemOrder = listOfSalesItemOrders.get(i);
+            if (itemOrder.getDate().contains(inventoryManagementController.getFormattedDate())) {
+                soldQtyToday = itemOrder.getQuantity();
+            }
+            soldQtyAnnual += itemOrder.getQuantity();
+        }
+
+        totalQtySold = soldQtyToday + soldQtyAnnual;
+
+        // TODO: understand this percentage/ratio
+        double soldQtyTodayPercent = ((double) soldQtyToday / totalQtySold) * 100;
+        double soldQtyAnnualPercent = ((double) soldQtyAnnual / totalQtySold) * 100;
+
+        String soldQtyTodayPercentStr = String.format("Today: %.2f%%", soldQtyTodayPercent);
+        String soldQtyAnnualPercentStr = String.format("Max: %.2f%%", soldQtyAnnualPercent);
+        String totalQtySoldPercentStr = String.format("Total: %d", totalQtySold);
+
+        salesDashboardView.getSoldQtyTodayLabel().setText(soldQtyTodayPercentStr);
+        salesDashboardView.getSoldQtyAnnualLabel().setText(soldQtyAnnualPercentStr);
+        salesDashboardView.getTotalQtySoldLabel().setText(totalQtySoldPercentStr);
+
+        salesDashboardView.getPieChart().addSeries("Today", soldQtyToday);
+        salesDashboardView.getPieChart().addSeries("Annual", soldQtyAnnual);
+
 
     }
 
