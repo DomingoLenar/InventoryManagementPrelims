@@ -41,6 +41,13 @@ public class UserSettingsController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ProfileManagementModel.sessionTimeout(inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
+
+                // TODO: solution: better implementation -- note: this is just a band aid
+                inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getChart().removeSeries("Revenue");
+                inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getChart().removeSeries("Cost");
+                inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getPieChart().removeSeries("Today");
+                inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getPieChart().removeSeries("Annual");
+
                 inventoryManagementController.displayIndexPanel();
             }
         });

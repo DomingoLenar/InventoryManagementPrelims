@@ -63,7 +63,6 @@ public class InventoryManagementController { // big controller
     public InventoryManagementController() throws IOException {
         inventoryManagementInterface = new InventoryManagementInterface();
 
-
         try {
             clientSocket = new Socket("localhost", 2018);
             objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
@@ -80,16 +79,15 @@ public class InventoryManagementController { // big controller
     }
 
     private void initComponents() {
-        // Get the current date
         LocalDate currentDate = LocalDate.now();
 
         // Format the date using a specific pattern (optional)
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         formattedDate = currentDate.format(formatter);
 
-        // Display the current date
-        System.out.println("Current Date: " + formattedDate);
+//        System.out.println("Current Date: " + formattedDate);
 
+        // TODO: find a solution that declared this as an attribute of InventoryManagementInterface (JFrame)
         mainContainer = new JPanel();
         mainContainer.setLayout(new BorderLayout());
     }
@@ -174,6 +172,10 @@ public class InventoryManagementController { // big controller
         });
     }
 
+    public JPanel getMainContainer() {
+        return mainContainer;
+    }
+
     /** EDT - background thread to process abstract window toolkit (AWT) events or GUI
      * - Each AWT events/functions should be process by one EDT background thread
      */
@@ -202,6 +204,7 @@ public class InventoryManagementController { // big controller
 
     }
 
+    @Deprecated
     public void displaySignUpView() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -317,6 +320,9 @@ public class InventoryManagementController { // big controller
     public void displayAdminMainMenu() {
         SwingUtilities.invokeLater(() -> {
             inventoryManagementInterface.getContentPane().removeAll();
+            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
+            mainContainer.revalidate();
+            mainContainer.repaint();
             inventoryManagementInterface.add(mainContainer);
             mainContainer.add(getAdminNavigationBarController().getAdminNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             mainContainer.add(getAdminDashboardController().getAdminDashboardView().getMainPanel(), BorderLayout.CENTER);
@@ -328,6 +334,9 @@ public class InventoryManagementController { // big controller
     public void displaySalesMainMenu() {
         SwingUtilities.invokeLater(() -> {
             inventoryManagementInterface.getContentPane().removeAll();
+            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
+            mainContainer.revalidate();
+            mainContainer.repaint();
             inventoryManagementInterface.add(mainContainer);
             mainContainer.add(getSalesNavigationBarController().getSalesNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             mainContainer.add(getSalesDashboardController().getSalesDashboardView().getMainPanel(), BorderLayout.CENTER);
@@ -340,6 +349,9 @@ public class InventoryManagementController { // big controller
     public void displayPurchaserMainMenu() {
         SwingUtilities.invokeLater(() -> {
             inventoryManagementInterface.getContentPane().removeAll();
+            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
+            mainContainer.revalidate();
+            mainContainer.repaint();
             inventoryManagementInterface.add(mainContainer);
             mainContainer.add(getPurchaserNavigationBarController().getPurchaserNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             mainContainer.add(getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel(), BorderLayout.CENTER);
