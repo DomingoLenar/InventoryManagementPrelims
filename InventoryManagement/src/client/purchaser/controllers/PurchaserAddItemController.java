@@ -1,7 +1,6 @@
 package client.purchaser.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
 import client.purchaser.views.PurchaserAddItemView;
 
 import java.awt.event.ActionEvent;
@@ -31,14 +30,14 @@ public class PurchaserAddItemController {
         purchaserAddItemView.getAddItemButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO: send to server
                 String productName = purchaserAddItemView.getProductField().getText();
                 int productPrice = Integer.parseInt(purchaserAddItemView.getPriceField().getText());
                 int quantity = Integer.parseInt(purchaserAddItemView.getQuantityField().getText());
 
-                ItemManagementModel.addItems(productName, quantity, "null", 6, productPrice, objectOutputStream, objectInputStream);
-                ItemManagementModel.addItemOrders(6, inventoryManagementController.getFormattedDate(), productPrice, inventoryManagementController.getUserType(), 6,
-                        inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
+                // TODO: fix the process of newly added product
+//                ItemManagementModel.addItems(productName, quantity, "null", 6, productPrice, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItemOrders(6, inventoryManagementController.getFormattedDate(), productPrice, inventoryManagementController.getUserType(), 6,
+//                        inventoryManagementController.getUsername(), 69, objectOutputStream, objectInputStream);
 
             }
         });
