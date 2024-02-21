@@ -40,7 +40,6 @@ public class SalesNavigationBarView {
     }
 
 //    private void createUIComponents() {
-//        // TODO: place custom component creation code here
 //        logobtn = new JButton();
 //        ImageIcon icon = new ImageIcon("InventoryManagement/src/client/resource/inventory_management_logo.png");
 //        Image image = icon.getImage();

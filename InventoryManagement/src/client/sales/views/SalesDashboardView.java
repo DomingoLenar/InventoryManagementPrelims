@@ -9,69 +9,34 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class SalesDashboardView {
-    private JPanel mainPanel;
-    private JPanel topPanel;
-    private JPanel bottomPanel;
-    private JPanel searchPanel;
+    private JPanel mainPanel, topPanel, bottomPanel, searchPanel;
     private JTextField searchField;
-    private JList<String> activityList1;
-    private JList<String> activityList2;
-    private JPanel stockControlPanel;
-    private JPanel revenueVsCostPanel;
-    private JPanel recentlyAddedItemsPanel;
-    private JLabel recentlyAddedItemsLabel;
+    private JList<String> recentlyAddedItemsIDList, recentlyAddedItemsNameList;
+    private JPanel stockControlPanel, revenueVsCostPanel, recentlyAddedItemsPanel;
+    private JLabel totalQtySoldLabel, soldQtyTodayLabel, soldQtyAnnualLabel, recentlyAddedItemsLabel;
     CategoryChart chart;
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public CategoryChart getChart() {
-        return chart;
-    }
+    DefaultListModel<String> recentlyAddedItemsIDListModel, recentlyAddedItemsNameListModel;
+    PieChart pieChart;
+    String soldQtyAnnual, soldQtyToday, totalQtySold;
 
     public SalesDashboardView() {
-
         // Recently Added Items
-        recentlyAddedItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
-        DefaultListModel<String> listModel1 = new DefaultListModel<>();
 
-        // Change to Raw Data
-        listModel1.addElement("ID No.");
-        listModel1.addElement("ID No.");
-        listModel1.addElement("ID No.");
-        listModel1.addElement("ID No.");
-        listModel1.addElement("ID No.");
-        activityList1.setModel(listModel1);
-        activityList1.setEnabled(false);
-        activityList1.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsIDListModel = new DefaultListModel<>();
 
-        DefaultListModel<String> listModel2 = new DefaultListModel<>();
-        // Change to Raw Data
-        listModel2.addElement("Product 1");
-        listModel2.addElement("Product 1");
-        listModel2.addElement("Product 1");
-        listModel2.addElement("Product 1");
-        listModel2.addElement("Product 1");
-        activityList2.setModel(listModel2);
-        activityList2.setEnabled(false);
-        activityList2.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsIDList.setModel(recentlyAddedItemsIDListModel);
+        recentlyAddedItemsIDList.setEnabled(false);
+        recentlyAddedItemsIDList.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
-        // Call for Controller
-        searchField.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedCornerBorder(20),
-                new EmptyBorder(5, 5, 5, 5)
-        ));
+        recentlyAddedItemsNameListModel = new DefaultListModel<>();
+
+        recentlyAddedItemsNameList.setModel(recentlyAddedItemsNameListModel);
+        recentlyAddedItemsNameList.setEnabled(false);
+        recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
         // Revenue Vs Costs
+
         chart = new CategoryChartBuilder().width(400).height(300).build();
-
-//        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-        // Change to Raw Data
-//        chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
-//        chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
-
         chart.getStyler().setStacked(true);
         chart.getStyler().setOverlapped(true);
         chart.getStyler().setSeriesColors(new Color[]{new Color(130, 0, 255), new Color(100, 180, 180)});
@@ -82,8 +47,8 @@ public class SalesDashboardView {
         revenueVsCostPanel.setLayout(new BorderLayout());
         revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
 
-        // Stock Control
-        PieChart pieChart = new PieChartBuilder().width(400).height(300).build();
+        // Unit sold pie chart
+        pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
         pieChart.setTitle("Units Sold");
@@ -94,19 +59,19 @@ public class SalesDashboardView {
         pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
 
         // Change to Raw Data
-        int todayValue = 274;
-        int maxValue = 2300;
-        int totalValue = todayValue + maxValue;
-
-        pieChart.addSeries("Today", todayValue);
-        pieChart.addSeries("Max", maxValue);
-
-        double todayPercentage = ((double) todayValue / totalValue) * 100;
-        double maxPercentage = ((double) maxValue / totalValue) * 100;
-
-        String todayLabel = String.format("Today: %.2f%%", todayPercentage);
-        String maxLabel = String.format("Max: %.2f%%", maxPercentage);
-        String totalLabel = String.format("Total: %d", totalValue);
+//        soldQtyToday = 274;
+//        soldQtyAnnual = 2300; // TODO: this could be improve depending on the company requirement
+//        totalQtySold = soldQtyToday + soldQtyAnnual;
+//
+////        pieChart.addSeries("Today", soldQtyToday);
+////        pieChart.addSeries("Max", soldQtyAnnual);
+//
+//        soldQtyTodayPercent = ((double) soldQtyToday / totalQtySold) * 100;
+//        soldQtyAnnualPercent = ((double) soldQtyAnnual / totalQtySold) * 100;
+//
+//        soldQtyTodayLabel = String.format("Today: %.2f%%", 333.2);
+//        soldQtyAnnualLabel = String.format("Max: %.2f%%", 444.3);
+//        totalQtySoldLabel = String.format("Total: %d", 555);
 
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
@@ -120,13 +85,16 @@ public class SalesDashboardView {
         maxColorLabel.setOpaque(true);
         maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
-        JLabel totalLabelComponent = new JLabel(totalLabel);
-        totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
+        totalQtySoldLabel = new JLabel(totalQtySold);
+        totalQtySoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        soldQtyTodayLabel = new JLabel(soldQtyToday);
+        soldQtyAnnualLabel = new JLabel(soldQtyAnnual);
 
         JPanel labelPanel = new JPanel(new GridLayout(1, 3));
-        labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));
-        labelPanel.add(new JLabel(maxLabel, SwingConstants.CENTER));
-        labelPanel.add(totalLabelComponent);
+        labelPanel.add(soldQtyTodayLabel, SwingConstants.CENTER);
+        labelPanel.add(soldQtyAnnualLabel, SwingConstants.CENTER);
+        labelPanel.add(totalQtySoldLabel);
 
         JPanel stockControlContentPanel = new JPanel(new BorderLayout());
         stockControlContentPanel.add(pieChartPanel, BorderLayout.CENTER);
@@ -134,24 +102,48 @@ public class SalesDashboardView {
 
         stockControlPanel.setLayout(new BorderLayout());
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
+
+        // Call for Controller
+        searchField.setBorder(BorderFactory.createCompoundBorder(
+                new RoundedCornerBorder(20),
+                new EmptyBorder(5, 5, 5, 5)
+        ));
+    }
+    public JPanel getMainPanel() {
+        return mainPanel;
     }
 
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> {
-//            SalesDashboardView dashboardView = new SalesDashboardView();
-//
-//            JFrame frame = new JFrame("Dashboard");
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.setContentPane(dashboardView.mainPanel);
-//
-//            frame.setResizable(true);
-//            frame.setMinimumSize(new Dimension(700, 500));
-//
-//            frame.pack();
-//            frame.setLocationRelativeTo(null);
-//            frame.setVisible(true);
-//        });
-//    }
+    public CategoryChart getChart() {
+        return chart;
+    }
+
+    public JTextField getSearchField() {
+        return searchField;
+    }
+
+    public DefaultListModel<String> getRecentlyAddedItemsIDListModel() {
+        return recentlyAddedItemsIDListModel;
+    }
+
+    public DefaultListModel<String> getRecentlyAddedItemsNameListModel() {
+        return recentlyAddedItemsNameListModel;
+    }
+
+    public PieChart getPieChart() {
+        return pieChart;
+    }
+
+    public JLabel getTotalQtySoldLabel() {
+        return totalQtySoldLabel;
+    }
+
+    public JLabel getSoldQtyTodayLabel() {
+        return soldQtyTodayLabel;
+    }
+
+    public JLabel getSoldQtyAnnualLabel() {
+        return soldQtyAnnualLabel;
+    }
 
     // Should be added in controller, used only for testing
     private static class RoundedCornerBorder implements Border {

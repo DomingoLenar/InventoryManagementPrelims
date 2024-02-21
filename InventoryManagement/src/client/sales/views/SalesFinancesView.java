@@ -60,63 +60,63 @@ public class SalesFinancesView {
         chart.getStyler().setSeriesColors(new Color[]{new Color(130, 0, 255), new Color(100, 180, 180)});
         chart.getStyler().setChartBackgroundColor(Color.WHITE);
 
-        JPanel chartPanel = new XChartPanel<>(chart);
-
-        revenueVsCostPanel.setLayout(new BorderLayout());
-        revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
-
-        // Stock Control
-        PieChart pieChart = new PieChartBuilder().width(400).height(300).build();
-
-        pieChart.getStyler().setLegendVisible(true);
-        pieChart.setTitle("Units Sold");
-        pieChart.getStyler().setChartBackgroundColor(Color.WHITE);
-
-        Color todayColor = new Color(130, 0, 255);
-        Color maxColor = new Color(100, 180, 180);
-        pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
-
-        // Change to Raw Data
-        int todayValue = 274;
-        int maxValue = 2300;
-        int totalValue = todayValue + maxValue;
-
-        pieChart.addSeries("Today", todayValue);
-        pieChart.addSeries("Max", maxValue);
-
-        double todayPercentage = ((double) todayValue / totalValue) * 100;
-        double maxPercentage = ((double) maxValue / totalValue) * 100;
-
-        String todayLabel = String.format("Today: %.2f%%", todayPercentage);
-        String maxLabel = String.format("Max: %.2f%%", maxPercentage);
-        String totalLabel = String.format("Total: %d", totalValue);
-
-        JPanel pieChartPanel = new XChartPanel<>(pieChart);
-
-        JLabel todayColorLabel = new JLabel("    ");
-        todayColorLabel.setBackground(todayColor);
-        todayColorLabel.setOpaque(true);
-        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
-
-        JLabel maxColorLabel = new JLabel("    ");
-        maxColorLabel.setBackground(maxColor);
-        maxColorLabel.setOpaque(true);
-        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
-
-        JLabel totalLabelComponent = new JLabel(totalLabel);
-        totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JPanel labelPanel = new JPanel(new GridLayout(1, 3));
-        labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));
-        labelPanel.add(new JLabel(maxLabel, SwingConstants.CENTER));
-        labelPanel.add(totalLabelComponent);
-
-        JPanel stockControlContentPanel = new JPanel(new BorderLayout());
-        stockControlContentPanel.add(pieChartPanel, BorderLayout.CENTER);
-        stockControlContentPanel.add(labelPanel, BorderLayout.SOUTH);
-
-        stockControlPanel.setLayout(new BorderLayout());
-        stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
+//        JPanel chartPanel = new XChartPanel<>(chart);
+//
+//        revenueVsCostPanel.setLayout(new BorderLayout());
+//        revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
+//
+//        // Stock Control
+//        PieChart pieChart = new PieChartBuilder().width(400).height(300).build();
+//
+//        pieChart.getStyler().setLegendVisible(true);
+//        pieChart.setTitle("Units Sold");
+//        pieChart.getStyler().setChartBackgroundColor(Color.WHITE);
+//
+//        Color todayColor = new Color(130, 0, 255);
+//        Color maxColor = new Color(100, 180, 180);
+//        pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
+//
+//        // Change to Raw Data
+//        int todayValue = 274;
+//        int maxValue = 2300;
+//        int totalValue = todayValue + maxValue;
+//
+//        pieChart.addSeries("Today", todayValue);
+//        pieChart.addSeries("Max", maxValue);
+//
+//        double todayPercentage = ((double) todayValue / totalValue) * 100;
+//        double maxPercentage = ((double) maxValue / totalValue) * 100;
+//
+//        String todayLabel = String.format("Today: %.2f%%", todayPercentage);
+//        String maxLabel = String.format("Max: %.2f%%", maxPercentage);
+//        String totalLabel = String.format("Total: %d", totalValue);
+//
+//        JPanel pieChartPanel = new XChartPanel<>(pieChart);
+//
+//        JLabel todayColorLabel = new JLabel("    ");
+//        todayColorLabel.setBackground(todayColor);
+//        todayColorLabel.setOpaque(true);
+//        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+//
+//        JLabel maxColorLabel = new JLabel("    ");
+//        maxColorLabel.setBackground(maxColor);
+//        maxColorLabel.setOpaque(true);
+//        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+//
+//        JLabel totalLabelComponent = new JLabel(totalLabel);
+//        totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
+//
+//        JPanel labelPanel = new JPanel(new GridLayout(1, 3));
+//        labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));
+//        labelPanel.add(new JLabel(maxLabel, SwingConstants.CENTER));
+//        labelPanel.add(totalLabelComponent);
+//
+//        JPanel stockControlContentPanel = new JPanel(new BorderLayout());
+//        stockControlContentPanel.add(pieChartPanel, BorderLayout.CENTER);
+//        stockControlContentPanel.add(labelPanel, BorderLayout.SOUTH);
+//
+//        stockControlPanel.setLayout(new BorderLayout());
+//        stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
     }
     public static void main(String[] args) {
         SalesFinancesView financesView = new SalesFinancesView();
