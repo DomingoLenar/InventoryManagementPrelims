@@ -28,6 +28,8 @@ public class AdminUserManagementController {
     }
 
     private void initButtons() {
+
+        // TODO: ability to create a sales and purchase users
         adminUserManagementView.getCreateUserButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
