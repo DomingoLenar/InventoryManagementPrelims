@@ -90,8 +90,8 @@ public class XMLProcessing {
         return null;
     }
 
-    public  static  synchronized  ArrayList<User> fetchListOfUsers ( ){
-        ArrayList<User> listOfUsers = new ArrayList<>();
+    public  static  synchronized  Stack<User> fetchListOfUsers (){
+        Stack<User> listOfUsers = new Stack<>();
         try {
             Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
@@ -100,13 +100,14 @@ public class XMLProcessing {
             for (int i = 0; i < users.getLength(); i++){
                 Element currentElement = (Element) users.item(i);
 
-                String username = currentElement.getAttribute("username");
-                String password = currentElement.getAttribute("password");
+                String username = currentElement.getElementsByTagName("username").item(0).getTextContent();
+                String password = currentElement.getElementsByTagName("password").item(0).getTextContent();
                 String role = currentElement.getAttribute("role");
-                boolean status = Boolean.parseBoolean(currentElement.getAttribute("status"));
+                boolean online = Boolean.parseBoolean(currentElement.getAttribute("active"));
 
-                listOfUsers.add(new User(username, password, role, status));
-
+                if (online) {
+                    listOfUsers.add(new User(username, password, role, true));
+                }
 
             }
         } catch (Exception e){
@@ -270,7 +271,7 @@ public class XMLProcessing {
             item.setTextContent(String.valueOf(itemOrder.getItemId()));
 
             Element amount = document.createElement("amount");
-            amount.setTextContent("amount");  //Refactor ItemOrder first to take into account amount
+            amount.setTextContent(String.valueOf(itemOrder.getQuantity()));  //Refactor ItemOrder first to take into account amount
 
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemOrder.getPurchasePrice()));

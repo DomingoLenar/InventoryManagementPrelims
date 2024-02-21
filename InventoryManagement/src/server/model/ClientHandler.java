@@ -76,7 +76,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "fetchListOfUsers":
-                        ArrayList<User> listOfUsers = XMLProcessing.fetchListOfUsers();
+                        Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
                         objectOutputStream.flush();
                         break;

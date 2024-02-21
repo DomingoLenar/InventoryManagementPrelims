@@ -1,10 +1,11 @@
 package client.common.models;
+
 import utility.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
+import java.util.Stack;
 
 /**
  * Represents the model for handling user login and signup operations on the client side.
@@ -156,14 +157,14 @@ public class ProfileManagementModel {
         }
     }
 
-    public static ArrayList<User> fetchListOfUsers (ObjectOutputStream oOs, ObjectInputStream oIs){
+    public static Stack<User> fetchListOfUsers (ObjectOutputStream oOs, ObjectInputStream oIs){
 
         try {
 
             sendAction("fetchListOfUsers", oOs);
 
             try  {
-                ArrayList<User> listOfUsers = (ArrayList<User>) oIs.readObject();
+                Stack<User> listOfUsers = (Stack<User>) oIs.readObject();
                 System.out.println("List of users have been fetched.");
                 return listOfUsers;
             } catch (ClassNotFoundException e) {
