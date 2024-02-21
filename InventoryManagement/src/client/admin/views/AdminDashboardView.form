@@ -168,7 +168,7 @@
                 <properties>
                   <background color="-1"/>
                   <foreground color="-16777216"/>
-                  <text value=""/>
+                  <text value="Add"/>
                 </properties>
               </component>
               <component id="f11ec" class="javax.swing.JLabel">

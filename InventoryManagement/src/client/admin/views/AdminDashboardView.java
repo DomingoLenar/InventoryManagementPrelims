@@ -149,22 +149,22 @@ public class AdminDashboardView {
         revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            AdminDashboardView dashboardView = new AdminDashboardView();
-
-            JFrame frame = new JFrame("Dashboard");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setContentPane(dashboardView.mainPanel);
-
-            frame.setResizable(true);
-            frame.setMinimumSize(new Dimension(700, 500));
-
-            frame.pack();
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
-        });
-    }
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> {
+//            AdminDashboardView dashboardView = new AdminDashboardView();
+//
+//            JFrame frame = new JFrame("Dashboard");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.setContentPane(dashboardView.mainPanel);
+//
+//            frame.setResizable(true);
+//            frame.setMinimumSize(new Dimension(700, 500));
+//
+//            frame.pack();
+//            frame.setLocationRelativeTo(null);
+//            frame.setVisible(true);
+//        });
+//    }
 
     // Should be added in controller, used only for testing
     private static class RoundedCornerBorder implements Border {

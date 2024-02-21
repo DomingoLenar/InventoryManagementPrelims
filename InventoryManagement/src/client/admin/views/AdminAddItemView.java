@@ -1,14 +1,15 @@
 package client.admin.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 
 public class AdminAddItemView {
-    private JTextField prdct;
-    private JTextField prc;
-    private JTextField qty;
+    private JTextField productName;
+    private JTextField productPrice;
+    private JTextField quantity;
     private JComboBox warehouse;
     private JButton addItemButton;
-    private JLabel addItem;
     private JPanel mainPanel;
     private JButton cancelbtn;
 
@@ -16,20 +17,20 @@ public class AdminAddItemView {
         return mainPanel;
     }
 
-    public JTextField getPrdct(){
-        return prdct;
+    public JTextField getProductName() {
+        return productName;
     }
-    public JTextField getPrc(){
-        return prc;
+
+    public JTextField getProductPrice() {
+        return productPrice;
     }
-    public JTextField getQty(){
-        return qty;
+
+    public JTextField getQuantity() {
+        return quantity;
     }
-    public JComboBox getWarehouse(){
+
+    public JComboBox getWarehouse() {
         return warehouse;
-    }
-    public JLabel getAddItem(){
-        return addItem;
     }
 
     public JButton getAddItemButton() {
@@ -41,6 +42,6 @@ public class AdminAddItemView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        mainPanel = new GradientPanel();
     }
 }

@@ -1,20 +1,17 @@
 package client.admin.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 
 public class AdminCreateSalesInvoiceView {
-    private JLabel salesInvoice;
-    private JTextField prdct;
-    private JTextField qty;
-    private JTextField prc;
-    private JTextField estTotal;
-    private JLabel product;
-    private JLabel quantity;
-    private JLabel price;
-    private JLabel estimatedTotal;
+    private JTextField productPrice;
+    private JTextField quantity;
+    private JTextField estimatedTotal;
     private JButton cancelButton;
     private JButton createSalesInvoiceButton;
     private JPanel mainPanel;
+    private JTextField productName;
 
     public JButton getCreateSalesInvoiceButton() {
         return createSalesInvoiceButton;
@@ -29,42 +26,23 @@ public class AdminCreateSalesInvoiceView {
     }
 
 
-    public JLabel getEstimatedTotal() {
+    public JTextField getEstimatedTotal() {
         return estimatedTotal;
     }
 
-    public JLabel getPrice() {
-        return price;
+    public JTextField getProductPrice() {
+        return productPrice;
     }
 
-    public JLabel getProduct() {
-        return product;
-    }
-
-    public JLabel getQuantity() {
+    public JTextField getQuantity() {
         return quantity;
     }
 
-    public JLabel getSalesInvoice() {
-        return salesInvoice;
+    public JTextField getProductName() {
+        return productName;
     }
 
-    public JTextField getEstTotal() {
-        return estTotal;
-    }
-
-    public JTextField getPrc() {
-        return prc;
-    }
-
-    public JTextField getPrdct() {
-        return prdct;
-    }
-
-    public JTextField getQty() {
-        return qty;
-    }
     private void createUIComponents() {
-        // TODO: place custom component creation code here
+        mainPanel = new GradientPanel();
     }
 }

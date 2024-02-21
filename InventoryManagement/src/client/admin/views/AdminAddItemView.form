@@ -21,7 +21,7 @@
           <text value="Product name"/>
         </properties>
       </component>
-      <component id="7c201" class="javax.swing.JTextField" binding="prdct">
+      <component id="7c201" class="javax.swing.JTextField" binding="productName">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -46,7 +46,7 @@
           <text value="Price"/>
         </properties>
       </component>
-      <component id="8acdd" class="javax.swing.JTextField" binding="prc">
+      <component id="8acdd" class="javax.swing.JTextField" binding="productPrice">
         <constraints>
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -70,7 +70,7 @@
           <text value="Quantity"/>
         </properties>
       </component>
-      <component id="c0a20" class="javax.swing.JTextField" binding="qty">
+      <component id="c0a20" class="javax.swing.JTextField" binding="quantity">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -113,7 +113,7 @@
           <verifyInputWhenFocusTarget value="true"/>
         </properties>
       </component>
-      <component id="5811d" class="javax.swing.JLabel" binding="addItem">
+      <component id="5811d" class="javax.swing.JLabel">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="150" bottom="50" right="0" weightx="0.0" weighty="0.0"/>

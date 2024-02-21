@@ -9,7 +9,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="78f3" class="javax.swing.JTextField" binding="prdct">
+      <component id="78f3" class="javax.swing.JTextField" binding="productName">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -24,7 +24,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="6c517" class="javax.swing.JLabel" binding="product">
+      <component id="6c517" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -36,7 +36,7 @@
           <text value="Product"/>
         </properties>
       </component>
-      <component id="2a390" class="javax.swing.JTextField" binding="prc">
+      <component id="2a390" class="javax.swing.JTextField" binding="productPrice">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -50,7 +50,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="831c8" class="javax.swing.JLabel" binding="price">
+      <component id="831c8" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -62,7 +62,7 @@
           <text value="Price"/>
         </properties>
       </component>
-      <component id="8b3e" class="javax.swing.JTextField" binding="qty">
+      <component id="8b3e" class="javax.swing.JTextField" binding="quantity">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -75,7 +75,7 @@
           <foreground color="-16777216"/>
         </properties>
       </component>
-      <component id="3bacd" class="javax.swing.JLabel" binding="quantity">
+      <component id="3bacd" class="javax.swing.JLabel">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -87,7 +87,7 @@
           <text value="Quantity"/>
         </properties>
       </component>
-      <component id="ab777" class="javax.swing.JTextField" binding="estTotal">
+      <component id="ab777" class="javax.swing.JTextField" binding="estimatedTotal">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -101,7 +101,7 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="101a5" class="javax.swing.JLabel" binding="estimatedTotal">
+      <component id="101a5" class="javax.swing.JLabel">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
