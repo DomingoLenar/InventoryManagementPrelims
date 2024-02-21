@@ -30,7 +30,6 @@ public class SignUpView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         SUpanel = new GradientPanel();
         String[] roles = {"Purchase", "Sales"};
         roleComboBox = new JComboBox(roles);

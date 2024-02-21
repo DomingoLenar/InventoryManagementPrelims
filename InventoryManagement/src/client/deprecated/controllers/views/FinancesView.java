@@ -16,7 +16,6 @@ public class FinancesView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         bottomPanel = new GradientPanel();
     }
     //    public FinancesView() {

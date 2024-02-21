@@ -20,7 +20,6 @@ public class IndexView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         IVpanel = new GradientPanel();
     }
 

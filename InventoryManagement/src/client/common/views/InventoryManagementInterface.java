@@ -6,6 +6,8 @@ public class InventoryManagementInterface extends JFrame {
 
     public InventoryManagementInterface(){
         setVisible(true);
-        setSize(800, 800);
+//        setLocationRelativeTo(null); TODO: if client click exit button then set active status to false (i.e,. handle the xml)
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(1000, 1000);
     }
 }

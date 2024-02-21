@@ -42,7 +42,6 @@ public class DashboardView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         bottomPanel = new GradientPanel();
     }
 
