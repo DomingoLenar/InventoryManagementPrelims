@@ -184,11 +184,17 @@ public class SalesDashboardController {
 
        if (!recentAddedItems.isEmpty()) {
            byte limit = 5;
-           while (!recentAddedItems.isEmpty() && limit != 0){
-               Item item = recentAddedItems.pop();
-               salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(item.getItemId()));
-               salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(item.getName());
-               limit--;
+
+           if (!salesDashboardView.getRecentlyAddedItemsNameListModel().isEmpty() && !salesDashboardView.getRecentlyAddedItemsIDListModel().isEmpty()) {
+               salesDashboardView.getRecentlyAddedItemsIDListModel().removeAllElements();
+               salesDashboardView.getRecentlyAddedItemsNameListModel().removeAllElements();
+           }
+
+           while (!recentAddedItems.isEmpty() && limit != 0) {
+                   Item item = recentAddedItems.pop();
+                   salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(item.getItemId()));
+                   salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(item.getName());
+                   limit--;
            }
        }
 
