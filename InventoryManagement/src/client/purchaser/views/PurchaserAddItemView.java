@@ -42,7 +42,6 @@ public class PurchaserAddItemView {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         mainPanel = new GradientPanel();
     }
 }
