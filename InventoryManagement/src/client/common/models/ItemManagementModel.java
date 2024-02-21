@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ItemManagementModel {
     /**
@@ -33,7 +34,7 @@ public class ItemManagementModel {
      * @param price The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public static void addItems(String name, int qty, String type, int itemId, int price, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static void addItems(String name, int qty, String type, int itemId, float price, ObjectOutputStream oOs, ObjectInputStream oIs) {
 
         try {
 
@@ -57,10 +58,10 @@ public class ItemManagementModel {
         }
     }
 
-    public static void addItemOrders(int id, String date, int price, String userType, int itemID, String byUser,  ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static void addItemOrders(int id, String date, float price, String orderType, int itemID, String byUser, int qty,  ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
 
-            ItemOrder itemOrder = new ItemOrder(id, date, price, userType, itemID, byUser);
+            ItemOrder itemOrder = new ItemOrder(id, date, price, orderType, itemID, byUser, qty);
 
             sendAction("addItemOrder", oOs);
 
@@ -83,13 +84,13 @@ public class ItemManagementModel {
     /**
      * Removes an item from the inventory based on its ID.
      *
-     * @param itemId The ID of the item to be removed.
+     * @param id The ID of the item to be removed.
      * @return True if the item is successfully removed; false otherwise.
      */
-    public static boolean removeItem(int itemId, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static boolean removeItem(int id, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
             sendAction("removeItem", oOs);
-            oOs.writeInt(itemId);
+            oOs.writeInt(id);
             oOs.flush();
 
             System.out.println("Item removal request has been sent to the server.");
@@ -107,12 +108,34 @@ public class ItemManagementModel {
         }
     }
 
-    public static ArrayList<Item> fetchItemsByUserType(String userType,ObjectOutputStream oOs, ObjectInputStream oIs){
+    public static boolean removeItemOrder(int itemOrderID, ObjectOutputStream oOs, ObjectInputStream oIs) {
+        try {
+            sendAction("removeItemOrder", oOs);
+
+            oOs.writeInt(itemOrderID);
+            oOs.flush();
+
+            System.out.println("Item order removal request has been sent to the server");
+
+            try  {
+                boolean removalSuccess = oIs.readBoolean();
+                System.out.println("Server response: " + removalSuccess);
+                return removalSuccess;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Stack<Item> fetchItemsByUserType(String userType, ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
             sendAction("fetchItems", oOs);
 
             try  {
-                ArrayList<Item> listOfItems = (ArrayList<Item>) oIs.readObject();
+                Stack<Item> listOfItems = (Stack<Item>) oIs.readObject();
                 System.out.println("List of items have been fetched.");
                 return listOfItems;
             } catch (ClassNotFoundException e) {

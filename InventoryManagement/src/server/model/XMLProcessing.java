@@ -19,6 +19,7 @@ import javax.xml.xpath.*;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class XMLProcessing {
     public synchronized static User authenticate(User userToAuth){
@@ -182,7 +183,7 @@ public class XMLProcessing {
      * @param itemToAdd The item to add.
      * @return True if the item is successfully added; false otherwise.
      */
-    public static synchronized boolean addItem(Item itemToAdd) {
+    public static synchronized boolean addItem(Item itemToAdd) { // TODO: problem: id of an item not auto increment
         try {
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
@@ -229,7 +230,7 @@ public class XMLProcessing {
      * @param itemId The ID of the item to remove.
      * @return True if the item is successfully removed; false otherwise.
      */
-    public static synchronized boolean removeItem(int itemId) {
+    public static synchronized boolean removeItem(int itemId) { // TODO: id of an item must be in sequence
         try {
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
@@ -253,7 +254,7 @@ public class XMLProcessing {
         }
     }
 
-    public static synchronized boolean addItemOrder(ItemOrder itemOrder){
+    public static synchronized boolean addItemOrder(ItemOrder itemOrder){ // TODO: id of item order not auto increment
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
 
@@ -272,7 +273,7 @@ public class XMLProcessing {
             amount.setTextContent("amount");  //Refactor ItemOrder first to take into account amount
 
             Element price = document.createElement("price");
-            price.setTextContent(String.valueOf(itemOrder.getPurPrice()));
+            price.setTextContent(String.valueOf(itemOrder.getPurchasePrice()));
 
             Element id = document.createElement("id");
             id.setTextContent(String.valueOf(itemOrder.getId()));
@@ -294,6 +295,30 @@ public class XMLProcessing {
         return false;
     }
 
+    public static synchronized boolean removeItemOrder(int itemOrderID) { // TODO: id of item order must be in sequence
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
+
+            Element root = document.getDocumentElement();
+            NodeList itemOrderList = root.getElementsByTagName("itemorder");
+
+            for (int i = 0; i < itemOrderList.getLength(); i++) {
+                Element itemOrderElement = (Element) itemOrderList.item(i);
+                Element idElement = (Element) itemOrderElement.getElementsByTagName("id").item(0);
+                int ioID = Integer.parseInt(idElement.getTextContent());
+                if (ioID == itemOrderID) {
+                    root.removeChild(itemOrderElement);
+                    writeDOMToFile(root, "InventoryManagement/src/server/res/itemorders.xml");
+                    return true;
+                }
+            }
+            return false; // Item not found
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static synchronized ArrayList<ItemOrder> fetchItemOrders(String filterKey){
         ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
         try{
@@ -310,11 +335,12 @@ public class XMLProcessing {
                 String orderType = currentElement.getAttribute("orderType");
                 int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
                 String byUser = currentElement.getAttribute("byUser");
+                int qty = Integer.parseInt(currentElement.getElementsByTagName("amount").item(0).getTextContent());
                 if(filterKey.equals("none")){
-                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
+                    itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser, qty));
                 }else{
                     if(orderType.equalsIgnoreCase(filterKey)){
-                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser));
+                        itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser, qty));
                     }
                 }
 
@@ -326,8 +352,8 @@ public class XMLProcessing {
         return itemOrderList;
     }
 
-    public static synchronized ArrayList<Item> fetchItems(){ // TODO: better approach is to have filterKey
-        ArrayList<Item> itemList = new ArrayList<>();
+    public static synchronized Stack<Item> fetchItems(){ // TODO: better approach is to have filterKey
+        Stack<Item> itemList = new Stack<>();
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
             Element element = document.getDocumentElement();
@@ -339,10 +365,10 @@ public class XMLProcessing {
                 String name = currentItem.getElementsByTagName("name").item(0).getTextContent();
                 int amount = Integer.parseInt(currentItem.getElementsByTagName("quantity").item(0).getTextContent());
                 int id = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
-                int price = Integer.parseInt(currentItem.getElementsByTagName("price").item(0).getTextContent());
+                float price = Float.parseFloat(currentItem.getElementsByTagName("price").item(0).getTextContent());
                 String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
 
-                itemList.add(new Item(name, amount, type,id,price));
+                itemList.add(new Item(name, amount, type, id, price));
             }
         }catch(Exception e){
             e.printStackTrace();

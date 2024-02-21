@@ -5,10 +5,11 @@ import java.io.Serializable;
 public class ItemOrder implements Serializable {
     private int id;
     private String date;
-    private float purPrice;
+    private float purchasePrice;
     private String status;
     private int itemId;
     private String username;
+    private int quantity;
 
     /**
      * Default constructor for ItemOrder.
@@ -17,9 +18,10 @@ public class ItemOrder implements Serializable {
     public ItemOrder(){
         id = 0;
         date = "";
-        purPrice = 0;
+        purchasePrice = 0;
         status = "";
         itemId = 0;
+        quantity= 0;
     }
 
     /**
@@ -27,15 +29,19 @@ public class ItemOrder implements Serializable {
      *
      * @param id The item associated with the order.
      * @param date The date when the order was made.
-     * @param purPrice The purchase price of the item in the order.
+     * @param price The purchase price of the item in the order.
      */
-    public ItemOrder(int id, String date, float purPrice, String status, int itemId, String username){
+    public ItemOrder(int id, String date, float price, String status, int itemId, String username, int qty){
         this.id = id;
         this.date = date;
-        this.purPrice = purPrice;
+        this.purchasePrice = price;
         this.status = status;
         this.itemId = itemId;
         this.username = username;
+        this.quantity = qty;
+    }
+    public int getQuantity() {
+        return quantity;
     }
 
     /**
@@ -61,8 +67,8 @@ public class ItemOrder implements Serializable {
      *
      * @return The purchase price of the item.
      */
-    public float getPurPrice() {
-        return purPrice;
+    public float getPurchasePrice() {
+        return purchasePrice;
     }
 
     /**
@@ -86,10 +92,10 @@ public class ItemOrder implements Serializable {
     /**
      * Sets the purchase price of the item in the order.
      *
-     * @param purPrice The purchase price to be set.
+     * @param purchasePrice The purchase price to be set.
      */
-    public void setPurPrice(float purPrice) {
-        this.purPrice = purPrice;
+    public void setPurchasePrice(float purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public String getStatus() {

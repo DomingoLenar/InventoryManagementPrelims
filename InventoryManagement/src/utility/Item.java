@@ -8,7 +8,7 @@ public class Item implements Serializable {
     private int qty;
     private String type;
     private int itemId;
-    private int price;
+    private float price;
 
     /**
      * Default constructor for Item.
@@ -31,7 +31,7 @@ public class Item implements Serializable {
      * @param itemId The ID of the item.
      * @param price The price of the item.
      */
-    public Item(String name, int qty, String type, int itemId, int price ){
+    public Item(String name, int qty, String type, int itemId, float price ){
         this.name = name;
         this.qty = qty;
         this.type = type;
@@ -80,7 +80,7 @@ public class Item implements Serializable {
      *
      * @return The price of the item.
      */
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 

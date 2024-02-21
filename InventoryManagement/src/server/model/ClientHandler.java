@@ -7,6 +7,7 @@ import utility.User;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ClientHandler implements Runnable{
     Socket socket;
@@ -45,11 +46,10 @@ public class ClientHandler implements Runnable{
                         break;
                     case "removeItem":
                         //Invoke method for item removal
-                        int submittedID =  oIS.readInt();
-                        itemRemoval(submittedID, objectOutputStream);
+                        itemRemoval(oIS.readInt(), objectOutputStream);
                         break;
                     case "fetchItems":
-                        ArrayList<Item> items = XMLProcessing.fetchItems();
+                        Stack<Item> items = XMLProcessing.fetchItems();
                         objectOutputStream.writeObject(items);
                         objectOutputStream.flush();
                         break;
@@ -63,6 +63,9 @@ public class ClientHandler implements Runnable{
                         boolean success = XMLProcessing.addItemOrder(newItemOrder);
                         objectOutputStream.writeBoolean(success);
                         objectOutputStream.flush();
+                        break;
+                    case "removeItemOrder":
+                        itemOrderRemoval(oIS.readInt(), objectOutputStream);
                         break;
                     case "changePassword":
                         String currentUsername = oIS.readUTF();
@@ -112,6 +115,16 @@ public class ClientHandler implements Runnable{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+
+    private void itemOrderRemoval(int itemOrderID, ObjectOutputStream objectOutputStream) {
+        try{
+            boolean success = XMLProcessing.removeItemOrder(itemOrderID);
+            objectOutputStream.writeBoolean(success);
+            objectOutputStream.flush();
+        } catch (IOException ioException){
+            throw new RuntimeException("Error removing item order", ioException);
         }
     }
 

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 /**
  * Represents the model for handling user login and signup operations on the client side.
  */
-// TODO: Refactor the whole class and its method so that it is accessed statically
 public class ProfileManagementModel {
 
 
@@ -149,7 +148,6 @@ public class ProfileManagementModel {
 
             System.out.println(username + "session timeout request has been sent to the server...");
 
-            // TODO: not needed to notify the user
             boolean logout = oIs.readBoolean();
             System.out.println("Server response: " + logout);
 
