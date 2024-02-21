@@ -21,6 +21,12 @@ public class SalesNavigationBarController {
         salesNavigationBarView.getDashboardButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // a band aid TODO: construct a better implementation
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getChart().removeSeries("Revenue");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getChart().removeSeries("Cost");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Today");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Annual");
+                inventoryManagementController.getSalesDashboardController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getMainPanel());
             }
         });
