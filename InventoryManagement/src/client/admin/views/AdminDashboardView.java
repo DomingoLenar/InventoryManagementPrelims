@@ -7,7 +7,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Arrays;
 
 public class AdminDashboardView {
     private JPanel mainPanel;
@@ -15,8 +14,8 @@ public class AdminDashboardView {
     private JPanel bottomPanel;
     private JPanel searchPanel;
     private JTextField searchField;
-    private JList<String> activityList1;
-    private JList<String> activityList2;
+    private JList<String> activeUsersList;
+    private JList<String> activeUsersTypeList;
     private JButton addUserButton;
     private JPanel addUserPanel;
     private JPanel stockControlPanel;
@@ -25,21 +24,71 @@ public class AdminDashboardView {
     private JLabel usersActiveLabel;
     CategoryChart chart;
     JPanel chartPanel;
-    int todayValue = 0;
-    int maxValue = 0;
-    int totalValue = 0;
-    double todayPercentage = 0;
-    double maxPercentage = 0;
-    String todayLabel;
-    String maxLabel;
-    String totalLabel;
-    DefaultListModel<String> activeUsers;
-    DefaultListModel<String> activeUsersType;
+    private JLabel totalQtySoldLabel, soldQtyTodayLabel, soldQtyAnnualLabel, recentlyAddedItemsLabel;
+    String soldQtyAnnual, soldQtyToday, totalQtySold;
+    DefaultListModel<String> activeUsersListModel, activeUsersTypeListModel;
+    PieChart pieChart;
+
+    public PieChart getPieChart() {
+        return pieChart;
+    }
+
+    public DefaultListModel<String> getActiveUsersListModel() {
+        return activeUsersListModel;
+    }
+
+    public DefaultListModel<String> getActiveUsersTypeListModel() {
+        return activeUsersTypeListModel;
+    }
+
+    public JLabel getTotalQtySoldLabel() {
+        return totalQtySoldLabel;
+    }
+
+    public JLabel getSoldQtyTodayLabel() {
+        return soldQtyTodayLabel;
+    }
+
+    public JLabel getSoldQtyAnnualLabel() {
+        return soldQtyAnnualLabel;
+    }
 
     public AdminDashboardView() {
 
-        // Stock Control
-        PieChart pieChart = new PieChartBuilder().width(400).height(300).build();
+        // Users Active
+        usersActiveLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        activeUsersListModel = new DefaultListModel<>();
+
+        // Change to Raw Data
+//        activeUsersListModel.addElement("User 1");
+//        activeUsersListModel.addElement("User 2");
+//        activeUsersListModel.addElement("User 3");
+//        activeUsersListModel.addElement("User 4");
+//        activeUsersListModel.addElement("User 5");
+
+        activeUsersList.setModel(activeUsersListModel);
+
+        activeUsersList.setEnabled(false);
+        activeUsersList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+
+        activeUsersTypeListModel = new DefaultListModel<>();
+
+        // Change to Raw Data
+//        activeUsersTypeListModel.addElement("Sales Person");
+//        activeUsersTypeListModel.addElement("Purchaser");
+//        activeUsersTypeListModel.addElement("Sales Person");
+//        activeUsersTypeListModel.addElement("Sales Person");
+//        activeUsersTypeListModel.addElement("Purchaser");
+
+        activeUsersTypeList.setModel(activeUsersTypeListModel);
+
+        activeUsersTypeList.setEnabled(false);
+        activeUsersTypeList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+
+        addUserButton.setBorderPainted(false);
+
+        // Unit sold
+        pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
         pieChart.setTitle("Units Sold");
@@ -50,19 +99,19 @@ public class AdminDashboardView {
         pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
 
         // Change to Raw Data
-        todayValue = 274;
-        maxValue = 2300;
-        totalValue = todayValue + maxValue;
-
-        pieChart.addSeries("Today", todayValue);
-        pieChart.addSeries("Max", maxValue);
-
-        todayPercentage = ((double) todayValue / totalValue) * 100;
-        maxPercentage = ((double) maxValue / totalValue) * 100;
-
-        todayLabel = String.format("Today: %.2f%%", todayPercentage);
-        maxLabel = String.format("Max: %.2f%%", maxPercentage);
-        totalLabel = String.format("Total: %d", totalValue);
+//        todayValue = 274;
+//        maxValue = 2300;
+//        totalValue = todayValue + maxValue;
+//
+//        pieChart.addSeries("Today", todayValue);
+//        pieChart.addSeries("Max", maxValue);
+//
+//        todayPercentage = ((double) todayValue / totalValue) * 100;
+//        maxPercentage = ((double) maxValue / totalValue) * 100;
+//
+//        todayLabel = String.format("Today: %.2f%%", todayPercentage);
+//        maxLabel = String.format("Max: %.2f%%", maxPercentage);
+//        totalLabel = String.format("Total: %d", totalValue);
 
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
@@ -76,13 +125,16 @@ public class AdminDashboardView {
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
 
-        JLabel totalLabelComponent = new JLabel(totalLabel);
-        totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
+        totalQtySoldLabel = new JLabel(totalQtySold);
+        totalQtySoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        soldQtyTodayLabel = new JLabel(soldQtyToday);
+        soldQtyAnnualLabel = new JLabel(soldQtyAnnual);
 
         JPanel labelPanel = new JPanel(new GridLayout(1, 3));
-        labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));
-        labelPanel.add(new JLabel(maxLabel, SwingConstants.CENTER));
-        labelPanel.add(totalLabelComponent);
+        labelPanel.add(soldQtyTodayLabel, SwingConstants.CENTER);
+        labelPanel.add(soldQtyAnnualLabel, SwingConstants.CENTER);
+        labelPanel.add(totalQtySoldLabel);
 
         JPanel stockControlContentPanel = new JPanel(new BorderLayout());
         stockControlContentPanel.add(pieChartPanel, BorderLayout.CENTER);
@@ -91,37 +143,7 @@ public class AdminDashboardView {
         stockControlPanel.setLayout(new BorderLayout());
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
 
-        // Users Active
-        usersActiveLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
-        activeUsers = new DefaultListModel<>();
 
-        // Change to Raw Data
-        activeUsers.addElement("User 1");
-        activeUsers.addElement("User 2");
-        activeUsers.addElement("User 3");
-        activeUsers.addElement("User 4");
-        activeUsers.addElement("User 5");
-
-        activityList1.setModel(activeUsers);
-
-        activityList1.setEnabled(false);
-        activityList1.setFont(new Font("Fira Code", Font.PLAIN, 14));
-
-        activeUsersType = new DefaultListModel<>();
-
-        // Change to Raw Data
-        activeUsersType.addElement("Sales Person");
-        activeUsersType.addElement("Purchaser");
-        activeUsersType.addElement("Sales Person");
-        activeUsersType.addElement("Sales Person");
-        activeUsersType.addElement("Purchaser");
-
-        activityList2.setModel(activeUsersType);
-
-        activityList2.setEnabled(false);
-        activityList2.setFont(new Font("Fira Code", Font.PLAIN, 14));
-
-        addUserButton.setBorderPainted(false);
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
@@ -131,19 +153,12 @@ public class AdminDashboardView {
 
         // Revenue Vs Costs
         chart = new CategoryChartBuilder().width(400).height(300).build();
-
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-        // Change to Raw Data
-        chart.addSeries("Cost", Arrays.asList(months), Arrays.asList(1000, 1500, 1200, 800, 1200, 800, 800, 800, 800, 800, 800, 800));
-        chart.addSeries("Revenue", Arrays.asList(months), Arrays.asList(1500, 1700, 1500, 1000, 1500, 1000, 1000, 1000, 1000, 1000, 1000, 1000));
-
         chart.getStyler().setStacked(true);
         chart.getStyler().setOverlapped(true);
         chart.getStyler().setSeriesColors(new Color[]{new Color(130, 0, 255), new Color(100, 180, 180)});
         chart.getStyler().setChartBackgroundColor(Color.WHITE);
 
-        chartPanel = new XChartPanel<>(chart);
+        JPanel chartPanel = new XChartPanel<>(chart);
 
         revenueVsCostPanel.setLayout(new BorderLayout());
         revenueVsCostPanel.add(chartPanel, BorderLayout.CENTER);
