@@ -180,33 +180,17 @@ public class SalesDashboardController {
 
        Stack<Item> recentAddedItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getUserType(), objectOutputStream, objectInputStream);
 
-       // extract the product name
+       // extract the product name and product id
 
-       String product1 = recentAddedItems.pop().getName();
-       String product2 = recentAddedItems.pop().getName();
-       String product3 = recentAddedItems.pop().getName();
-       String product4 = recentAddedItems.pop().getName();
-       String product5 = recentAddedItems.pop().getName();
-
-       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product1);
-       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product2);
-       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product3);
-       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product4);
-       salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(product5);
-
-       // extract the product id
-
-       int productID1 = recentAddedItems.pop().getItemId();
-       int productID2 = recentAddedItems.pop().getItemId();
-       int productID3 = recentAddedItems.pop().getItemId();
-       int productID4 = recentAddedItems.pop().getItemId();
-       int productID5 = recentAddedItems.pop().getItemId();
-
-       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID1));
-       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID2));
-       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID3));
-       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID4));
-       salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(productID5));
+       if (!recentAddedItems.isEmpty()) {
+           byte limit = 5;
+           while (!recentAddedItems.isEmpty() && limit != 0){
+               Item item = recentAddedItems.pop();
+               salesDashboardView.getRecentlyAddedItemsIDListModel().addElement(String.valueOf(item.getItemId()));
+               salesDashboardView.getRecentlyAddedItemsNameListModel().addElement(item.getName());
+               limit--;
+           }
+       }
 
        // TODO: dynamic pie chart | computations: unit sold -> total quantity sold + total quantity sold today
 
