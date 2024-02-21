@@ -184,6 +184,12 @@ public class AdminDashboardController {
         Stack<User> listOfActiveUsers = ProfileManagementModel.fetchListOfUsers(objectOutputStream, objectInputStream);
         if (!listOfActiveUsers.isEmpty()) {
             byte limit = 5;
+
+            if (!adminDashboardView.getActiveUsersListModel().isEmpty() && !adminDashboardView.getActiveUsersTypeListModel().isEmpty()) {
+                adminDashboardView.getActiveUsersTypeListModel().removeAllElements();
+                adminDashboardView.getActiveUsersListModel().removeAllElements();
+            }
+
             while (!listOfActiveUsers.isEmpty() && limit != 0) {
                 User activeUser = listOfActiveUsers.pop();
                 adminDashboardView.getActiveUsersListModel().addElement(activeUser.getUsername());
