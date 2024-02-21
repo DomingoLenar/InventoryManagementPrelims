@@ -5,7 +5,7 @@
         <price>180</price>
         <id>1</id>
     </itemorder>
-    <itemorder byUser="testsales" date="2024-02-19" orderType="sales">
+    <itemorder byUser="testsales" date="2024-02-21" orderType="sales">
         <item>2</item>
         <amount>15</amount>
         <price>180</price>
@@ -54,8 +54,8 @@
         <id>9</id>
     </itemorder>
     <itemorder byUser="testsales" date="2024-10-19" orderType="sales">
-        <item>99</item>
-        <amount>amount</amount>
+        <item>10</item>
+        <amount>20</amount>
         <price>180.0</price>
         <id>10</id>
     </itemorder>
@@ -65,7 +65,7 @@
         <price>20.0</price>
         <id>11</id>
     </itemorder>d
-    <itemorder byUser="testsales" date="2024-12-19" orderType="sales">
+    <itemorder byUser="testsales" date="2024-12-21" orderType="sales">
         <item>12</item>
         <amount>420</amount>
         <price>180.0</price>

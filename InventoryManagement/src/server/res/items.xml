@@ -83,11 +83,4 @@
         <id>12</id>
         <price>20</price>
     </item>
-    <item>
-        <name>tea</name>
-        <quantity>2</quantity>
-        <type>null</type>
-        <id>6</id>
-        <price>180</price>
-    </item>
 </items>
