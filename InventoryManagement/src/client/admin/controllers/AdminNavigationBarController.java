@@ -21,6 +21,14 @@ public class AdminNavigationBarController {
         adminNavigationBarView.getDashboardButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                // a band aid TODO: construct a better implementation
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getChart().removeSeries("Revenue");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getChart().removeSeries("Cost");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Today");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Annual");
+
+                inventoryManagementController.getAdminDashboardController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getAdminDashboardController().adminDashboardView.getMainPanel());
             }
         });
