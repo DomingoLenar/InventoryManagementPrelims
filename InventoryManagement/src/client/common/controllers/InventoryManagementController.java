@@ -326,6 +326,7 @@ public class InventoryManagementController { // big controller
             inventoryManagementInterface.add(mainContainer);
             mainContainer.add(getAdminNavigationBarController().getAdminNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             mainContainer.add(getAdminDashboardController().getAdminDashboardView().getMainPanel(), BorderLayout.CENTER);
+            getAdminDashboardController().initComponents();
             inventoryManagementInterface.revalidate();
             inventoryManagementInterface.repaint();
         });
