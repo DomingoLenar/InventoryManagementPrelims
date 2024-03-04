@@ -1,4 +1,3 @@
-import client.common.models.ProfileManagementModel;
 import org.junit.jupiter.api.Assertions;
 import server.model.XMLProcessing;
 import utility.User;
