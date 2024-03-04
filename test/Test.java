@@ -36,7 +36,9 @@ public class Test {
     public void testClientServerConnection() {
         try {
             Socket cSocket = new Socket("localhost", 2018);
-            String userType = ProfileManagementModel.handleLogin("testsales", "salestest", cSocket);
+            ObjectInputStream oIS = new ObjectInputStream(cSocket.getInputStream());
+            ObjectOutputStream oOS = new ObjectOutputStream(cSocket.getOutputStream());
+            String userType = ProfileManagementModel.handleLogin("testsales", "salestest",oOS, oIS);
 
             if (userType != null) {
                 System.out.println("login success");
