@@ -1,5 +1,7 @@
 package server.model;
 
+import server.model.query.*;
+
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
@@ -19,6 +21,8 @@ public class ClientHandler implements Runnable{
     /**
      *
      */
+
+    // TODO:
     @Override
     public void run() {
         try(
@@ -30,14 +34,11 @@ public class ClientHandler implements Runnable{
                 switch (request) {
                     case "userVerification":
                         //Invoke method for user verification
-                        User submittedUser = (User) oIS.readObject();
-                        userVerification(submittedUser, objectOutputStream);
+                        UserVerification.process(oIS, objectOutputStream);
                         break;
                     case "createUser":
                         //Invoke method for user creation
-                        User userToCreate = (User) oIS.readObject();
-//                        User requestBy = (User) oIS.readObject();
-                        createUser(userToCreate, objectOutputStream);
+                        CreateUser.process(oIS, objectOutputStream);
                         break;
                     case "addItem":
                         //Invoke method for item addition
@@ -68,12 +69,7 @@ public class ClientHandler implements Runnable{
                         itemOrderRemoval(oIS.readInt(), objectOutputStream);
                         break;
                     case "changePassword":
-                        String currentUsername = oIS.readUTF();
-                        String newPassword = oIS.readUTF();
-                        String oldPassword = oIS.readUTF();
-                        boolean cPSuccess = XMLProcessing.changePassword(currentUsername,newPassword, oldPassword);
-                        objectOutputStream.writeBoolean(cPSuccess);
-                        objectOutputStream.flush();
+                        ChangePassword.process(oIS, objectOutputStream);
                         break;
                     case "fetchListOfUsers":
                         Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
@@ -135,6 +131,8 @@ public class ClientHandler implements Runnable{
      * @param objectOutputStream      Output stream where the status of the auth will be sent
      * @throws IOException
      */
+
+    @Deprecated
     public void userVerification(User userObject, ObjectOutputStream objectOutputStream) throws IOException {
         User user = XMLProcessing.authenticate(userObject);
         objectOutputStream.writeObject(user);
