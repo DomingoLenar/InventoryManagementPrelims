@@ -3,7 +3,6 @@ package client.admin.controllers;
 import client.admin.views.AdminDashboardView;
 import client.common.controllers.InventoryManagementController;
 import client.common.models.ItemManagementModel;
-import client.common.models.ProfileManagementModel;
 import utility.ItemOrder;
 import utility.User;
 
@@ -181,7 +180,8 @@ public class AdminDashboardController {
 
         // Users active
 
-        Stack<User> listOfActiveUsers = ProfileManagementModel.fetchListOfUsers(objectOutputStream, objectInputStream);
+        Stack<User> listOfActiveUsers = null;
+//        Stack<User> listOfActiveUsers = ProfileManagementModel.fetchListOfUsers(objectOutputStream, objectInputStream);
         if (!listOfActiveUsers.isEmpty()) {
             byte limit = 5;
 

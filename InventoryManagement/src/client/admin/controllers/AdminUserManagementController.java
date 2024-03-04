@@ -2,8 +2,6 @@ package client.admin.controllers;
 
 import client.admin.views.AdminUserManagementView;
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ProfileManagementModel;
-import utility.User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,18 +46,18 @@ public class AdminUserManagementController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
-                    String userType = user.getRole();
-                    if (userType != null) {
-                        switch (userType) {
-                            case "sales":
-                                inventoryManagementController.displaySalesMainMenu();
-                                break;
-                            case "purchase":
-                                inventoryManagementController.displayPurchaserMainMenu();
-                                break;
-                        }
-                    }
+//                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
+//                    String userType = user.getRole();
+//                    if (userType != null) {
+//                        switch (userType) {
+//                            case "sales":
+//                                inventoryManagementController.displaySalesMainMenu();
+//                                break;
+//                            case "purchase":
+//                                inventoryManagementController.displayPurchaserMainMenu();
+//                                break;
+//                        }
+//                    }
                 }
             }
         });

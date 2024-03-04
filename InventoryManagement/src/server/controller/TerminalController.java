@@ -25,7 +25,7 @@ public class TerminalController {
 
     public void run(){
         try {
-            ServerSocket serverSocket = Server.waitForConnection(2018);
+            ServerSocket serverSocket = Server.waitForConnection(2020);
             while (true) {
                 terminal.printString("Waiting for connection...\n");
                 Socket socket = serverSocket.accept();

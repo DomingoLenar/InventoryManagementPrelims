@@ -1,6 +1,6 @@
 package client.common.controllers;
 
-import client.common.models.ProfileManagementModel;
+import client.common.models.ChangePasswordModel;
 import client.common.views.ChangePasswordView;
 
 import java.awt.event.ActionEvent;
@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class ChangePasswordController {
+    ChangePasswordModel changePasswordModel;
     InventoryManagementController inventoryManagementController;
     ChangePasswordView changePasswordView;
     ObjectOutputStream objectOutputStream;
@@ -16,6 +17,7 @@ public class ChangePasswordController {
 
     public ChangePasswordController(InventoryManagementController inventoryManagementController, ObjectInputStream objectInputStream, ObjectOutputStream objectOutputStream){
         this.inventoryManagementController = inventoryManagementController;
+        changePasswordModel = new ChangePasswordModel();
         changePasswordView = new ChangePasswordView();
         this.objectOutputStream = objectOutputStream;
         this.objectInputStream = objectInputStream;
@@ -38,7 +40,7 @@ public class ChangePasswordController {
                     // do smth
                 }
                 if (newPassword.length() > 7){ // fetch the old password from the server
-                    ProfileManagementModel.changePassword(inventoryManagementController.getUsername(), newPassword, oldPassword, objectOutputStream, objectInputStream);
+                    changePasswordModel.changePassword(inventoryManagementController.getUsername(), newPassword, oldPassword, objectOutputStream, objectInputStream);
                 }
 
             }

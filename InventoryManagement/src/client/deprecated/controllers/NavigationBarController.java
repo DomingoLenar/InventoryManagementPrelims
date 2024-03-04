@@ -43,9 +43,10 @@ public class NavigationBarController {
             }
         });
 
-        navigationBarView.getFinancesButton().addActionListener(new ActionListener() {
+        navigationBarView.getCustomerOrderButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // TODO: display customer order view instead of finance view
                 inventoryManagementController.changeScreen(inventoryManagementController.getFinancesController().financesView.getMainPanel());
             }
         });

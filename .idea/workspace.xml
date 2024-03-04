@@ -5,11 +5,134 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Fixed bug caused by two objects that is created using one input stream">
-      <change beforePath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/models/AdminDashboardModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/api/ClientApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ChangePasswordModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/LoginModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/UserSettingsModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateCustomerOrderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCustomerOrderManagementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesInvoiceView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesInvoiceView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminUserManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminUserManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/ChangePasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/SignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ProfileManagementModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ProfileManagementModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/views/InventoryManagementInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/views/InventoryManagementInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserAddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserAddItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserNavigationBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserNavigationBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserStockControlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserStockControlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserAddItemView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserAddItemView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserAddItemView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserAddItemView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserDashboardView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserDashboardView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserDashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserDashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserNavigationBarView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserNavigationBarView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserNavigationBarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserNavigationBarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserStockControlView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserStockControlView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserStockControlView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserStockControlView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateSalesInvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateSalesInvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesFinancesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesFinancesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesNavigationBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesNavigationBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesStockControlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesStockMonitorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateSalesInvoiceView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateSalesInvoiceView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesFinancesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesFinancesView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockControlView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockControlView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/controller/TerminalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/controller/TerminalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminDashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminFinancesController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminNavigationBarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/views/AdminDashboardView$RoundedCornerBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/views/AdminDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/views/AdminFinancesView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/views/AdminNavigationBarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/IndexController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/IndexController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/IndexController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/InventoryManagementController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/InventoryManagementController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/InventoryManagementController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/InventoryManagementController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/InventoryManagementController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/LoginController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/SignUpController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/controllers/SignUpController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/views/GradientPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/views/IndexView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/views/InventoryManagementInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/views/LoginView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/common/views/SignUpView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/purchaser/controllers/PurchaserDashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/purchaser/controllers/PurchaserNavigationBarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/purchaser/views/PurchaserDashboardView$RoundedCornerBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/purchaser/views/PurchaserDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/purchaser/views/PurchaserNavigationBarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesDashboardController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesFinancesController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesNavigationBarController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesNavigationBarController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesNavigationBarController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesNavigationBarController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/controllers/SalesNavigationBarController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/views/SalesDashboardView$RoundedCornerBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/views/SalesDashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/views/SalesFinancesView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/sales/views/SalesNavigationBarView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/views/DashboardView$RoundedCornerBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/views/DashboardView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/views/FinancesView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/controller/TerminalController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/model/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/model/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/model/XMLProcessing.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/itemorders.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/items.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/users.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/views/TerminalView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/ItemOrder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/test/2024-2_9329-preteam1/Test.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,42 +197,43 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main (1).executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.TerminalController (1).executor": "Run",
-    "Application.TerminalController.executor": "Run",
-    "Attach to process.pid 16460.executor": "ProcessAttachDebug",
-    "Downloaded.Files.Path": "C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.Test.executor": "Run",
-    "JUnit.Test.testClientServerConnection.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "utilities__marven",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-21",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client",
-    "last_opened_file_path": "C:/Users/mlest/IdeaProjects/2024-2_9329-preteam1/InventoryManagement",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TerminalController (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TerminalController.executor&quot;: &quot;Run&quot;,
+    &quot;Attach to process.pid 16460.executor&quot;: &quot;ProcessAttachDebug&quot;,
+    &quot;Downloaded.Files.Path&quot;: &quot;C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Test.testClientServerConnection.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop-branch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\lib" />
@@ -122,7 +246,20 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.XMLProcessing">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.Main" />
+      <module name="InventoryManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.Server" />
       <module name="Server" />
@@ -140,7 +277,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="server.controller.TerminalController" />
-      <module name="InventoryManagement1" />
+      <module name="InventoryManagement" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="server.controller.*" />
@@ -164,15 +301,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2024-2_9329-preteam1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Test.testClientServerConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2024-2_9329-preteam1" />
       <option name="PACKAGE_NAME" value="" />
@@ -184,19 +312,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.XMLProcessing" />
       <item itemvalue="Application.TerminalController" />
-      <item itemvalue="JUnit.Test" />
       <item itemvalue="JUnit.Test.testClientServerConnection" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.XMLProcessing" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.TerminalController" />
+        <item itemvalue="Application.XMLProcessing" />
         <item itemvalue="Application.Server" />
         <item itemvalue="JUnit.Test.testClientServerConnection" />
-        <item itemvalue="JUnit.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -245,6 +373,8 @@
       <workItem from="1708016290440" duration="178000" />
       <workItem from="1708016482346" duration="17000" />
       <workItem from="1708016502159" duration="1153000" />
+      <workItem from="1709012199947" duration="686000" />
+      <workItem from="1709386399919" duration="25057000" />
     </task>
     <task id="LOCAL-00001" summary="+ added: IndexView.java">
       <option name="closed" value="true" />

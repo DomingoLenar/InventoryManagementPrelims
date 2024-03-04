@@ -133,7 +133,6 @@ public class XMLProcessing {
 
             Element username = document.createElement("username");
             username.setTextContent(userToCreate.getUsername());
-
             Element password = document.createElement("password");
             password.setTextContent(userToCreate.getPassword());
 
@@ -197,7 +196,6 @@ public class XMLProcessing {
 
             Element quantity = document.createElement("quantity");
             quantity.setTextContent(String.valueOf(itemToAdd.getQty()));
-
             Element type = document.createElement("type");
             type.setTextContent(itemToAdd.getType());
 

@@ -1,7 +1,7 @@
-package client.purchaser.controllers;
+package client.purchase.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.purchaser.views.PurchaserDashboardView;
+import client.purchase.views.PurchaserDashboardView;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

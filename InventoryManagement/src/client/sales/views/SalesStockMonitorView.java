@@ -2,12 +2,10 @@ package client.sales.views;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class SalesStockControlView extends JFrame{
+public class SalesStockMonitorView extends JFrame{
     private JPanel topPanel;
     private JPanel searchPanel;
     private JTextField searchField;
@@ -15,14 +13,14 @@ public class SalesStockControlView extends JFrame{
     private JScrollPane salesScrollPane;
     private JTable salesTable;
     private JPanel bottomPanel;
-    private JButton salesInvoiceButton;
+    private JButton createCustomerOrderButton;
     private JPanel mainPanel;
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    private SalesStockControlView.SalesInvoiceListener salesInvoiceListener;
+    private SalesStockMonitorView.SalesInvoiceListener salesInvoiceListener;
 
     public interface SalesInvoiceListener {
         void onSalesInvoiceRequested();
@@ -36,11 +34,11 @@ public class SalesStockControlView extends JFrame{
         return salesTable;
     }
 
-    public JButton getSalesInvoiceButton() {
-        return salesInvoiceButton;
+    public JButton getCreateCustomerOrderButton() {
+        return createCustomerOrderButton;
     }
 
-//    public SalesStockControlView() {
+    //    public SalesStockControlView() {
 //        setContentPane(mainPanel);
 //        setTitle("Stock Control");
 //        setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,7 +62,7 @@ public class SalesStockControlView extends JFrame{
 //                new SalesStockControlView.RoundedCornerBorder(20),
 //                new EmptyBorder(5, 5, 5, 5)
 //        ));
-//        salesInvoiceButton.addActionListener(e -> {
+//        createCustomerOrderButton.addActionListener(e -> {
 //            if (salesInvoiceListener != null) {
 //                salesInvoiceListener.onSalesInvoiceRequested();
 //            }

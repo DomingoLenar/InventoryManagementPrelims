@@ -1,5 +1,6 @@
 package client.common.models;
 
+import client.api.ClientApi;
 import utility.Item;
 import utility.ItemOrder;
 
@@ -9,20 +10,13 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
 
+// TODO: separation of intent, fix other todos, and bugs!!
+@Deprecated
 public class ItemManagementModel {
     /**
      * Sends an action to the server.
      * @param action The action to be sent.
      */
-    public static void sendAction(String action, ObjectOutputStream oos) {
-        try {
-            oos.writeUTF(action);
-            oos.flush();
-            System.out.println(action + " sent to server");
-        } catch (IOException e) {
-            throw new RuntimeException("Error sending action to server", e);
-        }
-    }
 
     /**
      * Adds an item to the inventory.
@@ -40,7 +34,7 @@ public class ItemManagementModel {
 
             Item newItem = new Item(name, qty, type, itemId, price);
 
-            sendAction("addItem", oOs);
+            ClientApi.sendAction("addItem", oOs);
 
             oOs.writeObject(newItem);
             oOs.flush();
@@ -63,7 +57,7 @@ public class ItemManagementModel {
 
             ItemOrder itemOrder = new ItemOrder(id, date, price, orderType, itemID, byUser, qty);
 
-            sendAction("addItemOrder", oOs);
+            ClientApi.sendAction("addItemOrder", oOs);
 
             oOs.writeObject(itemOrder);
             oOs.flush();
@@ -89,7 +83,7 @@ public class ItemManagementModel {
      */
     public static boolean removeItem(int id, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
-            sendAction("removeItem", oOs);
+            ClientApi.sendAction("removeItem", oOs);
             oOs.writeInt(id);
             oOs.flush();
 
@@ -110,7 +104,7 @@ public class ItemManagementModel {
 
     public static boolean removeItemOrder(int itemOrderID, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
-            sendAction("removeItemOrder", oOs);
+            ClientApi.sendAction("removeItemOrder", oOs);
 
             oOs.writeInt(itemOrderID);
             oOs.flush();
@@ -132,7 +126,7 @@ public class ItemManagementModel {
 
     public static Stack<Item> fetchItemsByUserType(String userType, ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
-            sendAction("fetchItems", oOs);
+            ClientApi.sendAction("fetchItems", oOs);
 
             try  {
                 Stack<Item> listOfItems = (Stack<Item>) oIs.readObject();
@@ -148,8 +142,8 @@ public class ItemManagementModel {
 
     public static ArrayList<ItemOrder> fetchItemOrdersByUserType (String userType , ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
-            sendAction("fetchItemOrders", oOs);
-            sendAction(userType, oOs);
+            ClientApi.sendAction("fetchItemOrders", oOs);
+            ClientApi.sendAction(userType, oOs);
             try  {
                 ArrayList<ItemOrder> listOfItems = (ArrayList<ItemOrder>) oIs.readObject();
                 System.out.println("List of items have been fetched.");

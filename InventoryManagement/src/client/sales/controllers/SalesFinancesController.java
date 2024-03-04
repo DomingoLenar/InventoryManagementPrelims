@@ -6,6 +6,7 @@ import client.sales.views.SalesFinancesView;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+@Deprecated
 public class SalesFinancesController {
     InventoryManagementController inventoryManagementController;
     SalesFinancesView salesFinancesView;

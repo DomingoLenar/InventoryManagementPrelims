@@ -1,7 +1,7 @@
-package client.purchaser.controllers;
+package client.purchase.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.purchaser.views.PurchaserNavigationBarView;
+import client.purchase.views.PurchaserNavigationBarView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -5,10 +5,10 @@ import client.common.views.InventoryManagementInterface;
 import client.deprecated.controllers.DashboardController;
 import client.deprecated.controllers.FinancesController;
 import client.deprecated.controllers.NavigationBarController;
-import client.purchaser.controllers.PurchaserAddItemController;
-import client.purchaser.controllers.PurchaserDashboardController;
-import client.purchaser.controllers.PurchaserNavigationBarController;
-import client.purchaser.controllers.PurchaserStockControlController;
+import client.purchase.controllers.PurchaserAddItemController;
+import client.purchase.controllers.PurchaserDashboardController;
+import client.purchase.controllers.PurchaserNavigationBarController;
+import client.purchase.controllers.PurchaserStockControlController;
 import client.sales.controllers.*;
 
 import javax.swing.*;
@@ -44,8 +44,11 @@ public class InventoryManagementController { // big controller
     AdminCreateSalesInvoiceController adminCreateSalesInvoiceController;
     SalesDashboardController salesDashboardController;
     SalesNavigationBarController salesNavigationBarController;
+    SalesCreateCustomerOrderController salesCreateCustomerOrderController;
+    SalesCustomerOrderManagementController salesCustomerOrderManagementController;
+    @Deprecated
     SalesFinancesController salesFinancesController;
-    SalesStockControlController salesStockControlController;
+    SalesStockMonitorController salesStockMonitorController;
     SalesCreateSalesInvoiceController salesCreateSalesInvoiceController;
     SalesSalesInvoicesController salesSalesInvoicesController;
     PurchaserDashboardController purchaserDashboardController;
@@ -64,7 +67,8 @@ public class InventoryManagementController { // big controller
         inventoryManagementInterface = new InventoryManagementInterface();
 
         try {
-            clientSocket = new Socket("localhost", 2018);
+//            clientSocket = new Socket("lestatheh", 2018);
+            clientSocket = new Socket("localhost", 2020);
             objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
@@ -141,9 +145,11 @@ public class InventoryManagementController { // big controller
         salesDashboardController = new SalesDashboardController(this, objectInputStream, objectOutputStream);
         salesNavigationBarController = new SalesNavigationBarController(this);
         salesFinancesController = new SalesFinancesController(this, objectInputStream, objectOutputStream);
-        salesStockControlController = new SalesStockControlController(this, objectInputStream, objectOutputStream);
+        salesStockMonitorController = new SalesStockMonitorController(this, objectInputStream, objectOutputStream);
         salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this, objectInputStream, objectOutputStream);
         salesSalesInvoicesController = new SalesSalesInvoicesController(this, objectInputStream, objectOutputStream);
+        salesCreateCustomerOrderController = new SalesCreateCustomerOrderController(this, objectInputStream, objectOutputStream);
+        salesCustomerOrderManagementController = new SalesCustomerOrderManagementController(this, objectOutputStream, objectInputStream);
     }
 
     private void adminControllers() {
@@ -269,8 +275,8 @@ public class InventoryManagementController { // big controller
         return adminCreateSalesInvoiceController;
     }
 
-    public SalesStockControlController getSalesStockControlController() {
-        return salesStockControlController;
+    public SalesStockMonitorController getSalesStockControlController() {
+        return salesStockMonitorController;
     }
 
     public AdminNavigationBarController getAdminNavigationBarController() {
@@ -289,6 +295,7 @@ public class InventoryManagementController { // big controller
         return adminFinancesController;
     }
 
+    @Deprecated
     public SalesFinancesController getSalesFinancesController() {
         return salesFinancesController;
     }
@@ -315,6 +322,14 @@ public class InventoryManagementController { // big controller
 
     public PurchaserAddItemController getPurchaserAddItemController() {
         return purchaserAddItemController;
+    }
+
+    public SalesCreateCustomerOrderController getSalesCreateCustomerOrderController() {
+        return salesCreateCustomerOrderController;
+    }
+
+    public SalesCustomerOrderManagementController getSalesCustomerOrderManagementController() {
+        return salesCustomerOrderManagementController;
     }
 
     public void displayAdminMainMenu() {

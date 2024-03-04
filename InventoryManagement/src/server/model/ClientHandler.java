@@ -157,7 +157,6 @@ public class ClientHandler implements Runnable{
             throw new RuntimeException(ioException);
         }
     }
-
     /**
      * Handles the addition of an item to the server.
      *

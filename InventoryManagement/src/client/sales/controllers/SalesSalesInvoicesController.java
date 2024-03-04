@@ -26,7 +26,6 @@ public class SalesSalesInvoicesController {
         objectOutputStream = oOs;
 
     }
-
     public void initComponents() {
 
         // populate the table

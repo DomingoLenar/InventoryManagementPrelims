@@ -1,9 +1,7 @@
-package client.purchaser.views;
+package client.purchase.views;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.PieChart;
-import org.knowm.xchart.SwingWrapper;
-import org.knowm.xchart.style.Styler;
 
 import javax.swing.*;
 import javax.swing.border.Border;

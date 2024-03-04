@@ -1,6 +1,6 @@
 package client.common.controllers;
 
-import client.common.models.ProfileManagementModel;
+import client.common.models.UserSettingsModel;
 import client.common.views.UserSettingsView;
 
 import java.awt.event.ActionEvent;
@@ -9,6 +9,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class UserSettingsController {
+    UserSettingsModel userSettingsModel;
     UserSettingsView userSettingsView;
     InventoryManagementController inventoryManagementController;
     ObjectOutputStream objectOutputStream;
@@ -16,6 +17,7 @@ public class UserSettingsController {
 
     public UserSettingsController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
+        userSettingsModel = new UserSettingsModel();
         userSettingsView = new UserSettingsView();
         objectInputStream = oIs;
         objectOutputStream = oOs;
@@ -40,7 +42,7 @@ public class UserSettingsController {
         userSettingsView.getLogOutButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ProfileManagementModel.sessionTimeout(inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
+                userSettingsModel.sessionTimeout(inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
 
                 // TODO: solution: better implementation -- note: this is just a band aid
                 inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getChart().removeSeries("Revenue");
