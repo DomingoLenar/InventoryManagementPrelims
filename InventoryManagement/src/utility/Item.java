@@ -9,6 +9,28 @@ public class Item implements Serializable {
     private String type;
     private int itemId;
     private float price;
+    private float cost;
+    private float batchNo;
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public float getBatchNo() {
+        return batchNo;
+    }
+
+    public void setBatchNo(float batchNo) {
+        this.batchNo = batchNo;
+    }
 
     /**
      * Default constructor for Item.
@@ -31,6 +53,7 @@ public class Item implements Serializable {
      * @param itemId The ID of the item.
      * @param price The price of the item.
      */
+    @Deprecated
     public Item(String name, int qty, String type, int itemId, float price ){
         this.name = name;
         this.qty = qty;
@@ -38,6 +61,29 @@ public class Item implements Serializable {
         this.itemId = itemId;
         this.price = price;
     }
+
+    /**
+     *
+     *
+     * @param name
+     * @param qty
+     * @param type
+     * @param itemId
+     * @param price
+     * @param cost
+     * @param batchNo
+     */
+    public Item(String name, int qty, String type, int itemId, float price, float cost, float batchNo ){
+        this.name = name;
+        this.qty = qty;
+        this.type = type;
+        this.itemId = itemId;
+        this.price = price;
+        this.cost = cost;
+        this.batchNo = batchNo;
+    }
+
+
 
     /**
      * Gets the name of the item.

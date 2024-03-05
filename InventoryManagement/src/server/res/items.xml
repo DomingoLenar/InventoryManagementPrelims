@@ -1,4 +1,5 @@
 <items>
+    <!--OLD FORMAT-->
     <item>
         <name>Hotdog</name>
         <quantity>23</quantity>
@@ -6,81 +7,17 @@
         <type>null</type>
         <price>180</price>
     </item>
-    <item>
-        <name>Bread</name>
-        <quantity>37</quantity>
-        <id>2</id>
-        <type>null</type>
-        <price>180</price>
-    </item>
-    <item>
-        <name>Cucumber</name>
-        <quantity>420</quantity>
-        <id>3</id>
-        <type>null</type>
-        <price>180</price>
-    </item>
-    <item>
-        <name>banana</name>
-        <quantity>351</quantity>
-        <type>null</type>
-        <id>4</id>
-        <price>20</price>
-    </item>
-    <item>
-        <name>banana</name>
-        <quantity>72</quantity>
-        <type>null</type>
-        <id>5</id>
-        <price>20</price>
-    </item>
-    <item>
-        <name>cheese</name>
-        <quantity>66</quantity>
-        <type>null</type>
-        <id>6</id>
-        <price>20</price>
-    </item>
+    <!--NEW FORMAT-->
     <item>
         <name>Hotdog</name>
-        <quantity>59</quantity>
-        <id>7</id>
+        <id>1</id>
         <type>null</type>
-        <price>180</price>
-    </item>
-    <item>
-        <name>Bread</name>
-        <quantity>55</quantity>
-        <id>8</id>
-        <type>null</type>
-        <price>180</price>
-    </item>
-    <item>
-        <name>Cucumber</name>
-        <quantity>42</quantity>
-        <id>9</id>
-        <type>null</type>
-        <price>180</price>
-    </item>
-    <item>
-        <name>banana</name>
-        <quantity>69</quantity>
-        <type>null</type>
-        <id>10</id>
-        <price>20</price>
-    </item>
-    <item>
-        <name>banana</name>
-        <quantity>60</quantity>
-        <type>null</type>
-        <id>11</id>
-        <price>20</price>
-    </item>
-    <item>
-        <name>cheese</name>
-        <quantity>35</quantity>
-        <type>null</type>
-        <id>12</id>
-        <price>20</price>
+        <stocks>
+            <batch batchNo="">
+                <cost>70</cost>
+                <qty>50</qty>
+                <price>100</price>
+            </batch>
+        </stocks>
     </item>
 </items>
