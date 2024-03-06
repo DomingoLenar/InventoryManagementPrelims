@@ -1,6 +1,5 @@
 package client.common.controllers;
 
-import client.common.models.ProfileManagementModel;
 import client.common.views.SignUpView;
 import utility.User;
 

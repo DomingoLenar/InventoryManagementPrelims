@@ -1,6 +1,5 @@
 package client.common.controllers;
 
-import client.common.models.ProfileManagementModel;
 import client.common.views.LoginView;
 
 import java.awt.event.ActionEvent;

@@ -2,8 +2,6 @@ package client.admin.controllers;
 
 import client.admin.views.AdminDashboardView;
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
-import client.common.models.ProfileManagementModel;
 import utility.ItemOrder;
 import utility.User;
 

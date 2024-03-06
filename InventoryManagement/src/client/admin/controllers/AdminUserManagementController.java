@@ -2,7 +2,6 @@ package client.admin.controllers;
 
 import client.admin.views.AdminUserManagementView;
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ProfileManagementModel;
 import utility.User;
 
 import java.awt.event.ActionEvent;
