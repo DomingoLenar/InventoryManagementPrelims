@@ -20,11 +20,43 @@ public class Item {
         this.stocks.addLast(stock);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTotalQty() {
+        return totalQty;
+    }
+
+    public void setTotalQty(int totalQty) {
+        this.totalQty = totalQty;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Stock getStock(int index){
-        this.stocks.(index);
+        return this.stocks.get(index);
     }
 
     public Stock getFirstStock(){
-        this.stocks.getFirst();
+        return this.stocks.getFirst();
     }
 }
