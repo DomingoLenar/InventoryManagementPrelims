@@ -34,14 +34,14 @@ public class SalesFinancesView {
     public SalesFinancesView() {
 
         // Labels
-        grossProfitsLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        newSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        averageSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        grossSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        gPAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        nSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        aSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        gSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        grossProfitsLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        newSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        averageSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        grossSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        gPAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
+        nSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
+        aSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
+        gSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         // Search Area
         searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));

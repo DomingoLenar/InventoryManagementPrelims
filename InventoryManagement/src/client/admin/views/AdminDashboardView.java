@@ -56,7 +56,7 @@ public class AdminDashboardView {
     public AdminDashboardView() {
 
         // Users Active
-        usersActiveLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        usersActiveLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         activeUsersListModel = new DefaultListModel<>();
 
         // Change to Raw Data
@@ -69,7 +69,7 @@ public class AdminDashboardView {
         activeUsersList.setModel(activeUsersListModel);
 
         activeUsersList.setEnabled(false);
-        activeUsersList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        activeUsersList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         activeUsersTypeListModel = new DefaultListModel<>();
 
@@ -83,7 +83,7 @@ public class AdminDashboardView {
         activeUsersTypeList.setModel(activeUsersTypeListModel);
 
         activeUsersTypeList.setEnabled(false);
-        activeUsersTypeList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        activeUsersTypeList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         addUserButton.setBorderPainted(false);
 
@@ -116,12 +116,12 @@ public class AdminDashboardView {
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
         JLabel todayColorLabel = new JLabel("    ");
-        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        todayColorLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
 
         JLabel maxColorLabel = new JLabel("    ");
-        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        maxColorLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
 

@@ -26,13 +26,13 @@ public class SalesDashboardView {
 
         recentlyAddedItemsIDList.setModel(recentlyAddedItemsIDListModel);
         recentlyAddedItemsIDList.setEnabled(false);
-        recentlyAddedItemsIDList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsIDList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         recentlyAddedItemsNameListModel = new DefaultListModel<>();
 
         recentlyAddedItemsNameList.setModel(recentlyAddedItemsNameListModel);
         recentlyAddedItemsNameList.setEnabled(false);
-        recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         // Revenue Vs Costs
 
