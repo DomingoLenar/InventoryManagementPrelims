@@ -13,5 +13,18 @@ public class Item {
         this.name = name;
         this.id = id;
         this.type = type;
+        this.stocks = new LinkedList();
+    }
+
+    public void addStocks(Stock stock){
+        this.stocks.addLast(stock);
+    }
+
+    public Stock getStock(int index){
+        this.stocks.(index);
+    }
+
+    public Stock getFirstStock(){
+        this.stocks.getFirst();
     }
 }
