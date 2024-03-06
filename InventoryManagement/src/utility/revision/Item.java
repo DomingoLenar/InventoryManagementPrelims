@@ -13,5 +13,50 @@ public class Item {
         this.name = name;
         this.id = id;
         this.type = type;
+        this.stocks = new LinkedList();
+    }
+
+    public void addStocks(Stock stock){
+        this.stocks.addLast(stock);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getTotalQty() {
+        return totalQty;
+    }
+
+    public void setTotalQty(int totalQty) {
+        this.totalQty = totalQty;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Stock getStock(int index){
+        return this.stocks.get(index);
+    }
+
+    public Stock getFirstStock(){
+        return this.stocks.getFirst();
     }
 }

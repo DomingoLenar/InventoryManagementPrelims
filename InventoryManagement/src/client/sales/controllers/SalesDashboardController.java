@@ -1,7 +1,6 @@
 package client.sales.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
 import client.sales.views.SalesDashboardView;
 import utility.Item;
 import utility.ItemOrder;

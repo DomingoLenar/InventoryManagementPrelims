@@ -12,6 +12,7 @@
         <name>Hotdog</name>
         <id>1</id>
         <type>null</type>
+        <totalqty>50</totalqty>
         <stocks>
             <batch batchNo="">
                 <cost>70</cost>

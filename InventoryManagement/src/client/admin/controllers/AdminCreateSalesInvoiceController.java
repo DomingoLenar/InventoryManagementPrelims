@@ -2,7 +2,6 @@ package client.admin.controllers;
 
 import client.admin.views.AdminCreateSalesInvoiceView;
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
