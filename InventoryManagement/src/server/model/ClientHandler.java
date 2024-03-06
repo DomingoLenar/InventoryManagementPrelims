@@ -1,7 +1,9 @@
 package server.model;
 
-import server.model.query.*;
-
+import client.common.models.RemoveItemOrder;
+import server.model.query.ChangePassword;
+import server.model.query.CreateUser;
+import server.model.query.UserVerification;
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
@@ -43,11 +45,11 @@ public class ClientHandler implements Runnable{
                     case "addItem":
                         //Invoke method for item addition
                         Item submittedItem = (Item) oIS.readObject();
-                        itemAddition(submittedItem, objectOutputStream);
+                        ItemAddition.process(submittedItem, objectOutputStream);
                         break;
                     case "removeItem":
                         //Invoke method for item removal
-                        itemRemoval(oIS.readInt(), objectOutputStream);
+                        ItemRemoval.process(oIS.readInt(), objectOutputStream);
                         break;
                     case "fetchItems":
                         Stack<Item> items = XMLProcessing.fetchItems();
@@ -66,7 +68,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "removeItemOrder":
-                        itemOrderRemoval(oIS.readInt(), objectOutputStream);
+                        RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
                         break;
                     case "changePassword":
                         ChangePassword.process(oIS, objectOutputStream);
@@ -119,81 +121,6 @@ public class ClientHandler implements Runnable{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-    }
-
-    private void itemOrderRemoval(int itemOrderID, ObjectOutputStream objectOutputStream) {
-        try{
-            boolean success = XMLProcessing.removeItemOrder(itemOrderID);
-            objectOutputStream.writeBoolean(success);
-            objectOutputStream.flush();
-        } catch (IOException ioException){
-            throw new RuntimeException("Error removing item order", ioException);
-        }
-    }
-
-    /**
-     * Method that handles the authorization of the user this would send the client a boolean value
-     *
-     * @param userObject        Object of user to be authenticated
-     * @param objectOutputStream      Output stream where the status of the auth will be sent
-     * @throws IOException
-     */
-
-    @Deprecated
-    public void userVerification(User userObject, ObjectOutputStream objectOutputStream) throws IOException {
-        User user = XMLProcessing.authenticate(userObject);
-        objectOutputStream.writeObject(user);
-        objectOutputStream.flush();
-    }
-
-    /**
-     * Method that handles the creation of user
-     *
-     * @param userObject        User object to be created in the server
-     * @param objectOutputStream               Object of ObjectOutputStream
-     */
-    public synchronized void createUser(User userObject, ObjectOutputStream objectOutputStream){
-        try{
-           //call XMLProcessing method to update the xml file
-            User user = XMLProcessing.createUser(userObject);
-            objectOutputStream.writeObject(user);
-            objectOutputStream.flush();
-        }catch(IOException ioException){
-            throw new RuntimeException(ioException);
-        }
-    }
-    /**
-     * Handles the addition of an item to the server.
-     *
-     * @param itemObject    The item object to be added.
-     * @param objectOutputStream  The output stream for sending responses.
-     * @throws IOException  If an I/O error occurs.
-     */
-    private synchronized void itemAddition(Item itemObject, ObjectOutputStream objectOutputStream) throws IOException {
-        try {
-            boolean success = XMLProcessing.addItem(itemObject);
-            objectOutputStream.writeBoolean(success);
-            objectOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Handles the removal of an item from the server.
-     *
-     * @param id            The ID of the item to be removed.
-     * @param objectOutputStream  The output stream for sending responses.
-     * @throws IOException  If an I/O error occurs.
-     */
-    private synchronized void itemRemoval(int id, ObjectOutputStream objectOutputStream) throws IOException {
-        try {
-            boolean success = XMLProcessing.removeItem(id);
-            objectOutputStream.writeBoolean(success);
-            objectOutputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 

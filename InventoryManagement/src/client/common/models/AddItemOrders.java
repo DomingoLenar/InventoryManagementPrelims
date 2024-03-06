@@ -13,8 +13,8 @@ public class AddItemOrders {
      *
      * @param id        The ID of the item order.
      * @param date      The date of the item order.
-     * @param price     The price of the item order.
-     * @param orderType The type of the order.
+     * @param purchasePrice     The price of the item order.
+     * @param status The type of the order.
      * @param itemID    The ID of the item.
      * @param byUser    The user who is adding the item order.
      * @param qty       The quantity of the item order.
@@ -23,10 +23,10 @@ public class AddItemOrders {
      * @throws RuntimeException If an IOException occurs during the process.
      */
 
-    public static void process(int id, String date, float price, String orderType, int itemID, String byUser, int qty, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static void process(int id, String date, float purchasePrice, String status, int itemID, String byUser, int qty, ObjectOutputStream oOs, ObjectInputStream oIs) {
         try {
 
-            ItemOrder itemOrder = new ItemOrder(id, date, price, orderType, itemID, byUser, qty);
+            ItemOrder itemOrder = new ItemOrder(id, date, purchasePrice, status, itemID, byUser, qty);
 
             String action = "addItemOrder";
             oOs.writeUTF(action);

@@ -42,6 +42,8 @@ public class Item implements Serializable {
         type = "";
         itemId = 0;
         price = 0;
+        cost = 0;
+        batchNo = 0;
     }
 
     /**
@@ -54,26 +56,7 @@ public class Item implements Serializable {
      * @param price The price of the item.
      */
     @Deprecated
-    public Item(String name, int qty, String type, int itemId, float price ){
-        this.name = name;
-        this.qty = qty;
-        this.type = type;
-        this.itemId = itemId;
-        this.price = price;
-    }
-
-    /**
-     *
-     *
-     * @param name
-     * @param qty
-     * @param type
-     * @param itemId
-     * @param price
-     * @param cost
-     * @param batchNo
-     */
-    public Item(String name, int qty, String type, int itemId, float price, float cost, float batchNo ){
+    public Item(String name, int qty, String type, int itemId, float price, float cost, float batchNo){
         this.name = name;
         this.qty = qty;
         this.type = type;
@@ -82,6 +65,8 @@ public class Item implements Serializable {
         this.cost = cost;
         this.batchNo = batchNo;
     }
+
+
 
 
 
