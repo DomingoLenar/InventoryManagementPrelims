@@ -17,11 +17,11 @@ public class AddItems {
      * @param price  The price of the item.
      * @return True if the item is successfully added; false otherwise.
      */
-    public static void process(String name, int qty, String type, int itemId, float price, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public static void process(String name, int qty, String type, int itemId, float price,float cost, float batchNo, ObjectOutputStream oOs, ObjectInputStream oIs) {
 
         try {
 
-            Item newItem = new Item(name, qty, type, itemId, price);
+            Item newItem = new Item(name, qty, type, itemId, price, cost, batchNo);
 
             String action = "addItem";
             oOs.writeUTF(action);

@@ -207,11 +207,19 @@ public class XMLProcessing {
             Element price = document.createElement("price");
             price.setTextContent(String.valueOf(itemToAdd.getPrice()));
 
+            Element cost = document.createElement("cost");
+            cost.setTextContent(String.valueOf(itemToAdd.getCost()));
+
+            Element batchNo = document.createElement("batchNo");
+            batchNo.setTextContent(String.valueOf(itemToAdd.getBatchNo()));
+
             newItem.appendChild(name);
             newItem.appendChild(quantity);
             newItem.appendChild(type);
             newItem.appendChild(id);
             newItem.appendChild(price);
+            newItem.appendChild(cost);
+            newItem.appendChild(batchNo);
 
             root.appendChild(newItem);
 
@@ -262,27 +270,47 @@ public class XMLProcessing {
             Element rootElement = document.getDocumentElement();
 
             Element newItemOrder = document.createElement("itemorder");
-            newItemOrder.setAttribute("date", itemOrder.getDate());
-            newItemOrder.setAttribute("orderType",itemOrder.getStatus());
-            newItemOrder.setAttribute("byUser",itemOrder.getUsername());
             newItemOrder.setAttribute("id", String.valueOf(itemOrder.getId()));
+            newItemOrder.setAttribute("date", itemOrder.getDate());
+            newItemOrder.setAttribute("price", String.valueOf(itemOrder.getPurchasePrice()));
+            newItemOrder.setAttribute("orderType",itemOrder.getStatus());
+            newItemOrder.setAttribute("item", String.valueOf(itemOrder.getItemId()));
+            newItemOrder.setAttribute("byUser",itemOrder.getUsername());
+            newItemOrder.setAttribute("quantity", String.valueOf(itemOrder.getQuantity()));
 
-            Element item = document.createElement("item");
-            item.setTextContent(String.valueOf(itemOrder.getItemId()));
-
-            Element amount = document.createElement("amount");
-            amount.setTextContent(String.valueOf(itemOrder.getQuantity()));  //Refactor ItemOrder first to take into account amount
-
-            Element price = document.createElement("price");
-            price.setTextContent(String.valueOf(itemOrder.getPurchasePrice()));
 
             Element id = document.createElement("id");
             id.setTextContent(String.valueOf(itemOrder.getId()));
 
-            newItemOrder.appendChild(item);
-            newItemOrder.appendChild(amount);
-            newItemOrder.appendChild(price);
+            Element date = document.createElement("date");
+            date.setTextContent(itemOrder.getDate());
+
+            Element price = document.createElement("price");
+            price.setTextContent(String.valueOf(itemOrder.getPurchasePrice()));
+
+            Element status = document.createElement("orderType");
+            status.setTextContent(itemOrder.getStatus());
+
+            Element item = document.createElement("item");
+            item.setTextContent(String.valueOf(itemOrder.getItemId()));
+
+            Element byUser = document.createElement("byUser");
+            byUser.setTextContent(itemOrder.getUsername());
+
+            Element amount = document.createElement("amount");
+            amount.setTextContent(String.valueOf(itemOrder.getQuantity()));  //Refactor ItemOrder first to take into account amount
+
+
+
             newItemOrder.appendChild(id);
+            newItemOrder.appendChild(date);
+            newItemOrder.appendChild(price);
+            newItemOrder.appendChild(status);
+            newItemOrder.appendChild(item);
+            newItemOrder.appendChild(byUser);
+            newItemOrder.appendChild(amount);
+
+
 
             rootElement.appendChild(newItemOrder);
 
@@ -364,12 +392,15 @@ public class XMLProcessing {
                 Element currentItem = (Element) items.item(x);
 
                 String name = currentItem.getElementsByTagName("name").item(0).getTextContent();
-                int amount = Integer.parseInt(currentItem.getElementsByTagName("quantity").item(0).getTextContent());
+                int quantity = Integer.parseInt(currentItem.getElementsByTagName("quantity").item(0).getTextContent());
+                String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
                 int id = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
                 float price = Float.parseFloat(currentItem.getElementsByTagName("price").item(0).getTextContent());
-                String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
+                float cost = Float.parseFloat(currentItem.getElementsByTagName("cost").item(0).getTextContent());
+                float batchNo = Float.parseFloat(currentItem.getElementsByTagName("batchNo").item(0).getTextContent());
 
-                itemList.add(new Item(name, amount, type, id, price));
+
+                itemList.add(new Item(name, quantity, type, id, price, cost, batchNo));
             }
         }catch(Exception e){
             e.printStackTrace();

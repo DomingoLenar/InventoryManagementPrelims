@@ -21,7 +21,8 @@ public class ItemOrder implements Serializable {
         purchasePrice = 0;
         status = "";
         itemId = 0;
-        quantity= 0;
+        username = "";
+        quantity = 0;
     }
 
     /**

@@ -12,14 +12,13 @@ public class FetchItemsByUserType {
     /**
      * Sends a request to the server to fetch items based on user type.
      *
-     * @param userType The type of user for whom the items are to be fetched.
      * @param oOs      The ObjectOutputStream for sending data to the server.
      * @param oIs      The ObjectInputStream for receiving data from the server.
      * @return A stack containing the list of items fetched from the server.
      * @throws RuntimeException If an IOException or ClassNotFoundException occurs during the process.
      */
 
-    public static Stack<Item> process(String userType, ObjectOutputStream oOs, ObjectInputStream oIs){
+    public static Stack<Item> process( ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
             String action = "fetchItems";
             oOs.writeUTF(action);
