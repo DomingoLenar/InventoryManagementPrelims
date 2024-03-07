@@ -28,8 +28,7 @@ public class RequestSalesDashboard {
         for(int x = length; x > (length-5); x--){
             int orderID = allPurchaseOrders.get(x).getOrderId();
             ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(orderID);
-            orderDetails.get(0).getItemID();
-            XMLProcessing.fetchItem()
+            recentlyAddedItems.add(XMLProcessing.fetchItem(orderDetails.get(0).getItemID(), false));
         }
 
         return recentlyAddedItems;
