@@ -348,7 +348,7 @@ public class XMLProcessing {
         }
     }
 
-    public static synchronized ArrayList<ItemOrder> fetchItemOrders(String filterKey){
+    public static synchronized ArrayList<ItemOrder> fetchItemOrders(String orderFilter){
         ArrayList<ItemOrder> itemOrderList = new ArrayList<>();
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
@@ -365,10 +365,10 @@ public class XMLProcessing {
                 int itemId = Integer.parseInt(currentElement.getElementsByTagName("item").item(0).getTextContent());
                 String byUser = currentElement.getAttribute("byUser");
                 int qty = Integer.parseInt(currentElement.getElementsByTagName("amount").item(0).getTextContent());
-                if(filterKey.equals("none")){
+                if(orderFilter.equals("none")){
                     itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser, qty));
                 }else{
-                    if(orderType.equalsIgnoreCase(filterKey)){
+                    if(orderType.equalsIgnoreCase(orderFilter)){
                         itemOrderList.add(new ItemOrder(id, date, price, orderType, itemId,byUser, qty));
                     }
                 }
