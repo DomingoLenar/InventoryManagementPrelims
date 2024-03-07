@@ -1,12 +1,12 @@
 <suppliers>
-    <supplier>Gus Fring</supplier>
-    <supplier>Walter White</supplier>
+    <supplier>GusF</supplier>
+    <supplier>WalterW</supplier>
     <supplier>Intel</supplier>
-    <supplier>Pablo Escobar</supplier>
-    <supplier>Baron Harkonnen</supplier>
-    <supplier>Tony Stark</supplier>
-    <supplier>Elon Musk</supplier>
+    <supplier>PabloE</supplier>
+    <supplier>BaronH</supplier>
+    <supplier>TonyS</supplier>
+    <supplier>ElonM</supplier>
     <supplier>NVIDIA</supplier>
-    <supplier>Viktor Bout</supplier>
-    <supplier>Basil Zaharoff</supplier>
+    <supplier>ViktorB</supplier>
+    <supplier>BasilZ</supplier>
 </suppliers>
