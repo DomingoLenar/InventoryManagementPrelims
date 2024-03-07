@@ -15,6 +15,7 @@
         <totalqty>50</totalqty>
         <stocks>
             <batch batchNo="">
+                <supplier>Rev</supplier>
                 <cost>70</cost>
                 <qty>50</qty>
                 <price>100</price>
