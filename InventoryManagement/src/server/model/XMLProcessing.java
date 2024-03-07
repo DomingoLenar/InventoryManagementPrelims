@@ -4,7 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import utility.Item;
+import utility.revision.Item;
 import utility.ItemOrder;
 import utility.User;
 import utility.revision.OrderDetails;
@@ -491,7 +491,32 @@ public class XMLProcessing {
         }
 
     }
+    public static Item fetchItem(int itemID, boolean needStockData){
+        try{
+            Document xmlDocument = getXMLDocument("InventoryManagement/src/server/res/items.xml");
+            Element rootElement = xmlDocument.getDocumentElement();
+            NodeList itemList = rootElement.getElementsByTagName("item");
 
+            for(int x=0; x<itemList.getLength();x++){
+                Element currentItem = (Element)itemList.item(x);
+                int currentItemID = Integer.parseInt(currentItem.getElementsByTagName("id").item(0).getTextContent());
+                if(itemID == currentItemID){
+                    String name = currentItem.getElementsByTagName("name").item(0).getTextContent();
+                    int totalQty= Integer.parseInt(currentItem.getElementsByTagName("totalqty").item(0).getTextContent());
+                    String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
+                    Item item = new Item(name, currentItemID, type);
+
+                    if(needStockData) {
+                        //perform retrieving of stock data and add to Item class
+                        NodeList stockList = currentItem.getElementsByTagName("stocks");
+                    }
+
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){
         ArrayList<OrderDetails> orderDetails = new ArrayList<>();
