@@ -5,19 +5,22 @@ public class Stock {
     private float cost;
     private float price;
     private int qty;
+    private String supplier;
 
     public Stock(){
         this.batchNo = null;
         this.cost = -1;
         this.price = -1;
         this.qty = -1;
+        this.supplier = null;
     }
 
-    public Stock(String batchNo, float cost, float price, int qty){
+    public Stock(String batchNo, float cost, float price, int qty, String supplier){
         this.batchNo = batchNo;
         this.cost = cost;
         this.price = price;
         this.qty = qty;
+        this.supplier = supplier;
     }
 
     public String getBatchNo() {

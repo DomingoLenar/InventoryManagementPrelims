@@ -145,4 +145,12 @@
         <price>420.0</price>
         <id>1</id>
     </itemorder>
+    <!--NEW FORMAT FOR XML-->
+    <itemorder>
+        <orderId></orderId>
+        <date></date>
+        <orderType></orderType>
+        <createdby></createdby>
+    </itemorder>
+
 </itemorders>
