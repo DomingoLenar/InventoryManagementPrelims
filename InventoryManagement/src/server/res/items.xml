@@ -14,12 +14,20 @@
         <type>null</type>
         <totalqty>50</totalqty>
         <stocks>
-            <batch batchNo="">
-                <supplier>Rev</supplier>
-                <cost>70</cost>
-                <qty>50</qty>
-                <price>100</price>
-            </batch>
+            <stock>
+                <batchNo></batchNo>
+                <supplier></supplier>
+                <cost></cost>
+                <price></price>
+                <qty></qty>
+            </stock>
+            <stock>
+                <batchNo></batchNo>
+                <supplier></supplier>
+                <cost></cost>
+                <price></price>
+                <qty></qty>
+            </stock>
         </stocks>
     </item>
 </items>
