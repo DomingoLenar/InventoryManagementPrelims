@@ -1,4 +1,4 @@
-package client.purchase.views;
+package client.purchaser.views;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.PieChart;
@@ -29,7 +29,7 @@ public class PurchaserDashboardView {
     public PurchaserDashboardView() {
 
         // Low Stock Items
-        lowStockItemsLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        lowStockItemsLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         DefaultListModel<String> listModel1 = new DefaultListModel<>();
         // Change to Raw Data
         listModel1.addElement("QTY");
@@ -39,7 +39,7 @@ public class PurchaserDashboardView {
         listModel1.addElement("QTY");
         activityList1.setModel(listModel1);
         activityList1.setEnabled(false);
-        activityList1.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        activityList1.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
         // Change to Raw Data
@@ -50,7 +50,7 @@ public class PurchaserDashboardView {
         listModel2.addElement("Product 5");
         activityList2.setModel(listModel2);
         activityList2.setEnabled(false);
-        activityList2.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        activityList2.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         // Call for Controller
         searchField.setBorder(BorderFactory.createCompoundBorder(
@@ -103,12 +103,12 @@ public class PurchaserDashboardView {
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
         JLabel todayColorLabel = new JLabel("    ");
-        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        todayColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
 
         JLabel maxColorLabel = new JLabel("    ");
-        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        maxColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
 

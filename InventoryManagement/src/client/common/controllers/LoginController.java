@@ -44,10 +44,12 @@ public class LoginController {
                 if (username.isEmpty() || password.isEmpty()) {
                     // do smth
                 } else {
-                    String userType = loginModel.handleLogin(username, password, objectOutputStream, objectInputStream);
+                    loginModel.handleLogin(username, password, objectOutputStream, objectInputStream);
+                    String userType = loginModel.getUser().getRole(); // TODO: find a way where userType & username variable is not in inventory controller
                     if (userType != null) {
-                        inventoryManagementController.setUserType(userType);
-                        inventoryManagementController.setUsername(username);
+                        inventoryManagementController.getInventoryManagementInterface().setUsername(username);
+                        inventoryManagementController.getInventoryManagementInterface().setUserType(userType);
+                        inventoryManagementController.getUserSettingsController().getUserSettingsView().getUsernameLabel().setText(username);
                         switch (userType) {
                             case "admin":
                                 inventoryManagementController.displayAdminMainMenu();

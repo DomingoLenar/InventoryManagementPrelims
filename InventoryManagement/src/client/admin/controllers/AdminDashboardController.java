@@ -2,7 +2,6 @@ package client.admin.controllers;
 
 import client.admin.views.AdminDashboardView;
 import client.common.controllers.InventoryManagementController;
-import client.common.models.ItemManagementModel;
 import utility.ItemOrder;
 import utility.User;
 
@@ -30,7 +29,7 @@ public class AdminDashboardController {
     public void initComponents() {
 
         // populate the table
-        ArrayList<ItemOrder> listOfSalesItemOrders = ItemManagementModel.fetchItemOrdersByUserType("sales", objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> listOfSalesItemOrders = null;
 
         ArrayList<Float> revenueForJan = new ArrayList<>();
         ArrayList<Float> revenueForFeb = new ArrayList<>();
@@ -114,7 +113,7 @@ public class AdminDashboardController {
             totalRevenuePerMonth.add(totalRevenue);
         }
 
-        ArrayList<ItemOrder> listOfPurchaseItemOrders = ItemManagementModel.fetchItemOrdersByUserType("purchase", objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> listOfPurchaseItemOrders = null;
 
         ArrayList<Float> costForJan = new ArrayList<>();
         ArrayList<Float> costForFeb = new ArrayList<>();
@@ -206,7 +205,7 @@ public class AdminDashboardController {
 
         for (int i=0; i<listOfSalesItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfSalesItemOrders.get(i);
-            if (itemOrder.getDate().contains(inventoryManagementController.getFormattedDate())) {
+            if (itemOrder.getDate().contains(inventoryManagementController.getInventoryManagementInterface().getFormattedDate())) {
                 soldQtyToday = itemOrder.getQuantity();
             }
             soldQtyAnnual += itemOrder.getQuantity();

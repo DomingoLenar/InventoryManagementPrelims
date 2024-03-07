@@ -1,19 +1,19 @@
-package client.purchase.controllers;
+package client.purchaser.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.purchase.views.PurchaserAddItemView;
+import client.purchaser.views.PurchaserAddItemView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class PurchaserAddItemController {
+public class PurchaserCreatePurchaseOrderController {
     InventoryManagementController inventoryManagementController;
     PurchaserAddItemView purchaserAddItemView;
     ObjectOutputStream objectOutputStream;
     ObjectInputStream objectInputStream;
-    public PurchaserAddItemController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs){
+    public PurchaserCreatePurchaseOrderController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs){
         this.inventoryManagementController = inventoryManagementController;
         purchaserAddItemView = new PurchaserAddItemView();
         objectInputStream = oIs;

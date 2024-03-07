@@ -8,8 +8,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class LoginModel {
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
     public LoginModel(){}
-    public String handleLogin(String username, String password, ObjectOutputStream oOs, ObjectInputStream oIs) {
+    public void handleLogin(String username, String password, ObjectOutputStream oOs, ObjectInputStream oIs) {
         // Create a new User object with provided credentials
         User currentUser = new User(username, password, null, false);
 
@@ -18,16 +24,13 @@ public class LoginModel {
 
             // Send the User object to the server for login
             oOs.writeObject(currentUser);
-            System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             try {
-                User user = (User) oIs.readObject();
+                this.user = (User) oIs.readObject();
                 if (user != null) {
                     System.out.println("Authentication response: success");
-                    return user.getRole().toLowerCase();
                 } else {
                     System.out.println("Authentication response: failed");
-                    return null;
                 }
             } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
@@ -35,6 +38,5 @@ public class LoginModel {
         } catch (IOException e){
             e.printStackTrace();
         }
-        return null;
     }
 }

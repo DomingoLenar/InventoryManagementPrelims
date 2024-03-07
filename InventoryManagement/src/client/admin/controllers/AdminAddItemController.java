@@ -30,9 +30,9 @@ public class AdminAddItemController {
                 float pPrice = Float.parseFloat(adminAddItemView.getProductPrice().getText());
                 int qty = Integer.parseInt(adminAddItemView.getQuantity().getText());
 
-                ItemManagementModel.addItems(pName, qty, "warehouse", 13, pPrice, objectOutputStream, objectInputStream);
-                ItemManagementModel.addItemOrders(13, inventoryManagementController.getFormattedDate(), pPrice, "purchase", 13, inventoryManagementController.getUsername(),
-                        qty, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItems(pName, qty, "warehouse", 13, pPrice, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItemOrders(13, inventoryManagementController.getFormattedDate(), pPrice, "purchase", 13, inventoryManagementController.getUsername(),
+//                        qty, objectOutputStream, objectInputStream);
             }
         });
 

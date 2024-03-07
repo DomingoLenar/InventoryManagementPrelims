@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.deprecated.controllers.views.DashboardView">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.purchaser.views.PurchaserDashboardView">
   <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="653" height="400"/>
+      <xy x="20" y="20" width="585" height="324"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="d3f20" binding="topPanel" layout-manager="GridBagLayout">
+      <grid id="e6a32" binding="topPanel" layout-manager="GridBagLayout">
         <constraints border-constraint="North"/>
         <properties>
           <background color="-1060399"/>
@@ -15,7 +15,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="41849" binding="searchPanel" layout-manager="GridBagLayout">
+          <grid id="198fd" binding="searchPanel" layout-manager="GridBagLayout">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="1.0" weighty="1.0"/>
@@ -26,7 +26,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="612bc" class="javax.swing.JTextField" binding="searchField">
+              <component id="d6f83" class="javax.swing.JTextField" binding="searchField">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -34,7 +34,7 @@
                   <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties>
-                  <background color="-1"/>
+                  <background color="-1060399"/>
                   <editable value="true"/>
                   <foreground color="-16777216"/>
                   <text value="Search"/>
@@ -44,7 +44,7 @@
           </grid>
         </children>
       </grid>
-      <grid id="f87cd" binding="bottomPanel" custom-create="true" layout-manager="GridBagLayout">
+      <grid id="e91f" binding="bottomPanel" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
         <properties>
           <background color="-481883"/>
@@ -52,9 +52,9 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="1f5f4" layout-manager="GridBagLayout">
+          <grid id="21905" binding="stockControlPanel" layout-manager="GridBagLayout">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
@@ -62,7 +62,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="60587" class="javax.swing.JLabel">
+              <component id="f478d" class="javax.swing.JLabel">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
@@ -74,9 +74,9 @@
               </component>
             </children>
           </grid>
-          <grid id="f769" layout-manager="GridBagLayout">
+          <grid id="33297" binding="lowStockItemsPanel" layout-manager="GridBagLayout">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
@@ -84,36 +84,46 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="95142" class="javax.swing.JLabel">
+              <component id="50a85" class="javax.swing.JLabel" binding="lowStockItemsLabel">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
+                  <alignmentY value="0.0"/>
                   <foreground color="-16777216"/>
-                  <text value="Tracking"/>
+                  <text value="Low Stock Items"/>
+                  <verticalAlignment value="0"/>
                 </properties>
               </component>
-            </children>
-          </grid>
-          <grid id="c0558" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
-            </constraints>
-            <properties>
-              <background color="-1"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="f11ec" class="javax.swing.JLabel">
+              <component id="4be4e" class="javax.swing.JList" binding="activityList2">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
                   <gridbag weightx="0.0" weighty="0.0"/>
                 </constraints>
                 <properties>
+                  <background color="-1"/>
                   <foreground color="-16777216"/>
-                  <text value="Financial Status"/>
+                  <selectionBackground color="-1"/>
+                  <selectionForeground color="-16777216"/>
+                  <toolTipText value=""/>
+                </properties>
+              </component>
+              <component id="fc5db" class="javax.swing.JList" binding="activityList1">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                  <gridbag weightx="0.0" weighty="0.0"/>
+                </constraints>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-16777216"/>
+                  <selectionBackground color="-1"/>
+                  <selectionForeground color="-16777216"/>
+                  <toolTipText value=""/>
                 </properties>
               </component>
             </children>

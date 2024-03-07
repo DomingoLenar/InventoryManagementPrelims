@@ -26,9 +26,7 @@ public class SalesCreateCustomerOrderController {
         salesCreateCustomerOrderView.getCreateOrderButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String prodName = salesCreateCustomerOrderView.getProdName().getText();
-                int qnty = Integer.parseInt(salesCreateCustomerOrderView.getQnty().getText());
-                String cxName = salesCreateCustomerOrderView.getCxName().getText();
+                int qnty = Integer.parseInt(salesCreateCustomerOrderView.getQnty().getText()); // TODO: subtract: current stock of prod - qnty of prod in creation of cx order
 
                 // TODO: send to the server
 

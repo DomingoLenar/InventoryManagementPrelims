@@ -40,7 +40,7 @@ public class ChangePasswordController {
                     // do smth
                 }
                 if (newPassword.length() > 7){ // fetch the old password from the server
-                    changePasswordModel.changePassword(inventoryManagementController.getUsername(), newPassword, oldPassword, objectOutputStream, objectInputStream);
+                    changePasswordModel.changePassword(inventoryManagementController.inventoryManagementInterface.getUsername(), newPassword, oldPassword, objectOutputStream, objectInputStream);
                 }
 
             }

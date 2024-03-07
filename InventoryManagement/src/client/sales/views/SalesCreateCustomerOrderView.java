@@ -8,6 +8,7 @@ public class SalesCreateCustomerOrderView {
     private JTextField qnty;
     private JTextField cxName;
     private JButton createOrderButton;
+    private JTextField prc;
 
     public JTextField getProdName() {
         return prodName;
@@ -27,5 +28,21 @@ public class SalesCreateCustomerOrderView {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JTextField getPrc() {
+        return prc;
+    }
+
+    public void setProdName(JTextField prodName) {
+        this.prodName = prodName;
+    }
+
+    public void setQnty(JTextField qnty) {
+        this.qnty = qnty;
+    }
+
+    public void setPrc(JTextField prc) {
+        this.prc = prc;
     }
 }

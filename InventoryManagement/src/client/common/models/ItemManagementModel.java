@@ -32,13 +32,13 @@ public class ItemManagementModel {
 
         try {
 
-            Item newItem = new Item(name, qty, type, itemId, price);
+//            Item newItem = new Item(name, qty, type, itemId, price);
 
             ClientApi.sendAction("addItem", oOs);
 
-            oOs.writeObject(newItem);
+//            oOs.writeObject(newItem);
             oOs.flush();
-            System.out.println("Item: " + newItem.getName() + " addition has been sent to the server");
+//            System.out.println("Item: " + newItem.getName() + " addition has been sent to the server");
 
             try  {
                 boolean addItemSuccess = oIs.readBoolean();

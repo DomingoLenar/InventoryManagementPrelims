@@ -1,7 +1,7 @@
 package client.deprecated.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.deprecated.controllers.views.DashboardView;
+import client.deprecated.views.DashboardView;
 
 public class DashboardController {
     DashboardView dashboardView;

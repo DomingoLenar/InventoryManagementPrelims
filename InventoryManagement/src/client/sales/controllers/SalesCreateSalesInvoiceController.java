@@ -51,11 +51,11 @@ public class SalesCreateSalesInvoiceController {
     }
 
     private void temporaryImplementation(String productName, int price, int qty) {
-        ArrayList<ItemOrder> itemOrderArrayList = ItemManagementModel.fetchItemOrdersByUserType("sales", objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> itemOrderArrayList = null;
 
-        ItemManagementModel.addItems(productName, qty, "null", itemOrderArrayList.size() + 1, price, objectOutputStream, objectInputStream);
-        ItemManagementModel.addItemOrders(itemOrderArrayList.size() + 1, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), itemOrderArrayList.size() + 1,
-                inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
+//        ItemManagementModel.addItems(productName, qty, "null", itemOrderArrayList.size() + 1, price, objectOutputStream, objectInputStream);
+//        ItemManagementModel.addItemOrders(itemOrderArrayList.size() + 1, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), itemOrderArrayList.size() + 1,
+//                inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
     }
 
     public SalesCreateSalesInvoiceView getSalesCreateSalesInvoiceView() {

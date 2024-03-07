@@ -1,4 +1,4 @@
-package client.purchase.views;
+package client.purchaser.views;
 
 import client.common.views.GradientPanel;
 

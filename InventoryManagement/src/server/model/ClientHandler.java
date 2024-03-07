@@ -1,9 +1,7 @@
 package server.model;
 
 import client.common.models.RemoveItemOrder;
-import server.model.query.ChangePassword;
-import server.model.query.CreateUser;
-import server.model.query.UserVerification;
+import server.model.query.*;
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
@@ -24,7 +22,6 @@ public class ClientHandler implements Runnable{
      *
      */
 
-    // TODO:
     @Override
     public void run() {
         try(
@@ -68,7 +65,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "removeItemOrder":
-                        RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
+                        RemoveItemOrder.process(oIS.readInt(), objectOutputStream, oIS);
                         break;
                     case "changePassword":
                         ChangePassword.process(oIS, objectOutputStream);
@@ -80,7 +77,6 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cRSuccess);
                         objectOutputStream.flush();
                         break;
-
                     case "fetchListOfUsers":
                         Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);

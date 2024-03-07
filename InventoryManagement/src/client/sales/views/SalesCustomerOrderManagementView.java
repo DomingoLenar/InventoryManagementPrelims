@@ -11,6 +11,8 @@ public class SalesCustomerOrderManagementView {
     private JPanel bottomPanel;
     private JButton generateSalesInvoiceButton;
     private JTable table1;
+    private JButton updateButton;
+    private JButton deleteButton;
 
     public JTextField getSearchField() {
         return searchField;
@@ -28,8 +30,15 @@ public class SalesCustomerOrderManagementView {
         return mainPanel;
     }
 
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
+
+    public JButton getUpdateButton() {
+        return updateButton;
+    }
+
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         DefaultTableModel model = new DefaultTableModel();
         table1 = new JTable(model);
 
@@ -42,7 +51,7 @@ public class SalesCustomerOrderManagementView {
 
         for (int i=0; i<=20; i++) {
             model.addRow(new Object[]{
-                    i,i,i,i,i
+                    i,"cx"+i, "date"+1, "prod"+i, i + 3, i + 10
             });
         }
 

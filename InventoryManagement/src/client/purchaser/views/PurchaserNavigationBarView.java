@@ -1,11 +1,11 @@
-package client.purchase.views;
+package client.purchaser.views;
 
 import javax.swing.*;
 
 public class PurchaserNavigationBarView {
     private JPanel leftPanel;
     private JButton dashboardButton;
-    private JButton stockControlButton;
+    private JButton stockMonitorButton;
     private JButton profileButton;
     private JButton button4;
 
@@ -21,7 +21,7 @@ public class PurchaserNavigationBarView {
         return profileButton;
     }
 
-    public JButton getStockControlButton() {
-        return stockControlButton;
+    public JButton getStockMonitorButton() {
+        return stockMonitorButton;
     }
 }

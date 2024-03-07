@@ -26,7 +26,7 @@ public class UserSettingsController {
     }
 
     private void initComponents() {
-        userSettingsView.getUsernameLabel().setText(inventoryManagementController.getUsername());
+        userSettingsView.getUsernameLabel().setText(inventoryManagementController.getInventoryManagementInterface().getUsername());
 
         initButtons();
     }
@@ -42,13 +42,20 @@ public class UserSettingsController {
         userSettingsView.getLogOutButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userSettingsModel.sessionTimeout(inventoryManagementController.getUsername(), objectOutputStream, objectInputStream);
+                userSettingsModel.sessionTimeout(inventoryManagementController.inventoryManagementInterface.getUsername(), objectOutputStream, objectInputStream);
 
                 // TODO: solution: better implementation -- note: this is just a band aid
                 inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getChart().removeSeries("Revenue");
                 inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getChart().removeSeries("Cost");
                 inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getPieChart().removeSeries("Today");
                 inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getPieChart().removeSeries("Annual");
+
+//                inventoryManagementController.getPurchaserDashboardController().getPurchaserDashboardView().getPieChart().removeSeries()
+
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getChart().removeSeries("Revenue");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getChart().removeSeries("Cost");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Today");
+                inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Annual");
 
                 inventoryManagementController.displayIndexPanel();
             }
