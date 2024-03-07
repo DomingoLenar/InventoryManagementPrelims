@@ -146,11 +146,11 @@
         <id>1</id>
     </itemorder>
     <!--NEW FORMAT FOR XML-->
-    <itemorder byUser="testpurchase" date="2024-07-03" orderType="purchase">
-        <itemID>1</itemID>
-        <batchNO></batchNO>
-        <supplier></supplier>
-        <price></price>
-        <qty></qty>
+    <itemorder>
+        <orderId></orderId>
+        <date></date>
+        <orderType></orderType>
+        <createdby></createdby>
     </itemorder>
+
 </itemorders>
