@@ -16,6 +16,14 @@ public class Item {
         this.stocks = new LinkedList();
     }
 
+    public Item(String name, int id,int totalQty, String type, LinkedList<Stock> stocks){
+        this.name = name;
+        this.id = id;
+        this.totalQty = totalQty;
+        this.type = type;
+        this.stocks = stocks;
+    }
+
     public void addStocks(Stock stock){
         this.stocks.addLast(stock);
     }
@@ -59,4 +67,9 @@ public class Item {
     public Stock getFirstStock(){
         return this.stocks.getFirst();
     }
+
+    public LinkedList<Stock> getAllStocks() {
+        return this.stocks;
+    }
+
 }

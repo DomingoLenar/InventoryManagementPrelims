@@ -1,6 +1,6 @@
-package client.common.models;
+package client.common.models.query;
 
-import utility.Item;
+import utility.revision.Item;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,7 +18,7 @@ public class FetchItemsByUserType {
      * @throws RuntimeException If an IOException or ClassNotFoundException occurs during the process.
      */
 
-    public static Stack<Item> process( ObjectOutputStream oOs, ObjectInputStream oIs){
+    public static Stack<Item> process(ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
             String action = "fetchItems";
             oOs.writeUTF(action);

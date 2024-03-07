@@ -2,9 +2,9 @@ package server.model;
 
 import server.model.query.*;
 
-import utility.Item;
-import utility.ItemOrder;
 import utility.User;
+import utility.revision.Item;
+import utility.revision.ItemOrder;
 
 import java.io.*;
 import java.net.Socket;
