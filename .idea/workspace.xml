@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Fixed bug caused by two objects that is created using one input stream">
-      <change beforePath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" afterDir="false" />
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ getter and setters">
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/RequestSalesDashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/revision/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/revision/Stock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -74,42 +77,42 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main (1).executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.TerminalController (1).executor": "Run",
-    "Application.TerminalController.executor": "Run",
-    "Attach to process.pid 16460.executor": "ProcessAttachDebug",
-    "Downloaded.Files.Path": "C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib",
-    "Downloaded.Files.Path.Enabled": "true",
-    "JUnit.Test.executor": "Run",
-    "JUnit.Test.testClientServerConnection.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "utilities__marven",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "openjdk-21",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client",
-    "last_opened_file_path": "C:/Users/mlest/IdeaProjects/2024-2_9329-preteam1/InventoryManagement",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TerminalController (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.TerminalController.executor&quot;: &quot;Run&quot;,
+    &quot;Attach to process.pid 16460.executor&quot;: &quot;ProcessAttachDebug&quot;,
+    &quot;Downloaded.Files.Path&quot;: &quot;C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Test.testClientServerConnection.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;server-lestat&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mlest/IdeaProjects/2024-2_9329-preteam1/InventoryManagement&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\lib" />
@@ -122,7 +125,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.XMLProcessing">
+  <component name="RunManager" selected="JUnit.Test">
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="model.Server" />
       <module name="Server" />
@@ -140,7 +143,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="server.controller.TerminalController" />
-      <module name="InventoryManagement1" />
+      <module name="InventoryManagement" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="server.controller.*" />
@@ -192,11 +195,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.XMLProcessing" />
-        <item itemvalue="Application.TerminalController" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="JUnit.Test.testClientServerConnection" />
         <item itemvalue="JUnit.Test" />
+        <item itemvalue="Application.TerminalController" />
+        <item itemvalue="Application.XMLProcessing" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -245,22 +248,6 @@
       <workItem from="1708016290440" duration="178000" />
       <workItem from="1708016482346" duration="17000" />
       <workItem from="1708016502159" duration="1153000" />
-    </task>
-    <task id="LOCAL-00001" summary="+ added: IndexView.java">
-      <option name="closed" value="true" />
-      <created>1706445930977</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445930977</updated>
-    </task>
-    <task id="LOCAL-00002" summary="+ added: LoginView.java">
-      <option name="closed" value="true" />
-      <created>1706445940549</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445940549</updated>
     </task>
     <task id="LOCAL-00003" summary="+ added: SignUpView.java">
       <option name="closed" value="true" />
@@ -582,7 +569,79 @@
       <option name="project" value="LOCAL" />
       <updated>1708185328708</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="+ syntax fix">
+      <option name="closed" value="true" />
+      <created>1709545832024</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1709545832024</updated>
+    </task>
+    <task id="LOCAL-00044" summary="+ partial transition into micro-services">
+      <option name="closed" value="true" />
+      <created>1709545865763</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1709545865763</updated>
+    </task>
+    <task id="LOCAL-00045" summary="+ class for processing change password for micro-services transition">
+      <option name="closed" value="true" />
+      <created>1709545911254</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1709545911254</updated>
+    </task>
+    <task id="LOCAL-00046" summary="+ class for processing creating user for micro-services transition">
+      <option name="closed" value="true" />
+      <created>1709545933223</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709545933223</updated>
+    </task>
+    <task id="LOCAL-00047" summary="+ class for processing user verification for microservices transition">
+      <option name="closed" value="true" />
+      <created>1709545955636</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1709545955636</updated>
+    </task>
+    <task id="LOCAL-00048" summary="+ revision for Item class to take into account different buying prices">
+      <option name="closed" value="true" />
+      <created>1709546148352</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1709546148352</updated>
+    </task>
+    <task id="LOCAL-00049" summary="+ rehaul for Item class to take into account different buying prices">
+      <option name="closed" value="true" />
+      <created>1709547300139</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709547300139</updated>
+    </task>
+    <task id="LOCAL-00050" summary="+ getters and setters">
+      <option name="closed" value="true" />
+      <created>1709717554947</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1709717554947</updated>
+    </task>
+    <task id="LOCAL-00051" summary="+ getter and setters">
+      <option name="closed" value="true" />
+      <created>1709717588802</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1709717588802</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,15 +710,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ completed: client side mvc architecture" />
-    <MESSAGE value="+ client-server testing case on Main.java" />
-    <MESSAGE value="+ added: junit-jupiter library" />
-    <MESSAGE value="+ added: Test.java in test folder" />
-    <MESSAGE value="+ added: DashboardView.java(&amp;.form)" />
-    <MESSAGE value="+ added: FinancesView.java(&amp;.form)" />
-    <MESSAGE value="+ added: NavigationBarView.java(&amp;.form)" />
-    <MESSAGE value="+ added: DashboardController.java" />
-    <MESSAGE value="+ added: FinancesController.java" />
     <MESSAGE value="+ added: LoginController.java" />
     <MESSAGE value="+ updated: SignUpController.java" />
     <MESSAGE value="+ updated: InventoryManagementController.java" />
@@ -676,7 +726,38 @@
     <MESSAGE value="+ dependencies" />
     <MESSAGE value="+ XMLDocument and Element cleaner, with implementation" />
     <MESSAGE value="+ Fixed bug caused by two objects that is created using one input stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ Fixed bug caused by two objects that is created using one input stream" />
+    <MESSAGE value="+ syntax fix" />
+    <MESSAGE value="+ partial transition into micro-services" />
+    <MESSAGE value="+ class for processing change password for micro-services transition" />
+    <MESSAGE value="+ class for processing creating user for micro-services transition" />
+    <MESSAGE value="+ class for processing user verification for microservices transition" />
+    <MESSAGE value="+ revision for Item class to take into account different buying prices" />
+    <MESSAGE value="+ rehaul for Item class to take into account different buying prices" />
+    <MESSAGE value="+ getters and setters" />
+    <MESSAGE value="+ getter and setters" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ getter and setters" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.net.SocketException" package="java.net" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.net.Socket$SocketInputStream" memberName="in" />
+        <PinnedItemInfo parentTag="java.net.Socket" memberName="out" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="bufferedReader.readLine()" language="JAVA" />
+        <watch expression="bufferedReader.readLine()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
