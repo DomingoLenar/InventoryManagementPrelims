@@ -1,7 +1,9 @@
 package server.model.query;
 
 import server.model.XMLProcessing;
-import utility.ItemOrder;
+import utility.revision.Item;
+import utility.revision.ItemOrder;
+import utility.revision.OrderDetails;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,25 +13,35 @@ public class RequestSalesDashboard {
     public static void process(){
 
     }
-    private static ArrayList<ItemOrder> getRecentlyAddedItems(){
-        ArrayList<ItemOrder> recentlyAddedItems = new ArrayList<>();
+    private static ArrayList<String> getYearlyRevenueNCosts(){
+        ArrayList<String> revenueNCosts = new ArrayList<>();
+
+        ArrayList<ItemOrder> allPurchaseOrder = XMLProcessing.fetchItemOrders("sales");
+
+        return revenueNCosts;
+    }
+    private static ArrayList<Item> getRecentlyAddedItems(){
+        ArrayList<Item> recentlyAddedItems = new ArrayList<>();
         ArrayList<ItemOrder> allPurchaseOrders = XMLProcessing.fetchItemOrders("purchase");
         int length = allPurchaseOrders.size();
 
         for(int x = length; x > (length-5); x--){
-            recentlyAddedItems.add(allPurchaseOrders.get(x));
+            int orderID = allPurchaseOrders.get(x).getOrderId();
+            ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(orderID);
+            orderDetails.get(0).getItemID();
+            XMLProcessing.fetchItem()
         }
 
         return recentlyAddedItems;
     }
 
     private static float getRevenueToday(){
-        float revenue;
+        float revenue = 0;
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String currentDate = localDate.format(formatter);
 
-        ArrayList<ItemOrder> purchaseOrders = XMLProcessing.fetchItemOrders("sale");
+        ArrayList<ItemOrder> purchaseOrders = XMLProcessing.fetchItemOrders("sales");
         ArrayList<ItemOrder> salesToday = new ArrayList<>();
 
         for(int x=0; x<purchaseOrders.size();x++){
@@ -38,8 +50,13 @@ public class RequestSalesDashboard {
                 salesToday.add(currentOrder);
             }
         }
+        
+        for(int x = 0; x < salesToday.size(); x++){
+            int itemOrderID = salesToday.get(x).getOrderId();
+            ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(itemOrderID);
+            revenue += (float) orderDetails.stream().mapToDouble(OrderDetails::getUnitPrice).sum();
+        }
 
-        revenue = (float) salesToday.stream().mapToDouble(ItemOrder::getPurchasePrice).sum();
 
         return revenue;
     }
