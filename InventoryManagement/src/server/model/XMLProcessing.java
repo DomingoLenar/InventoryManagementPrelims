@@ -7,6 +7,7 @@ import org.w3c.dom.NodeList;
 import utility.Item;
 import utility.ItemOrder;
 import utility.User;
+import utility.revision.OrderDetails;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -489,6 +490,33 @@ public class XMLProcessing {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){
+        ArrayList<OrderDetails> orderDetails = new ArrayList<>();
+        try {
+            Document xmlDocument = getXMLDocument("InventoryManagement/src/server/res/orderdetails.xml");
+            Element rootElement = xmlDocument.getDocumentElement();
+            NodeList orderDetailsNodeList = rootElement.getElementsByTagName("orderdetail");
+
+            for(int x=0; x<orderDetailsNodeList.getLength(); x++){
+                Element currentOrderDetail = (Element)orderDetailsNodeList.item(x);
+                int orderID =  Integer.parseInt(currentOrderDetail.getElementsByTagName("itemorderid").item(0).getTextContent());
+                if(orderID==searchByOrderID){
+                    int itemID = Integer.parseInt(currentOrderDetail.getElementsByTagName("itemid").item(0).getTextContent());
+                    int units = Integer.parseInt(currentOrderDetail.getElementsByTagName("units").item(0).getTextContent());
+                    String batchNo = currentOrderDetail.getElementsByTagName("batchNo").item(0).getTextContent();
+                    float unitPrice = Float.parseFloat(currentOrderDetail.getElementsByTagName("unitPrice").item(0).getTextContent());
+                    String supplier = currentOrderDetail.getElementsByTagName("supplier").item(0).getTextContent();
+                    orderDetails.add(new OrderDetails(orderID,itemID,units,batchNo,unitPrice,supplier));
+                }
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return orderDetails;
     }
 
 
