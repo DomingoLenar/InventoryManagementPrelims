@@ -16,6 +16,14 @@ public class RequestSalesDashboard {
         float[] revenueAndCost = getRevenueNCostToday();
         objectOutputStream.writeObject(revenueAndCost);
         objectOutputStream.flush();
+
+        ArrayList<Item> recentlyAddedItems = getRecentlyAddedItems();
+        objectOutputStream.writeObject(recentlyAddedItems);
+        objectOutputStream.flush();
+
+        ArrayList<float[]> yearlyRevenueCogs = getYearlyRevenueNCosts();
+        objectOutputStream.writeObject(yearlyRevenueCogs);
+        objectOutputStream.flush();
     }
 
     private static ArrayList<float[]> getYearlyRevenueNCosts(){
