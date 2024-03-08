@@ -16,10 +16,6 @@ public class AddItemOrders {
      * @param date          The date of the item order.
      * @param orderType     The type of the order.
      * @param itemId        The ID of the item.
-     * @param batchNo       The batch number of the item order.
-     * @param supplier      The supplier of the item order.
-     * @param price         The price of the item order.
-     * @param qty           The quantity of the item order.
      * @param oOs           The ObjectOutputStream for sending data to the server.
      * @param oIs           The ObjectInputStream for receiving data from the server.
      * @throws RuntimeException If an IOException occurs during the process.

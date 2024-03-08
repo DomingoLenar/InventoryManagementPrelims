@@ -72,4 +72,7 @@ public class Item {
         return this.stocks;
     }
 
+    public void setStocks(LinkedList<Stock> stocks) {
+        this.stocks = stocks;
+    }
 }

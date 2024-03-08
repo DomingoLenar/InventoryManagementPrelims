@@ -21,7 +21,6 @@ public class FetchItemsByUserType {
     public static Stack<Item> process(ObjectOutputStream oOs, ObjectInputStream oIs){
         try {
             String action = "fetchItems";
-            oOs.writeUTF(action);
             oOs.flush();
             System.out.println(action + "sent to the server");
 
