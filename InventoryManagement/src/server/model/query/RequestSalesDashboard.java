@@ -147,23 +147,14 @@ public class RequestSalesDashboard {
 
     private static float getRevenueToday(){
         float revenue = 0;
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String currentDate = localDate.format(formatter);
 
         ArrayList<ItemOrder> salesToday = getSalesToday();
 
-        for(int x=0; x<purchaseOrders.size();x++){
-            ItemOrder currentOrder = purchaseOrders.get(x);
-            if(currentOrder.getDate().equals(currentDate)){
-                salesToday.add(currentOrder);
-            }
-        }
         
         for(int x = 0; x < salesToday.size(); x++){
             int itemOrderID = salesToday.get(x).getOrderId();
             ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(itemOrderID);
-            revenue += (float) orderDetails.stream().mapToDouble(OrderDetails::getUnitPrice).sum();
+            revenue += (float) orderDetails.stream().mapToDouble(orderDetail -> orderDetail.getUnits() * orderDetail.getUnitPrice()).sum();
         }
 
 
