@@ -33,8 +33,8 @@ public class RequestSalesDashboard {
 
     }
 
-    private static ArrayList<float[]> getYearlyRevenueNCosts(){
-        ArrayList<float[]> revenueNCosts = new ArrayList<>();
+    private static ArrayList<String> getYearlyRevenueNCosts(){
+        ArrayList<String> revenueNCosts = new ArrayList<>();
         ArrayList<ArrayList<ItemOrder>> byMonth = new ArrayList<>();
 
         String currentDate = getCurrentDate();
@@ -56,36 +56,41 @@ public class RequestSalesDashboard {
         return revenueNCosts;
     }
 
-    public static float[] getRevenueCogsByMonth(String[] yearAndMonth, ArrayList<ItemOrder> allSalesOrder){
-        float[] revenueAndCogs = {0,0};
+    public static String getRevenueCogsByMonth(String[] yearAndMonth, ArrayList<ItemOrder> allSalesOrder){
+        float[] initialRevenueAndCogs = {0,0};
 
         ArrayList<ItemOrder> ordersByMonthGiven = new ArrayList<>();
 
         for(int x =0; x<allSalesOrder.size(); x++){
             ItemOrder currentOrder = allSalesOrder.get(x);
             String[] orderDate = currentOrder.getDate().split("-");
+            System.out.print(orderDate[0]+","+orderDate[1]+" "+yearAndMonth[0]+","+yearAndMonth[1]+" ");
+            System.out.println(orderDate[0].equals(yearAndMonth[0])&&orderDate[1].equals(yearAndMonth[1]));
             if(orderDate[0].equals(yearAndMonth[0])&&orderDate[1].equals(yearAndMonth[1])){
                 ordersByMonthGiven.add(currentOrder);
             }
         }
 
-        for(int x=0; x<=ordersByMonthGiven.size();x++){
-            ItemOrder order = ordersByMonthGiven.get(x);
-            ArrayList<OrderDetails> details = XMLProcessing.fetchOrderDetails(order.getOrderId());
-            float revenue = (float) details.stream().mapToDouble(orderDetail -> orderDetail.getUnits()*orderDetail.getUnitPrice()).sum();
-            float cost = (float) details.stream().mapToDouble(orderDetail -> {
+        System.out.println(ordersByMonthGiven.size());
+        if(ordersByMonthGiven.size() != 0) {
+            for (int x = 0; x < ordersByMonthGiven.size(); x++) {
+                ItemOrder order = ordersByMonthGiven.get(x);
+                ArrayList<OrderDetails> details = XMLProcessing.fetchOrderDetails(order.getOrderId());
+                float revenue = (float) details.stream().mapToDouble(orderDetail -> orderDetail.getUnits() * orderDetail.getUnitPrice()).sum();
+                float cost = (float) details.stream().mapToDouble(orderDetail -> {
 
-                String[] batchNo = orderDetail.getBatchNo().split("_");
-                float costOfUnit = Float.parseFloat(batchNo[batchNo.length]);
+                    String[] batchNo = orderDetail.getBatchNo().split("_");
+                    float costOfUnit = Float.parseFloat(batchNo[batchNo.length-1]);
 
-                return orderDetail.getUnits()*costOfUnit;
-            }).sum();
-            revenueAndCogs[0] += revenue;
-            revenueAndCogs[1] += cost;
+                    return orderDetail.getUnits() * costOfUnit;
+                }).sum();
+                initialRevenueAndCogs[0] += revenue;
+                initialRevenueAndCogs[1] += cost;
+            }
         }
 
 
-        return revenueAndCogs;
+        return initialRevenueAndCogs[0]+","+initialRevenueAndCogs[1];
     }
 
     private static ArrayList<Item> getRecentlyAddedItems(){
