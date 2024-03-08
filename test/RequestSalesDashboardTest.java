@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import server.model.query.RequestSalesDashboard;
 import utility.revision.Item;
 
 import java.io.ObjectInputStream;
@@ -19,7 +18,8 @@ public class RequestSalesDashboardTest {
             ObjectOutputStream oOS = new ObjectOutputStream(cSocket.getOutputStream());
             ObjectInputStream oIS = new ObjectInputStream(cSocket.getInputStream());
 
-            RequestSalesDashboard.process(oOS);
+            oOS.writeUTF("requestSalesDashboard");
+            oOS.flush();
 
             float[] revenueAndCost = (float[]) oIS.readObject();
             ArrayList<Item> recentlyAddedItems = (ArrayList<Item>) oIS.readObject();
