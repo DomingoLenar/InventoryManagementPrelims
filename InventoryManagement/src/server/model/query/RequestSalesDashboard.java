@@ -34,14 +34,58 @@ public class RequestSalesDashboard {
         return recentlyAddedItems;
     }
 
+    private static ArrayList<ItemOrder> getSalesToday(){
+        LocalDate localDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String currentDate = localDate.format(formatter);
+
+        ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders("sales");
+        ArrayList<ItemOrder> salesToday = new ArrayList<>();
+
+        for(int x=0;x<itemOrderList.size();x++){
+            ItemOrder currentOrder = itemOrderList.get(x);
+            if(currentOrder.getDate().equals(currentDate)){
+                salesToday.add(currentOrder);
+            }
+        }
+
+        return salesToday;
+    }
+
+    private static float[] getRevenueNCostToday(){
+        float revenue = getRevenueToday();
+        float cogs = getCostOfGoodsSoldToday();
+        return new float[]{revenue, cogs};
+    }
+
+    private static float getCostOfGoodsSoldToday() {
+        float cogs = 0;
+
+        ArrayList<ItemOrder> salesToday = getSalesToday();
+
+        for(int x = 0; x<salesToday.size();x++){
+            int itemOrderID = salesToday.get(x).getOrderId();
+            ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(itemOrderID);
+            for(int y = 0; y<orderDetails.size();y++){
+                OrderDetails orderDetail = orderDetails.get(y);
+                int itemId = orderDetail.getItemID();
+                int units  = orderDetail.getUnits();
+                String batchNo = orderDetail.getBatchNo();
+                Item currentItem = XMLProcessing.fetchItem(itemId, true);
+                cogs += units * (currentItem.getStock(batchNo).getCost());
+            }
+        }
+
+        return cogs;
+    }
+
     private static float getRevenueToday(){
         float revenue = 0;
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String currentDate = localDate.format(formatter);
 
-        ArrayList<ItemOrder> purchaseOrders = XMLProcessing.fetchItemOrders("sales");
-        ArrayList<ItemOrder> salesToday = new ArrayList<>();
+        ArrayList<ItemOrder> salesToday = getSalesToday();
 
         for(int x=0; x<purchaseOrders.size();x++){
             ItemOrder currentOrder = purchaseOrders.get(x);
