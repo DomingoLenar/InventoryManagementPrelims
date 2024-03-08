@@ -24,7 +24,7 @@ public class RequestPurchaseDashboard {
 
     }
 
-    public static List<Item> getLowStockItems(){
+    private static List<Item> getLowStockItems(){
         Stack<Item> items = XMLProcessing.fetchItems();
 
         items.sort(Comparator.comparingInt(Item::getTotalQty));
@@ -33,7 +33,7 @@ public class RequestPurchaseDashboard {
         return lowestItems;
     }
 
-    public static int[] getUnitsSold(){
+    private static int[] getUnitsSold(){
         int[] unitsSAndMaxUnits = {0, 0};
 
         ArrayList<ItemOrder> saleOrders = XMLProcessing.fetchItemOrders("sales");
