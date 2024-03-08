@@ -5,14 +5,19 @@ import utility.revision.Item;
 import utility.revision.ItemOrder;
 import utility.revision.OrderDetails;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class RequestSalesDashboard {
-    public static void process(){
-
+    public static void process(ObjectOutputStream objectOutputStream) throws IOException {
+        float[] revenueAndCost = getRevenueNCostToday();
+        objectOutputStream.writeObject(revenueAndCost);
+        objectOutputStream.flush();
     }
+
     private static ArrayList<String> getYearlyRevenueNCosts(){
         ArrayList<String> revenueNCosts = new ArrayList<>();
 
