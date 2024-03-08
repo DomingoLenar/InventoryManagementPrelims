@@ -12,7 +12,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class RequestSalesDashboard {
-    public static void process(ObjectOutputStream objectOutputStream) throws IOException {
+    public synchronized static void process(ObjectOutputStream objectOutputStream) throws IOException{
+
+        ArrayList<String> yearlyRevenueCogs = getYearlyRevenueNCosts();
+        objectOutputStream.writeObject(yearlyRevenueCogs);
+        objectOutputStream.flush();
+
         float[] revenueAndCost = getRevenueNCostToday();
         objectOutputStream.writeObject(revenueAndCost);
         objectOutputStream.flush();
@@ -21,9 +26,11 @@ public class RequestSalesDashboard {
         objectOutputStream.writeObject(recentlyAddedItems);
         objectOutputStream.flush();
 
-        ArrayList<float[]> yearlyRevenueCogs = getYearlyRevenueNCosts();
-        objectOutputStream.writeObject(yearlyRevenueCogs);
+        objectOutputStream.writeUTF("TEST");
         objectOutputStream.flush();
+
+
+
     }
 
     private static ArrayList<float[]> getYearlyRevenueNCosts(){
