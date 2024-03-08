@@ -52,6 +52,10 @@ public class Item {
         this.type = type;
     }
 
+    public Stock getStock(String batchNo){
+        return stocks.stream().filter(stock -> stock.getBatchNo().equals(batchNo)).toList().get(0);
+    }
+
     public Stock getStock(int index){
         return this.stocks.get(index);
     }
