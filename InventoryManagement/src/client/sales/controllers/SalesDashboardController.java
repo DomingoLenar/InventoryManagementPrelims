@@ -1,6 +1,7 @@
 package client.sales.controllers;
 
 import client.common.controllers.InventoryManagementController;
+import client.common.models.ItemManagementModel;
 import client.sales.views.SalesDashboardView;
 import utility.Item;
 import utility.ItemOrder;
@@ -177,7 +178,7 @@ public class SalesDashboardController {
        salesDashboardView.getChart().addSeries("Revenue", Arrays.asList(months), totalRevenuePerMonth);
        salesDashboardView.getChart().addSeries("Cost", Arrays.asList(months), totalCostPerMonth);
 
-       Stack<Item> recentAddedItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getUserType(), objectOutputStream, objectInputStream);
+       Stack<Item> recentAddedItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getInventoryManagementInterface().getUserType(), objectOutputStream, objectInputStream);
 
        // extract the product name and product id
 
@@ -205,7 +206,7 @@ public class SalesDashboardController {
 
         for (int i=0; i<listOfSalesItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfSalesItemOrders.get(i);
-            if (itemOrder.getDate().contains(inventoryManagementController.getFormattedDate())) {
+            if (itemOrder.getDate().contains(inventoryManagementController.getInventoryManagementInterface().getFormattedDate())) {
                 soldQtyToday = itemOrder.getQuantity();
             }
             soldQtyAnnual += itemOrder.getQuantity();

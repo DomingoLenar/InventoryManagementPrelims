@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="client.purchaser.views.PurchaserStockControlView">
-  <grid id="27dc6" binding="mainPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -50,7 +50,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="2d609" class="javax.swing.JButton" binding="addItemButton" default-binding="true">
+          <component id="2d609" class="javax.swing.JButton" binding="purchaseOrderButton">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
@@ -60,7 +60,7 @@
               <focusPainted value="false"/>
               <focusable value="false"/>
               <foreground color="-16777216"/>
-              <text value="Add Item"/>
+              <text value="Create Purchase Order"/>
             </properties>
           </component>
           <component id="47c5" class="javax.swing.JButton" binding="updateButton" default-binding="true">
@@ -98,7 +98,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="f7a31" binding="puchaserScrollPane">
+          <scrollpane id="f7a31">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="20" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
@@ -106,7 +106,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="43795" class="javax.swing.JTable" binding="purchaserTable">
+              <component id="43795" class="javax.swing.JTable" binding="stockTable" custom-create="true">
                 <constraints/>
                 <properties/>
               </component>

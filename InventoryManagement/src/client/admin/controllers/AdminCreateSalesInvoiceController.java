@@ -34,9 +34,9 @@ public class AdminCreateSalesInvoiceController {
 
                 adminCreateSalesInvoiceView.getEstimatedTotal().getText();
 
-                ItemManagementModel.addItems(pName, qty, "warehouse", 13, pPrice, objectOutputStream, objectInputStream);
-                ItemManagementModel.addItemOrders(13, inventoryManagementController.getFormattedDate(), pPrice, "sales",
-                        13, inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItems(pName, qty, "warehouse", 13, pPrice, objectOutputStream, objectInputStream);
+//                ItemManagementModel.addItemOrders(13, inventoryManagementController.getFormattedDate(), pPrice, "sales",
+//                        13, inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
 
             }
         });

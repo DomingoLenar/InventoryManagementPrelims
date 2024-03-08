@@ -3,7 +3,7 @@ package client.sales.views;
 import javax.swing.*;
 
 public class SalesNavigationBarView {
-    private JButton financesButton;
+    private JButton customerOrderButton;
     private JButton profileButton;
     private JButton stockControlButton;
     private JButton dashboardButton;
@@ -18,9 +18,8 @@ public class SalesNavigationBarView {
     public JButton getDashboardButton() {
         return dashboardButton;
     }
-
-    public JButton getFinancesButton() {
-        return financesButton;
+    public JButton getCustomerOrderButton() {
+        return customerOrderButton;
     }
 
     public JButton getProfileButton() {

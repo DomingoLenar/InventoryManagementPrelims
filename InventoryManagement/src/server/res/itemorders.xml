@@ -147,10 +147,39 @@
     </itemorder>
     <!--NEW FORMAT FOR XML-->
     <itemorder>
-        <orderId></orderId>
-        <date></date>
-        <orderType></orderType>
-        <createdby></createdby>
+        <orderId>1</orderId>
+        <date>2023-07-24</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
     </itemorder>
-
+    <itemorder>
+        <orderId>2</orderId>
+        <date>2023-07-24</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>3</orderId>
+        <date>2023-12-23</date>
+        <orderType>purchase</orderType>
+        <createdby>testpurchase</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>4</orderId>
+        <date>2023-07-24</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>5</orderId>
+        <date>2024-01-01</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>6</orderId>
+        <date>2023-02-14</date>
+        <orderType>purchase</orderType>
+        <createdby>testpurchase</createdby>
+    </itemorder>
 </itemorders>
