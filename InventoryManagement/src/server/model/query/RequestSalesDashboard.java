@@ -86,7 +86,9 @@ public class RequestSalesDashboard {
         ArrayList<ItemOrder> allPurchaseOrders = XMLProcessing.fetchItemOrders("purchase");
         int length = allPurchaseOrders.size();
 
-        for(int x = length; x > (length-5); x--){
+        int maxIndex = Math.min(5, length);
+
+        for(int x = length-1; x > (length-maxIndex); x--){
             int orderID = allPurchaseOrders.get(x).getOrderId();
             ArrayList<OrderDetails> orderDetails = XMLProcessing.fetchOrderDetails(orderID);
             recentlyAddedItems.add(XMLProcessing.fetchItem(orderDetails.get(0).getItemID(), false));
