@@ -21,9 +21,11 @@ public class RequestSalesDashboardTest {
             oOS.writeUTF("requestSalesDashboard");
             oOS.flush();
 
+            ArrayList<String> yearlyRevenueCogs = (ArrayList<String>) oIS.readObject();
             float[] revenueAndCost = (float[]) oIS.readObject();
             ArrayList<Item> recentlyAddedItems = (ArrayList<Item>) oIS.readObject();
-            ArrayList<float[]> yearlyRevenueCogs = (ArrayList<float[]>) oIS.readObject();
+            String data = oIS.readUTF();
+
 
             assertNotNull(revenueAndCost);
             assertNotNull(recentlyAddedItems);
