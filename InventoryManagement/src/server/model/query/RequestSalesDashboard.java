@@ -25,6 +25,39 @@ public class RequestSalesDashboard {
 
         return revenueNCosts;
     }
+
+    public static float[] getRevenueCogsByMonth(String[] yearAndMonth, ArrayList<ItemOrder> allSalesOrder){
+        float[] revenueAndCogs = {0,0};
+
+        ArrayList<ItemOrder> ordersByMonthGiven = new ArrayList<>();
+
+        for(int x =0; x<allSalesOrder.size(); x++){
+            ItemOrder currentOrder = allSalesOrder.get(x);
+            String[] orderDate = currentOrder.getDate().split("-");
+            if(orderDate[0].equals(yearAndMonth[0])&&orderDate[1].equals(yearAndMonth[1])){
+                ordersByMonthGiven.add(currentOrder);
+            }
+        }
+
+        for(int x=0; x<=ordersByMonthGiven.size();x++){
+            ItemOrder order = ordersByMonthGiven.get(x);
+            ArrayList<OrderDetails> details = XMLProcessing.fetchOrderDetails(order.getOrderId());
+            float revenue = (float) details.stream().mapToDouble(orderDetail -> orderDetail.getUnits()*orderDetail.getUnitPrice()).sum();
+            float cost = (float) details.stream().mapToDouble(orderDetail -> {
+
+                String[] batchNo = orderDetail.getBatchNo().split("_");
+                float costOfUnit = Float.parseFloat(batchNo[batchNo.length]);
+
+                return orderDetail.getUnits()*costOfUnit;
+            }).sum();
+            revenueAndCogs[0] += revenue;
+            revenueAndCogs[1] += cost;
+        }
+
+
+        return revenueAndCogs;
+    }
+
     private static ArrayList<Item> getRecentlyAddedItems(){
         ArrayList<Item> recentlyAddedItems = new ArrayList<>();
         ArrayList<ItemOrder> allPurchaseOrders = XMLProcessing.fetchItemOrders("purchase");
