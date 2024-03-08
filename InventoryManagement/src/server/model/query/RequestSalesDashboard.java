@@ -18,10 +18,25 @@ public class RequestSalesDashboard {
         objectOutputStream.flush();
     }
 
-    private static ArrayList<String> getYearlyRevenueNCosts(){
-        ArrayList<String> revenueNCosts = new ArrayList<>();
+    private static ArrayList<float[]> getYearlyRevenueNCosts(){
+        ArrayList<float[]> revenueNCosts = new ArrayList<>();
+        ArrayList<ArrayList<ItemOrder>> byMonth = new ArrayList<>();
 
-        ArrayList<ItemOrder> allPurchaseOrder = XMLProcessing.fetchItemOrders("sales");
+        String currentDate = getCurrentDate();
+        String[] yMD = currentDate.split("-");
+
+        ArrayList<ItemOrder> allSalesOrder = XMLProcessing.fetchItemOrders("sales");
+
+        for(int x=1; x<=12; x++){
+            String month = null;
+            if(x > 10){
+                month = "0"+x;
+            }else{
+                month = String.valueOf(x);
+            }
+            String[] yNM = {yMD[0],month};
+            revenueNCosts.add(getRevenueCogsByMonth(yNM, allSalesOrder));
+        }
 
         return revenueNCosts;
     }
