@@ -385,6 +385,10 @@ public class XMLProcessing {
     }
 
 
+    /**
+     * A method for fetching all items
+     * @return itemList
+     */
     public static synchronized Stack<Item> fetchItems() { // TODO: better approach is to have filterKey
         Stack<Item> itemList = new Stack<>();
         try {
@@ -546,6 +550,39 @@ public class XMLProcessing {
         }
         return null;
     }
+
+
+    /**
+     * Method for retrieving one Order
+      * @param orderId
+     * @return
+     */
+   public static ItemOrder fetchItemOrder(int orderId){
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
+
+            Element rootElemetn = document.getDocumentElement();
+            NodeList itemOrders = rootElemetn.getElementsByTagName("itemorder");
+
+            for (int i=0; i< itemOrders.getLength();i++){
+                Element currentElement = (Element)itemOrders.item(i);
+                int currentOrderID = Integer.parseInt(currentElement.getElementsByTagName("id").item(0).getTextContent());
+
+                if (orderId== currentOrderID ){
+                    String date = currentElement.getElementsByTagName("date").item(0).getTextContent();
+                    String orderType = currentElement.getElementsByTagName("orderType").item(0).getTextContent();
+                    String byUserName = currentElement.getElementsByTagName("createdBy").item(0).getTextContent();
+
+                    User createdBy = new User(byUserName);
+
+                    return  new ItemOrder(createdBy, orderId,date,orderType);
+                }
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    return null;
+   }
 
     public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){
         ArrayList<OrderDetails> orderDetails = new ArrayList<>();
