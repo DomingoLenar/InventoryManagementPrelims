@@ -1,46 +1,75 @@
 package client.sales.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
-public class SalesStockControlView extends JFrame{
+public class SalesStockMonitorView extends JFrame{
     private JPanel topPanel;
     private JPanel searchPanel;
     private JTextField searchField;
     private JPanel centerPanel;
-    private JScrollPane salesScrollPane;
-    private JTable salesTable;
+    private JTable stockMonitorTable;
     private JPanel bottomPanel;
-    private JButton salesInvoiceButton;
+    private JButton createCustomerOrderButton;
     private JPanel mainPanel;
+    private JButton updateButton;
+    private JButton deleteButton;
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    private SalesStockControlView.SalesInvoiceListener salesInvoiceListener;
+//    private SalesStockMonitorView.SalesInvoiceListener salesInvoiceListener;
 
-    public interface SalesInvoiceListener {
-        void onSalesInvoiceRequested();
+    private void createUIComponents() {
+        centerPanel = new GradientPanel();
+
+        DefaultTableModel model = new DefaultTableModel();
+        stockMonitorTable = new JTable(model);
+
+        model.addColumn("Product");
+        model.addColumn("Selling Price");
+        model.addColumn("Quantity"); // todo: stock level = quantity
+//        model.addColumn("Reorder level");
+        model.addColumn("Availability");
+
+        for (int i=0; i<=20; i++){
+            model.addRow(new Object[] {
+                    "milk","20 pesos",i,"In Stock"
+            });
+        }
     }
 
-    public interface AddItemListener {
-        void onAddItemRequested();
+    public JButton getDeleteButton() {
+        return deleteButton;
     }
 
-    public JTable getSalesTable() {
-        return salesTable;
+    public JButton getUpdateButton() {
+        return updateButton;
+    }
+    //    public interface SalesInvoiceListener {
+//        void onSalesInvoiceRequested();
+//    }
+
+//    public interface AddItemListener {
+//        void onAddItemRequested();
+//    }
+
+
+    public JTable getStockMonitorTable() {
+        return stockMonitorTable;
     }
 
-    public JButton getSalesInvoiceButton() {
-        return salesInvoiceButton;
+    public JButton getCreateCustomerOrderButton() {
+        return createCustomerOrderButton;
     }
 
-//    public SalesStockControlView() {
+    //    public SalesStockControlView() {
 //        setContentPane(mainPanel);
 //        setTitle("Stock Control");
 //        setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -51,7 +80,7 @@ public class SalesStockControlView extends JFrame{
 ////        Object rowData [][] = {{"Row1-Column1", "Row1-Column2", "Row1-Column3"}};
 ////        Object columnNames[] = { "Column One", "Column Two", "Column Three" };
 ////        DefaultTableModel tableModel = new DefaultTableModel(rowData, columnNames);
-////        salesTable.setModel(tableModel);
+////        stockMonitorTable.setModel(tableModel);
 //
 //
 //        salesScrollPane.setBorder(BorderFactory.createCompoundBorder(
@@ -64,7 +93,7 @@ public class SalesStockControlView extends JFrame{
 //                new SalesStockControlView.RoundedCornerBorder(20),
 //                new EmptyBorder(5, 5, 5, 5)
 //        ));
-//        salesInvoiceButton.addActionListener(e -> {
+//        createCustomerOrderButton.addActionListener(e -> {
 //            if (salesInvoiceListener != null) {
 //                salesInvoiceListener.onSalesInvoiceRequested();
 //            }

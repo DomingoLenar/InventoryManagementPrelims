@@ -25,12 +25,11 @@ public class SalesSalesInvoicesController {
         objectOutputStream = oOs;
 
     }
-
     public void initComponents() {
 
         // populate the table
-        ArrayList<ItemOrder> listOfItemOrders = ItemManagementModel.fetchItemOrdersByUserType(inventoryManagementController.getUserType(), objectOutputStream, objectInputStream);
-        Stack<Item> listOfAllItems = ItemManagementModel.fetchItemsByUserType(inventoryManagementController.getUserType(),objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> listOfItemOrders = null;
+        Stack<Item> listOfAllItems = null;
         ArrayList<Item> filteredListOfItems = new ArrayList<>();
         for (int i=0; i< listOfItemOrders.size(); i++) { // t(n) bad but it works.
             ItemOrder itemOrder = listOfItemOrders.get(i);

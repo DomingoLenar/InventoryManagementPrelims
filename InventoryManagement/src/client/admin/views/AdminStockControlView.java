@@ -1,9 +1,9 @@
 package client.admin.views;
 
+import client.common.views.GradientPanel;
+
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -23,6 +23,10 @@ public class AdminStockControlView extends JFrame{
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private void createUIComponents() {
+        centerPanel = new GradientPanel();
     }
 
     public interface SalesInvoiceListener {

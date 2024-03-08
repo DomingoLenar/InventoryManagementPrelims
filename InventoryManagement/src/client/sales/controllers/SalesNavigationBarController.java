@@ -30,16 +30,16 @@ public class SalesNavigationBarController {
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getMainPanel());
             }
         });
-        salesNavigationBarView.getFinancesButton().addActionListener(new ActionListener() {
+        salesNavigationBarView.getCustomerOrderButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesFinancesController().getSalesFinancesView().getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesCustomerOrderManagementController().getSalesCustomerOrderManagementView().getMainPanel());
             }
         });
         salesNavigationBarView.getStockControlButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockControlView().getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockMonitorView().getMainPanel());
             }
         });
         salesNavigationBarView.getProfileButton().addActionListener(new ActionListener() {

@@ -29,7 +29,7 @@ public class AdminDashboardController {
     public void initComponents() {
 
         // populate the table
-        ArrayList<ItemOrder> listOfSalesItemOrders = ItemManagementModel.fetchItemOrdersByUserType("sales", objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> listOfSalesItemOrders = null;
 
         ArrayList<Float> revenueForJan = new ArrayList<>();
         ArrayList<Float> revenueForFeb = new ArrayList<>();
@@ -113,7 +113,7 @@ public class AdminDashboardController {
             totalRevenuePerMonth.add(totalRevenue);
         }
 
-        ArrayList<ItemOrder> listOfPurchaseItemOrders = ItemManagementModel.fetchItemOrdersByUserType("purchase", objectOutputStream, objectInputStream);
+        ArrayList<ItemOrder> listOfPurchaseItemOrders = null;
 
         ArrayList<Float> costForJan = new ArrayList<>();
         ArrayList<Float> costForFeb = new ArrayList<>();
@@ -179,7 +179,8 @@ public class AdminDashboardController {
 
         // Users active
 
-        Stack<User> listOfActiveUsers = ProfileManagementModel.fetchListOfUsers(objectOutputStream, objectInputStream);
+        Stack<User> listOfActiveUsers = null;
+//        Stack<User> listOfActiveUsers = ProfileManagementModel.fetchListOfUsers(objectOutputStream, objectInputStream);
         if (!listOfActiveUsers.isEmpty()) {
             byte limit = 5;
 
@@ -204,7 +205,7 @@ public class AdminDashboardController {
 
         for (int i=0; i<listOfSalesItemOrders.size(); i++) {
             ItemOrder itemOrder = listOfSalesItemOrders.get(i);
-            if (itemOrder.getDate().contains(inventoryManagementController.getFormattedDate())) {
+            if (itemOrder.getDate().contains(inventoryManagementController.getInventoryManagementInterface().getFormattedDate())) {
                 soldQtyToday = itemOrder.getQuantity();
             }
             soldQtyAnnual += itemOrder.getQuantity();

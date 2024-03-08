@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" filepath="$PROJECT_DIR$/.idea/2024-2_9329-preteam1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2024-2_9329-preteam1.iml" filepath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" />
       <module fileurl="file://$PROJECT_DIR$/InventoryManagement/InventoryManagement.iml" filepath="$PROJECT_DIR$/InventoryManagement/InventoryManagement.iml" />
     </modules>
   </component>

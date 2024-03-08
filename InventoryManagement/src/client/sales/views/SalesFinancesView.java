@@ -5,7 +5,7 @@ import org.knowm.xchart.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
-
+@Deprecated
 public class SalesFinancesView {
     private JPanel topPanel;
     private JPanel searchPanel;

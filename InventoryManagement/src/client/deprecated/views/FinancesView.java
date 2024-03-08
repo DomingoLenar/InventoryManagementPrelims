@@ -1,4 +1,4 @@
-package client.deprecated.controllers.views;
+package client.deprecated.views;
 
 import client.common.views.GradientPanel;
 

@@ -91,6 +91,9 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeBoolean(currentUser != null);
                         objectOutputStream.flush();
                         break;
+                    case "requestSalesDashBoard":
+                        RequestSalesDashboard.process(objectOutputStream);
+                        break;
                     case "Exit":
                         System.out.println("Exit");
                         socket.close();
