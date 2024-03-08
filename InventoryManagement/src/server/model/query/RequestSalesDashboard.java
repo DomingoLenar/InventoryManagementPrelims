@@ -44,7 +44,7 @@ public class RequestSalesDashboard {
 
         for(int x=1; x<=12; x++){
             String month = null;
-            if(x > 10){
+            if(x < 10){
                 month = "0"+x;
             }else{
                 month = String.valueOf(x);
