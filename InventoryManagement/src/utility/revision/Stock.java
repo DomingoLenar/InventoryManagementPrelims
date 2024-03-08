@@ -1,6 +1,8 @@
 package utility.revision;
 
-public class Stock {
+import java.io.Serializable;
+
+public class Stock implements Serializable {
     private String batchNo;
     private float cost;
     private float price;

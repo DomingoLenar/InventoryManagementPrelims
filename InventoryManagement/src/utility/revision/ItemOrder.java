@@ -2,7 +2,9 @@ package utility.revision;
 
 import utility.User;
 
-public class ItemOrder {
+import java.io.Serializable;
+
+public class ItemOrder implements Serializable {
 
     private User createdBy;
     private int orderId;

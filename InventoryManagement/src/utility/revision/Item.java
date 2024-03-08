@@ -1,8 +1,9 @@
 package utility.revision;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Item {
+public class Item implements Serializable {
     private String name;
     private int id;
     private int totalQty;
