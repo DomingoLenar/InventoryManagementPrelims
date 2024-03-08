@@ -54,4 +54,11 @@ public class Stock {
     public void setQty(int qty) {
         this.qty = qty;
     }
+    public String getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
+    }
 }

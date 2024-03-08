@@ -1,4 +1,4 @@
-package client.common.models;
+package client.common.models.query;
 
 import utility.User;
 
