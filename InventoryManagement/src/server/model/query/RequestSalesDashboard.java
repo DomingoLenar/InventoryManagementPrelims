@@ -95,10 +95,15 @@ public class RequestSalesDashboard {
         return recentlyAddedItems;
     }
 
-    private static ArrayList<ItemOrder> getSalesToday(){
+    private static String getCurrentDate(){
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String currentDate = localDate.format(formatter);
+        return currentDate;
+    }
+
+    private static ArrayList<ItemOrder> getSalesToday(){
+        String currentDate = getCurrentDate();
 
         ArrayList<ItemOrder> itemOrderList = XMLProcessing.fetchItemOrders("sales");
         ArrayList<ItemOrder> salesToday = new ArrayList<>();
