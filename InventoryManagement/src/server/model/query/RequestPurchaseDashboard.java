@@ -33,7 +33,7 @@ public class RequestPurchaseDashboard {
         return lowestItems;
     }
 
-    private static int[] getUnitsSold(){
+    static int[] getUnitsSold(){
         int[] unitsSAndMaxUnits = {0, 0};
 
         ArrayList<ItemOrder> saleOrders = XMLProcessing.fetchItemOrders("sales");
