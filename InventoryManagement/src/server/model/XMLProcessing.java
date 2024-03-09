@@ -346,11 +346,16 @@ public class XMLProcessing {
                 if (Integer.parseInt(currentItemID) == itemId) {
 
                     Element stocksElement = (Element) currentItem.getElementsByTagName("stocks").item(0);
-                    NodeList emptyStocks = stocksElement.getElementsByTagName("stock");
-                    if (emptyStocks.getLength() > 0) {
-                        Element emptyStock = (Element) emptyStocks.item(0);
-                        stocksElement.removeChild(emptyStock);
+                    NodeList stockList = stocksElement.getElementsByTagName("stock");
+
+                    int totalQty = 0;
+                    for (int j = 0; j < stockList.getLength(); j++) {
+                        Element stock = (Element) stockList.item(j);
+                        int qty = Integer.parseInt(stock.getElementsByTagName("qty").item(0).getTextContent());
+                        totalQty += qty;
                     }
+
+                    boolean totalQtyExists = currentItem.getElementsByTagName("totalqty").getLength() > 0;
 
                     Element stockElement = document.createElement("stock");
 
@@ -366,16 +371,33 @@ public class XMLProcessing {
                     Element price = document.createElement("price");
                     price.setTextContent(String.valueOf(stockToAdd.getPrice()));
 
-                    Element qty = document.createElement("qty");
-                    qty.setTextContent(String.valueOf(stockToAdd.getQty()));
+                    Element qtyElement = document.createElement("qty");
+
+                    int newQty;
+                    if (totalQtyExists) {
+                        int existingTotalQty = Integer.parseInt(currentItem.getElementsByTagName("totalqty").item(0).getTextContent());
+                        newQty = existingTotalQty + stockToAdd.getQty();
+                    } else {
+                        newQty = stockToAdd.getQty();
+                    }
+
+                    qtyElement.setTextContent(String.valueOf(newQty));
 
                     stockElement.appendChild(batchNo);
                     stockElement.appendChild(supplier);
                     stockElement.appendChild(cost);
                     stockElement.appendChild(price);
-                    stockElement.appendChild(qty);
+                    stockElement.appendChild(qtyElement);
 
                     stocksElement.appendChild(stockElement);
+
+                    if (!totalQtyExists) {
+                        Element totalQtyElement = document.createElement("totalqty");
+                        totalQtyElement.setTextContent(String.valueOf(newQty));
+                        currentItem.appendChild(totalQtyElement);
+                    } else {
+                        currentItem.getElementsByTagName("totalqty").item(0).setTextContent(String.valueOf(newQty));
+                    }
 
                     itemFound = true;
                     break;
@@ -384,7 +406,7 @@ public class XMLProcessing {
 
             if (!itemFound) {
                 System.out.println("No item found with the provided ID.");
-                return false; // Return false indicating failure to find item
+                return false;
             }
 
             cleanXMLElement(root);
@@ -396,6 +418,7 @@ public class XMLProcessing {
             return false;
         }
     }
+
 
 
     /**
