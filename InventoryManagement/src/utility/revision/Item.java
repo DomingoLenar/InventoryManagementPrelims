@@ -1,8 +1,9 @@
 package utility.revision;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Item {
+public class Item implements Serializable {
     private String name;
     private int id;
     private int totalQty;
@@ -14,6 +15,14 @@ public class Item {
         this.id = id;
         this.type = type;
         this.stocks = new LinkedList();
+    }
+
+    public Item(String name, int id,int totalQty, String type, LinkedList<Stock> stocks){
+        this.name = name;
+        this.id = id;
+        this.totalQty = totalQty;
+        this.type = type;
+        this.stocks = stocks;
     }
 
     public void addStocks(Stock stock){
@@ -52,11 +61,23 @@ public class Item {
         this.type = type;
     }
 
+    public Stock getStock(String batchNo){
+        return stocks.stream().filter(stock -> stock.getBatchNo().equals(batchNo)).toList().get(0);
+    }
+
     public Stock getStock(int index){
         return this.stocks.get(index);
     }
 
     public Stock getFirstStock(){
         return this.stocks.getFirst();
+    }
+
+    public LinkedList<Stock> getAllStocks() {
+        return this.stocks;
+    }
+
+    public void setStocks(LinkedList<Stock> stocks) {
+        this.stocks = stocks;
     }
 }

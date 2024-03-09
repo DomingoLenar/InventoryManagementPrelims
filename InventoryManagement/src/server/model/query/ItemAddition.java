@@ -1,7 +1,7 @@
 package server.model.query;
 
 import server.model.XMLProcessing;
-import utility.Item;
+import utility.revision.Item;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

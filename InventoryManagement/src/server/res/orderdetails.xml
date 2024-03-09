@@ -1,5 +1,4 @@
 <orderdetails>
-
     <orderdetail>
         <itemorderid>1</itemorderid>
         <itemid>1</itemid>
@@ -18,19 +17,19 @@
     </orderdetail>
     <orderdetail>
         <itemorderid>3</itemorderid>
+        <itemid>3</itemid>
+        <units>8</units>
+        <batchNo>1</batchNo>
+        <unitPrice>120000</unitPrice>
+        <supplier>NVIDIA</supplier>
+    </orderdetail>
+    <orderdetail>
+        <itemorderid>4</itemorderid>
         <itemid>2</itemid>
         <units>11</units>
         <batchNo>GusF_2023-07-25_120</batchNo>
         <unitPrice>125</unitPrice>
         <supplier>GusF</supplier>
-    </orderdetail>
-    <orderdetail>
-        <itemorderid>4</itemorderid>
-        <itemid>3</itemid>
-        <units>10</units>
-        <batchNo>NVIDIA_2023-12-23_115000</batchNo>
-        <unitPrice>120000</unitPrice>
-        <supplier>NVIDIA</supplier>
     </orderdetail>
     <orderdetail>
         <itemorderid>5</itemorderid>
@@ -53,14 +52,6 @@
         <itemid>5</itemid>
         <units>2000</units>
         <batchNo>BaronH_2024-02-13_1000</batchNo>
-        <unitPrice>2000</unitPrice>
-        <supplier>BaronH</supplier>
-    </orderdetail>
-    <orderdetail>
-        <itemorderid>8</itemorderid>
-        <itemid>7</itemid>
-        <units>100</units>
-        <batchNo>PabloE_2024-02-14_5000</batchNo>
         <unitPrice>2000</unitPrice>
         <supplier>BaronH</supplier>
     </orderdetail>

@@ -1,4 +1,4 @@
-package client.common.models;
+package client.common.models.query;
 
 import utility.User;
 
@@ -6,36 +6,34 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class HandleSignUp {
+public class HandleLogin {
     /**
-     * Handles the signup process by sending user credentials to the server.
+     * Handles the login process by sending user credentials to the server.
      *
      * @param username The user's username.
      * @param password The user's password.
-     * @param role The user's role
-     * @return True if account creation is successful, false otherwise.
+     * @return True if login is successful, false otherwise.
      */
 
-    public static User process(String username, String password, String role, ObjectOutputStream oOs, ObjectInputStream oIs) {
-        try {
-            // Create a new User object with provided credentials
-            User newUser = new User(username, password,role,false);
+    public static String process(String username, String password, ObjectOutputStream oOs, ObjectInputStream oIs) {
+        // Create a new User object with provided credentials
+        User currentUser = new User(username, password, null, false);
 
-            String action = "createUser";
+        try {
+            String action = "userVerification";
             oOs.writeUTF(action);
             oOs.flush();
             System.out.println(action + "sent to the server");
 
-            // Send the User object to the server for sign-up
-            oOs.writeObject(newUser);
-            oOs.flush();
-            System.out.println(newUser.getUsername() + " sent to the server for sign-up");
+            // Send the User object to the server for login
+            oOs.writeObject(currentUser);
+            System.out.println(currentUser.getUsername() + " sent to the server for login");
 
             try {
                 User user = (User) oIs.readObject();
                 if (user != null) {
                     System.out.println("Authentication response: success");
-                    return user;
+                    return user.getRole().toLowerCase();
                 } else {
                     System.out.println("Authentication response: failed");
                     return null;

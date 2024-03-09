@@ -1,10 +1,10 @@
 package server.model;
 
-import client.common.models.RemoveItemOrder;
 import server.model.query.*;
-import utility.Item;
-import utility.ItemOrder;
+
 import utility.User;
+import utility.revision.Item;
+import utility.revision.ItemOrder;
 
 import java.io.*;
 import java.net.Socket;
@@ -22,6 +22,7 @@ public class ClientHandler implements Runnable{
      *
      */
 
+    // TODO:
     @Override
     public void run() {
         try(
@@ -65,7 +66,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "removeItemOrder":
-                        RemoveItemOrder.process(oIS.readInt(), objectOutputStream, oIS);
+                        RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
                         break;
                     case "changePassword":
                         ChangePassword.process(oIS, objectOutputStream);
@@ -77,6 +78,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cRSuccess);
                         objectOutputStream.flush();
                         break;
+
                     case "fetchListOfUsers":
                         Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
@@ -88,6 +90,15 @@ public class ClientHandler implements Runnable{
                         XMLProcessing.setActiveStatus(currentUser, false);
                         objectOutputStream.writeBoolean(currentUser != null);
                         objectOutputStream.flush();
+                        break;
+                    case "requestSalesDashboard":
+                        RequestSalesDashboard.process(objectOutputStream);
+                        break;
+                    case "requestPurchaseDashboard":
+                        RequestPurchaseDashboard.process(objectOutputStream);
+                        break;
+                    case "requestAdminDashboard":
+                        RequestAdminDashboard.process(objectOutputStream);
                         break;
                     case "Exit":
                         System.out.println("Exit");
