@@ -27,7 +27,7 @@
         <itemorderid>4</itemorderid>
         <itemid>2</itemid>
         <units>11</units>
-        <batchNo>GusF_2023-07-25_120</batchNo>
+        <batchNo>GusF_2023-07-25_125</batchNo>
         <unitPrice>125</unitPrice>
         <supplier>GusF</supplier>
     </orderdetail>
@@ -54,5 +54,13 @@
         <batchNo>BaronH_2024-02-13_1000</batchNo>
         <unitPrice>2000</unitPrice>
         <supplier>BaronH</supplier>
+    </orderdetail>
+    <orderdetail>
+        <itemorderid>8</itemorderid>
+        <itemid>2</itemid>
+        <units>50</units>
+        <batchNo>GusF_2024-02-13_125</batchNo>
+        <unitPrice>125</unitPrice>
+        <supplier>GusF</supplier>
     </orderdetail>
 </orderdetails>
