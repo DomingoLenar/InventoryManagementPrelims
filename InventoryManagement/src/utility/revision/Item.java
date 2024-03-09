@@ -14,7 +14,7 @@ public class Item implements Serializable {
         this.name = name;
         this.id = id;
         this.type = type;
-        this.stocks = new LinkedList();
+        this.stocks = new LinkedList<>();
     }
 
     public Item(String name, int id,int totalQty, String type, LinkedList<Stock> stocks){
