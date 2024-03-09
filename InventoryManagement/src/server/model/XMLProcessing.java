@@ -591,6 +591,10 @@ public class XMLProcessing {
     return null;
    }
 
+   public static void addOrderDetail(OrderDetails orderDetail){
+
+   }
+
     public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){
         ArrayList<OrderDetails> orderDetails = new ArrayList<>();
         try {
