@@ -3,6 +3,7 @@ package server.model.query;
 import server.model.XMLProcessing;
 import utility.revision.ItemOrder;
 import utility.revision.OrderDetails;
+import utility.revision.Stock;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,11 +21,17 @@ public class AddItem {
         for(int x = 0; x<orderDetails.size();x++){
             OrderDetails orderDetail = orderDetails.get(x);
             orderDetail.setBatchNo(orderDetail.getSupplier()+"_"+orderDate+"_"+orderDetail.getUnitPrice());
-            XMLProcessing.addOrderDetail(orderDetail);
+            XMLProcessing.addOrderDetails(orderDetail);
 
             int itemId = orderDetail.getItemID();
+            String batchNo = orderDetail.getBatchNo();
+            float cost = orderDetail.getUnitPrice();
+            int qty = orderDetail.getUnits();
+            float price = (float) (cost+(cost*.20));
 
-            
+            Stock newStock = new Stock(batchNo, cost,price,qty, orderDetail.getSupplier());
+
+            XMLProcessing.addStock(itemId, newStock);
         }
 
     }
