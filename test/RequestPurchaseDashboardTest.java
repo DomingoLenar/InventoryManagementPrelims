@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.List;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -21,7 +21,7 @@ public class RequestPurchaseDashboardTest {
             oOs.writeUTF("requestPurchaseDashboard");
             oOs.flush();
 
-            List<Item> lowStockItems = (List<Item>) oIs.readObject();
+            ArrayList<Item> lowStockItems = (ArrayList<Item>) oIs.readObject();
             int[] unitsSold = (int[]) oIs.readObject();
 
             assertNotNull(lowStockItems);
