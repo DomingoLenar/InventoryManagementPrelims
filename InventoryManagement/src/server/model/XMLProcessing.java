@@ -506,6 +506,10 @@ public class XMLProcessing {
         return -1;
     }
 
+    public static synchronized void removeStockUnits(int itemID,String batchNo, int qty){
+
+    }
+
 
     public static synchronized boolean removeItemOrder(int itemOrderID) { // TODO: id of item order must be in sequence
         try {
