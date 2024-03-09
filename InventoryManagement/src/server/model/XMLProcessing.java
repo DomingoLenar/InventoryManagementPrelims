@@ -451,7 +451,7 @@ public class XMLProcessing {
         }
     }
 
-    public static synchronized boolean addItemOrder(ItemOrder itemOrder){ // TODO: id of item order not auto increment
+    public static synchronized int addItemOrder(ItemOrder itemOrder){ // TODO: id of item order not auto increment
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
 
@@ -498,12 +498,12 @@ public class XMLProcessing {
 
             cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
-            return true;
+            return newOrderId;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
 
 
