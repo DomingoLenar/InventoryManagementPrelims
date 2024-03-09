@@ -275,24 +275,82 @@ public class XMLProcessing {
         }
     }
 
+    public static synchronized boolean addOrderDetails(OrderDetails orderDetailsToAdd) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/orderdetails.xml");
 
-    public static synchronized boolean addStock(Item item, Stock stockToAdd) {
+            Element root = document.getDocumentElement();
+
+            int lastId = 0;
+            NodeList orderDetailNodes = root.getElementsByTagName("orderdetail");
+            for (int i = 0; i < orderDetailNodes.getLength(); i++) {
+                Element orderDetailElement = (Element) orderDetailNodes.item(i);
+                int orderDetailId = Integer.parseInt(orderDetailElement.getElementsByTagName("itemorderid").item(0).getTextContent());
+                if (orderDetailId > lastId) {
+                    lastId = orderDetailId;
+                }
+            }
+
+            int newId = lastId + 1;
+            orderDetailsToAdd.setItemOrderID(newId);
+
+            Element newOrderDetail = document.createElement("orderdetail");
+
+            Element itemOrderID = document.createElement("itemorderid");
+            itemOrderID.setTextContent(String.valueOf(orderDetailsToAdd.getItemOrderID()));
+
+            Element itemID = document.createElement("itemid");
+            itemID.setTextContent(String.valueOf(orderDetailsToAdd.getItemID()));
+
+            Element units = document.createElement("units");
+            units.setTextContent(String.valueOf(orderDetailsToAdd.getUnits()));
+
+            Element batchNo = document.createElement("batchNo");
+            batchNo.setTextContent(orderDetailsToAdd.getBatchNo());
+
+            Element unitPrice = document.createElement("unitPrice");
+            unitPrice.setTextContent(String.valueOf(orderDetailsToAdd.getUnitPrice()));
+
+            Element supplier = document.createElement("supplier");
+            supplier.setTextContent(orderDetailsToAdd.getSupplier());
+
+            newOrderDetail.appendChild(itemOrderID);
+            newOrderDetail.appendChild(itemID);
+            newOrderDetail.appendChild(units);
+            newOrderDetail.appendChild(batchNo);
+            newOrderDetail.appendChild(unitPrice);
+            newOrderDetail.appendChild(supplier);
+
+            root.appendChild(newOrderDetail);
+
+            cleanXMLElement(root);
+            writeDOMToFile(root, "InventoryManagement/src/server/res/orderdetails.xml");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static synchronized boolean addStock(int itemId, Stock stockToAdd) {
         try {
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
             Element root = document.getDocumentElement();
 
             NodeList items = root.getElementsByTagName("item");
+            boolean itemFound = false;
             for (int i = 0; i < items.getLength(); i++) {
                 Element currentItem = (Element) items.item(i);
-                String itemId = currentItem.getElementsByTagName("id").item(0).getTextContent();
-                if (itemId.equals(String.valueOf(item.getId()))) {
+                String currentItemID = currentItem.getElementsByTagName("id").item(0).getTextContent();
+                if (Integer.parseInt(currentItemID) == itemId) {
+
                     Element stocksElement = (Element) currentItem.getElementsByTagName("stocks").item(0);
                     NodeList emptyStocks = stocksElement.getElementsByTagName("stock");
                     if (emptyStocks.getLength() > 0) {
                         Element emptyStock = (Element) emptyStocks.item(0);
                         stocksElement.removeChild(emptyStock);
                     }
-
 
                     Element stockElement = document.createElement("stock");
 
@@ -319,8 +377,14 @@ public class XMLProcessing {
 
                     stocksElement.appendChild(stockElement);
 
+                    itemFound = true;
                     break;
                 }
+            }
+
+            if (!itemFound) {
+                System.out.println("No item found with the provided ID.");
+                return false; // Return false indicating failure to find item
             }
 
             cleanXMLElement(root);
