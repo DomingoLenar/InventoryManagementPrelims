@@ -19,7 +19,7 @@
         <itemorderid>3</itemorderid>
         <itemid>3</itemid>
         <units>8</units>
-        <batchNo>1</batchNo>
+        <batchNo>NVIDIA_2023-07-25_120000</batchNo>
         <unitPrice>120000</unitPrice>
         <supplier>NVIDIA</supplier>
     </orderdetail>
