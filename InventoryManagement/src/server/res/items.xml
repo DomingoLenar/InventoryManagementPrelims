@@ -7,18 +7,11 @@
         <totalqty>50</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>GusF_2023-07-24_50</batchNo>
                 <supplier>GusF</supplier>
                 <cost>50</cost>
                 <price>60</price>
-                <qty>25</qty>
-            </stock>
-            <stock>
-                <batchNo>2</batchNo>
-                <supplier>GusF</supplier>
-                <cost>50</cost>
-                <price>60</price>
-                <qty>25</qty>
+                <qty>50</qty>
             </stock>
         </stocks>
     </item>
@@ -29,14 +22,14 @@
         <totalqty>34</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>GusF_2023-07-24_120</batchNo>
                 <supplier>GusF</supplier>
                 <cost>120</cost>
                 <price>125</price>
                 <qty>23</qty>
             </stock>
             <stock>
-                <batchNo>2</batchNo>
+                <batchNo>GusF_2023-07-25_120</batchNo>
                 <supplier>GusF</supplier>
                 <cost>120</cost>
                 <price>125</price>
@@ -51,18 +44,11 @@
         <totalqty>10</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>NVIDIA_2023-12-23_115000</batchNo>
                 <supplier>NVIDIA</supplier>
                 <cost>115000</cost>
                 <price>120000</price>
-                <qty>8</qty>
-            </stock>
-            <stock>
-                <batchNo>2</batchNo>
-                <supplier>NVIDIA</supplier>
-                <cost>115000</cost>
-                <price>120000</price>
-                <qty>2</qty>
+                <qty>10</qty>
             </stock>
         </stocks>
     </item>
@@ -73,14 +59,14 @@
         <totalqty>7</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>ElonM_2024-01-01_18500</batchNo>
                 <supplier>ElonM</supplier>
                 <cost>18500</cost>
                 <price>20000</price>
                 <qty>5</qty>
             </stock>
             <stock>
-                <batchNo>2</batchNo>
+                <batchNo>ElonM_2024-01-03_18500</batchNo>
                 <supplier>ElonM</supplier>
                 <cost>18500</cost>
                 <price>20000</price>
@@ -95,40 +81,11 @@
         <totalqty>2000</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>aronH_2024-02-13_1000</batchNo>
                 <supplier>BaronH</supplier>
                 <cost>1000</cost>
                 <price>2000</price>
-                <qty>1000</qty>
-            </stock>
-            <stock>
-                <batchNo>2</batchNo>
-                <supplier>BaronH</supplier>
-                <cost>1000</cost>
-                <price>2000</price>
-                <qty>1000</qty>
-            </stock>
-        </stocks>
-    </item>
-    <item>
-        <name>Reactor</name>
-        <id>6</id>
-        <type>null</type>
-        <totalqty>10</totalqty>
-        <stocks>
-            <stock>
-                <batchNo>1</batchNo>
-                <supplier>TonyS</supplier>
-                <cost>700000</cost>
-                <price>1000000</price>
-                <qty>5</qty>
-            </stock>
-            <stock>
-                <batchNo>2</batchNo>
-                <supplier>TonyS</supplier>
-                <cost>700000</cost>
-                <price>1000000</price>
-                <qty>5</qty>
+                <qty>2000</qty>
             </stock>
         </stocks>
     </item>
@@ -139,18 +96,11 @@
         <totalqty>100</totalqty>
         <stocks>
             <stock>
-                <batchNo>1</batchNo>
+                <batchNo>PabloE_2024-02-14_5000</batchNo>
                 <supplier>PabloE</supplier>
                 <cost>5000</cost>
                 <price>20000</price>
-                <qty>75</qty>
-            </stock>
-            <stock>
-                <batchNo>2</batchNo>
-                <supplier>WalterW</supplier>
-                <cost>6000</cost>
-                <price>22000</price>
-                <qty>25</qty>
+            <qty>100</qty>
             </stock>
         </stocks>
     </item>
