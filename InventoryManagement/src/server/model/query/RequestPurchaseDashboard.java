@@ -24,13 +24,13 @@ public class RequestPurchaseDashboard {
 
     }
 
-    private static List<Item> getLowStockItems(){
+    private static ArrayList<Item> getLowStockItems(){
         Stack<Item> items = XMLProcessing.fetchItems();
 
         items.sort(Comparator.comparingInt(Item::getTotalQty));
         int highestIndex = Math.min(5, items.size());
         List<Item> lowestItems = items.subList(0,highestIndex);
-        return lowestItems;
+        return new ArrayList<>(lowestItems);
     }
 
     static int[] getUnitsSold(){
