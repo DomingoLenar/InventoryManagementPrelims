@@ -26,13 +26,13 @@ public class SalesDashboardView {
 
         recentlyAddedItemsIDList.setModel(recentlyAddedItemsIDListModel);
         recentlyAddedItemsIDList.setEnabled(false);
-        recentlyAddedItemsIDList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsIDList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         recentlyAddedItemsNameListModel = new DefaultListModel<>();
 
         recentlyAddedItemsNameList.setModel(recentlyAddedItemsNameListModel);
         recentlyAddedItemsNameList.setEnabled(false);
-        recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         // Revenue Vs Costs
 
@@ -51,7 +51,7 @@ public class SalesDashboardView {
         pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
-        pieChart.setTitle("Units Sold");
+        pieChart.setTitle("Sales Today");
         pieChart.getStyler().setChartBackgroundColor(Color.WHITE);
 
         Color todayColor = new Color(130, 0, 255);

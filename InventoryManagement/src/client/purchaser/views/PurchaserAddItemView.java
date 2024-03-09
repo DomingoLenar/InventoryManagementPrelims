@@ -12,6 +12,7 @@ public class PurchaserAddItemView {
     private JTextField quantityField;
     private JComboBox warehouseComboBox;
     private JButton cancelButton;
+    private JComboBox supplierComboBox;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -35,6 +36,10 @@ public class PurchaserAddItemView {
 
     public JComboBox getWarehouseComboBox() {
         return warehouseComboBox;
+    }
+
+    public JComboBox getSupplierComboBox() {
+        return supplierComboBox;
     }
 
     public JButton getCancelButton() {
