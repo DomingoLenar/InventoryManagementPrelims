@@ -1,50 +1,66 @@
 <orderdetails>
-    <oderdetail>
+    <orderdetail>
         <itemorderid>1</itemorderid>
         <itemid>1</itemid>
-        <units>25</units>
-        <batchNo>1</batchNo>
+        <units>50</units>
+        <batchNo>GusF_2023-07-24_50</batchNo>
         <unitPrice>60</unitPrice>
         <supplier>GusF</supplier>
-    </oderdetail>
-    <oderdetail>
+    </orderdetail>
+    <orderdetail>
         <itemorderid>2</itemorderid>
         <itemid>2</itemid>
         <units>23</units>
-        <batchNo>1</batchNo>
+        <batchNo>GusF_2023-07-24_120</batchNo>
         <unitPrice>125</unitPrice>
         <supplier>GusF</supplier>
-    </oderdetail>
-    <oderdetail>
+    </orderdetail>
+    <orderdetail>
         <itemorderid>3</itemorderid>
-        <itemid>3</itemid>
-        <units>8</units>
-        <batchNo>1</batchNo>
-        <unitPrice>120000</unitPrice>
-        <supplier>NVIDIA</supplier>
-    </oderdetail>
-    <oderdetail>
-        <itemorderid>4</itemorderid>
         <itemid>2</itemid>
         <units>11</units>
-        <batchNo>2</batchNo>
+        <batchNo>GusF_2023-07-25_120</batchNo>
         <unitPrice>125</unitPrice>
         <supplier>GusF</supplier>
-    </oderdetail>
-    <oderdetail>
+    </orderdetail>
+    <orderdetail>
+        <itemorderid>4</itemorderid>
+        <itemid>3</itemid>
+        <units>10</units>
+        <batchNo>NVIDIA_2023-12-23_115000</batchNo>
+        <unitPrice>120000</unitPrice>
+        <supplier>NVIDIA</supplier>
+    </orderdetail>
+    <orderdetail>
         <itemorderid>5</itemorderid>
         <itemid>4</itemid>
         <units>5</units>
-        <batchNo>1</batchNo>
+        <batchNo>ElonM_2024-01-01_18500</batchNo>
         <unitPrice>20000</unitPrice>
         <supplier>ElonM</supplier>
-    </oderdetail>
-    <oderdetail>
+    </orderdetail>
+    <orderdetail>
         <itemorderid>6</itemorderid>
+        <itemid>4</itemid>
+        <units>2</units>
+        <batchNo>ElonM_2024-01-03_18500</batchNo>
+        <unitPrice>20000</unitPrice>
+        <supplier>ElonM</supplier>
+    </orderdetail>
+    <orderdetail>
+        <itemorderid>7</itemorderid>
         <itemid>5</itemid>
-        <units>1000</units>
-        <batchNo>1</batchNo>
+        <units>2000</units>
+        <batchNo>BaronH_2024-02-13_1000</batchNo>
         <unitPrice>2000</unitPrice>
         <supplier>BaronH</supplier>
-    </oderdetail>
+    </orderdetail>
+    <orderdetail>
+        <itemorderid>8</itemorderid>
+        <itemid>7</itemid>
+        <units>100</units>
+        <batchNo>PabloE_2024-02-14_5000</batchNo>
+        <unitPrice>2000</unitPrice>
+        <supplier>BaronH</supplier>
+    </orderdetail>
 </orderdetails>
