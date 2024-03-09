@@ -41,6 +41,7 @@ public class ClientHandler implements Runnable{
                         CreateUser.process(oIS, objectOutputStream);
                         break;
                     case"addItem":
+                        AddItem.process(objectOutputStream, oIS);
                         break;
                     case "addItemListing":
                         //Invoke method for item addition
