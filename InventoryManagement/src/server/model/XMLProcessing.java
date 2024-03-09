@@ -506,9 +506,51 @@ public class XMLProcessing {
         return -1;
     }
 
-    public static synchronized void removeStockUnits(int itemID,String batchNo, int qty){
+    public static synchronized void removeStockUnits(int itemID, String batchNo, int qty) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
+            Element rootElement = document.getDocumentElement();
+
+            NodeList itemNodes = rootElement.getElementsByTagName("item");
+            for (int i = 0; i < itemNodes.getLength(); i++) {
+                Element itemElement = (Element) itemNodes.item(i);
+                int itemIdXML = Integer.parseInt(itemElement.getElementsByTagName("id").item(0).getTextContent());
+                if (itemIdXML == itemID) {
+                    NodeList stockNodes = itemElement.getElementsByTagName("stock");
+                    for (int j = 0; j < stockNodes.getLength(); j++) {
+                        Element stockElement = (Element) stockNodes.item(j);
+                        String batchNoXML = stockElement.getElementsByTagName("batchNo").item(0).getTextContent();
+                        if (batchNoXML.equals(batchNo)) {
+                            int oldQty = Integer.parseInt(stockElement.getElementsByTagName("qty").item(0).getTextContent());
+                            int newQty = oldQty - qty;
+                            if (newQty < 0) {
+                                System.out.println("Error: The quantity should not be less than 0.");
+                                return;
+                            } else if (newQty == 0) {
+                                System.out.println("The stock quantity is already zero. No amount of units can be removed.");
+                                return;
+                            }
+
+                            stockElement.getElementsByTagName("qty").item(0).setTextContent(String.valueOf(newQty));
+                            Element totalQtyElement = (Element) itemElement.getElementsByTagName("totalqty").item(0);
+                            int totalQty = Integer.parseInt(totalQtyElement.getTextContent());
+                            totalQtyElement.setTextContent(String.valueOf(totalQty - qty));
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            cleanXMLElement(rootElement);
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/items.xml");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
 
     public static synchronized boolean removeItemOrder(int itemOrderID) { // TODO: id of item order must be in sequence
