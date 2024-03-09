@@ -33,7 +33,7 @@ public class RequestSalesDashboard {
 
     }
 
-    private static ArrayList<String> getYearlyRevenueNCosts(){
+    static ArrayList<String> getYearlyRevenueNCosts(){
         ArrayList<String> revenueNCosts = new ArrayList<>();
         ArrayList<ArrayList<ItemOrder>> byMonth = new ArrayList<>();
 
