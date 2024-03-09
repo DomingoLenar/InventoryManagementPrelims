@@ -4,14 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ getter and setters">
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/RequestSalesDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="created a panel for the dynamic sales invoice">
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminAddListingView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminAddListingView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/revision/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/revision/Stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/AbstractLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/AbstractLayout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/DimensionInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/DimensionInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridConstraints.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridConstraints.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridLayoutManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/GridLayoutManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/HorizontalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/LayoutState.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Spacer.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Spacer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/VerticalInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/itemorders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/itemorders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/items.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/server/res/users.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +30,9 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,6 +77,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -77,42 +93,42 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TerminalController (1).executor&quot;: &quot;Run&quot;,
-    &quot;Application.TerminalController.executor&quot;: &quot;Run&quot;,
-    &quot;Attach to process.pid 16460.executor&quot;: &quot;ProcessAttachDebug&quot;,
-    &quot;Downloaded.Files.Path&quot;: &quot;C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Test.testClientServerConnection.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;server-lestat&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mlest/IdeaProjects/2024-2_9329-preteam1/InventoryManagement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Main (1).executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.TerminalController (1).executor": "Run",
+    "Application.TerminalController.executor": "Run",
+    "Attach to process.pid 16460.executor": "ProcessAttachDebug",
+    "Downloaded.Files.Path": "C:\\Users\\loudi\\IdeaProjects\\2024-2_9329-preteam1\\InventoryManagement\\lib",
+    "Downloaded.Files.Path.Enabled": "true",
+    "JUnit.Test.executor": "Run",
+    "JUnit.Test.testClientServerConnection.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "server-lestat",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/loudi/IdeaProjects/2024-2_9329-preteam1/InventoryManagement/src/client",
+    "last_opened_file_path": "/home/michael/IdeaProjects/2024-2_9329-preteam1",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "settings.sync",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\loudi\IdeaProjects\2024-2_9329-preteam1\InventoryManagement\lib" />
@@ -125,13 +141,13 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Test">
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.Server" />
-      <module name="Server" />
+  <component name="RunManager" selected="Application.CreateSalesInvoice">
+    <configuration name="CreateSalesInvoice" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.views_geo_rabang.sales.SalesInvoice.CreateSalesInvoice" />
+      <module name="2024-2_9329-preteam1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="client.views_geo_rabang.sales.SalesInvoice.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -186,21 +202,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="InventoryManagement" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="InventoryManagement" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.CreateSalesInvoice" />
       <item itemvalue="Application.XMLProcessing" />
       <item itemvalue="Application.TerminalController" />
       <item itemvalue="JUnit.Test" />
@@ -208,11 +211,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CreateSalesInvoice" />
         <item itemvalue="JUnit.Test.testClientServerConnection" />
         <item itemvalue="JUnit.Test" />
         <item itemvalue="Application.TerminalController" />
         <item itemvalue="Application.XMLProcessing" />
-        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -261,14 +264,6 @@
       <workItem from="1708016290440" duration="178000" />
       <workItem from="1708016482346" duration="17000" />
       <workItem from="1708016502159" duration="1153000" />
-    </task>
-    <task id="LOCAL-00003" summary="+ added: SignUpView.java">
-      <option name="closed" value="true" />
-      <created>1706445948157</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445948157</updated>
     </task>
     <task id="LOCAL-00004" summary="+ added: Main.java">
       <option name="closed" value="true" />
@@ -654,13 +649,29 @@
       <option name="project" value="LOCAL" />
       <updated>1709717588802</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="created a panel for the dynamic sales invoice">
+      <created>1709832655905</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1709832655914</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
@@ -711,19 +722,9 @@
         </entry>
       </map>
     </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ added: LoginController.java" />
     <MESSAGE value="+ updated: SignUpController.java" />
     <MESSAGE value="+ updated: InventoryManagementController.java" />
     <MESSAGE value="+ updated: NavigationBarController.java" />
@@ -748,7 +749,8 @@
     <MESSAGE value="+ rehaul for Item class to take into account different buying prices" />
     <MESSAGE value="+ getters and setters" />
     <MESSAGE value="+ getter and setters" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ getter and setters" />
+    <MESSAGE value="created a panel for the dynamic sales invoice" />
+    <option name="LAST_COMMIT_MESSAGE" value="created a panel for the dynamic sales invoice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

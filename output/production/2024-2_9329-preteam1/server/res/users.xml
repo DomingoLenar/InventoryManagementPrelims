@@ -1,79 +1,18 @@
 <users>
-                        
-    
-    
-    
-    
     <user active="true" role="admin">
-                                                
-        
-        
-        
-        
         <username>testuser</username>
-                                                
-        
-        
-        
-        
         <password>usertest</password>
-                                            
-    
-    
-    
-    
     </user>
-                        
-    
-    
-    
-    
-    <user active="false" role="purchase">
-                                                
-        
-        
-        
-        
+    <user active="true" role="purchase">
         <username>testpurchase</username>
-                                                
-        
-        
-        
-        
         <password>purchasetest</password>
-                                            
-    
-    
-    
-    
     </user>
-                        
-    
-    
-    
-    
-    <user active="false" role="sales">
-                                                
-        
-        
-        
-        
+    <user active="true" role="sales">
         <username>testsales</username>
-                                                
-        
-        
-        
-        
-        <password>salestest</password>
-                                            
-    
-    
-    
-    
+        <password>123456789</password>
     </user>
-                    
-
-
-
-
+    <user active="false" role="Sales">
+        <username>test1</username>
+        <password>12345678</password>
+    </user>
 </users>
