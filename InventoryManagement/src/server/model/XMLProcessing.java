@@ -193,6 +193,19 @@ public class XMLProcessing {
 
             Element root = document.getDocumentElement();
 
+            int lastId = 0;
+            NodeList itemNodes = root.getElementsByTagName("item");
+            for (int i = 0; i < itemNodes.getLength(); i++) {
+                Element itemElement = (Element) itemNodes.item(i);
+                int itemId = Integer.parseInt(itemElement.getElementsByTagName("id").item(0).getTextContent());
+                if (itemId > lastId) {
+                    lastId = itemId;
+                }
+            }
+
+            int newId = lastId + 1;
+            itemToAdd.setId(newId);
+
             Element newItem = document.createElement("item");
 
             Element name = document.createElement("name");
@@ -209,7 +222,7 @@ public class XMLProcessing {
 
             Element stocks = document.createElement("stocks");
 
-                // Check if there are no stocks available
+            // Check if there are no stocks available
             if (itemToAdd.getAllStocks().isEmpty()) {
                 // Create an empty <stock> element
                 Element emptyStock = document.createElement("stock");
@@ -262,6 +275,65 @@ public class XMLProcessing {
         }
     }
 
+
+    public static synchronized boolean addStock(Item item, Stock stockToAdd) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
+            Element root = document.getDocumentElement();
+
+            NodeList items = root.getElementsByTagName("item");
+            for (int i = 0; i < items.getLength(); i++) {
+                Element currentItem = (Element) items.item(i);
+                String itemId = currentItem.getElementsByTagName("id").item(0).getTextContent();
+                if (itemId.equals(String.valueOf(item.getId()))) {
+                    Element stocksElement = (Element) currentItem.getElementsByTagName("stocks").item(0);
+                    NodeList emptyStocks = stocksElement.getElementsByTagName("stock");
+                    if (emptyStocks.getLength() > 0) {
+                        Element emptyStock = (Element) emptyStocks.item(0);
+                        stocksElement.removeChild(emptyStock);
+                    }
+
+
+                    Element stockElement = document.createElement("stock");
+
+                    Element batchNo = document.createElement("batchNo");
+                    batchNo.setTextContent(stockToAdd.getBatchNo());
+
+                    Element supplier = document.createElement("supplier");
+                    supplier.setTextContent(stockToAdd.getSupplier());
+
+                    Element cost = document.createElement("cost");
+                    cost.setTextContent(String.valueOf(stockToAdd.getCost()));
+
+                    Element price = document.createElement("price");
+                    price.setTextContent(String.valueOf(stockToAdd.getPrice()));
+
+                    Element qty = document.createElement("qty");
+                    qty.setTextContent(String.valueOf(stockToAdd.getQty()));
+
+                    stockElement.appendChild(batchNo);
+                    stockElement.appendChild(supplier);
+                    stockElement.appendChild(cost);
+                    stockElement.appendChild(price);
+                    stockElement.appendChild(qty);
+
+                    stocksElement.appendChild(stockElement);
+
+                    break;
+                }
+            }
+
+            cleanXMLElement(root);
+            writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     /**
      * Removes an item from the XML file based on its ID.
      *
@@ -298,13 +370,25 @@ public class XMLProcessing {
 
             Element rootElement = document.getDocumentElement();
 
+            int lastId = 0;
+            NodeList itemOrderNodes = rootElement.getElementsByTagName("itemorder");
+            for (int i = 0; i < itemOrderNodes.getLength(); i++) {
+                Element itemOrderElement = (Element) itemOrderNodes.item(i);
+                int orderId = Integer.parseInt(itemOrderElement.getAttribute("orderId"));
+                if (orderId > lastId) {
+                    lastId = orderId;
+                }
+            }
+
+            int newOrderId = lastId + 1;
+            itemOrder.setOrderId(newOrderId);
+
             Element newItemOrder = document.createElement("itemorder");
 
-            newItemOrder.setAttribute("byUser",itemOrder.getCreatedBy().getUsername());
+            newItemOrder.setAttribute("byUser", itemOrder.getCreatedBy().getUsername());
             newItemOrder.setAttribute("orderId", String.valueOf(itemOrder.getOrderId()));
             newItemOrder.setAttribute("date", itemOrder.getDate());
-            newItemOrder.setAttribute("orderType",itemOrder.getOrderType());
-
+            newItemOrder.setAttribute("orderType", itemOrder.getOrderType());
 
             Element byUser = document.createElement("byUser");
             byUser.setTextContent(itemOrder.getCreatedBy().getUsername());
@@ -318,13 +402,10 @@ public class XMLProcessing {
             Element orderType = document.createElement("orderType");
             orderType.setTextContent(itemOrder.getOrderType());
 
-
-
             newItemOrder.appendChild(byUser);
             newItemOrder.appendChild(id);
             newItemOrder.appendChild(date);
             newItemOrder.appendChild(orderType);
-
 
             rootElement.appendChild(newItemOrder);
 
@@ -332,11 +413,12 @@ public class XMLProcessing {
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
             return true;
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
+
 
     public static synchronized boolean removeItemOrder(int itemOrderID) { // TODO: id of item order must be in sequence
         try {
