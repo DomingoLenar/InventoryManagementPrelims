@@ -40,6 +40,9 @@ public class ClientHandler implements Runnable{
                         //Invoke method for user creation
                         CreateUser.process(oIS, objectOutputStream);
                         break;
+                    case "createSalesInvoice":
+                        CreateSalesInvoice.process(objectOutputStream, oIS);
+                        break;
                     case"addItem":
                         AddItem.process(objectOutputStream, oIS);
                         break;
@@ -63,10 +66,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "addItemOrder":
-                        ItemOrder newItemOrder = (ItemOrder) oIS.readObject();
-                        boolean success = XMLProcessing.addItemOrder(newItemOrder);
-                        objectOutputStream.writeBoolean(success);
-                        objectOutputStream.flush();
+
                         break;
                     case "removeItemOrder":
                         RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
