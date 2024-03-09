@@ -21,7 +21,6 @@ public class AdminFinancesView {
     private JLabel averageOrderValueLabel;
     private JLabel grossProfitsLabel;
     private JLabel gPAmount;
-    private JLabel nSAmount;
     private JLabel aSAmount;
     private JLabel gSAmount;
 
@@ -36,7 +35,6 @@ public class AdminFinancesView {
         averageOrderValueLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         grossSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         gPAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
-        nSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
         aSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
         gSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
 
