@@ -4,6 +4,8 @@ import server.model.XMLProcessing;
 import utility.revision.ItemOrder;
 import utility.revision.OrderDetails;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,6 +15,23 @@ import java.util.ArrayList;
  * Panel (Gross Sales, Average Order Value, Gross Profit)
  */
 public class RequestFinances {
+
+    public static synchronized void process(ObjectOutputStream objectOutputStream) throws IOException {
+        try {
+            float yearlyGrossSales = calculateYearlyGrossSales();
+            float averageOrderSales = calculateAverageOrderValue();
+            float grossProfit = calculateGrossProfit();
+
+            objectOutputStream.writeObject(yearlyGrossSales);
+            objectOutputStream.writeObject(averageOrderSales);
+            objectOutputStream.writeObject(grossProfit);
+        } catch (Exception e) {
+            e.printStackTrace();
+            objectOutputStream.writeObject("Error: Unable to fetch financial data.");
+        } finally {
+            objectOutputStream.flush();
+        }
+    }
 
     /**
      * This method returns a float value (yearlyGrossSales) that

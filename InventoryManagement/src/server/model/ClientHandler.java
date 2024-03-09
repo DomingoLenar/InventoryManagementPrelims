@@ -27,7 +27,7 @@ public class ClientHandler implements Runnable{
     public void run() {
         try(
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream());
+                ObjectInputStream oIS = new ObjectInputStream(socket.getInputStream())
                 ){
             while(true) {
                 String request = oIS.readUTF();
@@ -99,6 +99,9 @@ public class ClientHandler implements Runnable{
                         break;
                     case "requestAdminDashboard":
                         RequestAdminDashboard.process(objectOutputStream);
+                        break;
+                    case "requestFinances":
+                        RequestFinances.process(objectOutputStream);
                         break;
                     case "Exit":
                         System.out.println("Exit");
