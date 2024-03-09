@@ -51,7 +51,7 @@ public class SalesDashboardView {
         pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
-        pieChart.setTitle("Units Sold");
+        pieChart.setTitle("Sales Today");
         pieChart.getStyler().setChartBackgroundColor(Color.WHITE);
 
         Color todayColor = new Color(130, 0, 255);
