@@ -556,8 +556,7 @@ public class XMLProcessing {
                 String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
 
                 LinkedList<Stock> stocks = new LinkedList<>();
-                Element stocksRoot = (Element) currentItem.getElementsByTagName("stocks");
-                NodeList stockList = stocksRoot.getElementsByTagName("stock");
+                NodeList stockList = currentItem.getElementsByTagName("stock");
                 for (int i = 0; i < stockList.getLength(); i++) {
                     Element stockElement = (Element) stockList.item(i);
                     String batchNo = stockElement.getElementsByTagName("batchNo").item(0).getTextContent();
