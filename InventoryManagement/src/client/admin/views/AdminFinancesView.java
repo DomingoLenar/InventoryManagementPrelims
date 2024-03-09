@@ -16,10 +16,9 @@ public class AdminFinancesView {
     private JPanel stockControlPanel;
     private JPanel grossSalesPanel;
     private JPanel averageSalesPanel;
-    private JPanel newSalesPanel;
     private JPanel grossProfitsPanel;
     private JLabel grossSalesLabel;
-    private JLabel averageSalesLabel;
+    private JLabel averageOrderValueLabel;
     private JLabel newSalesLabel;
     private JLabel grossProfitsLabel;
     private JLabel gPAmount;
@@ -36,7 +35,7 @@ public class AdminFinancesView {
         // Labels
         grossProfitsLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         newSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
-        averageSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        averageOrderValueLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         grossSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
         gPAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
         nSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
