@@ -207,36 +207,41 @@ public class XMLProcessing {
             Element type = document.createElement("type");
             type.setTextContent(itemToAdd.getType());
 
-
             Element stocks = document.createElement("stocks");
 
+                // Check if there are no stocks available
+            if (itemToAdd.getAllStocks().isEmpty()) {
+                // Create an empty <stock> element
+                Element emptyStock = document.createElement("stock");
+                stocks.appendChild(emptyStock);
+            } else {
+                // If there are stocks available, add them to the <stocks> element
+                for (Stock stock : itemToAdd.getAllStocks()) {
+                    Element stockElement = document.createElement("stock");
 
-            for (Stock stock : itemToAdd.getAllStocks()) {
-                Element stockElement = document.createElement("stock");
+                    Element batchNo = document.createElement("batchNo");
+                    batchNo.setTextContent(stock.getBatchNo());
 
-                Element batchNo = document.createElement("batchNo");
-                batchNo.setTextContent(stock.getBatchNo());
+                    Element supplier = document.createElement("supplier");
+                    supplier.setTextContent(stock.getSupplier());
 
-                Element supplier = document.createElement("supplier");
-                supplier.setTextContent(stock.getSupplier());
+                    Element cost = document.createElement("cost");
+                    cost.setTextContent(String.valueOf(stock.getCost()));
 
-                Element cost = document.createElement("cost");
-                cost.setTextContent(String.valueOf(stock.getCost()));
+                    Element price = document.createElement("price");
+                    price.setTextContent(String.valueOf(stock.getPrice()));
 
-                Element price = document.createElement("price");
-                price.setTextContent(String.valueOf(stock.getPrice()));
+                    Element qty = document.createElement("qty");
+                    qty.setTextContent(String.valueOf(stock.getQty()));
 
-                Element qty = document.createElement("qty");
-                qty.setTextContent(String.valueOf(stock.getQty()));
+                    stockElement.appendChild(batchNo);
+                    stockElement.appendChild(supplier);
+                    stockElement.appendChild(cost);
+                    stockElement.appendChild(price);
+                    stockElement.appendChild(qty);
 
-
-                stockElement.appendChild(batchNo);
-                stockElement.appendChild(supplier);
-                stockElement.appendChild(cost);
-                stockElement.appendChild(price);
-                stockElement.appendChild(qty);
-
-                stocks.appendChild(stockElement);
+                    stocks.appendChild(stockElement);
+                }
             }
 
             newItem.appendChild(name);
