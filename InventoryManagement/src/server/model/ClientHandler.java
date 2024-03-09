@@ -97,6 +97,9 @@ public class ClientHandler implements Runnable{
                     case "requestPurchaseDashboard":
                         RequestPurchaseDashboard.process(objectOutputStream);
                         break;
+                    case "requestAdminDashboard":
+                        RequestAdminDashboard.process(objectOutputStream);
+                        break;
                     case "Exit":
                         System.out.println("Exit");
                         socket.close();
