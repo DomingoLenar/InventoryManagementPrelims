@@ -5,25 +5,23 @@ import utility.revision.ItemOrder;
 import utility.revision.OrderDetails;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CreateSalesInvoice {
-
-    public static void process(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
-        ItemOrder itemOrder = (ItemOrder)objectInputStream.readObject();
-        ArrayList<OrderDetails> orderDetails = (ArrayList<OrderDetails>) objectInputStream.readObject();
-
+    public static void process(ItemOrder itemOrder, OrderDetails orderDetail, ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException {
+        ArrayList<OrderDetails> orderDetails = new ArrayList<>();
+        orderDetails.add(orderDetail);
         int orderID = XMLProcessing.addItemOrder(itemOrder);
-
-        orderDetails.forEach(orderDetail -> {
-            orderDetail.setItemOrderID(orderID);
-        });
-
-        orderDetails.forEach(XMLProcessing::addOrderDetail);
-        orderDetails.forEach(orderDetail -> XMLProcessing.removeStockUnits(orderDetail.getItemID(),orderDetail.getBatchNo(), orderDetail.getUnits()));
+        if (orderID == -1) {
+            objectOutputStream.writeObject(false);
+        } else {
+            orderDetails.forEach(order -> {
+                order.setItemOrderID(orderID);
+            });
+            orderDetails.forEach(XMLProcessing::addOrderDetail);
+            orderDetails.forEach(order -> XMLProcessing.removeStockUnits(order.getItemID(), order.getBatchNo(), order.getUnits()));
+            objectOutputStream.writeObject(true);
         }
-
-
+    }
 }
