@@ -198,6 +198,19 @@ public class XMLProcessing {
 
             Element root = document.getDocumentElement();
 
+            int lastId = 0;
+            NodeList itemNodes = root.getElementsByTagName("item");
+            for (int i = 0; i < itemNodes.getLength(); i++) {
+                Element itemElement = (Element) itemNodes.item(i);
+                int itemId = Integer.parseInt(itemElement.getElementsByTagName("id").item(0).getTextContent());
+                if (itemId > lastId) {
+                    lastId = itemId;
+                }
+            }
+
+            int newId = lastId + 1;
+            itemToAdd.setId(newId);
+
             Element newItem = document.createElement("item");
 
             Element name = document.createElement("name");
@@ -212,36 +225,41 @@ public class XMLProcessing {
             Element type = document.createElement("type");
             type.setTextContent(itemToAdd.getType());
 
-
             Element stocks = document.createElement("stocks");
 
+            // Check if there are no stocks available
+            if (itemToAdd.getAllStocks().isEmpty()) {
+                // Create an empty <stock> element
+                Element emptyStock = document.createElement("stock");
+                stocks.appendChild(emptyStock);
+            } else {
+                // If there are stocks available, add them to the <stocks> element
+                for (Stock stock : itemToAdd.getAllStocks()) {
+                    Element stockElement = document.createElement("stock");
 
-            for (Stock stock : itemToAdd.getAllStocks()) {
-                Element stockElement = document.createElement("stock");
+                    Element batchNo = document.createElement("batchNo");
+                    batchNo.setTextContent(stock.getBatchNo());
 
-                Element batchNo = document.createElement("batchNo");
-                batchNo.setTextContent(stock.getBatchNo());
+                    Element supplier = document.createElement("supplier");
+                    supplier.setTextContent(stock.getSupplier());
 
-                Element supplier = document.createElement("supplier");
-                supplier.setTextContent(stock.getSupplier());
+                    Element cost = document.createElement("cost");
+                    cost.setTextContent(String.valueOf(stock.getCost()));
 
-                Element cost = document.createElement("cost");
-                cost.setTextContent(String.valueOf(stock.getCost()));
+                    Element price = document.createElement("price");
+                    price.setTextContent(String.valueOf(stock.getPrice()));
 
-                Element price = document.createElement("price");
-                price.setTextContent(String.valueOf(stock.getPrice()));
+                    Element qty = document.createElement("qty");
+                    qty.setTextContent(String.valueOf(stock.getQty()));
 
-                Element qty = document.createElement("qty");
-                qty.setTextContent(String.valueOf(stock.getQty()));
+                    stockElement.appendChild(batchNo);
+                    stockElement.appendChild(supplier);
+                    stockElement.appendChild(cost);
+                    stockElement.appendChild(price);
+                    stockElement.appendChild(qty);
 
-
-                stockElement.appendChild(batchNo);
-                stockElement.appendChild(supplier);
-                stockElement.appendChild(cost);
-                stockElement.appendChild(price);
-                stockElement.appendChild(qty);
-
-                stocks.appendChild(stockElement);
+                    stocks.appendChild(stockElement);
+                }
             }
 
             newItem.appendChild(name);
@@ -261,6 +279,152 @@ public class XMLProcessing {
             return false;
         }
     }
+
+    public static synchronized boolean addOrderDetails(OrderDetails orderDetailsToAdd) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/orderdetails.xml");
+
+            Element root = document.getDocumentElement();
+
+            int lastId = 0;
+            NodeList orderDetailNodes = root.getElementsByTagName("orderdetail");
+            for (int i = 0; i < orderDetailNodes.getLength(); i++) {
+                Element orderDetailElement = (Element) orderDetailNodes.item(i);
+                int orderDetailId = Integer.parseInt(orderDetailElement.getElementsByTagName("itemorderid").item(0).getTextContent());
+                if (orderDetailId > lastId) {
+                    lastId = orderDetailId;
+                }
+            }
+
+            int newId = lastId + 1;
+            orderDetailsToAdd.setItemOrderID(newId);
+
+            Element newOrderDetail = document.createElement("orderdetail");
+
+            Element itemOrderID = document.createElement("itemorderid");
+            itemOrderID.setTextContent(String.valueOf(orderDetailsToAdd.getItemOrderID()));
+
+            Element itemID = document.createElement("itemid");
+            itemID.setTextContent(String.valueOf(orderDetailsToAdd.getItemID()));
+
+            Element units = document.createElement("units");
+            units.setTextContent(String.valueOf(orderDetailsToAdd.getUnits()));
+
+            Element batchNo = document.createElement("batchNo");
+            batchNo.setTextContent(orderDetailsToAdd.getBatchNo());
+
+            Element unitPrice = document.createElement("unitPrice");
+            unitPrice.setTextContent(String.valueOf(orderDetailsToAdd.getUnitPrice()));
+
+            Element supplier = document.createElement("supplier");
+            supplier.setTextContent(orderDetailsToAdd.getSupplier());
+
+            newOrderDetail.appendChild(itemOrderID);
+            newOrderDetail.appendChild(itemID);
+            newOrderDetail.appendChild(units);
+            newOrderDetail.appendChild(batchNo);
+            newOrderDetail.appendChild(unitPrice);
+            newOrderDetail.appendChild(supplier);
+
+            root.appendChild(newOrderDetail);
+
+            cleanXMLElement(root);
+            writeDOMToFile(root, "InventoryManagement/src/server/res/orderdetails.xml");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static synchronized boolean addStock(int itemId, Stock stockToAdd) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
+            Element root = document.getDocumentElement();
+
+            NodeList items = root.getElementsByTagName("item");
+            boolean itemFound = false;
+            for (int i = 0; i < items.getLength(); i++) {
+                Element currentItem = (Element) items.item(i);
+                String currentItemID = currentItem.getElementsByTagName("id").item(0).getTextContent();
+                if (Integer.parseInt(currentItemID) == itemId) {
+
+                    Element stocksElement = (Element) currentItem.getElementsByTagName("stocks").item(0);
+                    NodeList stockList = stocksElement.getElementsByTagName("stock");
+
+                    int totalQty = 0;
+                    for (int j = 0; j < stockList.getLength(); j++) {
+                        Element stock = (Element) stockList.item(j);
+                        int qty = Integer.parseInt(stock.getElementsByTagName("qty").item(0).getTextContent());
+                        totalQty += qty;
+                    }
+
+                    boolean totalQtyExists = currentItem.getElementsByTagName("totalqty").getLength() > 0;
+
+                    Element stockElement = document.createElement("stock");
+
+                    Element batchNo = document.createElement("batchNo");
+                    batchNo.setTextContent(stockToAdd.getBatchNo());
+
+                    Element supplier = document.createElement("supplier");
+                    supplier.setTextContent(stockToAdd.getSupplier());
+
+                    Element cost = document.createElement("cost");
+                    cost.setTextContent(String.valueOf(stockToAdd.getCost()));
+
+                    Element price = document.createElement("price");
+                    price.setTextContent(String.valueOf(stockToAdd.getPrice()));
+
+                    Element qtyElement = document.createElement("qty");
+
+                    int newQty;
+                    if (totalQtyExists) {
+                        int existingTotalQty = Integer.parseInt(currentItem.getElementsByTagName("totalqty").item(0).getTextContent());
+                        newQty = existingTotalQty + stockToAdd.getQty();
+                    } else {
+                        newQty = stockToAdd.getQty();
+                    }
+
+                    qtyElement.setTextContent(String.valueOf(newQty));
+
+                    stockElement.appendChild(batchNo);
+                    stockElement.appendChild(supplier);
+                    stockElement.appendChild(cost);
+                    stockElement.appendChild(price);
+                    stockElement.appendChild(qtyElement);
+
+                    stocksElement.appendChild(stockElement);
+
+                    if (!totalQtyExists) {
+                        Element totalQtyElement = document.createElement("totalqty");
+                        totalQtyElement.setTextContent(String.valueOf(newQty));
+                        currentItem.appendChild(totalQtyElement);
+                    } else {
+                        currentItem.getElementsByTagName("totalqty").item(0).setTextContent(String.valueOf(newQty));
+                    }
+
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (!itemFound) {
+                System.out.println("No item found with the provided ID.");
+                return false;
+            }
+
+            cleanXMLElement(root);
+            writeDOMToFile(root, "InventoryManagement/src/server/res/items.xml");
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
     /**
      * Removes an item from the XML file based on its ID.
@@ -292,19 +456,31 @@ public class XMLProcessing {
         }
     }
 
-    public static synchronized boolean addItemOrder(ItemOrder itemOrder){ // TODO: id of item order not auto increment
+    public static synchronized int addItemOrder(ItemOrder itemOrder){ // TODO: id of item order not auto increment
         try{
             Document document = getXMLDocument("InventoryManagement/src/server/res/itemorders.xml");
 
             Element rootElement = document.getDocumentElement();
 
+            int lastId = 0;
+            NodeList itemOrderNodes = rootElement.getElementsByTagName("itemorder");
+            for (int i = 0; i < itemOrderNodes.getLength(); i++) {
+                Element itemOrderElement = (Element) itemOrderNodes.item(i);
+                int orderId = Integer.parseInt(itemOrderElement.getAttribute("orderId"));
+                if (orderId > lastId) {
+                    lastId = orderId;
+                }
+            }
+
+            int newOrderId = lastId + 1;
+            itemOrder.setOrderId(newOrderId);
+
             Element newItemOrder = document.createElement("itemorder");
 
-            newItemOrder.setAttribute("byUser",itemOrder.getCreatedBy().getUsername());
+            newItemOrder.setAttribute("byUser", itemOrder.getCreatedBy().getUsername());
             newItemOrder.setAttribute("orderId", String.valueOf(itemOrder.getOrderId()));
             newItemOrder.setAttribute("date", itemOrder.getDate());
-            newItemOrder.setAttribute("orderType",itemOrder.getOrderType());
-
+            newItemOrder.setAttribute("orderType", itemOrder.getOrderType());
 
             Element byUser = document.createElement("byUser");
             byUser.setTextContent(itemOrder.getCreatedBy().getUsername());
@@ -318,25 +494,69 @@ public class XMLProcessing {
             Element orderType = document.createElement("orderType");
             orderType.setTextContent(itemOrder.getOrderType());
 
-
-
             newItemOrder.appendChild(byUser);
             newItemOrder.appendChild(id);
             newItemOrder.appendChild(date);
             newItemOrder.appendChild(orderType);
 
-
             rootElement.appendChild(newItemOrder);
 
             cleanXMLElement(rootElement);
             writeDOMToFile(rootElement, "InventoryManagement/src/server/res/itemorders.xml");
-            return true;
+            return newOrderId;
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
+
+    public static synchronized void removeStockUnits(int itemID, String batchNo, int qty) {
+        try {
+            Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
+
+            Element rootElement = document.getDocumentElement();
+
+            NodeList itemNodes = rootElement.getElementsByTagName("item");
+            for (int i = 0; i < itemNodes.getLength(); i++) {
+                Element itemElement = (Element) itemNodes.item(i);
+                int itemIdXML = Integer.parseInt(itemElement.getElementsByTagName("id").item(0).getTextContent());
+                if (itemIdXML == itemID) {
+                    NodeList stockNodes = itemElement.getElementsByTagName("stock");
+                    for (int j = 0; j < stockNodes.getLength(); j++) {
+                        Element stockElement = (Element) stockNodes.item(j);
+                        String batchNoXML = stockElement.getElementsByTagName("batchNo").item(0).getTextContent();
+                        if (batchNoXML.equals(batchNo)) {
+                            int oldQty = Integer.parseInt(stockElement.getElementsByTagName("qty").item(0).getTextContent());
+                            int newQty = oldQty - qty;
+                            if (newQty < 0) {
+                                System.out.println("Error: The quantity should not be less than 0.");
+                                return;
+                            } else if (newQty == 0) {
+                                System.out.println("The stock quantity is already zero. No amount of units can be removed.");
+                                return;
+                            }
+
+                            stockElement.getElementsByTagName("qty").item(0).setTextContent(String.valueOf(newQty));
+                            Element totalQtyElement = (Element) itemElement.getElementsByTagName("totalqty").item(0);
+                            int totalQty = Integer.parseInt(totalQtyElement.getTextContent());
+                            totalQtyElement.setTextContent(String.valueOf(totalQty - qty));
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+
+            cleanXMLElement(rootElement);
+            writeDOMToFile(rootElement, "InventoryManagement/src/server/res/items.xml");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public static synchronized boolean removeItemOrder(int itemOrderID) { // TODO: id of item order must be in sequence
         try {
@@ -410,8 +630,7 @@ public class XMLProcessing {
                 String type = currentItem.getElementsByTagName("type").item(0).getTextContent();
 
                 LinkedList<Stock> stocks = new LinkedList<>();
-                Element stocksRoot = (Element) currentItem.getElementsByTagName("stocks");
-                NodeList stockList = stocksRoot.getElementsByTagName("stock");
+                NodeList stockList = currentItem.getElementsByTagName("stock");
                 for (int i = 0; i < stockList.getLength(); i++) {
                     Element stockElement = (Element) stockList.item(i);
                     String batchNo = stockElement.getElementsByTagName("batchNo").item(0).getTextContent();
@@ -589,6 +808,10 @@ public class XMLProcessing {
             e.printStackTrace();
         }
     return null;
+   }
+
+   public static void addOrderDetail(OrderDetails orderDetail){
+
    }
 
     public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){

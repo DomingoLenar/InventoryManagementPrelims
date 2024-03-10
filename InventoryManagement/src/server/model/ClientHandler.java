@@ -40,10 +40,16 @@ public class ClientHandler implements Runnable{
                         //Invoke method for user creation
                         CreateUser.process(oIS, objectOutputStream);
                         break;
-                    case "addItem":
+                    case "createSalesInvoice":
+                        CreateSalesInvoice.process(objectOutputStream, oIS);
+                        break;
+                    case"addItem":
+                        AddItem.process(objectOutputStream, oIS);
+                        break;
+                    case "addItemListing":
                         //Invoke method for item addition
                         Item submittedItem = (Item) oIS.readObject();
-                        ItemAddition.process(submittedItem, objectOutputStream);
+                        ItemListing.process(submittedItem, objectOutputStream);
                         break;
                     case "removeItem":
                         //Invoke method for item removal
@@ -60,10 +66,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "addItemOrder":
-                        ItemOrder newItemOrder = (ItemOrder) oIS.readObject();
-                        boolean success = XMLProcessing.addItemOrder(newItemOrder);
-                        objectOutputStream.writeBoolean(success);
-                        objectOutputStream.flush();
+
                         break;
                     case "removeItemOrder":
                         RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
@@ -96,6 +99,9 @@ public class ClientHandler implements Runnable{
                         break;
                     case "requestPurchaseDashboard":
                         RequestPurchaseDashboard.process(objectOutputStream);
+                        break;
+                    case "requestAdminDashboard":
+                        RequestAdminDashboard.process(objectOutputStream);
                         break;
                     case "Exit":
                         System.out.println("Exit");

@@ -6,7 +6,7 @@ import utility.revision.Item;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class ItemAddition {
+public class ItemListing {
     /**
      * Handles the addition of an item to the server.
      *
