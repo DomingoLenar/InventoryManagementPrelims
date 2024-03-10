@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class RequestSalesDashboard {
     public synchronized static void process(ObjectOutputStream objectOutputStream) throws IOException{
@@ -18,18 +19,13 @@ public class RequestSalesDashboard {
         objectOutputStream.writeObject(yearlyRevenueCogs);
         objectOutputStream.flush();
 
-        float[] revenueAndCost = getRevenueNCostToday();
+        float[] revenueAndCost = getRevenueNCogsToday();
         objectOutputStream.writeObject(revenueAndCost);
         objectOutputStream.flush();
 
-        ArrayList<Item> recentlyAddedItems = getRecentlyAddedItems();
+        Stack<Item> recentlyAddedItems = getRecentlyAddedItems();
         objectOutputStream.writeObject(recentlyAddedItems);
         objectOutputStream.flush();
-
-        objectOutputStream.writeUTF("TEST");
-        objectOutputStream.flush();
-
-
 
     }
 
@@ -93,8 +89,8 @@ public class RequestSalesDashboard {
         return initialRevenueAndCogs[0]+","+initialRevenueAndCogs[1];
     }
 
-    private static ArrayList<Item> getRecentlyAddedItems(){
-        ArrayList<Item> recentlyAddedItems = new ArrayList<>();
+    private static Stack<Item> getRecentlyAddedItems(){
+        Stack<Item> recentlyAddedItems = new Stack<>();
         ArrayList<ItemOrder> allPurchaseOrders = XMLProcessing.fetchItemOrders("purchase");
         int length = allPurchaseOrders.size();
 
@@ -132,7 +128,7 @@ public class RequestSalesDashboard {
         return salesToday;
     }
 
-    private static float[] getRevenueNCostToday(){
+    private static float[] getRevenueNCogsToday(){
         float revenue = getRevenueToday();
         float cogs = getCostOfGoodsSoldToday();
         return new float[]{revenue, cogs};
