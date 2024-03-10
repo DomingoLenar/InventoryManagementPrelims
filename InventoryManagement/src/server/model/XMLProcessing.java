@@ -811,6 +811,45 @@ public class XMLProcessing {
    }
 
    public static void addOrderDetail(OrderDetails orderDetail){
+       try{
+           Document document = getXMLDocument("InventoryManagement/src/server/res/orderdetails.xml");
+
+           Element rootElement = document.getDocumentElement();
+
+           int lastId = 0;
+           NodeList orderDetailsNodes = rootElement.getElementsByTagName("orderdetail");
+           for (int i = 0; i < orderDetailsNodes.getLength(); i++) {
+               Element orderDetailElement = (Element) orderDetailsNodes.item(i);
+               int orderId = Integer.parseInt(orderDetailElement.getElementsByTagName("itemorderid").item(0).getTextContent());
+               if (orderId > lastId) {
+                   lastId = orderId;
+               }
+           }
+
+           int newItemOrderId = lastId + 1;
+           orderDetail.setItemOrderID(newItemOrderId);
+
+           Element newItemOrder = document.createElement("orderdetail");
+
+//           newItemOrder.setAttribute("byUser", orderDetail.getCreatedBy().getUsername());
+//           newItemOrder.setAttribute("orderId", String.valueOf(itemOrder.getOrderId()));
+//           newItemOrder.setAttribute("date", itemOrder.getDate());
+//           newItemOrder.setAttribute("orderType", itemOrder.getOrderType());
+
+           Element itemorderid = document.createElement("itemorderid");
+           itemorderid.setTextContent(String.valueOf(orderDetail.getItemOrderID()));
+
+           Element itemid = document.createElement("itemid");
+           itemid.setTextContent(String.valueOf(orderDetail.getItemID()));
+
+           Element units = document.createElement("units");
+           units.setTextContent(String.valueOf(orderDetail.getUnits()));
+
+           Element batchNo = document.createElement("batchNo");
+           batchNo.setTextContent(orderDetail.getBatchNo());
+
+           Element unitPrice = document.createElement("unitPrice");
+           unitPrice.setTextContent(String.valueOf(orderDetail.getUnitPrice()));
 
            Element supplier = document.createElement("supplier");
            supplier.setTextContent(orderDetail.getSupplier());
