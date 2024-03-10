@@ -5,6 +5,7 @@ import server.model.query.*;
 import utility.User;
 import utility.revision.Item;
 import utility.revision.ItemOrder;
+import utility.revision.OrderDetails;
 
 import java.io.*;
 import java.net.Socket;
@@ -41,10 +42,10 @@ public class ClientHandler implements Runnable{
                         CreateUser.process(oIS, objectOutputStream);
                         break;
                     case "createSalesInvoice":
-                        CreateSalesInvoice.process(objectOutputStream, oIS);
+                        CreateSalesInvoice.process((ItemOrder) oIS.readObject(), (OrderDetails) oIS.readObject(), objectOutputStream);
                         break;
                     case"addItem":
-                        AddItem.process(objectOutputStream, oIS);
+                        AddItem.process((ItemOrder) oIS.readObject(),  (OrderDetails) oIS.readObject(), objectOutputStream);
                         break;
                     case "addItemListing":
                         //Invoke method for item addition
@@ -81,7 +82,6 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cRSuccess);
                         objectOutputStream.flush();
                         break;
-
                     case "fetchListOfUsers":
                         Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
