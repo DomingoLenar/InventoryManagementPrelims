@@ -9,6 +9,9 @@ public class SalesCreateCustomerOrderView {
     private JTextField cxName;
     private JButton createOrderButton;
     private JTextField prc;
+    private JTextField prodType;
+    private JTextField batchNo;
+    private JTextField supplier;
 
     public JTextField getProdName() {
         return prodName;
@@ -34,15 +37,15 @@ public class SalesCreateCustomerOrderView {
         return prc;
     }
 
-    public void setProdName(JTextField prodName) {
-        this.prodName = prodName;
+    public JTextField getProdType() {
+        return prodType;
     }
 
-    public void setQnty(JTextField qnty) {
-        this.qnty = qnty;
+    public JTextField getBatchNo() {
+        return batchNo;
     }
 
-    public void setPrc(JTextField prc) {
-        this.prc = prc;
+    public JTextField getSupplier() {
+        return supplier;
     }
 }
