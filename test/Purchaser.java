@@ -9,8 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class RequestPurchaseDashboardTest {
-
+public class Purchaser {
     @Test
     public void testProcessMethod() throws RuntimeException {
         try {
@@ -28,7 +27,10 @@ public class RequestPurchaseDashboardTest {
             assertNotNull(unitsSold);
 
             System.out.println("Units sold: "+ unitsSold[0] + unitsSold[1]);
-            System.out.println("Low stock items: "+ lowStockItems);
+            System.out.println("Low stock items");
+            for (Item item : lowStockItems) {
+                System.out.println(item.getName());
+            }
 
             cSocket.close();
 

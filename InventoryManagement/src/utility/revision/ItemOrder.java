@@ -5,7 +5,6 @@ import utility.User;
 import java.io.Serializable;
 
 public class ItemOrder implements Serializable {
-
     private User createdBy;
     private int orderId;
     private String date;

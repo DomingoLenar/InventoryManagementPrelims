@@ -63,4 +63,15 @@ public class Stock implements Serializable {
     public void setSupplier(String supplier) {
         this.supplier = supplier;
     }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "batchNo='" + batchNo + '\'' +
+                ", cost=" + cost +
+                ", price=" + price +
+                ", qty=" + qty +
+                ", supplier='" + supplier + '\'' +
+                '}';
+    }
 }

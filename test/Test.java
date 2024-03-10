@@ -1,12 +1,15 @@
+import client.api.ClientApi;
 import org.junit.jupiter.api.Assertions;
 import server.model.XMLProcessing;
 import utility.User;
+import utility.revision.Item;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Test {
     @org.junit.jupiter.api.Test
@@ -32,28 +35,9 @@ public class Test {
     }
 
     @org.junit.jupiter.api.Test
-    public void testClientServerConnection() {
-        try {
-            Socket cSocket = new Socket("localhost", 2018);
-            ObjectInputStream oIS = new ObjectInputStream(cSocket.getInputStream());
-            ObjectOutputStream oOS = new ObjectOutputStream(cSocket.getOutputStream());
-            String userType = ProfileManagementModel.handleLogin("testsales", "salestest",oOS, oIS);
-
-            if (userType != null) {
-                System.out.println("login success");
-            } else {
-                System.out.println("failed");
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @org.junit.jupiter.api.Test
     public void testContinuousOperations() {
         try {
-            Socket cSocket = new Socket("localhost", 2018);
+            Socket cSocket = new Socket("localhost", 2020);
             ObjectOutputStream oos  = new ObjectOutputStream(cSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(cSocket.getInputStream());
 
@@ -73,5 +57,34 @@ public class Test {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @org.junit.jupiter.api.Test
+    public void testFetchItems(){
+        try {
+            Socket cSocket = new Socket("localhost", 2020);
+            ObjectOutputStream oos  = new ObjectOutputStream(cSocket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(cSocket.getInputStream());
+
+            ClientApi.sendAction("fetchItems", oos);
+
+            try {
+                Stack<Item> itemStack = (Stack<Item>) ois.readObject();
+                Item item = null;
+                for (int i=0; i< itemStack.size(); i++) {
+                    item = itemStack.get(i);
+                    System.out.println("Item " + i + item.getName());
+                    System.out.println(item.getStock(0).toString());
+
+                }
+
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (IOException ioException) {
+            throw new RuntimeException("Error Fetching Items", ioException);
+        }
+
     }
 }

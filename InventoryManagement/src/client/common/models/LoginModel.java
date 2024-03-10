@@ -24,7 +24,6 @@ public class LoginModel {
 
             // Send the User object to the server for login
             oOs.writeObject(currentUser);
-
             try {
                 this.user = (User) oIs.readObject();
                 if (user != null) {

@@ -61,8 +61,8 @@ public class InventoryManagementController { // big controller
         inventoryManagementInterface = new InventoryManagementInterface();
 
         try {
-//            clientSocket = new Socket("lestatheh", 2018);
-            clientSocket = new Socket("localhost", 2020);
+//            clientSocket = new Socket("lestatheh", 2018); // tailscale vpn
+            clientSocket = new Socket("localhost", 2020); // local terminal
             objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
@@ -295,7 +295,7 @@ public class InventoryManagementController { // big controller
             inventoryManagementInterface.getMainContainer().removeAll();
             inventoryManagementInterface.getMainContainer().add(getAdminNavigationBarController().getAdminNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             inventoryManagementInterface.getMainContainer().add(getAdminDashboardController().getAdminDashboardView().getMainPanel(), BorderLayout.CENTER);
-            getAdminDashboardController().initComponents();
+//            getAdminDashboardController().initComponents();
             inventoryManagementInterface.getMainContainer().revalidate();
             inventoryManagementInterface.getMainContainer().repaint();
         });
@@ -318,6 +318,7 @@ public class InventoryManagementController { // big controller
             inventoryManagementInterface.getMainContainer().removeAll();
             inventoryManagementInterface.getMainContainer().add(getPurchaserNavigationBarController().getPurchaserNavigationBarView().getLeftPanel(), BorderLayout.WEST);
             inventoryManagementInterface.getMainContainer().add(getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel(), BorderLayout.CENTER);
+            getPurchaserDashboardController().initComponents();
             // TODO: initComponents of purchaser user in EDT thread
             inventoryManagementInterface.getMainContainer().revalidate();
             inventoryManagementInterface.getMainContainer().repaint();

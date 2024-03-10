@@ -11,8 +11,4 @@
         <username>testsales</username>
         <password>123456789</password>
     </user>
-    <user active="false" role="Sales">
-        <username>test1</username>
-        <password>12345678</password>
-    </user>
 </users>
