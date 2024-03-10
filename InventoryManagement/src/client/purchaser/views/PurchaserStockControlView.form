@@ -106,7 +106,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="43795" class="javax.swing.JTable" binding="stockTable" custom-create="true">
+              <component id="43795" class="javax.swing.JTable" binding="stockMonitorTable" custom-create="true">
                 <constraints/>
                 <properties/>
               </component>

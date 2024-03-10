@@ -1,6 +1,7 @@
 package client.purchaser.views;
 
 import client.common.views.GradientPanel;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,7 +15,7 @@ public class PurchaserStockControlView {
     private JButton deleteButton;
     private JButton purchaseOrderButton;
     private JPanel centerPanel;
-    private JTable stockTable;
+    private JTable stockMonitorTable;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -36,8 +37,8 @@ public class PurchaserStockControlView {
         return purchaseOrderButton;
     }
 
-    public JTable getStockTable() {
-        return stockTable;
+    public JTable getStockMonitorTable() {
+        return stockMonitorTable;
     }
 
 
@@ -45,18 +46,27 @@ public class PurchaserStockControlView {
         centerPanel = new GradientPanel();
 
         DefaultTableModel model = new DefaultTableModel();
-        stockTable = new JTable(model);
-
+        stockMonitorTable = new JTable(model);
+        model.addColumn("ID");
         model.addColumn("Product");
         model.addColumn("Purchase Price");
-        model.addColumn("Quantity");
+        model.addColumn("Type");
+        model.addColumn("Quantity"); // todo: stock level = quantity
+        model.addColumn("Supplier");
+        model.addColumn("Batch Number");
+
+
+//
+//        model.addColumn("Product");
+//        model.addColumn("Purchase Price");
+//        model.addColumn("Quantity");
 //        model.addColumn("Reorder Level"); // minimum quantity at which the system should trigger a reorder
 
-        for (int i=0; i<=20; i++){
-            model.addRow(new Object[] {
-                    "product" + i , 10 + i +"Peso", i
-            });
-        }
+//        for (int i=0; i<=20; i++){
+//            model.addRow(new Object[] {
+//                    "product" + i , 10 + i +"Peso", i
+//            });
+//        }
 
     }
 }
