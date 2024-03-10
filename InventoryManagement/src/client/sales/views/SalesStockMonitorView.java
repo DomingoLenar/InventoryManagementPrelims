@@ -31,18 +31,29 @@ public class SalesStockMonitorView extends JFrame{
 
         DefaultTableModel model = new DefaultTableModel();
         stockMonitorTable = new JTable(model);
-
+        model.addColumn("ID");
         model.addColumn("Product");
         model.addColumn("Selling Price");
+        model.addColumn("Type");
         model.addColumn("Quantity"); // todo: stock level = quantity
-//        model.addColumn("Reorder level");
-        model.addColumn("Availability");
+        model.addColumn("Batch Number");
+        model.addColumn("Supplier");
 
-        for (int i=0; i<=20; i++){
-            model.addRow(new Object[] {
-                    "milk","20 pesos",i,"In Stock"
-            });
-        }
+//        model.addColumn("Product");
+//        model.addColumn("Type");
+//        model.addColumn("Quantity"); // todo: stock level = quantity
+//        model.addColumn("Selling Price");
+//        model.addColumn("Batch Number");
+//        model.addColumn("Supplier");
+
+//        model.addColumn("Reorder level");
+//        model.addColumn("Availability");
+
+//        for (int i=0; i<=20; i++){
+//            model.addRow(new Object[] {
+//                    "milk","20 pesos",i,"In Stock"
+//            });
+//        }
     }
 
     public JButton getDeleteButton() {
