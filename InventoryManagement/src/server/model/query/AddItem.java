@@ -6,34 +6,37 @@ import utility.revision.OrderDetails;
 import utility.revision.Stock;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class AddItem {
+    public static void process(ItemOrder itemOrder, OrderDetails orderDetail, ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException {
+        try {
+            String orderDate = itemOrder.getDate();
+            XMLProcessing.addItemOrder(itemOrder);
 
-    public static void process(ObjectOutputStream objectOutputStream, ObjectInputStream objectInputStream) throws IOException, ClassNotFoundException {
-        ItemOrder order = (ItemOrder)objectInputStream.readObject();
-        String orderDate = order.getDate();
-        XMLProcessing.addItemOrder(order);
+            ArrayList<OrderDetails> orderDetails = new ArrayList<>();
+            orderDetails.add(orderDetail);
+            for (int x = 0; x < orderDetails.size(); x++) {
+                OrderDetails order = orderDetails.get(x);
+                order.setBatchNo(order.getSupplier() + "_" + orderDate + "_" + order.getUnitPrice());
+                XMLProcessing.addOrderDetails(order);
 
-        ArrayList<OrderDetails> orderDetails = (ArrayList<OrderDetails>) objectInputStream.readObject();
-        for(int x = 0; x<orderDetails.size();x++){
-            OrderDetails orderDetail = orderDetails.get(x);
-            orderDetail.setBatchNo(orderDetail.getSupplier()+"_"+orderDate+"_"+orderDetail.getUnitPrice());
-            XMLProcessing.addOrderDetails(orderDetail);
+                int itemId = order.getItemID();
+                String batchNo = order.getBatchNo();
+                float cost = order.getUnitPrice();
+                int qty = order.getUnits();
+                float price = (float) (cost + (cost * .20));
 
-            int itemId = orderDetail.getItemID();
-            String batchNo = orderDetail.getBatchNo();
-            float cost = orderDetail.getUnitPrice();
-            int qty = orderDetail.getUnits();
-            float price = (float) (cost+(cost*.20));
+                Stock newStock = new Stock(batchNo, cost, price, qty, order.getSupplier());
 
-            Stock newStock = new Stock(batchNo, cost,price,qty, orderDetail.getSupplier());
-
-            XMLProcessing.addStock(itemId, newStock);
+                XMLProcessing.addStock(itemId, newStock);
+            }
+            objectOutputStream.writeObject(true);
+        } catch (Exception e) {
+            objectOutputStream.writeObject(false);
+            throw new RuntimeException("Error creation of purchase order in xml", e);
         }
-
     }
 
 
