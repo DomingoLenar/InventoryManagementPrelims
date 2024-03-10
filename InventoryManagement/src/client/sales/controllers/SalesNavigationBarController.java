@@ -23,9 +23,9 @@ public class SalesNavigationBarController {
             public void actionPerformed(ActionEvent e) {
                 // a band aid TODO: construct a better implementation
                 inventoryManagementController.getSalesDashboardController().salesDashboardView.getChart().removeSeries("Revenue");
-                inventoryManagementController.getSalesDashboardController().salesDashboardView.getChart().removeSeries("Cost");
-                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Today");
-                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Annual");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getChart().removeSeries("Cogs");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Revenue");
+                inventoryManagementController.getSalesDashboardController().salesDashboardView.getPieChart().removeSeries("Cogs");
                 inventoryManagementController.getSalesDashboardController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getMainPanel());
             }
@@ -39,6 +39,7 @@ public class SalesNavigationBarController {
         salesNavigationBarView.getStockControlButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.getSalesStockControlController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockMonitorView().getMainPanel());
             }
         });
@@ -51,7 +52,7 @@ public class SalesNavigationBarController {
         salesNavigationBarView.getSalesInvoicesButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.getSalesSalesInvoicesController().initComponents();
+//                inventoryManagementController.getSalesSalesInvoicesController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesSalesInvoicesController().getSalesInvoiceHardCoded().getMainPanel());
             }
         });
