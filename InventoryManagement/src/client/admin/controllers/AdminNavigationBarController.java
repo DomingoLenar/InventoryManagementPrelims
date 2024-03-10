@@ -27,8 +27,7 @@ public class AdminNavigationBarController {
                 inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getChart().removeSeries("Cost");
                 inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Today");
                 inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Annual");
-
-                inventoryManagementController.getAdminDashboardController().initComponents();
+//                inventoryManagementController.getAdminDashboardController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getAdminDashboardController().adminDashboardView.getMainPanel());
             }
         });

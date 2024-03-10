@@ -1,31 +1,33 @@
 package client.admin.controllers;
 
+import client.admin.models.AdminUserManagementModel;
 import client.admin.views.AdminUserManagementView;
 import client.common.controllers.InventoryManagementController;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Objects;
 
 public class AdminUserManagementController {
+    AdminUserManagementModel adminUserManagementModel;
     AdminUserManagementView adminUserManagementView;
     InventoryManagementController inventoryManagementController;
-    String userRole = "purchase";
     ObjectOutputStream objectOutputStream;
     ObjectInputStream objectInputStream;
     public AdminUserManagementController(InventoryManagementController inventoryManagementController,ObjectInputStream oIs,ObjectOutputStream oOs){
         this.inventoryManagementController = inventoryManagementController;
+        adminUserManagementModel = new AdminUserManagementModel();
         adminUserManagementView = new AdminUserManagementView();
         objectOutputStream = oOs;
         objectInputStream = oIs;
 
-        initButtons();
+        initComponents();
     }
 
-    private void initButtons() {
+    private void initComponents() {
 
         // TODO: ability to create a sales and purchase users
         adminUserManagementView.getCreateUserButton().addActionListener(new ActionListener() {
@@ -46,30 +48,26 @@ public class AdminUserManagementController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-//                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
-//                    String userType = user.getRole();
-//                    if (userType != null) {
-//                        switch (userType) {
-//                            case "sales":
-//                                inventoryManagementController.displaySalesMainMenu();
-//                                break;
-//                            case "purchase":
-//                                inventoryManagementController.displayPurchaserMainMenu();
-//                                break;
-//                        }
-//                    }
+                    String userRole = Objects.requireNonNull(adminUserManagementView.getRoleComboBox().getSelectedItem()).toString();
+                    boolean verifier = adminUserManagementModel.process(username, password, userRole, objectOutputStream, objectInputStream);
+
+                    if (verifier) {
+                        JOptionPane.showMessageDialog(null, "Account Created");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Account already exist!", null, JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
 
-        adminUserManagementView.getRoleComboBox().addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    userRole = e.getItem().toString();
-                }
-            }
-        });
+//        adminUserManagementView.getRoleComboBox().addItemListener(new ItemListener() {
+//            @Override
+//            public void itemStateChanged(ItemEvent e) {
+//                if (e.getStateChange() == ItemEvent.SELECTED) {
+//                    userRole = e.getItem().toString();
+//                }
+//            }
+//        });
     }
 
     public AdminUserManagementView getAdminUserManagementView() {
