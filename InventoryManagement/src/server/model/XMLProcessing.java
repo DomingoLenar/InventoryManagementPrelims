@@ -377,6 +377,7 @@ public class XMLProcessing {
                     price.setTextContent(String.valueOf(stockToAdd.getPrice()));
 
                     Element qtyElement = document.createElement("qty");
+                    qtyElement.setTextContent(String.valueOf(stockToAdd.getQty()));
 
                     int newQty;
                     if (totalQtyExists) {
@@ -386,7 +387,6 @@ public class XMLProcessing {
                         newQty = stockToAdd.getQty();
                     }
 
-                    qtyElement.setTextContent(String.valueOf(newQty));
 
                     stockElement.appendChild(batchNo);
                     stockElement.appendChild(supplier);
@@ -466,7 +466,7 @@ public class XMLProcessing {
             NodeList itemOrderNodes = rootElement.getElementsByTagName("itemorder");
             for (int i = 0; i < itemOrderNodes.getLength(); i++) {
                 Element itemOrderElement = (Element) itemOrderNodes.item(i);
-                int orderId = Integer.parseInt(itemOrderElement.getAttribute("orderId"));
+                int orderId = Integer.parseInt(itemOrderElement.getElementsByTagName("orderId").item(0).getTextContent());
                 if (orderId > lastId) {
                     lastId = orderId;
                 }
@@ -482,11 +482,11 @@ public class XMLProcessing {
             newItemOrder.setAttribute("date", itemOrder.getDate());
             newItemOrder.setAttribute("orderType", itemOrder.getOrderType());
 
-            Element byUser = document.createElement("byUser");
+            Element byUser = document.createElement("createdBy");
             byUser.setTextContent(itemOrder.getCreatedBy().getUsername());
 
-            Element id = document.createElement("id");
-            id.setTextContent(String.valueOf(itemOrder.getOrderId()));
+            Element orderId = document.createElement("orderId");
+            orderId.setTextContent(String.valueOf(itemOrder.getOrderId()));
 
             Element date = document.createElement("date");
             date.setTextContent(itemOrder.getDate());
@@ -495,7 +495,7 @@ public class XMLProcessing {
             orderType.setTextContent(itemOrder.getOrderType());
 
             newItemOrder.appendChild(byUser);
-            newItemOrder.appendChild(id);
+            newItemOrder.appendChild(orderId);
             newItemOrder.appendChild(date);
             newItemOrder.appendChild(orderType);
 
@@ -533,8 +533,9 @@ public class XMLProcessing {
                                 System.out.println("Error: The quantity should not be less than 0.");
                                 return;
                             } else if (newQty == 0) {
+                                Node pNode = stockElement.getParentNode();
+                                pNode.removeChild(stockElement); // remove the stock head
                                 System.out.println("The stock quantity is already zero. No amount of units can be removed.");
-                                return;
                             }
 
                             stockElement.getElementsByTagName("qty").item(0).setTextContent(String.valueOf(newQty));
@@ -596,7 +597,6 @@ public class XMLProcessing {
                 String date = currentElement.getElementsByTagName("date").item(0).getTextContent();
                 String orderType = currentElement.getElementsByTagName("orderType").item(0).getTextContent();
                 String byUserName = currentElement.getElementsByTagName("createdby").item(0).getTextContent();
-
 
                 if(orderFilter.equals("none") || orderType.equalsIgnoreCase(orderFilter)){
                     itemOrderList.add(new ItemOrder(new User(byUserName), orderId, date, orderType));
@@ -812,6 +812,24 @@ public class XMLProcessing {
 
    public static void addOrderDetail(OrderDetails orderDetail){
 
+           Element supplier = document.createElement("supplier");
+           supplier.setTextContent(orderDetail.getSupplier());
+
+           newItemOrder.appendChild(itemorderid);
+           newItemOrder.appendChild(itemid);
+           newItemOrder.appendChild(units);
+           newItemOrder.appendChild(batchNo);
+           newItemOrder.appendChild(unitPrice);
+           newItemOrder.appendChild(supplier);
+
+           rootElement.appendChild(newItemOrder);
+
+           cleanXMLElement(rootElement);
+           writeDOMToFile(rootElement, "InventoryManagement/src/server/res/orderdetails.xml");
+
+       } catch (Exception e) {
+           throw new RuntimeException("Error adding order details", e);
+       }
    }
 
     public static ArrayList<OrderDetails> fetchOrderDetails(int searchByOrderID){
