@@ -125,36 +125,41 @@ public class XMLProcessing {
      * @return                 Returns a boolean value if success or not
      */
     public static User createUser(User userToCreate){
-        try{
-            Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
-
-            Element root = document.getDocumentElement();
-
-            Element newUser = document.createElement("user");
-            newUser.setAttribute("role",userToCreate.getRole());
-            newUser.setAttribute("active", "false");
-
-            Element username = document.createElement("username");
-            username.setTextContent(userToCreate.getUsername());
-
-            Element password = document.createElement("password");
-            password.setTextContent(userToCreate.getPassword());
-
-            newUser.appendChild(username);
-            newUser.appendChild(password);
-
-            root.appendChild(newUser);
-
-            cleanXMLElement(root);
-            writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
-
-        }catch(Exception e){
-            throw new RuntimeException(e);
+        User searchUser = findUser(userToCreate.getUsername());
+        if (searchUser != null){ // user exist
+            return null;
         }
+        else { // create the user
+            try{
+                Document document = getXMLDocument("InventoryManagement/src/server/res/users.xml");
 
-        User newUser = findUser(userToCreate.getUsername());
-        setActiveStatus(newUser, false);
-        return newUser;
+                Element root = document.getDocumentElement();
+
+                Element newUser = document.createElement("user");
+                newUser.setAttribute("role",userToCreate.getRole());
+                newUser.setAttribute("active", "false");
+
+                Element username = document.createElement("username");
+                username.setTextContent(userToCreate.getUsername());
+
+                Element password = document.createElement("password");
+                password.setTextContent(userToCreate.getPassword());
+
+                newUser.appendChild(username);
+                newUser.appendChild(password);
+
+                root.appendChild(newUser);
+
+                cleanXMLElement(root);
+                writeDOMToFile(root, "InventoryManagement/src/server/res/users.xml" );
+
+            }catch(Exception e){
+                throw new RuntimeException(e);
+            }
+            User newUser = findUser(userToCreate.getUsername()); // validate
+            setActiveStatus(newUser, false);
+            return newUser;
+        }
     }
 
     /**
