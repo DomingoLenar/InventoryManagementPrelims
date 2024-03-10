@@ -36,6 +36,7 @@ public class PurchaserNavigationBarController {
         purchaserNavigationBarView.getStockMonitorButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.getPurchaserStockControlController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getPurchaserStockControlController().purchaserStockControlView.getMainPanel());
             }
         });
