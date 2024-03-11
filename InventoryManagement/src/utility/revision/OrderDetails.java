@@ -1,6 +1,8 @@
 package utility.revision;
 
-public class OrderDetails {
+import java.io.Serializable;
+
+public class OrderDetails implements Serializable {
     private int itemOrderID;
     private int itemID;
     private int units;

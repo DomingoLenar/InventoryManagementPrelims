@@ -1,7 +1,6 @@
 package client.common.controllers;
 
 import client.common.views.SignUpView;
-import utility.User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +11,7 @@ import java.io.ObjectOutputStream;
 @Deprecated
 public class SignUpController {
     InventoryManagementController inventoryManagementController;
-    ProfileManagementModel profileManagementModel;
+
     SignUpView signUpView;
     String userRole = "purchase";
     ObjectInputStream objectInputStream;
@@ -21,7 +20,6 @@ public class SignUpController {
 
     public SignUpController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
         this.inventoryManagementController = inventoryManagementController;
-        this.profileManagementModel = new ProfileManagementModel();
         objectInputStream = oIs;
         objectOutputStream = oOs;
 
@@ -53,18 +51,18 @@ public class SignUpController {
                 if (password.length() < 7); // show rLabel password must be => 8 characters
 
                 if (!username.isEmpty() && password.length() > 7) {
-                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
-                    String userType = user.getRole();
-                    if (userType != null) {
-                        switch (userType) {
-                            case "sales":
-                                inventoryManagementController.displaySalesMainMenu();
-                                break;
-                            case "purchase":
-                                inventoryManagementController.displayPurchaserMainMenu();
-                                break;
-                        }
-                    }
+//                    User user = ProfileManagementModel.handleSignup(username, password, userRole, objectOutputStream, objectInputStream);
+//                    String userType = user.getRole();
+//                    if (userType != null) {
+//                        switch (userType) {
+//                            case "sales":
+//                                inventoryManagementController.displaySalesMainMenu();
+//                                break;
+//                            case "purchase":
+//                                inventoryManagementController.displayPurchaserMainMenu();
+//                                break;
+//                        }
+//                    }
                 }
             }
         });

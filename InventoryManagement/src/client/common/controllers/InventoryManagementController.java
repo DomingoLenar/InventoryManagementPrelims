@@ -5,10 +5,10 @@ import client.common.views.InventoryManagementInterface;
 import client.deprecated.controllers.DashboardController;
 import client.deprecated.controllers.FinancesController;
 import client.deprecated.controllers.NavigationBarController;
-import client.purchaser.controllers.PurchaserAddItemController;
+import client.purchaser.controllers.PurchaserCreatePurchaseOrderController;
 import client.purchaser.controllers.PurchaserDashboardController;
 import client.purchaser.controllers.PurchaserNavigationBarController;
-import client.purchaser.controllers.PurchaserStockControlController;
+import client.purchaser.controllers.PurchaserStockMonitorController;
 import client.sales.controllers.*;
 
 import javax.swing.*;
@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Notes: big controller <-> panel controllers
@@ -27,7 +25,6 @@ import java.time.format.DateTimeFormatter;
  */
 
 public class InventoryManagementController { // big controller
-    JPanel mainContainer;
     InventoryManagementInterface inventoryManagementInterface;
     IndexController indexController;
     SignUpController signUpController;
@@ -44,27 +41,28 @@ public class InventoryManagementController { // big controller
     AdminCreateSalesInvoiceController adminCreateSalesInvoiceController;
     SalesDashboardController salesDashboardController;
     SalesNavigationBarController salesNavigationBarController;
+    SalesCreateCustomerOrderController salesCreateCustomerOrderController;
+    SalesCustomerOrderManagementController salesCustomerOrderManagementController;
+    @Deprecated
     SalesFinancesController salesFinancesController;
-    SalesStockControlController salesStockControlController;
+    SalesStockMonitorController salesStockMonitorController;
     SalesCreateSalesInvoiceController salesCreateSalesInvoiceController;
     SalesSalesInvoicesController salesSalesInvoicesController;
     PurchaserDashboardController purchaserDashboardController;
     PurchaserNavigationBarController purchaserNavigationBarController;
-    PurchaserStockControlController purchaserStockControlController;
-    PurchaserAddItemController purchaserAddItemController;
+    PurchaserStockMonitorController purchaserStockMonitorController;
+    PurchaserCreatePurchaseOrderController purchaserCreatePurchaseOrderController;
     UserSettingsController userSettingsController;
     ChangePasswordController changePasswordController;
     private Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
-    String formattedDate;
-    String userType;
-    String username;
     public InventoryManagementController() throws IOException {
         inventoryManagementInterface = new InventoryManagementInterface();
 
         try {
-            clientSocket = new Socket("localhost", 2018);
+//            clientSocket = new Socket("lestatheh", 2018); // tailscale vpn
+            clientSocket = new Socket("localhost", 2020); // local terminal
             objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
             objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
@@ -78,39 +76,7 @@ public class InventoryManagementController { // big controller
         initComponents();
     }
 
-    private void initComponents() {
-        LocalDate currentDate = LocalDate.now();
-
-        // Format the date using a specific pattern (optional)
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        formattedDate = currentDate.format(formatter);
-
-//        System.out.println("Current Date: " + formattedDate);
-
-        // TODO: find a solution that declared this as an attribute of InventoryManagementInterface (JFrame)
-        mainContainer = new JPanel();
-        mainContainer.setLayout(new BorderLayout());
-    }
-
-    public String getFormattedDate() {
-        return formattedDate;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private void initComponents() {}
 
     private void initControllers() throws IOException {
         adminControllers();
@@ -133,17 +99,19 @@ public class InventoryManagementController { // big controller
     private void purchaserControllers() {
         purchaserDashboardController = new PurchaserDashboardController(this, objectInputStream, objectOutputStream);
         purchaserNavigationBarController = new PurchaserNavigationBarController(this);
-        purchaserStockControlController = new PurchaserStockControlController(this, objectInputStream, objectOutputStream);
-        purchaserAddItemController = new PurchaserAddItemController(this, objectInputStream, objectOutputStream);
+        purchaserStockMonitorController = new PurchaserStockMonitorController(this, objectInputStream, objectOutputStream);
+        purchaserCreatePurchaseOrderController = new PurchaserCreatePurchaseOrderController(this, objectInputStream, objectOutputStream);
     }
 
     private void salesControllers() {
         salesDashboardController = new SalesDashboardController(this, objectInputStream, objectOutputStream);
         salesNavigationBarController = new SalesNavigationBarController(this);
         salesFinancesController = new SalesFinancesController(this, objectInputStream, objectOutputStream);
-        salesStockControlController = new SalesStockControlController(this, objectInputStream, objectOutputStream);
+        salesStockMonitorController = new SalesStockMonitorController(this, objectInputStream, objectOutputStream);
         salesCreateSalesInvoiceController = new SalesCreateSalesInvoiceController(this, objectInputStream, objectOutputStream);
         salesSalesInvoicesController = new SalesSalesInvoicesController(this, objectInputStream, objectOutputStream);
+        salesCreateCustomerOrderController = new SalesCreateCustomerOrderController(this, objectInputStream, objectOutputStream);
+        salesCustomerOrderManagementController = new SalesCustomerOrderManagementController(this, objectOutputStream, objectInputStream);
     }
 
     private void adminControllers() {
@@ -164,16 +132,12 @@ public class InventoryManagementController { // big controller
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                mainContainer.remove(1);
-                mainContainer.add(currentPanel);
-                mainContainer.revalidate();
-                mainContainer.repaint();
+                inventoryManagementInterface.getMainContainer().remove(1);
+                inventoryManagementInterface.getMainContainer().add(currentPanel);
+                inventoryManagementInterface.getMainContainer().revalidate();
+                inventoryManagementInterface.getMainContainer().repaint();
             }
         });
-    }
-
-    public JPanel getMainContainer() {
-        return mainContainer;
     }
 
     /** EDT - background thread to process abstract window toolkit (AWT) events or GUI
@@ -183,10 +147,10 @@ public class InventoryManagementController { // big controller
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                inventoryManagementInterface.getContentPane().removeAll();
-                inventoryManagementInterface.add(indexController.getIndexView().getIVpanel());
-                inventoryManagementInterface.revalidate();
-                inventoryManagementInterface.repaint();
+                inventoryManagementInterface.getMainContainer().removeAll();
+                inventoryManagementInterface.getMainContainer().add(indexController.getIndexView().getIVpanel());
+                inventoryManagementInterface.getMainContainer().revalidate();
+                inventoryManagementInterface.getMainContainer().repaint();
             }
         });
     }
@@ -195,10 +159,10 @@ public class InventoryManagementController { // big controller
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                inventoryManagementInterface.getContentPane().removeAll();
-                inventoryManagementInterface.add(getLoginController().getLoginView().getLVpanel());
-                inventoryManagementInterface.revalidate();
-                inventoryManagementInterface.repaint();
+                inventoryManagementInterface.getMainContainer().removeAll();
+                inventoryManagementInterface.getMainContainer().add(getLoginController().getLoginView().getLVpanel());
+                inventoryManagementInterface.getMainContainer().revalidate();
+                inventoryManagementInterface.getMainContainer().repaint();
             }
         });
 
@@ -209,7 +173,7 @@ public class InventoryManagementController { // big controller
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                inventoryManagementInterface.getContentPane().removeAll();
+                inventoryManagementInterface.getMainContainer().removeAll();
                 inventoryManagementInterface.add(getSignUpController().getSignUpView().getSUpanel());
                 inventoryManagementInterface.revalidate();
                 inventoryManagementInterface.repaint();
@@ -269,8 +233,8 @@ public class InventoryManagementController { // big controller
         return adminCreateSalesInvoiceController;
     }
 
-    public SalesStockControlController getSalesStockControlController() {
-        return salesStockControlController;
+    public SalesStockMonitorController getSalesStockControlController() {
+        return salesStockMonitorController;
     }
 
     public AdminNavigationBarController getAdminNavigationBarController() {
@@ -289,6 +253,7 @@ public class InventoryManagementController { // big controller
         return adminFinancesController;
     }
 
+    @Deprecated
     public SalesFinancesController getSalesFinancesController() {
         return salesFinancesController;
     }
@@ -309,55 +274,58 @@ public class InventoryManagementController { // big controller
         return changePasswordController;
     }
 
-    public PurchaserStockControlController getPurchaserStockControlController() {
-        return purchaserStockControlController;
+    public PurchaserStockMonitorController getPurchaserStockControlController() {
+        return purchaserStockMonitorController;
     }
 
-    public PurchaserAddItemController getPurchaserAddItemController() {
-        return purchaserAddItemController;
+    public PurchaserCreatePurchaseOrderController getPurchaserAddItemController() {
+        return purchaserCreatePurchaseOrderController;
+    }
+
+    public SalesCreateCustomerOrderController getSalesCreateCustomerOrderController() {
+        return salesCreateCustomerOrderController;
+    }
+
+    public SalesCustomerOrderManagementController getSalesCustomerOrderManagementController() {
+        return salesCustomerOrderManagementController;
     }
 
     public void displayAdminMainMenu() {
         SwingUtilities.invokeLater(() -> {
-            inventoryManagementInterface.getContentPane().removeAll();
-            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
-            mainContainer.revalidate();
-            mainContainer.repaint();
-            inventoryManagementInterface.add(mainContainer);
-            mainContainer.add(getAdminNavigationBarController().getAdminNavigationBarView().getLeftPanel(), BorderLayout.WEST);
-            mainContainer.add(getAdminDashboardController().getAdminDashboardView().getMainPanel(), BorderLayout.CENTER);
-            getAdminDashboardController().initComponents();
-            inventoryManagementInterface.revalidate();
-            inventoryManagementInterface.repaint();
+            inventoryManagementInterface.getMainContainer().removeAll();
+            inventoryManagementInterface.getMainContainer().add(getAdminNavigationBarController().getAdminNavigationBarView().getLeftPanel(), BorderLayout.WEST);
+            inventoryManagementInterface.getMainContainer().add(getAdminDashboardController().getAdminDashboardView().getMainPanel(), BorderLayout.CENTER);
+//            getAdminDashboardController().initComponents();
+            inventoryManagementInterface.getMainContainer().revalidate();
+            inventoryManagementInterface.getMainContainer().repaint();
         });
     }
 
     public void displaySalesMainMenu() {
         SwingUtilities.invokeLater(() -> {
-            inventoryManagementInterface.getContentPane().removeAll();
-            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
-            mainContainer.revalidate();
-            mainContainer.repaint();
-            inventoryManagementInterface.add(mainContainer);
-            mainContainer.add(getSalesNavigationBarController().getSalesNavigationBarView().getLeftPanel(), BorderLayout.WEST);
-            mainContainer.add(getSalesDashboardController().getSalesDashboardView().getMainPanel(), BorderLayout.CENTER);
+             // a band aid TODO: bug: displaying the user settings view instead of main menu
+            inventoryManagementInterface.getMainContainer().removeAll();
+            inventoryManagementInterface.getMainContainer().add(getSalesNavigationBarController().getSalesNavigationBarView().getLeftPanel(), BorderLayout.WEST);
+            inventoryManagementInterface.getMainContainer().add(getSalesDashboardController().getSalesDashboardView().getMainPanel(), BorderLayout.CENTER);
             getSalesDashboardController().initComponents();
-            inventoryManagementInterface.revalidate();
-            inventoryManagementInterface.repaint();
+            inventoryManagementInterface.getMainContainer().revalidate();
+            inventoryManagementInterface.getMainContainer().repaint();
         });
     }
 
     public void displayPurchaserMainMenu() {
         SwingUtilities.invokeLater(() -> {
-            inventoryManagementInterface.getContentPane().removeAll();
-            mainContainer.removeAll(); // a band aid TODO: bug: displaying the user settings view instead of main menu
-            mainContainer.revalidate();
-            mainContainer.repaint();
-            inventoryManagementInterface.add(mainContainer);
-            mainContainer.add(getPurchaserNavigationBarController().getPurchaserNavigationBarView().getLeftPanel(), BorderLayout.WEST);
-            mainContainer.add(getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel(), BorderLayout.CENTER);
-            inventoryManagementInterface.revalidate();
-            inventoryManagementInterface.repaint();
+            inventoryManagementInterface.getMainContainer().removeAll();
+            inventoryManagementInterface.getMainContainer().add(getPurchaserNavigationBarController().getPurchaserNavigationBarView().getLeftPanel(), BorderLayout.WEST);
+            inventoryManagementInterface.getMainContainer().add(getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel(), BorderLayout.CENTER);
+            getPurchaserDashboardController().initComponents();
+            // TODO: initComponents of purchaser user in EDT thread
+            inventoryManagementInterface.getMainContainer().revalidate();
+            inventoryManagementInterface.getMainContainer().repaint();
         });
+    }
+
+    public InventoryManagementInterface getInventoryManagementInterface() {
+        return inventoryManagementInterface;
     }
 }

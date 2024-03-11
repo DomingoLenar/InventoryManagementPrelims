@@ -7,43 +7,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="7d7a1" binding="topPanel" layout-manager="GridBagLayout">
-        <constraints border-constraint="North"/>
-        <properties>
-          <background color="-1060399"/>
-          <foreground color="-1060399"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <grid id="aafff" binding="searchPanel" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
-            </constraints>
-            <properties>
-              <background color="-1060399"/>
-              <foreground color="-1060399"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="1f824" class="javax.swing.JTextField" binding="searchField">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag top="10" left="10" bottom="10" right="10" weightx="1.0" weighty="1.0"/>
-                </constraints>
-                <properties>
-                  <background color="-1060399"/>
-                  <editable value="true"/>
-                  <foreground color="-16777216"/>
-                  <text value="Search"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-        </children>
-      </grid>
       <grid id="bf807" binding="bottomPanel" layout-manager="GridBagLayout">
         <constraints border-constraint="Center"/>
         <properties>
@@ -69,7 +32,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-16777216"/>
-                  <text value="Revenue vs Costs"/>
+                  <text value="Revenue vs Costs (Yearly)"/>
                 </properties>
               </component>
             </children>
@@ -91,7 +54,7 @@
                 </constraints>
                 <properties>
                   <foreground color="-16777216"/>
-                  <text value="Stock Control"/>
+                  <text value="Revenue vs Cost (Today)"/>
                 </properties>
               </component>
             </children>

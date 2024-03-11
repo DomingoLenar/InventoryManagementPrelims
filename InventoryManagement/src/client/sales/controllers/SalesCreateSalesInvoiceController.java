@@ -2,13 +2,11 @@ package client.sales.controllers;
 
 import client.common.controllers.InventoryManagementController;
 import client.sales.views.SalesCreateSalesInvoiceView;
-import utility.ItemOrder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
 public class SalesCreateSalesInvoiceController {
     SalesCreateSalesInvoiceView salesCreateSalesInvoiceView;
@@ -37,7 +35,7 @@ public class SalesCreateSalesInvoiceController {
                 // TODO: fix the process of newly added product
                 salesCreateSalesInvoiceView.getEstimatedTotalField().getText();
 
-                temporaryImplementation(productName, price, qty);
+//                temporaryImplementation(productName, price, qty);
 
             }
         });
@@ -45,18 +43,18 @@ public class SalesCreateSalesInvoiceController {
         salesCreateSalesInvoiceView.getCancelButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockControlView().getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockMonitorView().getMainPanel());
             }
         });
     }
 
-    private void temporaryImplementation(String productName, int price, int qty) {
-        ArrayList<ItemOrder> itemOrderArrayList = ItemManagementModel.fetchItemOrdersByUserType("sales", objectOutputStream, objectInputStream);
-
-        ItemManagementModel.addItems(productName, qty, "null", itemOrderArrayList.size() + 1, price, objectOutputStream, objectInputStream);
-        ItemManagementModel.addItemOrders(itemOrderArrayList.size() + 1, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), itemOrderArrayList.size() + 1,
-                inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
-    }
+//    private void temporaryImplementation(String productName, int price, int qty) {
+//        ArrayList<ItemOrder> itemOrderArrayList = null;
+//
+////        ItemManagementModel.addItems(productName, qty, "null", itemOrderArrayList.size() + 1, price, objectOutputStream, objectInputStream);
+////        ItemManagementModel.addItemOrders(itemOrderArrayList.size() + 1, inventoryManagementController.getFormattedDate(), price, inventoryManagementController.getUserType(), itemOrderArrayList.size() + 1,
+////                inventoryManagementController.getUsername(), qty, objectOutputStream, objectInputStream);
+//    }
 
     public SalesCreateSalesInvoiceView getSalesCreateSalesInvoiceView() {
         return salesCreateSalesInvoiceView;

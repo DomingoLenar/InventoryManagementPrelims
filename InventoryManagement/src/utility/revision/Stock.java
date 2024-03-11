@@ -1,6 +1,8 @@
 package utility.revision;
 
-public class Stock {
+import java.io.Serializable;
+
+public class Stock implements Serializable {
     private String batchNo;
     private float cost;
     private float price;
@@ -53,5 +55,23 @@ public class Stock {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+    public String getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
+    }
+
+    @Override
+    public String toString() {
+        return "Stock{" +
+                "batchNo='" + batchNo + '\'' +
+                ", cost=" + cost +
+                ", price=" + price +
+                ", qty=" + qty +
+                ", supplier='" + supplier + '\'' +
+                '}';
     }
 }

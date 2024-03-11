@@ -4,12 +4,11 @@ import org.knowm.xchart.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class SalesDashboardView {
-    private JPanel mainPanel, topPanel, bottomPanel, searchPanel;
+    private JPanel mainPanel,bottomPanel;
     private JTextField searchField;
     private JList<String> recentlyAddedItemsIDList, recentlyAddedItemsNameList;
     private JPanel stockControlPanel, revenueVsCostPanel, recentlyAddedItemsPanel;
@@ -51,7 +50,7 @@ public class SalesDashboardView {
         pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
-        pieChart.setTitle("Units Sold");
+        pieChart.setTitle("Revenue & Cogs");
         pieChart.getStyler().setChartBackgroundColor(Color.WHITE);
 
         Color todayColor = new Color(130, 0, 255);
@@ -103,11 +102,6 @@ public class SalesDashboardView {
         stockControlPanel.setLayout(new BorderLayout());
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
 
-        // Call for Controller
-        searchField.setBorder(BorderFactory.createCompoundBorder(
-                new RoundedCornerBorder(20),
-                new EmptyBorder(5, 5, 5, 5)
-        ));
     }
     public JPanel getMainPanel() {
         return mainPanel;

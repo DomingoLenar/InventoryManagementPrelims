@@ -3,6 +3,7 @@ package client.purchaser.views;
 import client.common.views.GradientPanel;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class PurchaserStockControlView {
     private JPanel mainPanel;
@@ -12,10 +13,9 @@ public class PurchaserStockControlView {
     private JTextField searchField;
     private JButton updateButton;
     private JButton deleteButton;
-    private JButton addItemButton;
+    private JButton purchaseOrderButton;
     private JPanel centerPanel;
-    private JTable purchaserTable;
-    private JScrollPane puchaserScrollPane;
+    private JTable stockMonitorTable;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -33,20 +33,40 @@ public class PurchaserStockControlView {
         return deleteButton;
     }
 
-    public JButton getAddItemButton() {
-        return addItemButton;
+    public JButton getPurchaseOrderButton() {
+        return purchaseOrderButton;
     }
 
-    public JTable getPurchaserTable() {
-        return purchaserTable;
+    public JTable getStockMonitorTable() {
+        return stockMonitorTable;
     }
 
-    public JScrollPane getPuchaserScrollPane() {
-        return puchaserScrollPane;
-    }
 
     private void createUIComponents() {
-        mainPanel = new JPanel();
         centerPanel = new GradientPanel();
+
+        DefaultTableModel model = new DefaultTableModel();
+        stockMonitorTable = new JTable(model);
+        model.addColumn("ID");
+        model.addColumn("Product");
+        model.addColumn("Purchase Price");
+        model.addColumn("Type");
+        model.addColumn("Quantity"); // todo: stock level = quantity
+        model.addColumn("Supplier");
+        model.addColumn("Batch Number");
+
+
+//
+//        model.addColumn("Product");
+//        model.addColumn("Purchase Price");
+//        model.addColumn("Quantity");
+//        model.addColumn("Reorder Level"); // minimum quantity at which the system should trigger a reorder
+
+//        for (int i=0; i<=20; i++){
+//            model.addRow(new Object[] {
+//                    "product" + i , 10 + i +"Peso", i
+//            });
+//        }
+
     }
 }

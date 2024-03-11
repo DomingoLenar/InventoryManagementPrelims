@@ -32,6 +32,10 @@ public class User implements Serializable {
         this.active = active;
     }
 
+    public User(String byUserName) {
+        this.username = byUserName;
+    }
+
     /**
      * Gets the username of the user.
      *

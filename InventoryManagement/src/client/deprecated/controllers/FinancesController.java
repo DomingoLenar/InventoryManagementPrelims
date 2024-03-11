@@ -1,7 +1,7 @@
 package client.deprecated.controllers;
 
 import client.common.controllers.InventoryManagementController;
-import client.deprecated.controllers.views.FinancesView;
+import client.deprecated.views.FinancesView;
 
 public class FinancesController {
     InventoryManagementController inventoryManagementController;

@@ -1,156 +1,51 @@
 <itemorders>
-    <itemorder byUser="testsales" date="2024-01-19" orderType="sales">
-        <item>1</item>
-        <amount>20</amount>
-        <price>180</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-02-21" orderType="sales">
-        <item>2</item>
-        <amount>15</amount>
-        <price>180</price>
-        <id>2</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-03-19" orderType="sales">
-        <item>3</item>
-        <amount>35</amount>
-        <price>50</price>
-        <id>3</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-04-19" orderType="sales">
-        <item>4</item>
-        <amount>45</amount>
-        <price>20.0</price>
-        <id>4</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-05-19" orderType="sales">
-        <item>5</item>
-        <amount>55</amount>
-        <price>180.0</price>
-        <id>5</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-06-19" orderType="sales">
-        <item>6</item>
-        <amount>65</amount>
-        <price>180</price>
-        <id>6</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-07-19" orderType="sales">
-        <item>7</item>
-        <amount>67</amount>
-        <price>180</price>
-        <id>7</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-08-19" orderType="sales">
-        <item>8</item>
-        <amount>76</amount>
-        <price>50</price>
-        <id>8</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-09-19" orderType="sales">
-        <item>9</item>
-        <amount>88</amount>
-        <price>20.0</price>
-        <id>9</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-10-19" orderType="sales">
-        <item>10</item>
-        <amount>20</amount>
-        <price>180.0</price>
-        <id>10</id>
-    </itemorder>
-    <itemorder byUser="testsales" date="2024-11-19" orderType="sales">
-        <item>11</item>
-        <amount>123</amount>
-        <price>20.0</price>
-        <id>11</id>
-    </itemorder>d
-    <itemorder byUser="testsales" date="2024-12-21" orderType="sales">
-        <item>12</item>
-        <amount>420</amount>
-        <price>180.0</price>
-        <id>12</id>
-    </itemorder>
-
-    ** testing case for purchaser user ITEM and ID tag must be in sequence after no. 12 ITEM and ID tag **
-    <itemorder byUser="testpurchase" date="2024-01-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>180.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-02-19" orderType="purchase">
-        <item>2</item>
-        <amount>5</amount>
-        <price>180.0</price>
-        <id>2</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-03-19" orderType="purchase">
-        <item>3</item>
-        <amount>7</amount>
-        <price>180.0</price>
-        <id>3</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-04-19" orderType="purchase">
-        <item>4</item>
-        <amount>4</amount>
-        <price>180.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-05-19" orderType="purchase">
-        <item>1</item>
-        <amount>2</amount>
-        <price>180.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-06-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>880.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-07-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>580.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-08-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>380.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-09-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>480.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-10-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>110.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-11-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>675.0</price>
-        <id>1</id>
-    </itemorder>
-    <itemorder byUser="testpurchase" date="2024-12-19" orderType="purchase">
-        <item>1</item>
-        <amount>3</amount>
-        <price>420.0</price>
-        <id>1</id>
-    </itemorder>
     <!--NEW FORMAT FOR XML-->
     <itemorder>
-        <orderId></orderId>
-        <date></date>
-        <orderType></orderType>
-        <createdby></createdby>
+        <orderId>1</orderId>
+        <date>2023-07-24</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
     </itemorder>
-
+    <itemorder>
+        <orderId>2</orderId>
+        <date>2023-07-24</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>3</orderId>
+        <date>2023-07-25</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>4</orderId>
+        <date>2023-12-23</date>
+        <orderType>purchase</orderType>
+        <createdby>testpurchase</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>5</orderId>
+        <date>2024-01-01</date>
+        <orderType>purchase</orderType>
+        <createdby>testpurchase</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>6</orderId>
+        <date>2024-01-03</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>7</orderId>
+        <date>2024-02-13</date>
+        <orderType>sales</orderType>
+        <createdby>testsales</createdby>
+    </itemorder>
+    <itemorder>
+        <orderId>8</orderId>
+        <date>2024-02-14</date>
+        <orderType>purchase</orderType>
+        <createdby>testpurchase</createdby>
+    </itemorder>
 </itemorders>

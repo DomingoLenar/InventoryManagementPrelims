@@ -2,9 +2,10 @@ package server.model;
 
 import server.model.query.*;
 
-import utility.Item;
-import utility.ItemOrder;
 import utility.User;
+import utility.revision.Item;
+import utility.revision.ItemOrder;
+import utility.revision.OrderDetails;
 
 import java.io.*;
 import java.net.Socket;
@@ -40,10 +41,16 @@ public class ClientHandler implements Runnable{
                         //Invoke method for user creation
                         CreateUser.process(oIS, objectOutputStream);
                         break;
-                    case "addItem":
+                    case "createSalesInvoice":
+                        CreateSalesInvoice.process((ItemOrder) oIS.readObject(), (OrderDetails) oIS.readObject(), objectOutputStream);
+                        break;
+                    case"addItem":
+                        AddItem.process((ItemOrder) oIS.readObject(),  (OrderDetails) oIS.readObject(), objectOutputStream);
+                        break;
+                    case "addItemListing":
                         //Invoke method for item addition
                         Item submittedItem = (Item) oIS.readObject();
-                        ItemAddition.process(submittedItem, objectOutputStream);
+                        ItemListing.process(submittedItem, objectOutputStream);
                         break;
                     case "removeItem":
                         //Invoke method for item removal
@@ -60,10 +67,7 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.flush();
                         break;
                     case "addItemOrder":
-                        ItemOrder newItemOrder = (ItemOrder) oIS.readObject();
-                        boolean success = XMLProcessing.addItemOrder(newItemOrder);
-                        objectOutputStream.writeBoolean(success);
-                        objectOutputStream.flush();
+
                         break;
                     case "removeItemOrder":
                         RemoveItemOrder.process(oIS.readInt(), objectOutputStream);
@@ -78,7 +82,6 @@ public class ClientHandler implements Runnable{
                         objectOutputStream.writeObject(cRSuccess);
                         objectOutputStream.flush();
                         break;
-
                     case "fetchListOfUsers":
                         Stack<User> listOfUsers = XMLProcessing.fetchListOfUsers();
                         objectOutputStream.writeObject(listOfUsers);
@@ -90,6 +93,15 @@ public class ClientHandler implements Runnable{
                         XMLProcessing.setActiveStatus(currentUser, false);
                         objectOutputStream.writeBoolean(currentUser != null);
                         objectOutputStream.flush();
+                        break;
+                    case "requestSalesDashboard":
+                        RequestSalesDashboard.process(objectOutputStream);
+                        break;
+                    case "requestPurchaseDashboard":
+                        RequestPurchaseDashboard.process(objectOutputStream);
+                        break;
+                    case "requestAdminDashboard":
+                        RequestAdminDashboard.process(objectOutputStream);
                         break;
                     case "Exit":
                         System.out.println("Exit");
