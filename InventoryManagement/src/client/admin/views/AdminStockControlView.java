@@ -2,8 +2,6 @@ package client.admin.views;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -18,6 +16,7 @@ public class AdminStockControlView extends JFrame{
     private JPanel bottomPanel;
     private JScrollPane salesScrollPane;
     private JPanel searchPanel;
+    private JButton lowStockButton;
     private SalesInvoiceListener salesInvoiceListener;
     private AddItemListener addItemListener;
 
