@@ -1,9 +1,33 @@
 <items>
+    <!--OLD FORMAT-->
     <item>
-        <name></name>
-        <amount></amount>
-        <id></id>
-        <type></type>
-        <price></price>
+        <name>Hotdog</name>
+        <quantity>23</quantity>
+        <id>1</id>
+        <type>null</type>
+        <price>180</price>
+    </item>
+    <!--NEW FORMAT-->
+    <item>
+        <name>Hotdog</name>
+        <id>1</id>
+        <type>null</type>
+        <totalqty>50</totalqty>
+        <stocks>
+            <stock>
+                <batchNo></batchNo>
+                <supplier></supplier>
+                <cost></cost>
+                <price></price>
+                <qty></qty>
+            </stock>
+            <stock>
+                <batchNo></batchNo>
+                <supplier></supplier>
+                <cost></cost>
+                <price></price>
+                <qty></qty>
+            </stock>
+        </stocks>
     </item>
 </items>
