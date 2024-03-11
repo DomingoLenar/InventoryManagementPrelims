@@ -16,14 +16,11 @@ public class AdminFinancesView {
     private JPanel stockControlPanel;
     private JPanel grossSalesPanel;
     private JPanel averageSalesPanel;
-    private JPanel newSalesPanel;
     private JPanel grossProfitsPanel;
     private JLabel grossSalesLabel;
-    private JLabel averageSalesLabel;
-    private JLabel newSalesLabel;
+    private JLabel averageOrderValueLabel;
     private JLabel grossProfitsLabel;
     private JLabel gPAmount;
-    private JLabel nSAmount;
     private JLabel aSAmount;
     private JLabel gSAmount;
 
@@ -34,14 +31,12 @@ public class AdminFinancesView {
     public AdminFinancesView() {
 
         // Labels
-        grossProfitsLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        newSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        averageSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        grossSalesLabel.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        gPAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        nSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        aSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
-        gSAmount.setFont(new Font("Fira Code", Font.PLAIN, 14));
+        grossProfitsLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        averageOrderValueLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        grossSalesLabel.setFont(new Font("Fira Code", Font.BOLD, 14));
+        gPAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
+        aSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
+        gSAmount.setFont(new Font("Fira Code", Font.BOLD, 14));
 
         // Search Area
         searchField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
@@ -96,12 +91,12 @@ public class AdminFinancesView {
         JLabel todayColorLabel = new JLabel("    ");
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
-        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        todayColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
 
         JLabel maxColorLabel = new JLabel("    ");
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
-        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
+        maxColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
 
         JLabel totalLabelComponent = new JLabel(totalLabel);
         totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
