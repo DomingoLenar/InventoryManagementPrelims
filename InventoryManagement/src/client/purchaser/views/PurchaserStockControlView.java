@@ -16,6 +16,7 @@ public class PurchaserStockControlView {
     private JButton purchaseOrderButton;
     private JPanel centerPanel;
     private JTable stockMonitorTable;
+    private JButton lowStockButton;
 
     public JPanel getMainPanel() {
         return mainPanel;

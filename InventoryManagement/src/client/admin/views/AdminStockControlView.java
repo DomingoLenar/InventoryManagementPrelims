@@ -18,6 +18,7 @@ public class AdminStockControlView extends JFrame{
     private JPanel bottomPanel;
     private JScrollPane salesScrollPane;
     private JPanel searchPanel;
+    private JButton lowStockButton;
     private SalesInvoiceListener salesInvoiceListener;
     private AddItemListener addItemListener;
 
