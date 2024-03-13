@@ -4,7 +4,7 @@ import client.common.views.GradientPanel;
 
 import javax.swing.*;
 
-public class PurchaserAddItemView {
+public class PurchaserCreatePurchaseOrderView {
     private JPanel mainPanel;
     private JButton addItemButton;
     private JTextField productField;
@@ -13,7 +13,7 @@ public class PurchaserAddItemView {
     private JComboBox warehouseComboBox; // todo: warehouse capability
     private JButton cancelButton;
     private JTextField typeField;
-    private JTextField supplierField;
+    private JComboBox supplierComboBox;
     private JTextField stockLevelField;
     private JTextField batchNoField;
 
@@ -25,8 +25,12 @@ public class PurchaserAddItemView {
         return stockLevelField;
     }
 
-    public JTextField getSupplierField() {
-        return supplierField;
+    public JComboBox getSupplierComboBox() {
+        return supplierComboBox;
+    }
+
+    public JTextField getpPriceField() {
+        return pPriceField;
     }
 
     public JTextField getTypeField() {

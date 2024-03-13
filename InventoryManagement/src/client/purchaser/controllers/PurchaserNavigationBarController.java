@@ -21,6 +21,8 @@ public class PurchaserNavigationBarController {
         purchaserNavigationBarView.getDashboardButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                inventoryManagementController.getPurchaserDashboardController().getPurchaserDashboardView().getPieChart().removeSeries("Units Sold");
+                inventoryManagementController.getPurchaserDashboardController().getPurchaserDashboardView().getPieChart().removeSeries("Stock Quantity");
                 inventoryManagementController.getPurchaserDashboardController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getPurchaserDashboardController().getPurchaserDashboardView().getMainPanel());
             }
@@ -37,7 +39,7 @@ public class PurchaserNavigationBarController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 inventoryManagementController.getPurchaserStockControlController().initComponents();
-                inventoryManagementController.changeScreen(inventoryManagementController.getPurchaserStockControlController().purchaserStockControlView.getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getPurchaserStockControlController().purchaserStockMonitorView.getMainPanel());
             }
         });
     }

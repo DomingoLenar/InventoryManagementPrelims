@@ -5,7 +5,7 @@ import client.common.views.GradientPanel;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class PurchaserStockControlView {
+public class PurchaserStockMonitorView {
     private JPanel mainPanel;
     private JPanel topPanel;
     private JPanel bottomPanel;
@@ -16,6 +16,7 @@ public class PurchaserStockControlView {
     private JButton purchaseOrderButton;
     private JPanel centerPanel;
     private JTable stockMonitorTable;
+    private JButton addProductButton;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -41,6 +42,9 @@ public class PurchaserStockControlView {
         return stockMonitorTable;
     }
 
+    public JButton getAddProductButton() {
+        return addProductButton;
+    }
 
     private void createUIComponents() {
         centerPanel = new GradientPanel();
@@ -53,7 +57,7 @@ public class PurchaserStockControlView {
         model.addColumn("Type");
         model.addColumn("Quantity"); // todo: stock level = quantity
         model.addColumn("Supplier");
-        model.addColumn("Batch Number");
+//        model.addColumn("Batch Number");
 
 
 //

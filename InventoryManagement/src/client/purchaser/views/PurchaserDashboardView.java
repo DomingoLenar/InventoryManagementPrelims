@@ -21,6 +21,24 @@ public class PurchaserDashboardView {
     private JPanel stockControlPanel;
     private JPanel lowStockItemsPanel;
     private JLabel lowStockItemsLabel;
+    private PieChart pieChart;
+    private JLabel totalQtySoldLabel, soldQtyTodayLabel, soldQtyAnnualLabel, recentlyAddedItemsLabel;
+    String soldQtyAnnual, soldQtyToday, totalQtySold;
+
+    public PieChart getPieChart() {
+        return pieChart;
+    }
+
+    DefaultListModel<String> quantityOfProductsModel;
+    DefaultListModel<String> lowStockProductsModel;
+
+    public DefaultListModel<String> getLowStockProductsModel() {
+        return lowStockProductsModel;
+    }
+
+    public DefaultListModel<String> getQuantityOfProductsModel() {
+        return quantityOfProductsModel;
+    }
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -30,25 +48,15 @@ public class PurchaserDashboardView {
 
         // Low Stock Items
         lowStockItemsLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
-        DefaultListModel<String> listModel1 = new DefaultListModel<>();
-        // Change to Raw Data
-        listModel1.addElement("QTY");
-        listModel1.addElement("QTY");
-        listModel1.addElement("QTY");
-        listModel1.addElement("QTY");
-        listModel1.addElement("QTY");
-        activityList1.setModel(listModel1);
+        quantityOfProductsModel = new DefaultListModel<>();
+
+        activityList1.setModel(quantityOfProductsModel);
         activityList1.setEnabled(false);
         activityList1.setFont(new Font("Fira Code", Font.BOLD, 14));
 
-        DefaultListModel<String> listModel2 = new DefaultListModel<>();
-        // Change to Raw Data
-        listModel2.addElement("Product 1");
-        listModel2.addElement("Product 2");
-        listModel2.addElement("Product 3");
-        listModel2.addElement("Product 4");
-        listModel2.addElement("Product 5");
-        activityList2.setModel(listModel2);
+        lowStockProductsModel = new DefaultListModel<>();
+
+        activityList2.setModel(lowStockProductsModel);
         activityList2.setEnabled(false);
         activityList2.setFont(new Font("Fira Code", Font.BOLD, 14));
 
@@ -74,8 +82,8 @@ public class PurchaserDashboardView {
 
         JPanel chartPanel = new XChartPanel<>(chart);
 
-        // Stock Control
-        PieChart pieChart = new PieChartBuilder().width(400).height(300).build();
+        // Units Sold
+        pieChart = new PieChartBuilder().width(400).height(300).build();
 
         pieChart.getStyler().setLegendVisible(true);
         pieChart.setTitle("Units Sold");
@@ -85,40 +93,43 @@ public class PurchaserDashboardView {
         Color maxColor = new Color(100, 180, 180);
         pieChart.getStyler().setSeriesColors(new Color[]{todayColor, maxColor});
 
-        // Change to Raw Data
-        int todayValue = 274;
-        int maxValue = 2300;
-        int totalValue = todayValue + maxValue;
-
-        pieChart.addSeries("Today", todayValue);
-        pieChart.addSeries("Max", maxValue);
-
-        double todayPercentage = ((double) todayValue / totalValue) * 100;
-        double maxPercentage = ((double) maxValue / totalValue) * 100;
-
-        String todayLabel = String.format("Today: %.2f%%", todayPercentage);
-        String maxLabel = String.format("Max: %.2f%%", maxPercentage);
-        String totalLabel = String.format("Total: %d", totalValue);
+//        // Change to Raw Data
+//        int todayValue = 274;
+//        int maxValue = 2300;
+//        int totalValue = todayValue + maxValue;
+//
+//        pieChart.addSeries("Today", todayValue);
+//        pieChart.addSeries("Max", maxValue);
+//
+//        double todayPercentage = ((double) todayValue / totalValue) * 100;
+//        double maxPercentage = ((double) maxValue / totalValue) * 100;
+//
+//        String todayLabel = String.format("Today: %.2f%%", todayPercentage);
+//        String maxLabel = String.format("Max: %.2f%%", maxPercentage);
+//        String totalLabel = String.format("Total: %d", totalValue);
 
         JPanel pieChartPanel = new XChartPanel<>(pieChart);
 
         JLabel todayColorLabel = new JLabel("    ");
-        todayColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         todayColorLabel.setBackground(todayColor);
         todayColorLabel.setOpaque(true);
+        todayColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
         JLabel maxColorLabel = new JLabel("    ");
-        maxColorLabel.setFont(new Font("Fira Code", Font.BOLD, 20));
         maxColorLabel.setBackground(maxColor);
         maxColorLabel.setOpaque(true);
+        maxColorLabel.setFont(new Font("Fira Code", Font.PLAIN, 20));
 
-        JLabel totalLabelComponent = new JLabel(totalLabel);
-        totalLabelComponent.setHorizontalAlignment(SwingConstants.CENTER);
+        totalQtySoldLabel = new JLabel(totalQtySold);
+        totalQtySoldLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        soldQtyTodayLabel = new JLabel(soldQtyToday);
+        soldQtyAnnualLabel = new JLabel(soldQtyAnnual);
 
         JPanel labelPanel = new JPanel(new GridLayout(1, 3));
-        labelPanel.add(new JLabel(todayLabel, SwingConstants.CENTER));
-        labelPanel.add(new JLabel(maxLabel, SwingConstants.CENTER));
-        labelPanel.add(totalLabelComponent);
+        labelPanel.add(soldQtyTodayLabel, SwingConstants.CENTER);
+        labelPanel.add(soldQtyAnnualLabel, SwingConstants.CENTER);
+        labelPanel.add(totalQtySoldLabel);
 
         JPanel stockControlContentPanel = new JPanel(new BorderLayout());
         stockControlContentPanel.add(pieChartPanel, BorderLayout.CENTER);

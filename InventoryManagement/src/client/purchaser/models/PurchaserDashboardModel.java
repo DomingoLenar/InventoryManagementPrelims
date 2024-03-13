@@ -11,6 +11,15 @@ import java.util.ArrayList;
 public class PurchaserDashboardModel {
     ArrayList<Item> lowStockItems;
     int[] unitsSold;
+
+    public ArrayList<Item> getLowStockItems() {
+        return lowStockItems;
+    }
+
+    public int[] getUnitsSold() {
+        return unitsSold;
+    }
+
     public PurchaserDashboardModel(){}
 
     public void fetchDashboard(ObjectOutputStream oOs, ObjectInputStream oIs) {
