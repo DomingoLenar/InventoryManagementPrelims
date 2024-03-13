@@ -12,7 +12,7 @@
     <children>
       <component id="cbac8" class="javax.swing.JButton" binding="profileButton" default-binding="true">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag top="0" left="0" bottom="50" right="0" weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
@@ -25,24 +25,6 @@
           <horizontalAlignment value="2"/>
           <text value="Profile"/>
           <verticalAlignment value="3"/>
-        </properties>
-      </component>
-      <component id="fb338" class="javax.swing.JButton" binding="customerOrderButton">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <background color="-3360070"/>
-          <borderPainted value="false"/>
-          <contentAreaFilled value="false"/>
-          <focusable value="false"/>
-          <font name="Fira Code"/>
-          <foreground color="-16777216"/>
-          <horizontalAlignment value="2"/>
-          <text value="Customer Orders"/>
-          <verticalAlignment value="3"/>
-          <visible value="false"/>
         </properties>
       </component>
       <component id="de92a" class="javax.swing.JButton" binding="stockControlButton" default-binding="true">

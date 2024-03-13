@@ -26,7 +26,7 @@ public class SalesNavigationBarView {
         return profileButton;
     }
 
-    public JButton getStockControlButton() {
+    public JButton getStockMonitorButton() {
         return stockControlButton;
     }
 

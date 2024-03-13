@@ -38,6 +38,9 @@ public class SalesInvoiceViewHardCoded {
 
             model = new DefaultTableModel();
             table = new JTable(model);
+            model.addColumn("ID");
+            model.addColumn("Date Created");
+            model.addColumn("Created By");
             JScrollPane scrollPane = new JScrollPane(table);
 
             mainPanel.add(scrollPane, BorderLayout.CENTER);

@@ -43,7 +43,7 @@ public class SalesCreateSalesInvoiceController {
         salesCreateSalesInvoiceView.getCancelButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockMonitorView().getMainPanel());
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockMonitorController().getSalesStockMonitorView().getMainPanel());
             }
         });
     }

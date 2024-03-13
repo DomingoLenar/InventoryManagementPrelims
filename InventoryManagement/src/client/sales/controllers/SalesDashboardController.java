@@ -39,7 +39,6 @@ public class SalesDashboardController {
             totalRevenuePerMonth.add(Float.parseFloat(arr_yearlyRevenueCogs[0]));
             totalCostPerMonth.add(Float.parseFloat(arr_yearlyRevenueCogs[1]));
         }
-
         String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
        salesDashboardView.getChart().addSeries("Revenue", Arrays.asList(months), totalRevenuePerMonth);
        salesDashboardView.getChart().addSeries("Cogs", Arrays.asList(months), totalCostPerMonth);

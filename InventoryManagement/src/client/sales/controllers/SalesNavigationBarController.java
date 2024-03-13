@@ -11,7 +11,6 @@ public class SalesNavigationBarController {
     SalesNavigationBarView salesNavigationBarView;
     public SalesNavigationBarController(InventoryManagementController inventoryManagementController) {
         this.inventoryManagementController = inventoryManagementController;
-
         salesNavigationBarView = new SalesNavigationBarView();
 
         initButtons();
@@ -30,17 +29,17 @@ public class SalesNavigationBarController {
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesDashboardController().getSalesDashboardView().getMainPanel());
             }
         });
-        salesNavigationBarView.getCustomerOrderButton().addActionListener(new ActionListener() {
+//        salesNavigationBarView.getCustomerOrderButton().addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                inventoryManagementController.changeScreen(inventoryManagementController.getSalesCustomerOrderManagementController().getSalesCustomerOrderManagementView().getMainPanel());
+//            }
+//        });
+        salesNavigationBarView.getStockMonitorButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesCustomerOrderManagementController().getSalesCustomerOrderManagementView().getMainPanel());
-            }
-        });
-        salesNavigationBarView.getStockControlButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                inventoryManagementController.getSalesStockControlController().initComponents();
-                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockControlController().getSalesStockMonitorView().getMainPanel());
+                inventoryManagementController.getSalesStockMonitorController().initComponents();
+                inventoryManagementController.changeScreen(inventoryManagementController.getSalesStockMonitorController().getSalesStockMonitorView().getMainPanel());
             }
         });
         salesNavigationBarView.getProfileButton().addActionListener(new ActionListener() {
@@ -52,7 +51,7 @@ public class SalesNavigationBarController {
         salesNavigationBarView.getSalesInvoicesButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                inventoryManagementController.getSalesSalesInvoicesController().initComponents();
+                inventoryManagementController.getSalesSalesInvoicesController().initComponents();
                 inventoryManagementController.changeScreen(inventoryManagementController.getSalesSalesInvoicesController().getSalesInvoiceHardCoded().getMainPanel());
             }
         });

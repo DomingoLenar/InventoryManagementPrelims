@@ -34,7 +34,6 @@ public class SalesDashboardView {
         recentlyAddedItemsNameList.setFont(new Font("Fira Code", Font.PLAIN, 14));
 
         // Revenue Vs Costs
-
         chart = new CategoryChartBuilder().width(400).height(300).build();
         chart.getStyler().setStacked(true);
         chart.getStyler().setOverlapped(true);
@@ -101,7 +100,6 @@ public class SalesDashboardView {
 
         stockControlPanel.setLayout(new BorderLayout());
         stockControlPanel.add(stockControlContentPanel, BorderLayout.CENTER);
-
     }
     public JPanel getMainPanel() {
         return mainPanel;

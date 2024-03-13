@@ -1,22 +1,39 @@
 package client.sales.controllers;
 
 import client.common.controllers.InventoryManagementController;
+import client.sales.models.SalesSalesInvoicesModel;
 import client.sales.views.SalesInvoiceViewHardCoded;
+import utility.revision.ItemOrder;
 
+import javax.swing.table.DefaultTableModel;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class SalesSalesInvoicesController {
+    SalesSalesInvoicesModel salesSalesInvoicesModel;
     SalesInvoiceViewHardCoded salesInvoiceHardCoded;
     InventoryManagementController inventoryManagementController;
     ObjectOutputStream objectOutputStream;
     ObjectInputStream objectInputStream;
     public SalesSalesInvoicesController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) {
+        salesSalesInvoicesModel = new SalesSalesInvoicesModel();
         this.inventoryManagementController = inventoryManagementController;
         salesInvoiceHardCoded = new SalesInvoiceViewHardCoded();
         objectInputStream = oIs;
         objectOutputStream = oOs;
+    }
+    public void initComponents(){
+        String userType = inventoryManagementController.getInventoryManagementInterface().getUserType();
+        ArrayList<ItemOrder> itemOrderArrayList = salesSalesInvoicesModel.fetchListOfSalesInvoice(objectOutputStream, objectInputStream, userType);
 
+        DefaultTableModel model = salesInvoiceHardCoded.getModel();
+        model.setRowCount(0);
+        for (ItemOrder itemOrder:itemOrderArrayList) {
+            model.addRow(new Object[] {
+                    itemOrder.getOrderId(),itemOrder.getDate(),itemOrder.getCreatedBy().getUsername()
+            });
+        }
     }
 //    public void initComponents() {
 //
