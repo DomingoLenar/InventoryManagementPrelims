@@ -2,7 +2,9 @@ package client.common.controllers;
 
 import client.common.models.LoginModel;
 import client.common.views.LoginView;
+import utility.User;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -42,11 +44,13 @@ public class LoginController {
                 String password = loginView.getLVpasswordField().getText();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    // do smth
+                    JOptionPane.showMessageDialog(null, "Please input on required field");
                 } else {
-                    loginModel.handleLogin(username, password, objectOutputStream, objectInputStream);
-                    String userType = loginModel.getUser().getRole(); // TODO: find a way where userType & username variable is not in inventory controller
-                    if (userType != null) {
+                    User user = loginModel.handleLogin(username, password, objectOutputStream, objectInputStream);
+                    if (user == null) {
+                        JOptionPane.showMessageDialog(null, "Username is already logged in!", null, JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        String userType = user.getRole();
                         inventoryManagementController.getInventoryManagementInterface().setUsername(username);
                         inventoryManagementController.getInventoryManagementInterface().setUserType(userType);
                         inventoryManagementController.getUserSettingsController().getUserSettingsView().getUsernameLabel().setText(username);

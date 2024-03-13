@@ -29,8 +29,12 @@ public class XMLProcessing {
         User localUser = findUser(userToAuth.getUsername());
         if(localUser != null){
             if(localUser.getPassword().equals(userToAuth.getPassword())){
+                if (localUser.isActive()) {
+                    return null;
+                }
                 setActiveStatus(localUser, true);
                 return localUser;
+
             }
         }
         return null;
@@ -192,7 +196,7 @@ public class XMLProcessing {
      * @param itemToAdd The item to add.
      * @return True if the item is successfully added; false otherwise.
      */
-    public static synchronized boolean addItem(Item itemToAdd) { // TODO: problem: id of an item not auto increment
+    public static synchronized boolean addItem(Item itemToAdd) {
         try {
             Document document = getXMLDocument("InventoryManagement/src/server/res/items.xml");
 
@@ -225,40 +229,30 @@ public class XMLProcessing {
             Element type = document.createElement("type");
             type.setTextContent(itemToAdd.getType());
 
-            Element stocks = document.createElement("stocks");
+            Element parentStocks = document.createElement("stocks");
 
-            // Check if there are no stocks available
-            if (itemToAdd.getAllStocks().isEmpty()) {
-                // Create an empty <stock> element
-                Element emptyStock = document.createElement("stock");
-                stocks.appendChild(emptyStock);
-            } else {
+            // Check if there are stocks available
+            if (!itemToAdd.getAllStocks().isEmpty()) {
                 // If there are stocks available, add them to the <stocks> element
                 for (Stock stock : itemToAdd.getAllStocks()) {
-                    Element stockElement = document.createElement("stock");
-
+                    Element childStocks = document.createElement("stock");
                     Element batchNo = document.createElement("batchNo");
+                    Element supplier = document.createElement("supplier");
+                    Element cost = document.createElement("cost");
+                    Element price = document.createElement("price");
+                    Element qty = document.createElement("qty");
+
                     batchNo.setTextContent(stock.getBatchNo());
 
-                    Element supplier = document.createElement("supplier");
                     supplier.setTextContent(stock.getSupplier());
 
-                    Element cost = document.createElement("cost");
                     cost.setTextContent(String.valueOf(stock.getCost()));
 
-                    Element price = document.createElement("price");
                     price.setTextContent(String.valueOf(stock.getPrice()));
 
-                    Element qty = document.createElement("qty");
                     qty.setTextContent(String.valueOf(stock.getQty()));
 
-                    stockElement.appendChild(batchNo);
-                    stockElement.appendChild(supplier);
-                    stockElement.appendChild(cost);
-                    stockElement.appendChild(price);
-                    stockElement.appendChild(qty);
-
-                    stocks.appendChild(stockElement);
+                    parentStocks.appendChild(childStocks);
                 }
             }
 
@@ -266,7 +260,7 @@ public class XMLProcessing {
             newItem.appendChild(id);
             newItem.appendChild(quantity);
             newItem.appendChild(type);
-            newItem.appendChild(stocks);
+            newItem.appendChild(parentStocks);
 
             root.appendChild(newItem);
 
@@ -482,7 +476,7 @@ public class XMLProcessing {
             newItemOrder.setAttribute("date", itemOrder.getDate());
             newItemOrder.setAttribute("orderType", itemOrder.getOrderType());
 
-            Element byUser = document.createElement("createdBy");
+            Element byUser = document.createElement("createdby");
             byUser.setTextContent(itemOrder.getCreatedBy().getUsername());
 
             Element orderId = document.createElement("orderId");
@@ -533,8 +527,8 @@ public class XMLProcessing {
                                 System.out.println("Error: The quantity should not be less than 0.");
                                 return;
                             } else if (newQty == 0) {
-                                Node pNode = stockElement.getParentNode();
-                                pNode.removeChild(stockElement); // remove the stock head
+//                                Node pNode = stockElement.getParentNode();
+//                                pNode.removeChild(stockElement); // remove the stock head
                                 System.out.println("The stock quantity is already zero. No amount of units can be removed.");
                             }
 
@@ -631,7 +625,7 @@ public class XMLProcessing {
 
                 LinkedList<Stock> stocks = new LinkedList<>();
                 NodeList stockList = currentItem.getElementsByTagName("stock");
-                for (int i = 0; i < stockList.getLength(); i++) {
+                for (int i = 0; i < stockList.getLength(); i++) { // todo: handle exception when item not have stocks (i.e., stocks -> stock -> [child tags empty]
                     Element stockElement = (Element) stockList.item(i);
                     String batchNo = stockElement.getElementsByTagName("batchNo").item(0).getTextContent();
                     String supplier = stockElement.getElementsByTagName("supplier").item(0).getTextContent();
@@ -797,7 +791,7 @@ public class XMLProcessing {
                 if (orderId== currentOrderID ){
                     String date = currentElement.getElementsByTagName("date").item(0).getTextContent();
                     String orderType = currentElement.getElementsByTagName("orderType").item(0).getTextContent();
-                    String byUserName = currentElement.getElementsByTagName("createdBy").item(0).getTextContent();
+                    String byUserName = currentElement.getElementsByTagName("createdby").item(0).getTextContent();
 
                     User createdBy = new User(byUserName);
 
@@ -897,6 +891,23 @@ public class XMLProcessing {
         return orderDetails;
     }
 
+    public static ArrayList<String> fetchListOfSuppliers() {
+       ArrayList<String> suppliers = new ArrayList<>();
+        try {
+            Document xmlDocument = getXMLDocument("InventoryManagement/src/server/res/suppliers.xml");
+            Element root = xmlDocument.getDocumentElement();
+            NodeList suppliersNodeList = root.getElementsByTagName("supplier");
+
+            for (int i=0; i<suppliersNodeList.getLength(); i++) {
+                Element currentSupplier = (Element) suppliersNodeList.item(i);
+                suppliers.add(currentSupplier.getTextContent());
+            }
+            return suppliers;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     private static void cleanXMLDocument(Document doc)
             throws XPathExpressionException {
@@ -935,6 +946,7 @@ public class XMLProcessing {
             emptyTextNode.getParentNode().removeChild(emptyTextNode);
         }
     }
+
 
 
 }

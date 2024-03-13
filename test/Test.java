@@ -85,6 +85,28 @@ public class Test {
         } catch (IOException ioException) {
             throw new RuntimeException("Error Fetching Items", ioException);
         }
+    }
 
+    @org.junit.jupiter.api.Test
+    public void testFetchListOfSuppliers(){
+        try {
+            Socket cSocket = new Socket("localhost", 2020);
+            ObjectOutputStream oos  = new ObjectOutputStream(cSocket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(cSocket.getInputStream());
+
+            ClientApi.sendAction("fetchListOfSuppliers", oos);
+
+            try {
+                ArrayList<String> itemStack = (ArrayList<String>) ois.readObject();
+                for (String s:itemStack) {
+                    System.out.println(s);
+                }
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (IOException ioException) {
+            throw new RuntimeException("Error Fetching Suppliers", ioException);
+        }
     }
 }

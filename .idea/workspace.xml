@@ -4,62 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Re-construct: overall client architecture&#10;&#10;- Implement one view, one controller, one model for each client&#10;- Update the controllers of clients&#10;- Add new views and controllers for the clients&#10;- Reformat java name classes for code-readability&#10;- Change the component name in .form files to avoid confusion&#10;- Append ClientApi.java responsible for communication with the server">
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/interfaces/OrderManagementInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/models/PurchaserCreatePurchaseOrderModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/models/PurchaserDashboardModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/models/PurchaserStockMonitorModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserDashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/models/SalesCreateCustomerOrderModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/models/SalesCustomerOrderManagementModel.java" afterDir="false" />
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Major Update: sales client package">
+      <change afterPath="$PROJECT_DIR$/test/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminAddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminAddItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminCreateSalesInvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminCreateSalesInvoiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminStockControlView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminStockControlView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminStockControlView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/views/AdminStockControlView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/ChangePasswordController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/LoginModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/views/InventoryManagementInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/views/InventoryManagementInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/FinancesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/FinancesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/views/DashboardView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/views/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/views/FinancesView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/views/FinancesView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserAddItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserCreatePurchaseOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserDashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserNavigationBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserNavigationBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/controllers/PurchaserStockControlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/controllers/PurchaserStockMonitorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserAddItemView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserAddItemView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserAddItemView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserAddItemView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserDashboardView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserDashboardView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserDashboardView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserNavigationBarView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserNavigationBarView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserNavigationBarView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserNavigationBarView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserStockControlView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserStockControlView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/purchase/views/PurchaserStockControlView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/purchaser/views/PurchaserStockControlView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateCustomerOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateCustomerOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateSalesInvoiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCreateSalesInvoiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCustomerOrderManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesCustomerOrderManagementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesDashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesStockMonitorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesStockMonitorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCreateCustomerOrderView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesCustomerOrderManagementView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesInvoiceView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesInvoiceView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesNavigationBarView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.form" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/views/SalesStockMonitorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/DashboardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/FinancesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/models/ItemOrderManagementModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/models/UserManagementModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/views_geo_rabang/sales/SalesInvoice/SalesInvoiceHardCoded.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/AddItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreatePurchaseOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreateSalesInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreateSalesInvoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/ItemListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/ItemListing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/itemorders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/itemorders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/orderdetails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/orderdetails.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/supplier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/suppliers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminDashboardController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminFinancesController.class" beforeDir="false" />
@@ -133,6 +107,9 @@
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/ItemOrder.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/User.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/test/2024-2_9329-preteam1/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Purchaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Purchaser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,32 +238,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PurchaserDashboardView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="client.purchaser.views.PurchaserDashboardView" />
-      <module name="InventoryManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="client.purchaser.views.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.Server" />
-      <module name="Server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TerminalController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -302,33 +253,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="XMLProcessing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.model.XMLProcessing" />
-      <module name="InventoryManagement" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="server.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="Purchaser.testProcessMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-2_9329-preteam1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Purchaser" />
+      <option name="METHOD_NAME" value="testProcessMethod" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server.testAddNewItemRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-2_9329-preteam1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Server" />
+      <option name="METHOD_NAME" value="testAddNewItemRequest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test.testFetchListOfSuppliers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2024-2_9329-preteam1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test" />
+      <option name="METHOD_NAME" value="testFetchListOfSuppliers" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.PurchaserDashboardView" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.XMLProcessing" />
       <item itemvalue="Application.TerminalController" />
+      <item itemvalue="JUnit.Purchaser.testProcessMethod" />
+      <item itemvalue="JUnit.Server.testAddNewItemRequest" />
+      <item itemvalue="JUnit.Test.testFetchListOfSuppliers" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TerminalController" />
-        <item itemvalue="Application.PurchaserDashboardView" />
-        <item itemvalue="Application.XMLProcessing" />
-        <item itemvalue="Application.Server" />
+        <item itemvalue="JUnit.Purchaser.testProcessMethod" />
+        <item itemvalue="JUnit.Server.testAddNewItemRequest" />
+        <item itemvalue="JUnit.Test.testFetchListOfSuppliers" />
       </list>
     </recent_temporary>
   </component>
@@ -379,247 +347,9 @@
       <workItem from="1708016502159" duration="1153000" />
       <workItem from="1709012199947" duration="686000" />
       <workItem from="1709386399919" duration="44626000" />
-      <workItem from="1709826064076" duration="2615000" />
-    </task>
-    <task id="LOCAL-00001" summary="+ added: IndexView.java">
-      <option name="closed" value="true" />
-      <created>1706445930977</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445930977</updated>
-    </task>
-    <task id="LOCAL-00002" summary="+ added: LoginView.java">
-      <option name="closed" value="true" />
-      <created>1706445940549</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445940549</updated>
-    </task>
-    <task id="LOCAL-00003" summary="+ added: SignUpView.java">
-      <option name="closed" value="true" />
-      <created>1706445948157</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445948157</updated>
-    </task>
-    <task id="LOCAL-00004" summary="+ added: Main.java">
-      <option name="closed" value="true" />
-      <created>1706445963499</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445963499</updated>
-    </task>
-    <task id="LOCAL-00005" summary="+ added: InventoryManagementInterface.java">
-      <option name="closed" value="true" />
-      <created>1706445974049</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1706445974049</updated>
-    </task>
-    <task id="LOCAL-00006" summary="+ updated: IndexView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1706951464698</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951464698</updated>
-    </task>
-    <task id="LOCAL-00007" summary="+ updated: LoginView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1706951482537</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951482537</updated>
-    </task>
-    <task id="LOCAL-00008" summary="+ updated: SignUpView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1706951496117</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951496117</updated>
-    </task>
-    <task id="LOCAL-00009" summary="+ updated: IndexController.java">
-      <option name="closed" value="true" />
-      <created>1706951534270</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951534270</updated>
-    </task>
-    <task id="LOCAL-00010" summary="+ updated: LoginController.java">
-      <option name="closed" value="true" />
-      <created>1706951541525</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951541525</updated>
-    </task>
-    <task id="LOCAL-00011" summary="+ updated: SignUpController.java">
-      <option name="closed" value="true" />
-      <created>1706951547303</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951547303</updated>
-    </task>
-    <task id="LOCAL-00012" summary="+ updated: established mvc design pattern &amp; composition design technique in client side">
-      <option name="closed" value="true" />
-      <created>1706951945654</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1706951945654</updated>
-    </task>
-    <task id="LOCAL-00013" summary="+ added: GradientPanel.java">
-      <option name="closed" value="true" />
-      <created>1707053826144</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1707053826144</updated>
-    </task>
-    <task id="LOCAL-00014" summary="+ latest: IndexView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707054429080</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1707054429080</updated>
-    </task>
-    <task id="LOCAL-00015" summary="+ latest: LoginView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707054436239</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1707054436239</updated>
-    </task>
-    <task id="LOCAL-00016" summary="+ latest: SignUpView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707054443190</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1707054443190</updated>
-    </task>
-    <task id="LOCAL-00017" summary="+ added: InventoryManagementController.java">
-      <option name="closed" value="true" />
-      <created>1707054582812</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1707054582812</updated>
-    </task>
-    <task id="LOCAL-00018" summary="+ logical fix for some errors with server client communication">
-      <option name="closed" value="true" />
-      <created>1707350569540</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1707350569540</updated>
-    </task>
-    <task id="LOCAL-00019" summary="+ completed: client side mvc architecture">
-      <option name="closed" value="true" />
-      <created>1707873202184</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1707873202184</updated>
-    </task>
-    <task id="LOCAL-00020" summary="+ client-server testing case on Main.java">
-      <option name="closed" value="true" />
-      <created>1707873581556</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1707873581556</updated>
-    </task>
-    <task id="LOCAL-00021" summary="+ added: junit-jupiter library">
-      <option name="closed" value="true" />
-      <created>1707960018624</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960018624</updated>
-    </task>
-    <task id="LOCAL-00022" summary="+ added: Test.java in test folder">
-      <option name="closed" value="true" />
-      <created>1707960093152</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960093152</updated>
-    </task>
-    <task id="LOCAL-00023" summary="+ added: DashboardView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707960314139</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960314139</updated>
-    </task>
-    <task id="LOCAL-00024" summary="+ added: FinancesView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707960333124</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960333124</updated>
-    </task>
-    <task id="LOCAL-00025" summary="+ added: NavigationBarView.java(&amp;.form)">
-      <option name="closed" value="true" />
-      <created>1707960353186</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960353186</updated>
-    </task>
-    <task id="LOCAL-00026" summary="+ added: DashboardController.java">
-      <option name="closed" value="true" />
-      <created>1707960369356</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960369356</updated>
-    </task>
-    <task id="LOCAL-00027" summary="+ added: FinancesController.java">
-      <option name="closed" value="true" />
-      <created>1707960379844</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960379844</updated>
-    </task>
-    <task id="LOCAL-00028" summary="+ added: LoginController.java">
-      <option name="closed" value="true" />
-      <created>1707960403229</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960403229</updated>
-    </task>
-    <task id="LOCAL-00029" summary="+ added: SignUpController.java">
-      <option name="closed" value="true" />
-      <created>1707960420429</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960420429</updated>
-    </task>
-    <task id="LOCAL-00030" summary="+ updated: InventoryManagementController.java">
-      <option name="closed" value="true" />
-      <created>1707960846565</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960846565</updated>
+      <workItem from="1709826064076" duration="35025000" />
+      <workItem from="1710059052334" duration="57889000" />
+      <workItem from="1710337276174" duration="10682000" />
     </task>
     <task id="LOCAL-00031" summary="+ updated: NavigationBarController.java">
       <option name="closed" value="true" />
@@ -733,7 +463,287 @@
       <option name="project" value="LOCAL" />
       <updated>1709555614301</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="+ Major update: client side package&#10;&#10;- Updated the views,controllers,and models of clients&#10;- Organized the swing components to only views of clients for separation of intent of mvc">
+      <option name="closed" value="true" />
+      <created>1709829935945</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1709829935945</updated>
+    </task>
+    <task id="LOCAL-00046" summary="+ Major update: client side package&#10;&#10;- Updated the views,controllers,and models of clients&#10;- Organized the swing components to only views of clients for separation of intent of mvc">
+      <option name="closed" value="true" />
+      <created>1709829995023</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709829995023</updated>
+    </task>
+    <task id="LOCAL-00047" summary="+ Update: createUser() method in XMLProcessing class to evaluate the user details if it exists before creation">
+      <option name="closed" value="true" />
+      <created>1710036515586</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1710036515588</updated>
+    </task>
+    <task id="LOCAL-00048" summary="+ Reconstruct: process() of AddItem class to avoid socket instability">
+      <option name="closed" value="true" />
+      <created>1710096901324</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1710096901324</updated>
+    </task>
+    <task id="LOCAL-00049" summary="+ Reformat: ClientHandler class switch case implementation">
+      <option name="closed" value="true" />
+      <created>1710097052254</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097052254</updated>
+    </task>
+    <task id="LOCAL-00050" summary="+ Reconstruct: CreateSalesInvoice class process method to avoid socket exception&#10;&#10;- Added additional validation before updation of xmls">
+      <option name="closed" value="true" />
+      <created>1710097187816</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097187817</updated>
+    </task>
+    <task id="LOCAL-00051" summary="+ Update: PurchaserAddItemView class and bound .form for purchaser user&#10;&#10;- Added swing components relevant to purchaser creation of purchase order">
+      <option name="closed" value="true" />
+      <created>1710097350498</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097350498</updated>
+    </task>
+    <task id="LOCAL-00052" summary="+ Implement: Creation of purchase order of purchaser user in PurchaserCreatePurchaseOrderController class&#10;&#10;- Added PurchaserCreatePurchaseOrderModel class for processing of creation of purchase order in the server">
+      <option name="closed" value="true" />
+      <created>1710097581053</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097581055</updated>
+    </task>
+    <task id="LOCAL-00053" summary="+ Add: PurchaserCreatePurchaseOrderModel class responsible for server communication&#10;&#10;- Added OnCreate() method for creation of purchase order">
+      <option name="closed" value="true" />
+      <created>1710097674354</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097674354</updated>
+    </task>
+    <task id="LOCAL-00054" summary="+ Update: initialization of components of each views associated with purchaser client&#10;&#10;- Added initComponents() of PurchaserStockMonitorController java responsible">
+      <option name="closed" value="true" />
+      <created>1710097829557</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097829557</updated>
+    </task>
+    <task id="LOCAL-00055" summary="+ Update: initialization of PurchaserStockControlView class components &#10;&#10;- initialized table model of Jtable to display datum">
+      <option name="closed" value="true" />
+      <created>1710097957656</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097957656</updated>
+    </task>
+    <task id="LOCAL-00056" summary="+ Update: PurchaserStockMonitorController class to load all components">
+      <option name="closed" value="true" />
+      <created>1710098034968</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098034968</updated>
+    </task>
+    <task id="LOCAL-00057" summary="+ Add: PurchaserStockMonitorModel class responsible for querying on a server&#10;&#10;- Added fetchItems() method to fetch list of items on the server">
+      <option name="closed" value="true" />
+      <created>1710098139435</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098139435</updated>
+    </task>
+    <task id="LOCAL-00058" summary="+ Change: getRecentlyAddedItems() return type ArrayList&lt;Item&gt; -&gt; Stack&lt;Item&gt; of RequestSalesDashboard class&#10;&#10;- Reformat methods for code-readability">
+      <option name="closed" value="true" />
+      <created>1710098256233</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098256233</updated>
+    </task>
+    <task id="LOCAL-00059" summary="+ Implement: Creation of cx order of sales user in SalesCreateCustomerOrderController class">
+      <option name="closed" value="true" />
+      <created>1710098351677</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098351677</updated>
+    </task>
+    <task id="LOCAL-00060" summary="+ Add: OnGenerate() method in SalesCreateCustomerOrderModel class for generation of (salesInvoice)">
+      <option name="closed" value="true" />
+      <created>1710098428551</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098428551</updated>
+    </task>
+    <task id="LOCAL-00061" summary="+ Update: SalesCreateCustomerOrderView class and bound .form for sales user">
+      <option name="closed" value="true" />
+      <created>1710098524492</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098524492</updated>
+    </task>
+    <task id="LOCAL-00062" summary="+ Update: SalesDashboardController class implementation of components initialization">
+      <option name="closed" value="true" />
+      <created>1710098615369</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098615369</updated>
+    </task>
+    <task id="LOCAL-00063" summary="+ Add: SalesDashboardModel class responsible for querying on the server&#10;&#10;- Added fetchDashboard() method to retrieved summarized datum">
+      <option name="closed" value="true" />
+      <created>1710098695778</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098695778</updated>
+    </task>
+    <task id="LOCAL-00064" summary="+ Update: SalesDashboardView clas and bound .form for sales client">
+      <option name="closed" value="true" />
+      <created>1710098726790</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098726790</updated>
+    </task>
+    <task id="LOCAL-00065" summary="+ Update: SalesNavigationBarController class responsible for handling initialization of sales views">
+      <option name="closed" value="true" />
+      <created>1710098840154</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098840154</updated>
+    </task>
+    <task id="LOCAL-00066" summary="+ Update: SalesStockMonitorController class components initialization">
+      <option name="closed" value="true" />
+      <created>1710098919756</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098919756</updated>
+    </task>
+    <task id="LOCAL-00067" summary="+ Add: SalesStockMonitorModel class for server communication&#10;&#10;- Added fetchItems() to retrieved datum">
+      <option name="closed" value="true" />
+      <created>1710098987272</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1710098987272</updated>
+    </task>
+    <task id="LOCAL-00068" summary="+ Update: SalesStockMonitorView class components initialization">
+      <option name="closed" value="true" />
+      <created>1710099015040</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099015040</updated>
+    </task>
+    <task id="LOCAL-00069" summary="+ hotfix: exceptions and bugs in XMLProcessing class">
+      <option name="closed" value="true" />
+      <created>1710099233138</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099233138</updated>
+    </task>
+    <task id="LOCAL-00070" summary="+ Add: addOrderDetails() method implementation responsible for adding order details in XMLProcessing class">
+      <option name="closed" value="true" />
+      <created>1710099282773</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099282773</updated>
+    </task>
+    <task id="LOCAL-00071" summary="+ Add: fetchDashboard() method in PurchaserDashboardModel class for querying on the server">
+      <option name="closed" value="true" />
+      <created>1710099401590</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099401591</updated>
+    </task>
+    <task id="LOCAL-00072" summary="+ Update: PurchaserDashboardController class for initialization of components">
+      <option name="closed" value="true" />
+      <created>1710099473265</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099473265</updated>
+    </task>
+    <task id="LOCAL-00073" summary="+ Update: files in admin package &#10;&#10;- Add AdminUserManagementModel class for querying on the server&#10;- Code-cleanup">
+      <option name="closed" value="true" />
+      <created>1710099666899</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099666899</updated>
+    </task>
+    <task id="LOCAL-00074" summary="+">
+      <option name="closed" value="true" />
+      <created>1710099760096</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1710099760096</updated>
+    </task>
+    <task id="LOCAL-00075" summary="+ Add: PurchaserItemListingController class">
+      <option name="closed" value="true" />
+      <created>1710349041394</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349041396</updated>
+    </task>
+    <task id="LOCAL-00076" summary="+ Add: PurchaserItemListingModel class">
+      <option name="closed" value="true" />
+      <created>1710349053013</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349053013</updated>
+    </task>
+    <task id="LOCAL-00077" summary="+ Add: PurchaserItemListingView class &amp; .form">
+      <option name="closed" value="true" />
+      <created>1710349073805</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349073805</updated>
+    </task>
+    <task id="LOCAL-00078" summary="+ Major Update: purchaser client package">
+      <option name="closed" value="true" />
+      <created>1710349155947</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349155947</updated>
+    </task>
+    <task id="LOCAL-00079" summary="+ Major Update: sales client package">
+      <option name="closed" value="true" />
+      <created>1710349211828</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349211828</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -802,44 +812,53 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ client-server testing case on Main.java" />
-    <MESSAGE value="+ added: junit-jupiter library" />
-    <MESSAGE value="+ added: Test.java in test folder" />
-    <MESSAGE value="+ added: DashboardView.java(&amp;.form)" />
-    <MESSAGE value="+ added: FinancesView.java(&amp;.form)" />
-    <MESSAGE value="+ added: NavigationBarView.java(&amp;.form)" />
-    <MESSAGE value="+ added: DashboardController.java" />
-    <MESSAGE value="+ added: FinancesController.java" />
-    <MESSAGE value="+ added: LoginController.java" />
-    <MESSAGE value="+ updated: SignUpController.java" />
-    <MESSAGE value="+ updated: InventoryManagementController.java" />
-    <MESSAGE value="+ updated: NavigationBarController.java" />
-    <MESSAGE value="+ views/panels organization" />
-    <MESSAGE value="+ utilized text-output and object-output streams by the client and server" />
-    <MESSAGE value="+ fix: authenticate() method returning null" />
-    <MESSAGE value="+ implements serializable of User model" />
-    <MESSAGE value="cleanup code" />
-    <MESSAGE value="+ test cases reformat" />
-    <MESSAGE value="+ jar files for graphical representation" />
-    <MESSAGE value="+ moved unit tester class (i.e., Test.java) in root/Test" />
-    <MESSAGE value="+ .idea (project configuration)" />
-    <MESSAGE value="+ dependencies" />
-    <MESSAGE value="+ XMLDocument and Element cleaner, with implementation" />
-    <MESSAGE value="+ Fixed bug caused by two objects that is created using one input stream" />
-    <MESSAGE value="+ Re-construct: overall client architecture&#10;&#10;- Implement one view, one controller, one model for each client&#10;- Update the controllers of clients&#10;- Add new views and controllers for the clients&#10;- Reformat java name classes for code-readability&#10;- Change the component name in .form files to avoid confusion&#10;- Append ClientApi.java responsible for communication with the server" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ Re-construct: overall client architecture&#10;&#10;- Implement one view, one controller, one model for each client&#10;- Update the controllers of clients&#10;- Add new views and controllers for the clients&#10;- Reformat java name classes for code-readability&#10;- Change the component name in .form files to avoid confusion&#10;- Append ClientApi.java responsible for communication with the server" />
+    <MESSAGE value="+ Update: initialization of PurchaserStockControlView class components &#10;&#10;- initialized table model of Jtable to display datum" />
+    <MESSAGE value="+ Update: PurchaserStockMonitorController class to load all components" />
+    <MESSAGE value="+ Add: PurchaserStockMonitorModel class responsible for querying on a server&#10;&#10;- Added fetchItems() method to fetch list of items on the server" />
+    <MESSAGE value="+ Change: getRecentlyAddedItems() return type ArrayList&lt;Item&gt; -&gt; Stack&lt;Item&gt; of RequestSalesDashboard class&#10;&#10;- Reformat methods for code-readability" />
+    <MESSAGE value="+ Implement: Creation of cx order of sales user in SalesCreateCustomerOrderController class" />
+    <MESSAGE value="+ Add: OnGenerate() method in SalesCreateCustomerOrderModel class for generation of (salesInvoice)" />
+    <MESSAGE value="+ Update: SalesCreateCustomerOrderView class and bound .form for sales user" />
+    <MESSAGE value="+ Update: SalesDashboardController class implementation of components initialization" />
+    <MESSAGE value="+ Add: SalesDashboardModel class responsible for querying on the server&#10;&#10;- Added fetchDashboard() method to retrieved summarized datum" />
+    <MESSAGE value="+ Update: SalesDashboardView clas and bound .form for sales client" />
+    <MESSAGE value="+ Update: SalesNavigationBarController class responsible for handling initialization of sales views" />
+    <MESSAGE value="+ Update: SalesStockMonitorController class components initialization" />
+    <MESSAGE value="+ Add: SalesStockMonitorModel class for server communication&#10;&#10;- Added fetchItems() to retrieved datum" />
+    <MESSAGE value="+ Update: SalesStockMonitorView class components initialization" />
+    <MESSAGE value="+ hotfix: exceptions and bugs in XMLProcessing class" />
+    <MESSAGE value="+ Add: addOrderDetails() method implementation responsible for adding order details in XMLProcessing class" />
+    <MESSAGE value="+ Add: fetchDashboard() method in PurchaserDashboardModel class for querying on the server" />
+    <MESSAGE value="+ Update: PurchaserDashboardController class for initialization of components" />
+    <MESSAGE value="+ Update: files in admin package &#10;&#10;- Add AdminUserManagementModel class for querying on the server&#10;- Code-cleanup" />
+    <MESSAGE value="+" />
+    <MESSAGE value="+ Add: PurchaserItemListingController class" />
+    <MESSAGE value="+ Add: PurchaserItemListingModel class" />
+    <MESSAGE value="+ Add: PurchaserItemListingView class &amp; .form" />
+    <MESSAGE value="+ Major Update: purchaser client package" />
+    <MESSAGE value="+ Major Update: sales client package" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Major Update: sales client package" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/InventoryManagement/src/server/model/query/UserVerification.java</url>
-          <line>10</line>
-          <properties class="server.model.query.UserVerification" method="process">
+          <url>file://$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java</url>
+          <line>27</line>
+          <properties class="server.model.XMLProcessing" method="authenticate">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java</url>
+          <line>730</line>
+          <properties class="server.model.XMLProcessing" method="fetchItem">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

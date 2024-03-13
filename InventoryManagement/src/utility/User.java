@@ -4,6 +4,7 @@ package utility;
 import java.io.Serializable;
 
 public class User implements Serializable {
+    private int userId;
     private String username;
     private String password;
     private String role;
@@ -17,6 +18,14 @@ public class User implements Serializable {
         password = "";
         role = "";
         active = false;
+    }
+
+    public User(int userId, String username, String password, String role, boolean active) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.active = active;
     }
 
     /**

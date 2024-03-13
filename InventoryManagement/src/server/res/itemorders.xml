@@ -48,4 +48,10 @@
         <orderType>purchase</orderType>
         <createdby>testpurchase</createdby>
     </itemorder>
+    <itemorder byUser="testsales" date="2024-03-14" orderId="9" orderType="sales">
+        <createdby>testsales</createdby>
+        <orderId>9</orderId>
+        <date>2024-03-14</date>
+        <orderType>sales</orderType>
+    </itemorder>
 </itemorders>

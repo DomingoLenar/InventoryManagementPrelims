@@ -19,7 +19,7 @@ public class CreateSalesInvoice {
             orderDetails.forEach(order -> {
                 order.setItemOrderID(orderID);
             });
-            orderDetails.forEach(XMLProcessing::addOrderDetail);
+            orderDetails.forEach(XMLProcessing::addOrderDetails);
             orderDetails.forEach(order -> XMLProcessing.removeStockUnits(order.getItemID(), order.getBatchNo(), order.getUnits()));
             objectOutputStream.writeObject(true);
         }

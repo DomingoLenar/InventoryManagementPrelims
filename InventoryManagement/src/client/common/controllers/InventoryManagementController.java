@@ -2,13 +2,7 @@ package client.common.controllers;
 
 import client.admin.controllers.*;
 import client.common.views.InventoryManagementInterface;
-import client.deprecated.controllers.DashboardController;
-import client.deprecated.controllers.FinancesController;
-import client.deprecated.controllers.NavigationBarController;
-import client.purchaser.controllers.PurchaserCreatePurchaseOrderController;
-import client.purchaser.controllers.PurchaserDashboardController;
-import client.purchaser.controllers.PurchaserNavigationBarController;
-import client.purchaser.controllers.PurchaserStockMonitorController;
+import client.purchaser.controllers.*;
 import client.sales.controllers.*;
 
 import javax.swing.*;
@@ -29,9 +23,6 @@ public class InventoryManagementController { // big controller
     IndexController indexController;
     SignUpController signUpController;
     LoginController loginController;
-    NavigationBarController navigationBarController;
-    DashboardController dashboardController;
-    FinancesController financesController;
     AdminDashboardController adminDashboardController;
     AdminNavigationBarController adminNavigationBarController;
     AdminFinancesController adminFinancesController;
@@ -52,6 +43,7 @@ public class InventoryManagementController { // big controller
     PurchaserNavigationBarController purchaserNavigationBarController;
     PurchaserStockMonitorController purchaserStockMonitorController;
     PurchaserCreatePurchaseOrderController purchaserCreatePurchaseOrderController;
+    PurchaserItemListingController purchaserItemListingController;
     UserSettingsController userSettingsController;
     ChangePasswordController changePasswordController;
     private Socket clientSocket;
@@ -90,17 +82,15 @@ public class InventoryManagementController { // big controller
         signUpController = new SignUpController(this, objectInputStream, objectOutputStream);
         loginController = new LoginController(this, objectInputStream, objectOutputStream);
         userSettingsController = new UserSettingsController(this, objectInputStream, objectOutputStream);
-        navigationBarController = new NavigationBarController(this);
-        dashboardController = new DashboardController(this);
-        financesController = new FinancesController(this);
         changePasswordController = new ChangePasswordController(this, objectInputStream, objectOutputStream);
     }
 
-    private void purchaserControllers() {
+    private void purchaserControllers(){
         purchaserDashboardController = new PurchaserDashboardController(this, objectInputStream, objectOutputStream);
         purchaserNavigationBarController = new PurchaserNavigationBarController(this);
         purchaserStockMonitorController = new PurchaserStockMonitorController(this, objectInputStream, objectOutputStream);
         purchaserCreatePurchaseOrderController = new PurchaserCreatePurchaseOrderController(this, objectInputStream, objectOutputStream);
+        purchaserItemListingController = new PurchaserItemListingController(this, objectInputStream, objectOutputStream);
     }
 
     private void salesControllers() {
@@ -193,18 +183,6 @@ public class InventoryManagementController { // big controller
         return signUpController;
     }
 
-    public NavigationBarController getNavigationBarController() {
-        return navigationBarController;
-    }
-
-    public DashboardController getDashboardController() {
-        return dashboardController;
-    }
-
-    public FinancesController getFinancesController() {
-        return financesController;
-    }
-
     public SalesDashboardController getSalesDashboardController() {
         return salesDashboardController;
     }
@@ -233,7 +211,7 @@ public class InventoryManagementController { // big controller
         return adminCreateSalesInvoiceController;
     }
 
-    public SalesStockMonitorController getSalesStockControlController() {
+    public SalesStockMonitorController getSalesStockMonitorController() {
         return salesStockMonitorController;
     }
 
@@ -278,7 +256,7 @@ public class InventoryManagementController { // big controller
         return purchaserStockMonitorController;
     }
 
-    public PurchaserCreatePurchaseOrderController getPurchaserAddItemController() {
+    public PurchaserCreatePurchaseOrderController getPurchaserCreatePurchaseOrderController() {
         return purchaserCreatePurchaseOrderController;
     }
 
@@ -288,6 +266,10 @@ public class InventoryManagementController { // big controller
 
     public SalesCustomerOrderManagementController getSalesCustomerOrderManagementController() {
         return salesCustomerOrderManagementController;
+    }
+
+    public PurchaserItemListingController getPurchaserItemListingController() {
+        return purchaserItemListingController;
     }
 
     public void displayAdminMainMenu() {

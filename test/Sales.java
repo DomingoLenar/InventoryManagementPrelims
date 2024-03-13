@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class Sales {
 
+
     @Test
     public void testSalesDashboard() {
         try {

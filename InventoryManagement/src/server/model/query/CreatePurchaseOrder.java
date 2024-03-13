@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class AddItem {
+public class CreatePurchaseOrder {
     public static void process(ItemOrder itemOrder, OrderDetails orderDetail, ObjectOutputStream objectOutputStream) throws IOException, ClassNotFoundException {
         try {
             String orderDate = itemOrder.getDate();

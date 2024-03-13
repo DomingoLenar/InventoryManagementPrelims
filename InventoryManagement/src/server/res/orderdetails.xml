@@ -63,4 +63,12 @@
         <unitPrice>125</unitPrice>
         <supplier>GusF</supplier>
     </orderdetail>
+    <orderdetail>
+        <itemorderid>9</itemorderid>
+        <itemid>4</itemid>
+        <units>5</units>
+        <batchNo>ElonM_2024-01-01_18500</batchNo>
+        <unitPrice>20000.0</unitPrice>
+        <supplier>ElonM</supplier>
+    </orderdetail>
 </orderdetails>

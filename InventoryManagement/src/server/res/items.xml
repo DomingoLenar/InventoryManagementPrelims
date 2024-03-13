@@ -56,14 +56,14 @@
         <name>StarlinkD</name>
         <id>4</id>
         <type>null</type>
-        <totalqty>7</totalqty>
+        <totalqty>2</totalqty>
         <stocks>
             <stock>
                 <batchNo>ElonM_2024-01-01_18500</batchNo>
                 <supplier>ElonM</supplier>
                 <cost>18500</cost>
                 <price>20000</price>
-                <qty>5</qty>
+                <qty>0</qty>
             </stock>
             <stock>
                 <batchNo>ElonM_2024-01-03_18500</batchNo>
@@ -100,7 +100,7 @@
                 <supplier>PabloE</supplier>
                 <cost>5000</cost>
                 <price>20000</price>
-            <qty>100</qty>
+                <qty>100</qty>
             </stock>
         </stocks>
     </item>

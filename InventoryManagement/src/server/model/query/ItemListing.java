@@ -17,7 +17,7 @@ public class ItemListing {
     public static synchronized void process(Item itemObject, ObjectOutputStream objectOutputStream) throws IOException {
         try {
             boolean success = XMLProcessing.addItem(itemObject);
-            objectOutputStream.writeBoolean(success);
+            objectOutputStream.writeObject(success);
             objectOutputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();

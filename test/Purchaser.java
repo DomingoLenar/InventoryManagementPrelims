@@ -29,7 +29,7 @@ public class Purchaser {
             System.out.println("Units sold: "+ unitsSold[0] + unitsSold[1]);
             System.out.println("Low stock items");
             for (Item item : lowStockItems) {
-                System.out.println(item.getName());
+                System.out.println(item.getName() + " " + item.getTotalQty());
             }
 
             cSocket.close();

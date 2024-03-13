@@ -9,13 +9,14 @@ import utility.revision.OrderDetails;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.Stack;
 
 public class ClientHandler implements Runnable{
     Socket socket;
 
-    public ClientHandler(Socket clientSocket){
+    public ClientHandler(Socket clientSocket) throws SocketException {
         socket = clientSocket;
     }
 
@@ -41,13 +42,13 @@ public class ClientHandler implements Runnable{
                         //Invoke method for user creation
                         CreateUser.process(oIS, objectOutputStream);
                         break;
-                    case "createSalesInvoice":
+                    case "createSalesInvoice": // createCustomerOrder
                         CreateSalesInvoice.process((ItemOrder) oIS.readObject(), (OrderDetails) oIS.readObject(), objectOutputStream);
                         break;
-                    case"addItem":
-                        AddItem.process((ItemOrder) oIS.readObject(),  (OrderDetails) oIS.readObject(), objectOutputStream);
+                    case"createPurchaseOrder":
+                        CreatePurchaseOrder.process((ItemOrder) oIS.readObject(),  (OrderDetails) oIS.readObject(), objectOutputStream);
                         break;
-                    case "addItemListing":
+                    case "addNewItem":
                         //Invoke method for item addition
                         Item submittedItem = (Item) oIS.readObject();
                         ItemListing.process(submittedItem, objectOutputStream);
@@ -102,6 +103,11 @@ public class ClientHandler implements Runnable{
                         break;
                     case "requestAdminDashboard":
                         RequestAdminDashboard.process(objectOutputStream);
+                        break;
+                    case "fetchListOfSuppliers":
+                        ArrayList<String> arrayListSupplier = XMLProcessing.fetchListOfSuppliers();
+                        objectOutputStream.writeObject(arrayListSupplier);
+                        objectOutputStream.flush();
                         break;
                     case "Exit":
                         System.out.println("Exit");
