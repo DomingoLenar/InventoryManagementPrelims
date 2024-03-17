@@ -4,36 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Major Update: sales client package">
-      <change afterPath="$PROJECT_DIR$/test/Server.java" afterDir="false" />
+    <list default="true" id="3476866f-d6ab-403c-ab43-a4b97ae508ea" name="Changes" comment="+ Refactoring, test cases, &amp; hotfixes: implement one user per logging session">
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/client/StockControlCallbackClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/server/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/server/StockControlServant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/shared/AlreadyLoggedInException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/shared/NotLoggedInException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/shared/StockControlCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/shared/StockControlServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventoryManagement/src/shared/UserExistsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2024-2_9329-preteam1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/admin/controllers/AdminDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/InventoryManagementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/ItemManagementModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/controllers/UserSettingsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/common/models/LoginModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/DashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/FinancesController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/controllers/NavigationBarController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/DashboardView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/deprecated/views/FinancesView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/models/ItemOrderManagementModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/models/UserManagementModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/views_geo_rabang/sales/SalesInvoice/SalesInvoiceHardCoded.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/AddItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreatePurchaseOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreateSalesInvoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/CreateSalesInvoice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/ItemListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/model/query/ItemListing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/itemorders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/itemorders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/items.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/orderdetails.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/orderdetails.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/supplier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/suppliers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/server/res/users.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/utility/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/utility/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement/src/client/sales/controllers/SalesSalesInvoicesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminDashboardController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/client/admin/controllers/AdminFinancesController.class" beforeDir="false" />
@@ -107,9 +94,6 @@
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/ItemOrder.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/production/2024-2_9329-preteam1/utility/User.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/output/test/2024-2_9329-preteam1/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Purchaser.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Purchaser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Sales.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Sales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,12 +209,38 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="client.Client" />
+      <module name="InventoryManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.Main" />
       <module name="InventoryManagement" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Server" />
+      <module name="InventoryManagement" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -263,40 +273,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server.testAddNewItemRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2024-2_9329-preteam1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Server" />
-      <option name="METHOD_NAME" value="testAddNewItemRequest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test.testFetchListOfSuppliers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2024-2_9329-preteam1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test" />
-      <option name="METHOD_NAME" value="testFetchListOfSuppliers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.TerminalController" />
       <item itemvalue="JUnit.Purchaser.testProcessMethod" />
-      <item itemvalue="JUnit.Server.testAddNewItemRequest" />
-      <item itemvalue="JUnit.Test.testFetchListOfSuppliers" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.TerminalController" />
         <item itemvalue="JUnit.Purchaser.testProcessMethod" />
-        <item itemvalue="JUnit.Server.testAddNewItemRequest" />
-        <item itemvalue="JUnit.Test.testFetchListOfSuppliers" />
       </list>
     </recent_temporary>
   </component>
@@ -349,15 +339,8 @@
       <workItem from="1709386399919" duration="44626000" />
       <workItem from="1709826064076" duration="35025000" />
       <workItem from="1710059052334" duration="57889000" />
-      <workItem from="1710337276174" duration="10682000" />
-    </task>
-    <task id="LOCAL-00031" summary="+ updated: NavigationBarController.java">
-      <option name="closed" value="true" />
-      <created>1707960866491</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1707960866491</updated>
+      <workItem from="1710337276174" duration="11326000" />
+      <workItem from="1710369520330" duration="15609000" />
     </task>
     <task id="LOCAL-00032" summary="+ views/panels organization">
       <option name="closed" value="true" />
@@ -743,7 +726,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710349211828</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="+ Refactoring, test cases, &amp; hotfixes: implement one user per logging session">
+      <option name="closed" value="true" />
+      <created>1710349682584</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1710349682584</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -812,7 +803,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="+ Update: initialization of PurchaserStockControlView class components &#10;&#10;- initialized table model of Jtable to display datum" />
     <MESSAGE value="+ Update: PurchaserStockMonitorController class to load all components" />
     <MESSAGE value="+ Add: PurchaserStockMonitorModel class responsible for querying on a server&#10;&#10;- Added fetchItems() method to fetch list of items on the server" />
     <MESSAGE value="+ Change: getRecentlyAddedItems() return type ArrayList&lt;Item&gt; -&gt; Stack&lt;Item&gt; of RequestSalesDashboard class&#10;&#10;- Reformat methods for code-readability" />
@@ -837,31 +827,8 @@
     <MESSAGE value="+ Add: PurchaserItemListingView class &amp; .form" />
     <MESSAGE value="+ Major Update: purchaser client package" />
     <MESSAGE value="+ Major Update: sales client package" />
-    <option name="LAST_COMMIT_MESSAGE" value="+ Major Update: sales client package" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java</url>
-          <line>27</line>
-          <properties class="server.model.XMLProcessing" method="authenticate">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/InventoryManagement/src/server/model/XMLProcessing.java</url>
-          <line>730</line>
-          <properties class="server.model.XMLProcessing" method="fetchItem">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="+ Refactoring, test cases, &amp; hotfixes: implement one user per logging session" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ Refactoring, test cases, &amp; hotfixes: implement one user per logging session" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

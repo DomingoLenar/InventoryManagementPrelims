@@ -1,7 +1,11 @@
 package client.common.controllers;
 
+import client.StockControlCallbackClass;
 import client.common.models.LoginModel;
 import client.common.views.LoginView;
+import shared.AlreadyLoggedInException;
+import shared.StockControlServer;
+import shared.UserExistsException;
 import utility.User;
 
 import javax.swing.*;
@@ -10,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.rmi.RemoteException;
 
 public class LoginController {
     LoginModel loginModel;
@@ -17,12 +22,16 @@ public class LoginController {
     LoginView loginView;
     ObjectInputStream objectInputStream;
     ObjectOutputStream objectOutputStream;
-    public LoginController(InventoryManagementController inventoryManagementController, ObjectInputStream oIs, ObjectOutputStream oOs) throws IOException {
+    StockControlCallbackClass stockControlCallbackClass;
+    StockControlServer stub;
+    public LoginController(InventoryManagementController inventoryManagementController,StockControlCallbackClass stockControlCallbackClass, StockControlServer stub) throws IOException {
         this.inventoryManagementController = inventoryManagementController;
+        this.stockControlCallbackClass = stockControlCallbackClass;
+        this.stub = stub;
         loginModel = new LoginModel();
         loginView = new LoginView();
-        objectInputStream = oIs;
-        objectOutputStream = oOs;
+//        objectInputStream = oIs;
+//        objectOutputStream = oOs;
 
         initComponents();
     }
@@ -47,25 +56,32 @@ public class LoginController {
                     JOptionPane.showMessageDialog(null, "Please input on required field");
                 } else {
                     User user = loginModel.handleLogin(username, password, objectOutputStream, objectInputStream);
-                    if (user == null) {
-                        JOptionPane.showMessageDialog(null, "Username is already logged in!", null, JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        String userType = user.getRole();
-                        inventoryManagementController.getInventoryManagementInterface().setUsername(username);
-                        inventoryManagementController.getInventoryManagementInterface().setUserType(userType);
-                        inventoryManagementController.getUserSettingsController().getUserSettingsView().getUsernameLabel().setText(username);
-                        switch (userType) {
-                            case "admin":
-                                inventoryManagementController.displayAdminMainMenu();
-                                break;
-                            case "sales":
-                                inventoryManagementController.displaySalesMainMenu();
-                                break;
-                            case "purchase":
-                                inventoryManagementController.displayPurchaserMainMenu();
-                                break;
-                        }
+                    stockControlCallbackClass.authenticate(user);
+                    try {
+                        stub.login(stockControlCallbackClass);
+                    } catch (RemoteException | AlreadyLoggedInException | UserExistsException ex) {
+                        throw new RuntimeException(ex);
                     }
+                    System.out.println("true");
+//                    if (user == null) {
+//                        JOptionPane.showMessageDialog(null, "Username is already logged in!", null, JOptionPane.ERROR_MESSAGE);
+//                    } else {
+//                        String userType = user.getRole();
+//                        inventoryManagementController.getInventoryManagementInterface().setUsername(username);
+//                        inventoryManagementController.getInventoryManagementInterface().setUserType(userType);
+//                        inventoryManagementController.getUserSettingsController().getUserSettingsView().getUsernameLabel().setText(username);
+//                        switch (userType) {
+//                            case "admin":
+//                                inventoryManagementController.displayAdminMainMenu();
+//                                break;
+//                            case "sales":
+//                                inventoryManagementController.displaySalesMainMenu();
+//                                break;
+//                            case "purchase":
+//                                inventoryManagementController.displayPurchaserMainMenu();
+//                                break;
+//                        }
+//                    }
                 }
             }
         });

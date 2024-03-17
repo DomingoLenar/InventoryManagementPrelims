@@ -1,16 +1,23 @@
 package client.common.controllers;
 
+import client.StockControlCallbackClass;
 import client.admin.controllers.*;
 import client.common.views.InventoryManagementInterface;
 import client.purchaser.controllers.*;
 import client.sales.controllers.*;
+import shared.StockControlCallback;
+import shared.StockControlServer;
+import utility.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Notes: big controller <-> panel controllers
@@ -18,7 +25,7 @@ import java.net.Socket;
  * - changeScreen() method: a shortcut for display[...] () methods
  */
 
-public class InventoryManagementController { // big controller
+public class InventoryManagementController extends UnicastRemoteObject implements StockControlCallback, Serializable { // big controller
     InventoryManagementInterface inventoryManagementInterface;
     IndexController indexController;
     SignUpController signUpController;
@@ -49,26 +56,46 @@ public class InventoryManagementController { // big controller
     private Socket clientSocket;
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
-    public InventoryManagementController() throws IOException {
+    private StockControlCallbackClass stockControlCallbackClass;
+    private StockControlServer stub;
+    public InventoryManagementController(StockControlServer stub) throws IOException, InstantiationException, IllegalAccessException {
         inventoryManagementInterface = new InventoryManagementInterface();
-
-        try {
-//            clientSocket = new Socket("lestatheh", 2018); // tailscale vpn
-            clientSocket = new Socket("localhost", 2020); // local terminal
-            objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
-            objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        stockControlCallbackClass = new StockControlCallbackClass();
+        this.stub = stub;
+//
+//        try {
+////            clientSocket = new Socket("lestatheh", 2018); // tailscale vpn
+////            clientSocket = new Socket("localhost", 2020); // local terminal
+////            objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+////            objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         initControllers();
-
-        displayIndexPanel(); // main panel of the application
-
-        initComponents();
+        stockControlCallbackClass.index(displayIndexPanel()); // caller
+    }
+    @Override
+    public User getUser() throws RemoteException {
+        return null;
     }
 
-    private void initComponents() {}
+    @Override
+    public void loginCall(User user) throws RemoteException {
+
+    }
+
+    @Override
+    public void broadcastCall(User user, String msg) throws RemoteException {
+
+    }
+
+    @Override
+    public void logoutCall(User user) throws RemoteException {
+    }
+
+    @Override
+    public void index(Void o) throws RemoteException{
+    }
 
     private void initControllers() throws IOException {
         adminControllers();
@@ -80,7 +107,7 @@ public class InventoryManagementController { // big controller
     private void commonControllers() throws IOException {
         indexController = new IndexController(this);
         signUpController = new SignUpController(this, objectInputStream, objectOutputStream);
-        loginController = new LoginController(this, objectInputStream, objectOutputStream);
+        loginController = new LoginController(this, stockControlCallbackClass,stub );
         userSettingsController = new UserSettingsController(this, objectInputStream, objectOutputStream);
         changePasswordController = new ChangePasswordController(this, objectInputStream, objectOutputStream);
     }
@@ -133,7 +160,7 @@ public class InventoryManagementController { // big controller
     /** EDT - background thread to process abstract window toolkit (AWT) events or GUI
      * - Each AWT events/functions should be process by one EDT background thread
      */
-    public void displayIndexPanel() {
+    public Void displayIndexPanel() throws InstantiationException, IllegalAccessException {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -143,6 +170,7 @@ public class InventoryManagementController { // big controller
                 inventoryManagementInterface.getMainContainer().repaint();
             }
         });
+        return null;
     }
 
     public void displayLoginView(){
@@ -310,4 +338,5 @@ public class InventoryManagementController { // big controller
     public InventoryManagementInterface getInventoryManagementInterface() {
         return inventoryManagementInterface;
     }
+
 }

@@ -78,7 +78,6 @@ public class SalesSalesInvoicesController {
 //                    // Sample Data
 //                    System.out.println("Clicked Row Data: ID=" + id + ", Date=" + date +
 //                            ", Product=" + product + ", Quantity=" + quantity);
-//
 //                    // For demonstration purposes (swing panel for sales invoice will show up here)
 //                    JOptionPane.showMessageDialog(null,
 //                            "You clicked on: ID=" + id + ", Date=" + date +
@@ -86,7 +85,6 @@ public class SalesSalesInvoicesController {
 //                }
 //            }
 //        });
-//
 //    }
 
     public SalesInvoiceViewHardCoded getSalesInvoiceHardCoded() {

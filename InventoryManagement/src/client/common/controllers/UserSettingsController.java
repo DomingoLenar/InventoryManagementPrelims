@@ -57,7 +57,13 @@ public class UserSettingsController {
                 inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Today");
                 inventoryManagementController.getAdminDashboardController().getAdminDashboardView().getPieChart().removeSeries("Annual");
 
-                inventoryManagementController.displayIndexPanel();
+                try {
+                    inventoryManagementController.displayIndexPanel();
+                } catch (InstantiationException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IllegalAccessException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
